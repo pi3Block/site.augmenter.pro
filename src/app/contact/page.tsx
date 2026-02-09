@@ -36,18 +36,40 @@ const contactInfo = [
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setError(null);
+    setLoading(true);
+
     const form = e.currentTarget;
     const data = new FormData(form);
-    const name = data.get("name") as string;
-    const email = data.get("email") as string;
-    const message = data.get("message") as string;
 
-    const subject = encodeURIComponent(`Contact augmenter.PRO — ${name}`);
-    const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\n${message}`);
-    window.location.href = `mailto:vite@augmenter.pro?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          company: data.get("company"),
+          message: data.get("message"),
+        }),
+      });
+
+      if (!res.ok) {
+        const body = await res.json();
+        throw new Error(body.error || "Erreur lors de l'envoi.");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Erreur lors de l'envoi.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -77,10 +99,10 @@ export default function ContactPage() {
                         <Mail className="h-7 w-7" />
                       </div>
                       <h3 className="mt-4 text-xl font-semibold">
-                        Votre client email va s&apos;ouvrir
+                        Message envoyé !
                       </h3>
                       <p className="mt-2 text-muted-foreground">
-                        Envoyez le message pré-rempli. Nous vous répondons sous 24h.
+                        Merci pour votre message. Nous vous répondons sous 24h.
                       </p>
                     </div>
                   ) : (
@@ -150,9 +172,17 @@ export default function ContactPage() {
                           placeholder="Je cherche à automatiser mes processus de facturation avec l'IA..."
                         />
                       </div>
-                      <Button type="submit" size="lg" className="w-full gap-2">
-                        Envoyer ma demande
-                        <ArrowRight className="h-4 w-4" />
+                      {error && (
+                        <p className="text-sm text-red-600">{error}</p>
+                      )}
+                      <Button
+                        type="submit"
+                        size="lg"
+                        className="w-full gap-2"
+                        disabled={loading}
+                      >
+                        {loading ? "Envoi en cours..." : "Envoyer ma demande"}
+                        {!loading && <ArrowRight className="h-4 w-4" />}
                       </Button>
                     </form>
                   )}
