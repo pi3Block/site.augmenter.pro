@@ -51,9 +51,70 @@ const additionalServices = [
   },
 ];
 
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  provider: {
+    "@type": "LocalBusiness",
+    name: "augmenter.PRO",
+    url: "https://augmenter.pro",
+  },
+  serviceType: "Conseil en transformation digitale et IA",
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Yvelines (78)" },
+    { "@type": "AdministrativeArea", name: "Val d'Oise (95)" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Prestations augmenter.PRO",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "Audit 180° Informatique & Organisation",
+        description:
+          "Échange de 60 min pour identifier vos leviers de croissance numériques. Sans engagement.",
+        price: "0",
+        priceCurrency: "EUR",
+        url: "https://augmenter.pro/contact",
+      },
+      {
+        "@type": "Offer",
+        name: "Audit 360° IA Booster",
+        description:
+          "Diagnostic complet de 3h couvrant infrastructure, workflows et équipes. Livrable : plan d'action chiffré et priorisé.",
+        price: "225",
+        priceCurrency: "EUR",
+        url: "https://augmenter.pro/contact",
+      },
+      {
+        "@type": "Offer",
+        name: "Développement sur mesure",
+        description:
+          "Applications, automatisations et intégrations IA conçues pour votre métier.",
+      },
+      {
+        "@type": "Offer",
+        name: "Formation & Accompagnement",
+        description:
+          "Ateliers IA pour dirigeants, formation outils collaboratifs, conduite du changement.",
+      },
+      {
+        "@type": "Offer",
+        name: "Conseil Stratégique",
+        description:
+          "Benchmark concurrentiel, choix technologiques, roadmap transformation digitale.",
+      },
+    ],
+  },
+};
+
 export default function PrestationsPage() {
   return (
     <div className="pt-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
       <section className="py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">

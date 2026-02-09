@@ -18,6 +18,7 @@
 /out/
 /dist/
 /public/_next/
+/_next/
 
 # production
 /build
