@@ -83,6 +83,11 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 
 - [Stratégie IA pour PME : Diagnostic & Accompagnement](https://augmenter.pro/strategie-ia-pme) — Landing page complète sur notre accompagnement stratégique IA pour PME. Diagnostic gratuit, méthodologie en 4 étapes, cas d'usage par secteur (BTP, immobilier, industrie, services), financement Osez l'IA Bpifrance, FAQ.
 
+## Audit Informatique Local
+
+- [Audit Informatique Yvelines (78)](https://augmenter.pro/audit-informatique-yvelines) — Audit informatique pour PME en Yvelines. Diagnostic gratuit 60 min, méthodologie en 4 étapes, périmètre complet (réseau, sécurité, cloud, RGPD, licences), secteurs locaux (BTP, services, commerce, santé), FAQ géo-ciblée.
+- [Audit Informatique Val-d'Oise (95)](https://augmenter.pro/audit-informatique-val-doise) — Audit informatique pour PME en Val-d'Oise. Diagnostic gratuit 60 min, méthodologie en 4 étapes, périmètre complet (réseau, sécurité, cloud, RGPD, licences), secteurs locaux (logistique, BTP, commerce, industrie), FAQ géo-ciblée.
+
 ## Pages
 
 - https://augmenter.pro — Accueil
@@ -93,6 +98,8 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 - https://augmenter.pro/blog — Blog Articles & Tutos
 - https://augmenter.pro/contact — Contact & Audit Gratuit
 - https://augmenter.pro/plateforme — Plateforme IA pour Professionnels (10 modules)
+- https://augmenter.pro/audit-informatique-yvelines — Audit Informatique Yvelines (78)
+- https://augmenter.pro/audit-informatique-val-doise — Audit Informatique Val-d'Oise (95)
 - https://augmenter.pro/mentions-legales — Mentions Légales
 - https://augmenter.pro/politique-confidentialite — Politique de Confidentialité (RGPD, cookies, droits)
 - https://augmenter.pro/cgv — Conditions Générales de Vente

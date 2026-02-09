@@ -5,7 +5,7 @@
 
 ---
 
-## hivy-village-renovation-hero.webp
+## augmenter-pro-village-renovation-hero.webp
 
 - **Type** : Illustration artistique noir et blanc (encre/dessin)
 - **Dimensions** : Portrait / vertical
@@ -17,7 +17,7 @@
 
 ---
 
-## hivy-script-qualification-telephonique.webp
+## augmenter-pro-script-qualification-telephonique.webp
 
 - **Type** : Photo mise en scène (clipboard sur bureau avec clavier)
 - **Dimensions** : Portrait / vertical
@@ -34,7 +34,7 @@
 
 ---
 
-## hivy-parcours-qualification-lead.webp
+## augmenter-pro-parcours-qualification-lead.webp
 
 - **Type** : Infographie processus (schéma fléché horizontal)
 - **Dimensions** : Paysage / horizontal
@@ -51,7 +51,7 @@
 
 ---
 
-## hivy-funnel-filtrage-prospects.webp
+## augmenter-pro-funnel-filtrage-prospects.webp
 
 - **Type** : Infographie entonnoir (funnel de conversion)
 - **Dimensions** : Paysage / horizontal
@@ -67,7 +67,7 @@
 
 ---
 
-## hivy-processus-qualification-4-etapes.webp
+## augmenter-pro-processus-qualification-4-etapes.webp
 
 - **Type** : Schéma linéaire en 4 étapes (process flow)
 - **Dimensions** : Paysage / horizontal
@@ -84,7 +84,7 @@
 
 ---
 
-## hivy-tablette-criteres-prequalification.webp
+## augmenter-pro-tablette-criteres-prequalification.webp
 
 - **Type** : Photo mise en scène (tablette tenue dans un call center)
 - **Dimensions** : Paysage / horizontal

@@ -19,6 +19,27 @@ const testimonials = [
       "Une expérience incroyable ! Grâce à augmenter.pro, nos outils numériques sont désormais optimisés et performants.",
     stars: 5,
   },
+  {
+    name: "Marc L.",
+    role: "Responsable informatique, PME industrielle",
+    quote:
+      "L'audit 360° a révélé des failles de sécurité que nous ignorions. En 3 mois, notre infrastructure est passée de vulnérable à conforme RGPD, avec un budget IT réduit de 20 %.",
+    stars: 5,
+  },
+  {
+    name: "Nathalie R.",
+    role: "Gérante, entreprise BTP",
+    quote:
+      "Nos devis prenaient 2 heures, maintenant 15 minutes. L'automatisation mise en place par augmenter.pro a libéré mon équipe pour se concentrer sur les chantiers.",
+    stars: 5,
+  },
+  {
+    name: "Karim B.",
+    role: "Consultant indépendant",
+    quote:
+      "En tant qu'indépendant, je pensais que l'IA n'était pas pour moi. Pierre m'a montré comment gagner 8 heures par semaine avec des outils simples. Mon chiffre d'affaires a augmenté de 30 % en 6 mois.",
+    stars: 5,
+  },
 ];
 
 const reviewsJsonLd = {
@@ -62,7 +83,7 @@ export function Testimonials() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:mx-auto lg:max-w-4xl">
+        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}

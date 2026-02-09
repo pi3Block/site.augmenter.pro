@@ -1,0 +1,643 @@
+import type { Metadata } from "next";
+import { CTA } from "@/components/sections/cta";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Shield,
+  TrendingDown,
+  Clock,
+  CheckCircle2,
+  Network,
+  Cloud,
+  HardDrive,
+  FileCheck,
+  Receipt,
+  Phone,
+  Monitor,
+  AlertTriangle,
+  ShieldAlert,
+  Banknote,
+  Search,
+  FileText,
+  Settings,
+  Building2,
+  Briefcase,
+  ShoppingCart,
+  Heart,
+  ArrowRight,
+  MapPin,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+export const metadata: Metadata = {
+  title: "Audit Informatique Yvelines (78) : Diagnostic PME Gratuit",
+  description:
+    "Audit informatique pour PME en Yvelines (78). Diagnostic gratuit 60 min : réseau, sécurité, cloud, RGPD. Versailles, Saint-Germain, Rambouillet, Poissy.",
+};
+
+const stats = [
+  {
+    value: "72 %",
+    label: "des PME attaquées sans audit",
+    detail: "N'avaient pas réalisé d'audit récent (ANSSI)",
+    icon: Shield,
+  },
+  {
+    value: "−35 %",
+    label: "de coûts IT après audit",
+    detail: "Licences, maintenance, infra optimisées",
+    icon: TrendingDown,
+  },
+  {
+    value: "4h",
+    label: "de reprise après incident",
+    detail: "Temps moyen pour une PME non auditée",
+    icon: Clock,
+  },
+  {
+    value: "60 min",
+    label: "diagnostic initial gratuit",
+    detail: "Premier échange sans engagement",
+    icon: CheckCircle2,
+  },
+];
+
+const auditScope = [
+  {
+    icon: Network,
+    title: "Réseau & connectivité",
+    description:
+      "Performance réseau, Wi-Fi, câblage, débit internet et segmentation.",
+  },
+  {
+    icon: Shield,
+    title: "Sécurité informatique",
+    description:
+      "Pare-feu, antivirus, politique de mots de passe, gestion des accès.",
+  },
+  {
+    icon: Monitor,
+    title: "Postes de travail",
+    description:
+      "État du matériel, obsolescence, performances et durée de vie restante.",
+  },
+  {
+    icon: Cloud,
+    title: "Cloud & hébergement",
+    description:
+      "Serveurs, solutions cloud, Microsoft 365, Google Workspace, hébergement web.",
+  },
+  {
+    icon: HardDrive,
+    title: "Sauvegarde & PRA",
+    description:
+      "Politique de sauvegarde, plan de reprise d'activité, tests de restauration.",
+  },
+  {
+    icon: FileCheck,
+    title: "Conformité RGPD",
+    description:
+      "Données personnelles, registre de traitement, droit des personnes, DPO.",
+  },
+  {
+    icon: Receipt,
+    title: "Licences & coûts",
+    description:
+      "Audit des licences logicielles, abonnements inutilisés, optimisation budget.",
+  },
+  {
+    icon: Phone,
+    title: "Téléphonie & collaboration",
+    description:
+      "VoIP, Teams, visioconférence, outils collaboratifs et messagerie.",
+  },
+];
+
+const painPoints = [
+  {
+    icon: AlertTriangle,
+    title: "Pannes récurrentes et temps d'arrêt",
+    description:
+      "Votre équipe à Versailles perd des heures chaque semaine à cause de lenteurs réseau ou de pannes matérielles. Sans diagnostic, vous subissez au lieu d'anticiper.",
+  },
+  {
+    icon: ShieldAlert,
+    title: "Sécurité informatique insuffisante",
+    description:
+      "Les PME des Yvelines sont des cibles privilégiées : ransomware, phishing, vol de données. 60 % des PME attaquées déposent le bilan dans les 18 mois.",
+  },
+  {
+    icon: Banknote,
+    title: "Budget IT opaque et non maîtrisé",
+    description:
+      "Licences inutilisées, contrats de maintenance surdimensionnés, matériel vieillissant : votre SI coûte plus cher qu'il ne devrait.",
+  },
+  {
+    icon: HardDrive,
+    title: "Pas de plan de continuité d'activité",
+    description:
+      "En cas de sinistre — cyberattaque, panne serveur, incendie — combien de temps votre activité à Rambouillet ou Poissy serait-elle paralysée ?",
+  },
+];
+
+const methodology = [
+  {
+    step: "01",
+    icon: Phone,
+    title: "Prise de contact & cadrage",
+    description:
+      "Échange téléphonique ou en présentiel dans vos locaux en Yvelines. Nous comprenons votre activité, vos enjeux et vos contraintes.",
+    details: [
+      "Entretien dirigeant de 60 min (gratuit)",
+      "Identification des priorités",
+      "Périmètre de l'audit défini ensemble",
+      "Planification de l'intervention",
+    ],
+  },
+  {
+    step: "02",
+    icon: Search,
+    title: "Audit terrain sur site",
+    description:
+      "Notre consultant intervient dans vos locaux — Versailles, Saint-Germain-en-Laye, Mantes-la-Jolie ou ailleurs dans le 78 — pour un diagnostic complet.",
+    details: [
+      "Inventaire matériel et logiciel",
+      "Tests de performance réseau",
+      "Analyse des vulnérabilités",
+      "Évaluation des processus de sauvegarde",
+    ],
+  },
+  {
+    step: "03",
+    icon: FileText,
+    title: "Rapport & recommandations",
+    description:
+      "Un livrable clair et actionnable : rapport détaillé avec des recommandations priorisées par impact et budget.",
+    details: [
+      "Cartographie complète de votre SI",
+      "Analyse des risques hiérarchisée",
+      "Plan d'action chiffré et priorisé",
+      "Préconisations de prestataires locaux",
+    ],
+  },
+  {
+    step: "04",
+    icon: Settings,
+    title: "Suivi & accompagnement",
+    description:
+      "Nous ne vous laissons pas seul avec un rapport. Suivi de la mise en œuvre et support continu pour transformer les recommandations en résultats.",
+    details: [
+      "Pilotage de la mise en œuvre",
+      "Coordination avec vos prestataires",
+      "Point de suivi à 30 jours",
+      "Support email continu",
+    ],
+  },
+];
+
+const sectors = [
+  {
+    icon: Building2,
+    title: "BTP & Rénovation énergétique",
+    description:
+      "Les entreprises du BTP à Versailles et Mantes-la-Jolie ont besoin d'un SI fiable pour gérer les chantiers, la facturation et les appels d'offres.",
+    example:
+      "Entreprise BTP à Poissy (78) : temps de facturation divisé par 3 après audit",
+  },
+  {
+    icon: Briefcase,
+    title: "Services aux entreprises",
+    description:
+      "Cabinets de conseil, ESN et prestataires à Saint-Germain-en-Laye : votre informatique doit être aussi performante que vos prestations.",
+    example:
+      "Cabinet RH à Saint-Germain (78) : migration cloud réussie, 0 interruption",
+  },
+  {
+    icon: ShoppingCart,
+    title: "Commerce & Distribution",
+    description:
+      "Points de vente, e-commerce, logistique : un audit révèle les failles de votre caisse, de votre stock et de votre site web.",
+    example:
+      "Réseau de boutiques à Rambouillet (78) : sécurité POS renforcée",
+  },
+  {
+    icon: Heart,
+    title: "Santé & Professions libérales",
+    description:
+      "Médecins, avocats, architectes en Yvelines : vos données patients et clients exigent une conformité et une sécurité irréprochables.",
+    example:
+      "Cabinet médical à Versailles (78) : conformité RGPD et HDS validée",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Combien coûte un audit informatique en Yvelines ?",
+    answer:
+      "Le diagnostic initial de 60 min est gratuit et sans engagement. L'Audit 360° complet coûte 225 € et inclut 3h sur site, un rapport détaillé et un plan d'action chiffré avec des recommandations priorisées.",
+  },
+  {
+    question: "Combien de temps dure un audit informatique complet ?",
+    answer:
+      "Le diagnostic gratuit dure 60 min. L'audit complet nécessite environ 3h d'intervention sur site, plus le temps d'analyse et de rédaction du rapport, livré sous 5 jours ouvrés.",
+  },
+  {
+    question:
+      "Intervenez-vous à Versailles, Saint-Germain-en-Laye et Rambouillet ?",
+    answer:
+      "Oui, nous intervenons dans toutes les Yvelines : Versailles, Saint-Germain-en-Laye, Rambouillet, Mantes-la-Jolie, Poissy, Le Chesnay, Conflans-Sainte-Honorine, Sartrouville, et toutes les communes du 78.",
+  },
+  {
+    question:
+      "Mon entreprise a moins de 10 salariés, l'audit est-il adapté ?",
+    answer:
+      "Absolument. Nos audits sont calibrés pour les TPE et PME. Même avec 3 postes de travail, un audit permet d'identifier les risques critiques, d'optimiser vos coûts IT et de sécuriser vos données.",
+  },
+  {
+    question: "Que se passe-t-il après l'audit ?",
+    answer:
+      "Vous recevez un rapport avec des recommandations priorisées par impact et budget. Nous pouvons vous accompagner dans la mise en œuvre ou vous laisser choisir vos prestataires. Aucune obligation.",
+  },
+  {
+    question:
+      "Proposez-vous aussi un audit IA et transformation digitale ?",
+    answer:
+      "Oui, notre Audit 360° IA Stratégique couvre aussi la maturité numérique et les opportunités IA de votre entreprise. Découvrez notre page Stratégie IA PME pour en savoir plus.",
+  },
+];
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Audit informatique Yvelines",
+  description:
+    "Audit informatique complet pour PME en Yvelines (78) : diagnostic réseau, sécurité, cloud, RGPD. Intervention sur site à Versailles, Saint-Germain-en-Laye, Rambouillet.",
+  provider: {
+    "@type": "Organization",
+    "@id": "https://augmenter.pro/#organization",
+  },
+  areaServed: {
+    "@type": "AdministrativeArea",
+    name: "Yvelines",
+    sameAs: "https://fr.wikipedia.org/wiki/Yvelines",
+  },
+  audience: {
+    "@type": "BusinessAudience",
+    audienceType: "PME et TPE des Yvelines",
+  },
+  serviceType: "Audit informatique",
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Diagnostic informatique gratuit",
+      price: "0",
+      priceCurrency: "EUR",
+      description:
+        "Audit initial de 60 minutes pour identifier vos leviers d'optimisation IT",
+      url: "https://augmenter.pro/contact",
+    },
+    {
+      "@type": "Offer",
+      name: "Audit 360° Informatique",
+      price: "225",
+      priceCurrency: "EUR",
+      description:
+        "Diagnostic complet de 3h avec rapport détaillé et plan d'action chiffré",
+      url: "https://augmenter.pro/contact",
+    },
+  ],
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
+export default function AuditInformatiqueYvelinesPage() {
+  return (
+    <div className="pt-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
+      {/* Hero */}
+      <section className="py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <Badge variant="secondary" className="mb-4">
+              Audit Informatique 78
+            </Badge>
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+              Audit informatique pour PME en{" "}
+              <span className="gradient-text">Yvelines (78)</span>
+            </h1>
+            <p className="mt-6 text-lg text-muted-foreground">
+              Votre informatique ralentit votre activité au lieu de
+              l&apos;accélérer ? Notre audit révèle les failles, les
+              surcoûts et les risques de votre SI — avec un{" "}
+              <strong>plan d&apos;action concret</strong> pour y remédier.
+              Intervention sur site à{" "}
+              <strong>
+                Versailles, Saint-Germain-en-Laye, Rambouillet, Poissy
+              </strong>{" "}
+              et dans tout le 78.
+            </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button asChild size="lg" className="gap-2">
+                <Link href="/contact">
+                  Diagnostic gratuit — 60 min
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/prestations">Voir nos prestations</Link>
+              </Button>
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              <Clock className="mb-0.5 inline h-3.5 w-3.5" /> Réponse sous
+              24h — intervention sur site dans tout le 78
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="bg-muted/30 py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Pourquoi auditer votre informatique ?
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Un audit informatique n&apos;est pas un luxe — c&apos;est une
+              assurance. Les PME qui auditent régulièrement leur SI réduisent
+              leurs coûts, leurs risques et leurs temps d&apos;arrêt.
+            </p>
+          </div>
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((stat) => (
+              <Card key={stat.label} className="text-center">
+                <CardContent className="p-6">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                    <stat.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <p className="mt-4 text-3xl font-bold text-primary">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 text-sm font-medium">{stat.label}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    {stat.detail}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <p className="mt-8 text-center text-sm text-muted-foreground">
+            Sources : ANSSI, France Num 2025.{" "}
+            <Link
+              href="/blog/5-signes-moderniser-informatique-pme"
+              className="text-primary underline-offset-4 hover:underline"
+            >
+              Les 5 signes qu&apos;il est temps de moderniser
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+
+      {/* Audit Scope */}
+      <section className="py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Ce que couvre notre{" "}
+              <span className="gradient-text">audit informatique</span>
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Un diagnostic complet de votre système d&apos;information, de
+              l&apos;infrastructure réseau à la conformité RGPD.
+            </p>
+          </div>
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {auditScope.map((item) => (
+              <Card key={item.title} className="text-center border-border/50">
+                <CardContent className="p-6">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                    <item.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="mt-4 font-semibold">{item.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {item.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pain Points */}
+      <section className="bg-muted/30 py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Les problèmes que nos clients en{" "}
+              <span className="gradient-text">Yvelines</span> rencontrent
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Ces situations vous parlent ? Un audit informatique permet de
+              passer de la réaction à l&apos;anticipation.
+            </p>
+          </div>
+          <div className="mt-16 grid gap-8 md:grid-cols-2">
+            {painPoints.map((point) => (
+              <Card key={point.title} className="border-border/50">
+                <CardContent className="flex gap-4 p-6">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-destructive/10">
+                    <point.icon className="h-5 w-5 text-destructive" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">{point.title}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {point.description}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <p className="mt-8 text-center text-sm text-muted-foreground">
+            Notre{" "}
+            <Link
+              href="/approche"
+              className="text-primary underline-offset-4 hover:underline"
+            >
+              approche 360°
+            </Link>{" "}
+            adresse ces problèmes à la racine : technique, processus et humain.
+          </p>
+        </div>
+      </section>
+
+      {/* Methodology */}
+      <section className="py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Notre méthode d&apos;audit en 4 étapes
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              De la prise de contact au suivi post-audit — une démarche
+              structurée pour sécuriser et optimiser votre informatique.
+            </p>
+          </div>
+          <div className="mt-16 grid gap-8 lg:grid-cols-2">
+            {methodology.map((step) => (
+              <Card key={step.step} className="border-border/50">
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                      <step.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-primary">
+                          ÉTAPE {step.step}
+                        </span>
+                      </div>
+                      <h3 className="mt-1 text-lg font-semibold">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        {step.description}
+                      </p>
+                      <ul className="mt-3 space-y-1.5">
+                        {step.details.map((detail) => (
+                          <li
+                            key={detail}
+                            className="flex items-center gap-2 text-sm"
+                          >
+                            <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-primary" />
+                            {detail}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Button asChild size="lg" className="gap-2">
+              <Link href="/contact">
+                Demander un diagnostic gratuit
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Sectors */}
+      <section className="bg-muted/30 py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Un audit adapté à{" "}
+              <span className="gradient-text">votre secteur</span> dans le 78
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Chaque métier a ses propres enjeux informatiques. Nous adaptons
+              notre audit au contexte de votre activité en Yvelines.
+            </p>
+          </div>
+          <div className="mt-16 grid gap-8 md:grid-cols-2">
+            {sectors.map((sector) => (
+              <Card key={sector.title} className="border-border/50">
+                <CardContent className="p-6">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                    <sector.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold">
+                    {sector.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {sector.description}
+                  </p>
+                  <p className="mt-3 rounded-lg bg-muted/50 px-3 py-2 text-xs font-medium text-primary">
+                    <MapPin className="mb-0.5 mr-1 inline h-3 w-3" />
+                    {sector.example}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Questions fréquentes sur l&apos;audit informatique en Yvelines
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Tout ce que les dirigeants de PME du 78 nous demandent avant de
+              lancer un audit.
+            </p>
+          </div>
+          <div className="mx-auto mt-12 max-w-3xl">
+            <Accordion type="single" collapsible className="w-full">
+              {faqItems.map((item, i) => (
+                <AccordionItem key={i} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left text-base">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+          <div className="mt-8 text-center">
+            <p className="text-sm text-muted-foreground">
+              Vous cherchez aussi à intégrer l&apos;IA dans votre PME ?{" "}
+              <Link
+                href="/strategie-ia-pme"
+                className="text-primary underline-offset-4 hover:underline"
+              >
+                Découvrez notre accompagnement stratégie IA
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <CTA />
+    </div>
+  );
+}

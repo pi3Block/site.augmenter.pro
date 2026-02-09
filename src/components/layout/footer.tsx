@@ -6,6 +6,8 @@ const footerLinks = {
   services: [
     { href: "/prestations", label: "Audit IA 360°" },
     { href: "/prestations", label: "Audit Informatique 180°" },
+    { href: "/audit-informatique-yvelines", label: "Audit Informatique 78" },
+    { href: "/audit-informatique-val-doise", label: "Audit Informatique 95" },
     { href: "/prestations", label: "Développement sur mesure" },
     { href: "/prestations", label: "Formation équipes" },
   ],
