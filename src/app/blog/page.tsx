@@ -3,9 +3,9 @@ import { BlogPreview } from "@/components/sections/blog-preview";
 import { CTA } from "@/components/sections/cta";
 
 export const metadata: Metadata = {
-  title: "Blog — Articles & Tutos",
+  title: "Blog IA & Digital — Guides Pratiques pour PME (2026)",
   description:
-    "Conseils pratiques sur l'IA, la digitalisation et la vente commerciale pour les PME et indépendants.",
+    "Articles, tutos et guides pratiques sur l'IA, la vente commerciale et la digitalisation. Conseils concrets pour PME et indépendants, sans jargon.",
 };
 
 export default function BlogPage() {

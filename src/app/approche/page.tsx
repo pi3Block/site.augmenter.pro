@@ -20,9 +20,9 @@ import {
 } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
-  title: "Notre Approche 360°",
+  title: "Approche 360° — Technique, Process & Humain | PME 78/95",
   description:
-    "Découvrez notre approche 360° alliant expertise technique, processus et humain pour optimiser les PME du BTP, immobilier et industrie dans les Yvelines et Val d'Oise.",
+    "Notre méthode unique en 4 piliers : expertise technique, optimisation process, formation humaine et vision stratégique. Pour PME du BTP, immobilier et industrie en Yvelines et Val d'Oise.",
 };
 
 const pillars = [

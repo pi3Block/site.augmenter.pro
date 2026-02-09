@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Prestations & Tarifs",
+  title: "Prestations & Tarifs — Audit IA 360° dès 0 € | PME",
   description:
-    "Audit IA 360°, audit informatique, développement sur mesure et formation. Découvrez nos offres pour PME et indépendants.",
+    "Audit IA gratuit (60 min) + Audit 360° complet. Développement sur mesure, formation IA et conseil stratégique pour PME. Tarifs transparents.",
 };
 
 const additionalServices = [

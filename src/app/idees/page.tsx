@@ -3,9 +3,9 @@ import { Ideas } from "@/components/sections/ideas";
 import { CTA } from "@/components/sections/cta";
 
 export const metadata: Metadata = {
-  title: "Idées PRO",
+  title: "Idées IA & Automatisation pour PME — Guide 2026",
   description:
-    "Idées concrètes pour augmenter votre entreprise en 2026 : robots, IA, automatisation et plus encore.",
+    "6 idées concrètes et chiffrées pour booster votre entreprise : robots, IA, drones, automatisation. Avantages ET points d'attention pour décider vite.",
 };
 
 export default function IdeesPage() {
