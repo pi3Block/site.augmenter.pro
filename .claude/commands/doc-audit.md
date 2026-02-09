@@ -2,85 +2,162 @@
 
 Tu es un expert en documentation technique. Tu vas auditer et améliorer la documentation du projet **augmenter.pro** pour garantir la maintenabilité et l'onboarding facile.
 
+## Contexte projet
+
+- **Site vitrine** Next.js 16, `output: "standalone"`, Node.js sur Hostinger
+- **Données inline** — pas de CMS, pas de base de données
+- **SEO/LLM stack** : JSON-LD structuré, `llms.txt`, `sitemap.xml`, `robots.txt`
+- **Commandes Claude** : 5 commandes dans `.claude/commands/`
+- **Blog** : articles statiques dans `src/app/blog/<slug>/page.tsx`
+- **Contact** : pattern server/client split (page.tsx metadata + contact-form.tsx client)
+
 ## Phase 1 — Inventaire de la documentation existante
 
-Lis et analyse tous les fichiers de documentation :
+Lis et analyse chaque fichier de documentation :
 
-1. **CLAUDE.md** — Instructions pour Claude Code
-2. **README.md** (s'il existe)
-3. **package.json** — Scripts, description, metadata
-4. **next.config.ts** — Commentaires et configuration documentée
-5. **components.json** — Configuration shadcn/ui
-6. **tsconfig.json** — Configuration TypeScript
-7. `.claude/` — Commandes et configuration
+### 1.1 Documentation racine
 
-## Phase 2 — Audit du code source
+1. **`CLAUDE.md`** — Instructions pour Claude Code (fichier critique)
+   - Sections attendues : Project Overview, Commands, Tech Stack, Architecture, SEO & LLM Optimization, Key Constraints
+   - Doit refléter exactement l'état actuel du projet
+2. **`README.md`** (s'il existe) — Documentation développeur standard
+3. **`package.json`** — Scripts (dev, build, start, lint), description, metadata
 
-### 2.1 Composants
+### 1.2 Configuration documentée
+
+4. **`next.config.ts`** — `output: "standalone"`, headers de sécurité (si ajoutés)
+5. **`components.json`** — Configuration shadcn/ui (style: new-york, tsx, aliases)
+6. **`tsconfig.json`** — Path alias `@/*` → `src/*`, strict mode
+
+### 1.3 Commandes Claude
+
+7. **`.claude/commands/create-article.md`** — Workflow création article SEO
+8. **`.claude/commands/seo-audit.md`** — Audit SEO complet
+9. **`.claude/commands/security-audit.md`** — Audit sécurité
+10. **`.claude/commands/doc-audit.md`** — Cet audit documentation
+11. **`.claude/commands/debt-report.md`** — Rapport dette technique
+
+### 1.4 Fichiers SEO/LLM
+
+12. **`public/llms.txt`** — Description du site pour les crawlers IA
+13. **`public/sitemap.xml`** — Plan du site pour les moteurs de recherche
+14. **`public/robots.txt`** — Directives pour les crawlers
+
+## Phase 2 — Vérification de la cohérence
+
+### 2.1 CLAUDE.md vs réalité du projet
+
+Compare chaque section du `CLAUDE.md` avec l'état réel :
+
+| Section CLAUDE.md | Vérification |
+|-------------------|-------------|
+| Commands (dev, build, start, lint) | Lance chaque commande et vérifie qu'elle fonctionne |
+| Tech Stack | Vérifie les versions dans package.json |
+| Architecture — Routing | Compare avec les dossiers réels dans `src/app/` |
+| Architecture — API Routes | Vérifie `src/app/api/` — routes actives ou dossier vide ? |
+| Architecture — Component Organization | Compare avec `src/components/` réel |
+| SEO & LLM — JSON-LD | Vérifie la table des schemas vs les fichiers source |
+| SEO & LLM — Files | Vérifie que llms.txt, sitemap.xml, robots.txt existent |
+| Key Constraints | Vérifie chaque contrainte listée |
+
+### 2.2 llms.txt vs contenu réel
+
+Vérifie que `public/llms.txt` est synchronisé :
+- [ ] Section "Services" — correspond aux offres dans `pricing.tsx` et `prestations/page.tsx`
+- [ ] Section "Articles de blog" — liste tous les articles existants dans `src/app/blog/*/page.tsx`
+- [ ] Section "Idées d'innovation" — correspond à `idees/page.tsx`
+- [ ] Section "FAQ" — correspond aux FAQ dans `approche/page.tsx`
+- [ ] Section "Pages" — liste toutes les routes existantes
+- [ ] Section "Contact" — email, téléphone, réseaux à jour
+- [ ] Pas d'articles ou pages listés qui n'existent plus
+
+### 2.3 sitemap.xml vs routes réelles
+
+Vérifie que `public/sitemap.xml` est synchronisé :
+- [ ] Toutes les pages de `src/app/*/page.tsx` ont une entrée `<url>`
+- [ ] Tous les articles de blog `src/app/blog/*/page.tsx` sont listés
+- [ ] Pas d'URLs orphelines (présentes dans le sitemap mais page supprimée)
+- [ ] Priorités cohérentes (accueil 1.0, pages principales 0.8-0.9, articles 0.7, légales 0.3)
+- [ ] `<lastmod>` renseigné si possible
+
+### 2.4 blog-preview.tsx vs articles réels
+
+Vérifie que `src/components/sections/blog-preview.tsx` est synchronisé :
+- [ ] Chaque article dans le tableau `articles` correspond à un dossier `src/app/blog/<slug>/`
+- [ ] Les slugs, titres, excerpts et tags correspondent entre la preview et la page article
+- [ ] Pas d'articles existants manquants dans la preview
+- [ ] L'article le plus récent est en première position
+
+### 2.5 JSON-LD schemas vs composants
+
+Vérifie la cohérence des données structurées :
+
+| Schema | Fichier source | Vérification |
+|--------|---------------|--------------|
+| Organization | `layout.tsx` | name, url, founder, contactPoint, sameAs |
+| LocalBusiness | `layout.tsx` | areaServed (78, 95, IDF), priceRange, knowsAbout |
+| WebSite | `layout.tsx` | publisher ref vers Organization |
+| Article | `article-layout.tsx` | Chaque article passe bien le prop `slug` |
+| FAQPage | `approche/page.tsx` | Questions/réponses synchronisées avec le contenu visible |
+| Service/OfferCatalog | `prestations/page.tsx` | Prix et descriptions synchronisés avec `pricing.tsx` |
+| AggregateRating/Review | `testimonials.tsx` | ratingValue et reviewCount à jour |
+
+## Phase 3 — Audit du code source
+
+### 3.1 Composants — documentation inline
 
 Pour chaque composant dans `src/components/`, vérifie :
-- [ ] Props documentées (interface TypeScript avec descriptions si complexe)
+- [ ] Interface TypeScript avec props typées (si le composant accepte des props)
 - [ ] Commentaires sur la logique métier non évidente
 - [ ] Nommage clair et auto-documenté des variables/fonctions
 
-**Fichiers à analyser :**
-- `src/components/sections/*.tsx` (9 sections)
-- `src/components/layout/*.tsx` (header, footer, article-layout)
-- `src/components/ui/*.tsx` (composants shadcn)
+**Fichiers clés à analyser :**
+- `src/components/layout/article-layout.tsx` — Props : title, excerpt, tags, readTime, date, slug (optionnel pour JSON-LD canonical)
+- `src/components/layout/header.tsx` — Navigation avec liens + CTA "Audit gratuit"
+- `src/components/layout/footer.tsx` — Liens footer
+- `src/components/sections/*.tsx` — 9 sections de la homepage
 
-### 2.2 Pages & routes
+### 3.2 Pages — metadata
 
 Pour chaque route dans `src/app/`, vérifie :
-- [ ] Metadata exportée et complète
-- [ ] Structure claire du composant page
-- [ ] Données inline bien organisées (tableaux, objets)
+- [ ] `export const metadata: Metadata` présent et complet (title < 60 chars, description < 155 chars)
+- [ ] Page qui est server component (pas de `"use client"`) pour permettre l'export metadata
+- [ ] Si la page a besoin d'interactivité, le pattern server/client split est respecté (cf. `/contact`)
 
-### 2.3 API Routes
+**Pages à vérifier :**
+- `src/app/layout.tsx` — metadata globale + JSON-LD
+- `src/app/page.tsx` — page accueil (hérite du layout, peut avoir sa propre metadata)
+- `src/app/prestations/page.tsx`
+- `src/app/approche/page.tsx`
+- `src/app/idees/page.tsx`
+- `src/app/blog/page.tsx`
+- `src/app/contact/page.tsx` — server wrapper avec metadata
+- `src/app/mentions-legales/page.tsx`
+- `src/app/blog/*/page.tsx` — tous les articles
 
-Pour chaque route dans `src/app/api/`, vérifie :
-- [ ] Méthodes HTTP documentées
-- [ ] Format de requête/réponse documenté
-- [ ] Codes d'erreur et cas limites documentés
+### 3.3 Utilitaires
 
-### 2.4 Utilitaires
-
-- `src/lib/utils.ts` — Fonctions utilitaires documentées
-
-## Phase 3 — Évaluation CLAUDE.md
-
-Le fichier `CLAUDE.md` est critique pour ce projet (il guide Claude Code). Vérifie :
-
-- [ ] Commandes de build/dev/lint à jour et correctes
-- [ ] Stack technique exacte et versions correctes
-- [ ] Architecture des dossiers complète et à jour
-- [ ] Contraintes de développement claires
-- [ ] Patterns de code documentés (composants client vs server, imports, etc.)
-- [ ] Liste des routes à jour
-- [ ] Convention de nommage documentée
-
-Compare le CLAUDE.md avec l'état réel du projet et identifie les écarts.
+- `src/lib/utils.ts` — fonction `cn()` (clsx + tailwind-merge)
 
 ## Phase 4 — Documentation manquante
 
 Identifie ce qui devrait être documenté mais ne l'est pas :
 
-### Documentation projet
-- [ ] Guide de contribution / workflow de développement
-- [ ] Procédure de déploiement (Hostinger via GitHub)
-- [ ] Variables d'environnement requises
-- [ ] Guide d'ajout d'un article de blog
-- [ ] Guide d'ajout d'un nouveau service/prestation
+### Documentation projet (priorité haute)
+- [ ] Guide d'ajout d'un article de blog (dans CLAUDE.md — section "Adding a New Blog Article")
+- [ ] Procédure de déploiement (GitHub → Hostinger, build standalone)
+- [ ] Variables d'environnement requises (liste avec descriptions)
 
-### Documentation technique
-- [ ] Architecture des composants (graphe de dépendances)
-- [ ] Flux de données (comment les données circulent dans l'app)
-- [ ] Conventions CSS/Tailwind (palette, classes custom, breakpoints)
-- [ ] Intégrations externes (email, analytics, etc.)
+### Documentation technique (priorité moyenne)
+- [ ] Architecture des composants (quels composants sont client vs server, et pourquoi)
+- [ ] Pattern server/client split (documenté ? cf. `/contact`)
+- [ ] Conventions CSS/Tailwind (palette OKLCH, classes custom `.gradient-text`, `.hero-gradient`)
+- [ ] Convention des commandes Claude (format, objectif, quand les utiliser)
 
-### Documentation métier
-- [ ] Personas cibles et leur parcours sur le site
+### Documentation métier (priorité basse)
+- [ ] Personas cibles et parcours utilisateur
 - [ ] Objectifs de conversion par page
-- [ ] Processus éditorial pour le blog
+- [ ] Processus éditorial pour le blog (recherche → brief → rédaction → intégration)
 
 ## Phase 5 — Rapport
 
@@ -91,14 +168,26 @@ Génère un rapport structuré :
 
 ## Résumé
 - Fichiers documentés : X/Y
-- Composants avec props typées : X/Y
 - Pages avec metadata complète : X/Y
 - CLAUDE.md : X écarts identifiés
+- llms.txt : X désynchronisations
+- sitemap.xml : X pages manquantes/orphelines
+- blog-preview.tsx : X articles désynchronisés
+- JSON-LD schemas : X incohérences
 
 ## CLAUDE.md — Écarts détectés
-| Section | État actuel | État réel | Action |
-|---------|-------------|-----------|--------|
-| ...     | ...         | ...       | ...    |
+| Section | État CLAUDE.md | État réel | Action |
+|---------|----------------|-----------|--------|
+| ...     | ...            | ...       | ...    |
+
+## Synchronisation SEO/LLM
+| Fichier | Statut | Problèmes |
+|---------|--------|-----------|
+| llms.txt | ✅/⚠️ | ... |
+| sitemap.xml | ✅/⚠️ | ... |
+| robots.txt | ✅/⚠️ | ... |
+| blog-preview.tsx | ✅/⚠️ | ... |
+| JSON-LD schemas | ✅/⚠️ | ... |
 
 ## Documentation manquante (par priorité)
 | Priorité | Document | Impact | Effort |
@@ -113,15 +202,17 @@ Génère un rapport structuré :
 | ...     | ...      | ...        |
 
 ## Plan d'action
-1. [IMMÉDIAT] Corriger CLAUDE.md...
-2. [COURT TERME] ...
-3. [MOYEN TERME] ...
+1. [IMMÉDIAT] Corriger les désynchronisations llms.txt/sitemap...
+2. [COURT TERME] Mettre à jour CLAUDE.md...
+3. [MOYEN TERME] Ajouter documentation manquante...
 ```
 
 ### Corrections automatiques
 
 Si l'utilisateur le demande, implémente directement :
-- Mise à jour du CLAUDE.md avec les écarts corrigés
+- Mise à jour du `CLAUDE.md` avec les écarts corrigés
+- Synchronisation de `llms.txt` avec le contenu réel du site
+- Synchronisation de `sitemap.xml` avec les routes réelles
+- Synchronisation de `blog-preview.tsx` avec les articles existants
 - Ajout des metadata manquantes sur les pages
-- Ajout des types/interfaces manquants sur les composants
-- Mise à jour des commandes .claude si nécessaire
+- Mise à jour des commandes `.claude/` si nécessaire
