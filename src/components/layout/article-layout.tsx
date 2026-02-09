@@ -10,6 +10,7 @@ interface ArticleLayoutProps {
   tags: string[];
   readTime: string;
   date: string;
+  slug?: string;
   children: React.ReactNode;
 }
 
@@ -19,10 +20,41 @@ export function ArticleLayout({
   tags,
   readTime,
   date,
+  slug,
   children,
 }: ArticleLayoutProps) {
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description: excerpt,
+    author: {
+      "@type": "Person",
+      name: "Pierre Legrand",
+      url: "https://pierrelegrand.fr",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "augmenter.PRO",
+      url: "https://augmenter.pro",
+    },
+    datePublished: date,
+    keywords: tags.join(", "),
+    inLanguage: "fr-FR",
+    ...(slug && { url: `https://augmenter.pro/blog/${slug}` }),
+    isPartOf: {
+      "@type": "WebSite",
+      name: "augmenter.PRO",
+      url: "https://augmenter.pro",
+    },
+  };
+
   return (
     <div className="pt-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <article className="py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <Button asChild variant="ghost" size="sm" className="mb-8 gap-2">

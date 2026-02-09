@@ -15,6 +15,7 @@ export default function Article() {
       tags={["Claude Code"]}
       readTime="2 min"
       date="2026"
+      slug="claude-code-prompt-architecture"
     >
       <h2>Vous êtes mon architecte logiciel principal et ingénieur full-stack</h2>
       <p>

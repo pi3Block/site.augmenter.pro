@@ -44,6 +44,7 @@ export default function Article() {
       tags={["Audit 360°", "PME"]}
       readTime="3 min"
       date="2026"
+      slug="5-signes-moderniser-informatique-pme"
     >
       <h2>Pourquoi moderniser votre informatique maintenant ?</h2>
       <p>

@@ -1,0 +1,76 @@
+# augmenter.PRO
+
+> Consultant IA et transformation digitale pour PME en Yvelines (78) et Val d'Oise (95), France.
+
+## À propos
+
+augmenter.PRO est un cabinet de conseil fondé par Pierre Legrand, spécialisé dans l'accompagnement des PME, ETI et indépendants vers la transformation numérique. Notre approche unique en 4 piliers (technique, processus, humain, stratégie) garantit un équilibre entre performance et bien-être des équipes.
+
+Secteurs : BTP, immobilier, industrie, artisanat.
+Zone : Yvelines (78), Val d'Oise (95), Île-de-France.
+
+## Services
+
+- **Audit 180° (Gratuit)** : Échange de 60 min pour identifier vos besoins en IA et digitalisation. Sans engagement.
+- **Audit 360° IA Booster (225 €)** : Diagnostic complet de 3h couvrant infrastructure, workflows et équipes. Livrable : plan d'action chiffré et priorisé.
+- **Développement sur mesure** : Applications web/mobile, chatbots IA, automatisation de workflows, intégrations CRM.
+- **Formation & Accompagnement** : Ateliers IA pour dirigeants, formation outils collaboratifs, conduite du changement.
+- **Conseil Stratégique** : Benchmark concurrentiel, choix technologiques, roadmap transformation digitale.
+
+## Approche
+
+4 piliers :
+1. Expertise Technique (Software & Hardware) — Diagnostic infrastructure, optimisation logiciels
+2. Expertise Process (Vente & Opérations) — Cartographie et automatisation des workflows
+3. Expertise Humaine (Formation & Accompagnement) — Formation personnalisée, conduite du changement
+4. Vision Globale et Stratégique — Plan chiffré, stratégie alignée sur les objectifs business
+
+## Articles de blog
+
+- [Rénovation Énergétique : Arrêtez d'acheter des leads](https://augmenter.pro/blog/machine-de-guerre-commerciale) — Comment internaliser l'acquisition client en rénovation énergétique avec l'IA et le SEO.
+- [IA & Vente Commerciale : De la Prospection au Closing](https://augmenter.pro/blog/ia-redefinit-vente-commerciale) — Comment l'IA transforme chaque étape du cycle de vente.
+- [Claude Code : Le prompt indispensable](https://augmenter.pro/blog/claude-code-prompt-architecture) — Bonnes pratiques pour utiliser Claude Code efficacement avec des fichiers .md.
+- [Comparatif LLM pour la Vente](https://augmenter.pro/blog/comparatif-llm-vente-commerciale) — Forces, faiblesses et conformité RGPD de chaque LLM pour les équipes commerciales.
+- [5 signes de moderniser l'informatique de votre PME](https://augmenter.pro/blog/5-signes-moderniser-informatique-pme) — Lenteurs, pannes, coûts cachés : les signaux d'alerte pour les PME du BTP et de l'industrie.
+
+## Idées d'innovation
+
+6 idées concrètes et chiffrées pour PME :
+1. Robot nettoyeur autonome pour entrepôts
+2. Secrétaire IA pour prise de rendez-vous
+3. Drone de livraison dernier kilomètre
+4. Optimisation d'itinéraires par IA
+5. Gestion automatisée des retours e-commerce
+6. Casiers intelligents connectés
+
+## FAQ
+
+Q: Qu'est-ce que l'expertise technique ?
+R: Nous analysons votre infrastructure pour garantir une performance optimale de vos systèmes matériels et logiciels à des coûts raisonnables.
+
+Q: Comment optimisez-vous les processus ?
+R: Nous améliorons vos flux de travail pour réduire les tâches répétitives et augmenter l'efficacité opérationnelle de votre entreprise.
+
+Q: Quelle est l'approche humaine ?
+R: Nous formons et accompagnons vos équipes pour qu'elles adoptent les nouveaux outils tout en se sentant valorisées et soutenues dans leur travail.
+
+Q: Quels sont vos domaines d'expertise ?
+R: Technique (software & hardware), processus (vente & opérations), formation humaine et vision stratégique globale.
+
+## Contact
+
+- Email : vite@augmenter.pro
+- WhatsApp : +33 6 79 11 97 74
+- LinkedIn : https://www.linkedin.com/in/legrand-pierre/
+- X/Twitter : https://x.com/Pi3r2Dev
+- Site : https://augmenter.pro
+
+## Pages
+
+- https://augmenter.pro — Accueil
+- https://augmenter.pro/prestations — Prestations & Tarifs
+- https://augmenter.pro/approche — Notre Approche 360°
+- https://augmenter.pro/idees — Idées IA & Automatisation
+- https://augmenter.pro/blog — Blog Articles & Tutos
+- https://augmenter.pro/contact — Contact & Audit Gratuit
+- https://augmenter.pro/mentions-legales — Mentions Légales

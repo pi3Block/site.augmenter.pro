@@ -15,6 +15,7 @@ export default function Article() {
       tags={["Intelligence Artificielle", "Commercial"]}
       readTime="3 min"
       date="28 janvier 2026"
+      slug="machine-de-guerre-commerciale"
     >
       <p>
         Si vous dirigez une entreprise de rénovation énergétique (PAC, Solaire,
