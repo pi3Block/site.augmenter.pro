@@ -1,5 +1,6 @@
 "use client";
 
+import { sendGTMEvent } from "@next/third-parties/google";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Clock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -49,6 +50,13 @@ export function ContactForm() {
     const body = encodeURIComponent(
       `Bonjour,\n\nNom : ${name}\nEmail : ${email}${company ? `\nEntreprise : ${company}` : ""}\n\n${message}`
     );
+
+    // Événement GTM : soumission du formulaire contact (pour conversions, GA4, etc.)
+    sendGTMEvent({
+      event: "contact_form_submit",
+      form_name: "contact",
+      form_destination: "mailto",
+    });
 
     window.location.href = `mailto:vite@augmenter.pro?subject=${subject}&body=${body}`;
   }

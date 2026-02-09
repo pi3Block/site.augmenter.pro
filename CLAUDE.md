@@ -110,12 +110,27 @@ The site uses Schema.org structured data for SEO and LLM discoverability:
 - `public/robots.txt` — Crawler directives + sitemap reference
 - `public/sitemap.xml` — All 12 URLs with priorities and change frequencies
 
-### Google Tag Manager (GTM)
+### Google Tag Manager (GTM) — GA4 et événements
 
-- Intégration via `@next/third-parties/google` dans `src/app/layout.tsx`.
-- **Variable d'environnement** : `NEXT_PUBLIC_GTM_ID` (ex. `GTM-XXXXXXX`). Si non définie, GTM n'est pas chargé (pratique en dev local).
-- Pour envoyer des événements depuis un composant client : `import { sendGTMEvent } from "@next/third-parties/google"` puis `sendGTMEvent({ event: "nom", ... })`.
+- Intégration via `@next/third-parties/google` dans `src/app/layout.tsx`. **GA4 est déployé via GTM** (pas de balise GA directe dans le code).
+- **Variable** : `NEXT_PUBLIC_GTM_ID` (ex. `GTM-XXXXXXX`). Si non définie, GTM n'est pas chargé (pratique en dev local).
+- **Événements** : depuis un composant client, `import { sendGTMEvent } from "@next/third-parties/google"` puis `sendGTMEvent({ event: "nom", ... })`. Les événements sont reçus par GTM puis renvoyés vers GA4 si tu configures les balises/triggers (voir guide ci-dessous).
 - Vérifier l'installation avec l’extension [Tag Assistant](https://tagassistant.google.com/) (Chrome).
+
+#### Déployer GA4 via GTM (mesure du comportement)
+
+1. **GTM** → **Balises** → **Nouvelle** → **Configuration Google Analytics : GA4**.
+2. **ID de mesure** : ton ID GA4 (format `G-XXXXXXXXXX`, trouvable dans GA4 → Admin → Flux de données → Web).
+3. **Déclenchement** : **Toutes les pages** (pour les pages vues).
+4. Nommer la balise (ex. `GA4 - Configuration`) → **Enregistrer**.
+
+#### Configurer les événements dans GA4 (via GTM)
+
+- Le site envoie déjà l’événement `contact_form_submit` au dataLayer (formulaire contact). Pour qu’il remonte dans GA4 :
+  1. **GTM** → **Déclencheurs** → **Nouveau** → **Événement personnalisé** → Nom de l’événement : `contact_form_submit` → Enregistrer.
+  2. **GTM** → **Balises** → **Nouvelle** → **Google Analytics : GA4 – Événement** → Sélectionner la même **Configuration GA4** que ci-dessus → Nom de l’événement : `contact_form_submit` (ou `generate_lead`) → Déclenchement : le déclencheur créé à l’étape 1 → Enregistrer.
+- Pour d’autres événements (ex. clic « Devis », téléchargement guide) : ajouter `sendGTMEvent({ event: "nom_event", ... })` dans le code au bon endroit, puis créer dans GTM un déclencheur « Événement personnalisé » sur ce nom et une balise GA4 Événement associée.
+- Dans **GA4** → **Rapports** → **Engagement** → **Événements**, tu verras tes événements (et tu pourras marquer `contact_form_submit` ou `generate_lead` comme **conversion** dans Admin → Événements → bascule « Marquer comme conversion »).
 
 ### SEO Conventions
 

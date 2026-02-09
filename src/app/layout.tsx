@@ -5,7 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
-/** ID du conteneur Google Tag Manager (ex. GTM-XXXXXXX). Défini via NEXT_PUBLIC_GTM_ID. */
+/** ID du conteneur Google Tag Manager (ex. GTM-XXXXXXX). GA4 et événements se configurent dans GTM. */
 const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
 const inter = Inter({
