@@ -79,7 +79,7 @@ const servicesJsonLd = {
       },
       {
         "@type": "Offer",
-        name: "Audit 360° IA Booster",
+        name: "Audit 360° IA Stratégique",
         description:
           "Diagnostic complet de 3h couvrant infrastructure, workflows et équipes. Livrable : plan d'action chiffré et priorisé.",
         price: "225",

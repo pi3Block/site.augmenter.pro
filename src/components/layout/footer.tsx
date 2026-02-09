@@ -10,6 +10,7 @@ const footerLinks = {
     { href: "/prestations", label: "Formation équipes" },
   ],
   ressources: [
+    { href: "/strategie-ia-pme", label: "Stratégie IA PME" },
     { href: "/plateforme", label: "Plateforme IA" },
     { href: "/blog", label: "Articles & Tutos" },
     { href: "/idees", label: "Idées PRO" },

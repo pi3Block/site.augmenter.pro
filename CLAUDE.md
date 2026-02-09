@@ -89,6 +89,7 @@ public/images/
 - **Alt text** : toujours renseigner un `alt` descriptif en français (SEO + accessibilité)
 - **Priorité** : ajouter `priority` uniquement sur les images above-the-fold (hero, LCP)
 - **Blog** : nommer l'image du même slug que l'article — ex. article `audit-seo-gratuit` → `blog/audit-seo-gratuit.webp`
+- **INDEX.md** : chaque sous-dossier d'images doit contenir un fichier `INDEX.md` décrivant textuellement chaque image (type, description visuelle, contexte éditorial, usage suggéré, alt text suggéré). Ce fichier sert de référence pour les LLM et pour maintenir la cohérence des alt texts.
 
 ## SEO & LLM Optimization
 

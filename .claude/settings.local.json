@@ -128,7 +128,9 @@
       "Bash(npx shadcn@latest init:*)",
       "Bash(gh repo create:*)",
       "WebFetch(domain:www.hostinger.com)",
-      "WebFetch(domain:hostwizly.com)"
+      "WebFetch(domain:hostwizly.com)",
+      "Bash(where:*)",
+      "Bash(npx sharp-cli:*)"
     ]
   },
   "mcpServers": {

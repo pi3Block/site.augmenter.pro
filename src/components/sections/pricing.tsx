@@ -25,7 +25,7 @@ const plans = [
     href: "/contact",
   },
   {
-    name: "Audit 360° IA Booster",
+    name: "Audit 360° IA Stratégique",
     description: "De la stratégie à l'action : votre feuille de route IA personnalisée.",
     price: "225 €",
     duration: "~3h + livrable",

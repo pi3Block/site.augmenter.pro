@@ -12,7 +12,7 @@ Zone : Yvelines (78), Val d'Oise (95), Île-de-France.
 ## Services
 
 - **Audit 180° (Gratuit)** : Échange de 60 min pour identifier vos besoins en IA et digitalisation. Sans engagement.
-- **Audit 360° IA Booster (225 €)** : Diagnostic complet de 3h couvrant infrastructure, workflows et équipes. Livrable : plan d'action chiffré et priorisé.
+- **Audit 360° IA Stratégique (225 €)** : Diagnostic complet de 3h couvrant infrastructure, workflows et équipes. Livrable : plan d'action chiffré et priorisé.
 - **Développement sur mesure** : Applications web/mobile, chatbots IA, automatisation de workflows, intégrations CRM.
 - **Formation & Accompagnement** : Ateliers IA pour dirigeants, formation outils collaboratifs, conduite du changement.
 - **Conseil Stratégique** : Benchmark concurrentiel, choix technologiques, roadmap transformation digitale.
@@ -79,9 +79,14 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 - X/Twitter : https://x.com/Pi3r2Dev
 - Site : https://augmenter.pro
 
+## Stratégie IA pour PME
+
+- [Stratégie IA pour PME : Diagnostic & Accompagnement](https://augmenter.pro/strategie-ia-pme) — Landing page complète sur notre accompagnement stratégique IA pour PME. Diagnostic gratuit, méthodologie en 4 étapes, cas d'usage par secteur (BTP, immobilier, industrie, services), financement Osez l'IA Bpifrance, FAQ.
+
 ## Pages
 
 - https://augmenter.pro — Accueil
+- https://augmenter.pro/strategie-ia-pme — Stratégie IA pour PME (diagnostic, accompagnement, financement)
 - https://augmenter.pro/prestations — Prestations & Tarifs
 - https://augmenter.pro/approche — Notre Approche 360°
 - https://augmenter.pro/idees — Idées IA & Automatisation
@@ -89,3 +94,5 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 - https://augmenter.pro/contact — Contact & Audit Gratuit
 - https://augmenter.pro/plateforme — Plateforme IA pour Professionnels (10 modules)
 - https://augmenter.pro/mentions-legales — Mentions Légales
+- https://augmenter.pro/politique-confidentialite — Politique de Confidentialité (RGPD, cookies, droits)
+- https://augmenter.pro/cgv — Conditions Générales de Vente

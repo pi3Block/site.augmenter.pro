@@ -5,9 +5,11 @@
 
 ---
 
-## 0-augmenter pro - leads generation - ia - hivy.png
+## hivy-village-renovation-hero.webp
 
 - **Type** : Illustration artistique noir et blanc (encre/dessin)
+- **Dimensions** : Portrait / vertical
+- **Poids** : ~174 Ko
 - **Description** : Vue en perspective d'un village pittoresque avec une allée sinueuse bordée de réverbères classiques. Des maisons aux toits pentus sont dispersées sur une colline boisée. Le style est un croquis détaillé en noir et blanc avec des nuances de gris.
 - **Contexte éditorial** : Image décorative / d'ambiance évoquant un quartier résidentiel, les maisons individuelles — cible de la rénovation énergétique.
 - **Usage suggéré** : Image hero ou illustration d'introduction pour un article sur la rénovation énergétique en zone résidentielle. Évoque le cadre de vie des propriétaires de maisons individuelles.
@@ -15,9 +17,11 @@
 
 ---
 
-## 1-augmenter pro - leads generation - ia - hivy.jpg
+## hivy-script-qualification-telephonique.webp
 
 - **Type** : Photo mise en scène (clipboard sur bureau avec clavier)
+- **Dimensions** : Portrait / vertical
+- **Poids** : ~109 Ko
 - **Description** : Un presse-papiers posé sur un bureau en bois à côté d'un clavier blanc. Le document affiche le titre **"Points Clés du Discours (Rénovation Énergétique)"** avec 4 critères de qualification illustrés par des icônes :
   1. **Validation Logement** : Propriétaire d'une maison individuelle uniquement (icône maison bleue + check vert)
   2. **Source d'Énergie** : Identifier le chauffage actuel, priorité fioul/gaz (icône flamme)
@@ -30,9 +34,11 @@
 
 ---
 
-## 2-augmenter pro - leads generation - ia - hivy.png
+## hivy-parcours-qualification-lead.webp
 
 - **Type** : Infographie processus (schéma fléché horizontal)
+- **Dimensions** : Paysage / horizontal
+- **Poids** : ~144 Ko
 - **Description** : Schéma illustrant le parcours complet de qualification d'un lead en rénovation énergétique, de gauche à droite :
   - **L'appel de qualification** (à gauche) : un opérateur avec casque pose 3 questions clés via des bulles — "Propriétaire ?", "Chauffage actuel ?", "Situation fiscale ?" — représentées avec des icônes (maison, flamme, pièces).
   - **Diagnostic existant** (colonne bleue) : audit du logement actuel (icônes clipboard + maison).
@@ -45,9 +51,11 @@
 
 ---
 
-## 3-augmenter pro - leads generation - ia - hivy.png
+## hivy-funnel-filtrage-prospects.webp
 
 - **Type** : Infographie entonnoir (funnel de conversion)
+- **Dimensions** : Paysage / horizontal
+- **Poids** : ~192 Ko
 - **Description** : Un entonnoir de vente en 3 niveaux illustrant le processus de filtrage des prospects :
   - **Haut de l'entonnoir** (large, bleu) : "Liste d'appels prospects (brut)" — masse de contacts bruts symbolisés par des icônes téléphone, email, points d'interrogation entrant dans l'entonnoir.
   - **Milieu** (orange) : "Filtrage 1 : Email + SMS automatisés" — premier tri automatique, les non-réponses et contacts non valides sont éjectés sur la gauche (icônes emails, SMS rejetés).
@@ -59,24 +67,28 @@
 
 ---
 
-## 4-augmenter pro - leads generation - ia - hivy.png
+## hivy-processus-qualification-4-etapes.webp
 
 - **Type** : Schéma linéaire en 4 étapes (process flow)
+- **Dimensions** : Paysage / horizontal
+- **Poids** : ~97 Ko
 - **Description** : Diagramme horizontal simplifié montrant le processus de qualification en 4 étapes connectées par des flèches bleues :
   1. **Liste Brute de Prospects** (bloc violet/bleu) : icônes téléphones, représente la base de contacts initiale.
   2. **Filtrage Automatisé** (bloc jaune) : "Filtrage Auto (Email/SMS)" — les non-réponses sont évacuées vers le bas (flèches roses "Non-réponses").
   3. **Filtrage Humain** (bloc vert) : "Filtrage Humain (Appel Court)" — un opérateur avec casque et chronomètre, les non-qualifiés sont évacués (flèches roses "Non-qualifié").
   4. **Transmission Commercial** (bloc vert foncé) : "Prospect Qualifié" — deux silhouettes se serrant la main avec une étoile dorée.
   Fond gris clair, design épuré et professionnel.
-- **Contexte éditorial** : Version simplifiée et linéaire du funnel (image 3). Plus lisible et schématique, adaptée à une explication pas-à-pas. Met en évidence les deux points de sortie (non-réponses et non-qualifiés).
+- **Contexte éditorial** : Version simplifiée et linéaire du funnel. Plus lisible et schématique, adaptée à une explication pas-à-pas. Met en évidence les deux points de sortie (non-réponses et non-qualifiés).
 - **Usage suggéré** : Alternative à l'entonnoir pour illustrer le même processus de manière plus séquentielle. Idéale pour un résumé, une slide, ou un encadré récapitulatif.
 - **Alt text suggéré** : "Processus de qualification des leads en 4 étapes : liste brute, filtrage automatisé email/SMS, filtrage humain par appel, transmission du prospect qualifié au commercial"
 
 ---
 
-## 5-augmenter pro - leads generation - ia - hivy.png
+## hivy-tablette-criteres-prequalification.webp
 
 - **Type** : Photo mise en scène (tablette tenue dans un call center)
+- **Dimensions** : Paysage / horizontal
+- **Poids** : ~251 Ko
 - **Description** : Deux mains tiennent une tablette numérique au premier plan, dans un environnement de centre d'appels (bureaux floutés en arrière-plan avec casques). L'écran de la tablette affiche un dashboard futuriste intitulé **"Critères de Pré-Qualification : Rénovation Énergétique"** avec 4 cartes colorées :
   1. **Propriétaire & Maison Individuelle** (carte verte) : icône clé + maison, statut "Validé" avec check vert.
   2. **Chauffage Actuel** (carte rouge/orange) : "Cible : Fioul/Gaz/Élec" avec icône cheminée barrée et flamme.

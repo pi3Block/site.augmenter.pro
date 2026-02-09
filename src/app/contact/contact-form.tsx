@@ -5,6 +5,7 @@ import { Mail, Phone, MapPin, Linkedin, Twitter, Clock, ArrowRight } from "lucid
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 const contactInfo = [
   {
@@ -156,6 +157,16 @@ export function ContactForm() {
                         Envoyer ma demande
                         <ArrowRight className="h-4 w-4" />
                       </Button>
+                      <p className="text-center text-xs text-muted-foreground">
+                        Ce formulaire ouvre votre client email — aucune donnée
+                        n&apos;est stockée sur nos serveurs.{" "}
+                        <Link
+                          href="/politique-confidentialite"
+                          className="underline hover:text-foreground"
+                        >
+                          Politique de confidentialité
+                        </Link>
+                      </p>
                     </form>
                 </CardContent>
               </Card>

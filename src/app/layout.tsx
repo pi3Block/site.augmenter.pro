@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     "audit informatique 78",
     "digitalisation PME Val d'Oise",
     "automatisation entreprise",
-    "IA booster PME",
+    "stratégie IA PME",
     "audit IA gratuit",
   ],
   authors: [{ name: "Pierre Legrand", url: "https://pierrelegrand.fr" }],
