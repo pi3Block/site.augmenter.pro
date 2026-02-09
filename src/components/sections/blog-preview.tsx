@@ -34,6 +34,22 @@ const articles = [
     tags: ["Claude Code"],
     readTime: "2 min",
   },
+  {
+    slug: "comparatif-llm-vente-commerciale",
+    title: "Comparatif : Forces et Faiblesses des LLM dans les Processus de Vente",
+    excerpt:
+      "Explorer comment l'IA transforme les pratiques de vente commerciale, avec un tableau comparatif détaillé des forces, faiblesses et impact RGPD.",
+    tags: ["Intelligence Artificielle"],
+    readTime: "5 min",
+  },
+  {
+    slug: "5-signes-moderniser-informatique-pme",
+    title: "Les 5 signes qu'il est temps de moderniser l'informatique de votre PME",
+    excerpt:
+      "Vous êtes dirigeant d'une PME du BTP, immobilier ou industrie dans les Yvelines / Val d'Oise ? Découvrez les 5 signaux d'alerte.",
+    tags: ["Audit 360°", "PME"],
+    readTime: "3 min",
+  },
 ];
 
 export function BlogPreview() {

@@ -37,6 +37,68 @@ const ideas = [
       "Coût des licences premium",
     ],
   },
+  {
+    number: "03",
+    title: "Livraison par drones pour petits colis",
+    description:
+      "Le futur à votre porte : les drones livrent vos petits colis en un temps record, réduisant coûts et émissions.",
+    pros: [
+      "Rapidité accrue (livraison en 15 min en zone urbaine)",
+      "Réduction des émissions carbone vs véhicules",
+      "Adapté aux zones denses ou isolées",
+    ],
+    cons: [
+      "Réglementations strictes (zones de vol limitées)",
+      "Capacité de charge faible (<5 kg)",
+      "Sensibilité aux conditions météo",
+    ],
+  },
+  {
+    number: "04",
+    title: "Optimisation des tournées de livraison",
+    description:
+      "Des livraisons plus malignes : optimisez vos tournées avec des algorithmes, économisez du carburant et du temps.",
+    pros: [
+      "Diminution de -30% des coûts carburant (Google OR-Tools)",
+      "Livraisons plus rapides, trajets optimisés",
+      "Moins de stress pour les livreurs",
+    ],
+    cons: [
+      "Nécessite des données précises (trafic temps réel)",
+      "Investissement initial dans un logiciel TMS",
+    ],
+  },
+  {
+    number: "05",
+    title: "Gestion automatisée des retours de colis",
+    description:
+      "Retours simplifiés, clients ravis : automatisez la gestion des retours avec des étiquettes en un clic.",
+    pros: [
+      "Processus fluide (étiquettes générées par IA)",
+      "Réduction de -40% du temps de traitement",
+      "Amélioration de la satisfaction client",
+    ],
+    cons: [
+      "Complexité logistique pour réintégrer les retours",
+      "Dépendance à l'intégration avec les transporteurs",
+    ],
+  },
+  {
+    number: "06",
+    title: "Casiers intelligents sans contact",
+    description:
+      "Vos clients récupèrent leurs colis 24/7, sécurisés et sans contact, pour une expérience moderne.",
+    pros: [
+      "Sécurité et flexibilité (accès 24/7)",
+      "Réduction des interactions humaines",
+      "Modèle éprouvé (Amazon Locker) adaptable aux PME",
+    ],
+    cons: [
+      "Coût d'installation des casiers",
+      "Espace requis en zone urbaine",
+      "Adoption variable selon les clients",
+    ],
+  },
 ];
 
 export function Ideas() {
