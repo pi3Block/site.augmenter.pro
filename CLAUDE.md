@@ -63,6 +63,33 @@ npm run lint      # ESLint
 - Custom utilities: `.gradient-text` (violet→amber), `.hero-gradient` (radial background)
 - Dark mode supported via `.dark` class
 
+### Images
+
+All images are stored in `public/images/` with the following structure:
+
+```
+public/images/
+  blog/          ← illustrations d'articles (thumbnail, hero)
+  services/      ← visuels des prestations
+  team/          ← photos de l'équipe
+  general/       ← images génériques (hero, backgrounds, logos partenaires)
+```
+
+**Conventions obligatoires :**
+
+- **Format** : WebP uniquement (meilleur ratio qualité/poids). Convertir les PNG/JPG avant ajout.
+- **Nommage** : kebab-case, descriptif — ex. `audit-seo-pme.webp`, pas `img1.webp`
+- **Dimensions** : fournir l'image à la taille max d'affichage (pas de 4000px pour un thumbnail 400px)
+- **Poids** : viser < 100 Ko pour les thumbnails, < 300 Ko pour les hero/bannières
+- **Composant** : toujours utiliser `<Image>` de `next/image` (optimisation auto, lazy loading, responsive)
+  ```tsx
+  import Image from "next/image";
+  <Image src="/images/blog/mon-article.webp" alt="Description en français" width={800} height={400} />
+  ```
+- **Alt text** : toujours renseigner un `alt` descriptif en français (SEO + accessibilité)
+- **Priorité** : ajouter `priority` uniquement sur les images above-the-fold (hero, LCP)
+- **Blog** : nommer l'image du même slug que l'article — ex. article `audit-seo-gratuit` → `blog/audit-seo-gratuit.webp`
+
 ## SEO & LLM Optimization
 
 ### Structured Data (JSON-LD)
@@ -82,6 +109,13 @@ The site uses Schema.org structured data for SEO and LLM discoverability:
 - `public/llms.txt` — Machine-readable site summary for LLM crawlers (Perplexity, ChatGPT, Claude)
 - `public/robots.txt` — Crawler directives + sitemap reference
 - `public/sitemap.xml` — All 12 URLs with priorities and change frequencies
+
+### Google Tag Manager (GTM)
+
+- Intégration via `@next/third-parties/google` dans `src/app/layout.tsx`.
+- **Variable d'environnement** : `NEXT_PUBLIC_GTM_ID` (ex. `GTM-XXXXXXX`). Si non définie, GTM n'est pas chargé (pratique en dev local).
+- Pour envoyer des événements depuis un composant client : `import { sendGTMEvent } from "@next/third-parties/google"` puis `sendGTMEvent({ event: "nom", ... })`.
+- Vérifier l'installation avec l’extension [Tag Assistant](https://tagassistant.google.com/) (Chrome).
 
 ### SEO Conventions
 

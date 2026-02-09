@@ -33,6 +33,20 @@ Zone : Yvelines (78), Val d'Oise (95), Île-de-France.
 - [Comparatif LLM pour la Vente](https://augmenter.pro/blog/comparatif-llm-vente-commerciale) — Forces, faiblesses et conformité RGPD de chaque LLM pour les équipes commerciales.
 - [5 signes de moderniser l'informatique de votre PME](https://augmenter.pro/blog/5-signes-moderniser-informatique-pme) — Lenteurs, pannes, coûts cachés : les signaux d'alerte pour les PME du BTP et de l'industrie.
 
+## Plateforme IA (app.augmenter.pro)
+
+10 modules IA pour professionnels, 100% open source et privacy-first :
+- [A — Onboarding & Digital Persona](https://augmenter.pro/plateforme/onboarding-ia) — Audit intelligent qui génère votre profil numérique et configure votre dashboard.
+- [B — Dashboard Intelligent](https://augmenter.pro/plateforme/dashboard-intelligent) — Tableau de bord personnalisé avec widgets IA.
+- [C — Curation IA](https://augmenter.pro/plateforme/curation-ia) — Veille automatisée et curation de contenu par IA.
+- [D — Réseau Professionnel](https://augmenter.pro/plateforme/reseau-professionnel) — Gestion intelligente de votre réseau et contacts.
+- [E — Email Intelligent](https://augmenter.pro/plateforme/email-intelligent) — Rédaction et tri d'emails assistés par IA.
+- [F — Publication Sociale](https://augmenter.pro/plateforme/publication-sociale) — Création et planification de posts réseaux sociaux.
+- [G — Transcription Vocale](https://augmenter.pro/plateforme/transcription-vocale) — Transcription audio/vidéo et résumés automatiques.
+- [H — Bot Telegram](https://augmenter.pro/plateforme/bot-telegram) — Assistant IA accessible via Telegram.
+- [I — Analyse Documents](https://augmenter.pro/plateforme/analyse-documents) — Extraction et analyse intelligente de documents.
+- [J — Veille Concurrentielle](https://augmenter.pro/plateforme/veille-concurrentielle) — Surveillance automatisée de vos concurrents.
+
 ## Idées d'innovation
 
 6 idées concrètes et chiffrées pour PME :
@@ -73,4 +87,5 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 - https://augmenter.pro/idees — Idées IA & Automatisation
 - https://augmenter.pro/blog — Blog Articles & Tutos
 - https://augmenter.pro/contact — Contact & Audit Gratuit
+- https://augmenter.pro/plateforme — Plateforme IA pour Professionnels (10 modules)
 - https://augmenter.pro/mentions-legales — Mentions Légales

@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+
+/** ID du conteneur Google Tag Manager (ex. GTM-XXXXXXX). Défini via NEXT_PUBLIC_GTM_ID. */
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -12,7 +16,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     default:
-      "augmenter.PRO — Consultant IA & Transformation Digitale PME (78/95)",
+      "augmenter.PRO — Consultant IA & Digital PME | 78/95",
     template: "%s | augmenter.PRO",
   },
   description:
@@ -134,6 +138,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
+      {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
       <body className={`${inter.variable} font-sans antialiased`}>
         <Header />
         <main>{children}</main>

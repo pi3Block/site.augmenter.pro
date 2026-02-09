@@ -56,6 +56,61 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://augmenter.pro/plateforme</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://augmenter.pro/plateforme/onboarding-ia</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://augmenter.pro/plateforme/dashboard-intelligent</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://augmenter.pro/plateforme/curation-ia</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://augmenter.pro/plateforme/reseau-professionnel</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://augmenter.pro/plateforme/email-intelligent</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://augmenter.pro/plateforme/publication-sociale</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://augmenter.pro/plateforme/transcription-vocale</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://augmenter.pro/plateforme/bot-telegram</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://augmenter.pro/plateforme/analyse-documents</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://augmenter.pro/plateforme/veille-concurrentielle</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://augmenter.pro/mentions-legales</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
