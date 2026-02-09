@@ -27,6 +27,12 @@ import {
   Heart,
   ArrowRight,
   MapPin,
+  Zap,
+  BarChart3,
+  Bot,
+  FileSpreadsheet,
+  Repeat,
+  TrendingUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -559,8 +565,116 @@ export default function AuditInformatiqueYvelinesPage() {
         </div>
       </section>
 
-      {/* Sectors */}
+      {/* AI Workflow Optimization */}
       <section className="bg-muted/30 py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <Badge variant="secondary" className="mb-4">
+              IA &amp; Automatisation
+            </Badge>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Optimisez vos{" "}
+              <span className="gradient-text">flux de travail</span> grâce à
+              l&apos;IA
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Un audit informatique en 2026, ce n&apos;est plus seulement
+              vérifier vos serveurs — c&apos;est identifier les processus que
+              l&apos;IA peut{" "}
+              <strong>automatiser, accélérer ou simplifier</strong>. 60 % des
+              organisations obtiennent un ROI complet en moins de 12 mois.
+            </p>
+          </div>
+
+          {/* Stats row */}
+          <div className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { value: "+30 %", label: "de productivité", icon: TrendingUp },
+              { value: "−35 %", label: "de coûts opérationnels", icon: TrendingDown },
+              { value: "< 12 mois", label: "pour un ROI complet", icon: BarChart3 },
+              { value: "−75 %", label: "d'erreurs manuelles", icon: CheckCircle2 },
+            ].map((s) => (
+              <div key={s.label} className="text-center">
+                <s.icon className="mx-auto h-5 w-5 text-primary" />
+                <p className="mt-2 text-2xl font-bold text-primary">
+                  {s.value}
+                </p>
+                <p className="text-xs text-muted-foreground">{s.label}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Use cases grid */}
+          <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                icon: FileSpreadsheet,
+                title: "Devis & facturation automatisés",
+                description:
+                  "Génération automatique de devis à partir de vos modèles, envoi et relance par IA. Les entreprises du BTP à Versailles gagnent 2h par jour sur l'administratif.",
+              },
+              {
+                icon: Bot,
+                title: "Accueil client intelligent",
+                description:
+                  "Chatbot ou standard téléphonique IA qui qualifie les demandes, prend les rendez-vous et répond aux questions fréquentes 24h/24.",
+              },
+              {
+                icon: Repeat,
+                title: "Workflows métier sans couture",
+                description:
+                  "Connexion automatique entre vos outils (CRM, compta, email, planning) pour éliminer la double saisie et les oublis. Jusqu'à 50 % de tâches manuelles en moins.",
+              },
+              {
+                icon: FileText,
+                title: "Analyse documentaire IA",
+                description:
+                  "Extraction de données dans vos contrats, factures et appels d'offres. Un cabinet à Saint-Germain réduit son temps de traitement de 70 %.",
+              },
+              {
+                icon: BarChart3,
+                title: "Reporting & tableaux de bord",
+                description:
+                  "Tableaux de bord générés par IA qui consolident vos données métier en temps réel. Fini les exports Excel manuels chaque vendredi.",
+              },
+              {
+                icon: Zap,
+                title: "Détection d'anomalies",
+                description:
+                  "L'IA surveille vos systèmes et vos données pour détecter les écarts, les fraudes potentielles ou les pannes imminentes avant qu'elles ne surviennent.",
+              },
+            ].map((useCase) => (
+              <Card key={useCase.title} className="border-border/50">
+                <CardContent className="p-6">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                    <useCase.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="mt-3 font-semibold">{useCase.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {useCase.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-sm text-muted-foreground">
+              Notre audit identifie les flux à automatiser en priorité.{" "}
+              <Link
+                href="/strategie-ia-pme"
+                className="text-primary underline-offset-4 hover:underline"
+              >
+                En savoir plus sur notre accompagnement IA
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Sectors */}
+      <section className="py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -597,7 +711,7 @@ export default function AuditInformatiqueYvelinesPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24">
+      <section className="bg-muted/30 py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">

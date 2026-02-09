@@ -27,6 +27,12 @@ import {
   Factory,
   ArrowRight,
   MapPin,
+  Zap,
+  BarChart3,
+  Bot,
+  FileSpreadsheet,
+  Repeat,
+  TrendingUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -561,8 +567,116 @@ export default function AuditInformatiqueValDoisePage() {
         </div>
       </section>
 
-      {/* Sectors */}
+      {/* AI Workflow Optimization */}
       <section className="bg-muted/30 py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <Badge variant="secondary" className="mb-4">
+              IA &amp; Automatisation
+            </Badge>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Optimisez vos{" "}
+              <span className="gradient-text">flux de travail</span> grâce à
+              l&apos;IA
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              En 2026, un audit informatique va plus loin que la technique :
+              il identifie les processus que l&apos;IA peut{" "}
+              <strong>automatiser, accélérer ou fiabiliser</strong>. Les PME
+              qui automatisent constatent en moyenne 25 à 30 % de gains de
+              productivité sur les processus traités.
+            </p>
+          </div>
+
+          {/* Stats row */}
+          <div className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { value: "+30 %", label: "de productivité", icon: TrendingUp },
+              { value: "−35 %", label: "de coûts opérationnels", icon: TrendingDown },
+              { value: "< 12 mois", label: "pour un ROI complet", icon: BarChart3 },
+              { value: "−75 %", label: "d'erreurs manuelles", icon: CheckCircle2 },
+            ].map((s) => (
+              <div key={s.label} className="text-center">
+                <s.icon className="mx-auto h-5 w-5 text-primary" />
+                <p className="mt-2 text-2xl font-bold text-primary">
+                  {s.value}
+                </p>
+                <p className="text-xs text-muted-foreground">{s.label}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Use cases grid */}
+          <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                icon: Repeat,
+                title: "Chaîne logistique automatisée",
+                description:
+                  "Suivi des expéditions, gestion des stocks et optimisation des itinéraires par IA. Les transporteurs de Gonesse et Roissy réduisent leurs coûts logistiques de 25 %.",
+              },
+              {
+                icon: Bot,
+                title: "Standard téléphonique IA",
+                description:
+                  "Un assistant vocal intelligent qui qualifie les appels, prend les rendez-vous et répond aux questions courantes. Disponible 24h/24, sans embauche.",
+              },
+              {
+                icon: FileSpreadsheet,
+                title: "Facturation & relances auto",
+                description:
+                  "Génération automatique de factures, envoi et relances par IA. Les artisans d'Ermont et Taverny gagnent 2h par jour sur la paperasse.",
+              },
+              {
+                icon: BarChart3,
+                title: "Pilotage en temps réel",
+                description:
+                  "Tableaux de bord IA qui consolident production, trésorerie et RH. Les PME industrielles de Persan visualisent leurs KPI sans export Excel.",
+              },
+              {
+                icon: FileText,
+                title: "Traitement documentaire IA",
+                description:
+                  "Extraction automatique de données dans vos bons de commande, contrats et factures fournisseurs. Jusqu'à 70 % de temps de traitement en moins.",
+              },
+              {
+                icon: Zap,
+                title: "Maintenance prédictive",
+                description:
+                  "L'IA analyse les données de vos équipements pour anticiper les pannes avant qu'elles ne paralysent votre production. Jusqu'à 50 % de temps d'arrêt en moins.",
+              },
+            ].map((useCase) => (
+              <Card key={useCase.title} className="border-border/50">
+                <CardContent className="p-6">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                    <useCase.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="mt-3 font-semibold">{useCase.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {useCase.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-sm text-muted-foreground">
+              Notre audit identifie les processus à automatiser en priorité.{" "}
+              <Link
+                href="/strategie-ia-pme"
+                className="text-primary underline-offset-4 hover:underline"
+              >
+                En savoir plus sur notre accompagnement IA
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Sectors */}
+      <section className="py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -599,7 +713,7 @@ export default function AuditInformatiqueValDoisePage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24">
+      <section className="bg-muted/30 py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
