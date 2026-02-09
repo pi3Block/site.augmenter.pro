@@ -4,8 +4,6 @@ import { Mail, Phone, MapPin, Linkedin, Twitter, Clock, ArrowRight } from "lucid
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useState } from "react";
-
 const contactInfo = [
   {
     icon: Mail,
@@ -34,42 +32,24 @@ const contactInfo = [
 ];
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setError(null);
-    setLoading(true);
-
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.get("name"),
-          email: data.get("email"),
-          company: data.get("company"),
-          message: data.get("message"),
-        }),
-      });
+    const name = data.get("name") as string;
+    const email = data.get("email") as string;
+    const company = data.get("company") as string;
+    const message = data.get("message") as string;
 
-      if (!res.ok) {
-        const body = await res.json();
-        throw new Error(body.error || "Erreur lors de l'envoi.");
-      }
+    const subject = encodeURIComponent(
+      `Demande de contact — ${company || name}`
+    );
+    const body = encodeURIComponent(
+      `Bonjour,\n\nNom : ${name}\nEmail : ${email}${company ? `\nEntreprise : ${company}` : ""}\n\n${message}`
+    );
 
-      setSubmitted(true);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Erreur lors de l'envoi.");
-    } finally {
-      setLoading(false);
-    }
+    window.location.href = `mailto:vite@augmenter.pro?subject=${subject}&body=${body}`;
   }
 
   return (
@@ -93,20 +73,7 @@ export default function ContactPage() {
             <div className="lg:col-span-3">
               <Card className="border-border/50">
                 <CardContent className="p-6 sm:p-8">
-                  {submitted ? (
-                    <div className="py-12 text-center">
-                      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-green-600">
-                        <Mail className="h-7 w-7" />
-                      </div>
-                      <h3 className="mt-4 text-xl font-semibold">
-                        Message envoyé !
-                      </h3>
-                      <p className="mt-2 text-muted-foreground">
-                        Merci pour votre message. Nous vous répondons sous 24h.
-                      </p>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid gap-6 sm:grid-cols-2">
                         <div>
                           <label
@@ -172,20 +139,15 @@ export default function ContactPage() {
                           placeholder="Je cherche à automatiser mes processus de facturation avec l'IA..."
                         />
                       </div>
-                      {error && (
-                        <p className="text-sm text-red-600">{error}</p>
-                      )}
                       <Button
                         type="submit"
                         size="lg"
                         className="w-full gap-2"
-                        disabled={loading}
                       >
-                        {loading ? "Envoi en cours..." : "Envoyer ma demande"}
-                        {!loading && <ArrowRight className="h-4 w-4" />}
+                        Envoyer ma demande
+                        <ArrowRight className="h-4 w-4" />
                       </Button>
                     </form>
-                  )}
                 </CardContent>
               </Card>
             </div>
