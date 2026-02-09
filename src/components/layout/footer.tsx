@@ -10,10 +10,10 @@ const footerLinks = {
     { href: "/prestations", label: "Formation équipes" },
   ],
   ressources: [
+    { href: "/plateforme", label: "Plateforme IA" },
     { href: "/blog", label: "Articles & Tutos" },
     { href: "/idees", label: "Idées PRO" },
     { href: "/approche", label: "Notre approche" },
-    { href: "https://app.augmenter.pro", label: "App augmenter.PRO" },
   ],
   legal: [
     { href: "/mentions-legales", label: "Mentions légales" },
