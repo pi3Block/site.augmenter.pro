@@ -129,6 +129,7 @@ The site uses Schema.org structured data for SEO and LLM discoverability:
 - Le site envoie déjà l’événement `contact_form_submit` au dataLayer (formulaire contact). Pour qu’il remonte dans GA4 :
   1. **GTM** → **Déclencheurs** → **Nouveau** → **Événement personnalisé** → Nom de l’événement : `contact_form_submit` → Enregistrer.
   2. **GTM** → **Balises** → **Nouvelle** → **Google Analytics : GA4 – Événement** → Sélectionner la même **Configuration GA4** que ci-dessus → Nom de l’événement : `contact_form_submit` (ou `generate_lead`) → Déclenchement : le déclencheur créé à l’étape 1 → Enregistrer.
+- **Lecture article** : le site envoie `lecture_article` avec `article_slug`, `article_title`, `article_read_time` (composant `ArticleReadEvent` dans `ArticleLayout`). Dans GTM : déclencheur « Événement personnalisé » sur `lecture_article`, puis balise GA4 Événement avec le même nom (ou `article_view`) et paramètres optionnels (article_slug, article_title).
 - Pour d’autres événements (ex. clic « Devis », téléchargement guide) : ajouter `sendGTMEvent({ event: "nom_event", ... })` dans le code au bon endroit, puis créer dans GTM un déclencheur « Événement personnalisé » sur ce nom et une balise GA4 Événement associée.
 - Dans **GA4** → **Rapports** → **Engagement** → **Événements**, tu verras tes événements (et tu pourras marquer `contact_form_submit` ou `generate_lead` comme **conversion** dans Admin → Événements → bascule « Marquer comme conversion »).
 

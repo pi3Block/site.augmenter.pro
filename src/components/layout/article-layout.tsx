@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
+import { ArticleReadEvent } from "@/components/layout/article-read-event";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTA } from "@/components/sections/cta";
@@ -51,6 +52,13 @@ export function ArticleLayout({
 
   return (
     <div className="pt-16">
+      {slug ? (
+        <ArticleReadEvent
+          slug={slug}
+          title={title}
+          readTime={readTime}
+        />
+      ) : null}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
