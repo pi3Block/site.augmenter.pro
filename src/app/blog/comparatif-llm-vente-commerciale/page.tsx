@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ArticleLayout } from "@/components/layout/article-layout";
 
 export const metadata: Metadata = {
-  title: "Comparatif : Forces et Faiblesses des LLM dans la Vente",
+  title: "Comparatif LLM pour la Vente : GPT, Claude, Gemini (2026)",
   description:
-    "Explorer comment l'IA transforme les pratiques de vente commerciale, avec un tableau comparatif détaillé des forces, faiblesses et impact RGPD.",
+    "Tableau comparatif des IA pour la vente : forces, faiblesses et conformité RGPD de chaque LLM. Quel outil choisir pour votre équipe commerciale ?",
 };
 
 const rows = [

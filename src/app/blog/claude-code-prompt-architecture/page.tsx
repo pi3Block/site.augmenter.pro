@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ArticleLayout } from "@/components/layout/article-layout";
 
 export const metadata: Metadata = {
-  title: "Utiliser Claude Code sans ce prompt est une perte de temps",
+  title: "Claude Code : Le prompt indispensable avant de commencer",
   description:
-    "Travailler avec des fichiers .md fait la différence entre un projet amateur et la création de quelque chose de valeur avec Claude Code.",
+    "Envoyez ce prompt AVANT tout projet Claude Code. Fichiers .md, architecture et bonnes pratiques. La différence entre un POC et un vrai produit.",
 };
 
 export default function Article() {

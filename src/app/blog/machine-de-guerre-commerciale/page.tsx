@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ArticleLayout } from "@/components/layout/article-layout";
 
 export const metadata: Metadata = {
-  title: "Rénovation Énergétique : Construisez votre machine de guerre commerciale",
+  title: "Rénovation Énergétique : Arrêtez d'acheter des leads (Guide)",
   description:
-    "Découvrez comment internaliser votre acquisition client en rénovation énergétique. De l'optimisation LLM SEO à la pré-qualification par commerciaux indépendants.",
+    "Finies les plateformes de leads ! Internalisez votre acquisition client en rénovation énergétique : SEO, IA et pré-qualification. Méthode complète.",
 };
 
 export default function Article() {

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ArticleLayout } from "@/components/layout/article-layout";
 
 export const metadata: Metadata = {
-  title: "De la Prospection au Closing : Comment l'IA redéfinit la Vente",
+  title: "IA & Vente Commerciale : De la Prospection au Closing (2026)",
   description:
-    "L'IA s'intègre à chaque maillon du cycle de vente pour automatiser le fastidieux, révéler des insights invisibles et augmenter l'impact humain.",
+    "Comment l'IA automatise prospection, qualification et closing. Guide complet pour commerciaux et dirigeants PME. Outils concrets + résultats chiffrés.",
 };
 
 export default function Article() {

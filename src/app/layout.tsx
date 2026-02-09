@@ -51,6 +51,76 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://augmenter.pro/#organization",
+      name: "augmenter.PRO",
+      url: "https://augmenter.pro",
+      description:
+        "Consultant IA et transformation digitale pour PME en Yvelines (78) et Val d'Oise (95).",
+      founder: {
+        "@type": "Person",
+        name: "Pierre Legrand",
+        url: "https://pierrelegrand.fr",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: "vite@augmenter.pro",
+        telephone: "+33679119774",
+        contactType: "customer service",
+        availableLanguage: "French",
+      },
+      sameAs: [
+        "https://www.linkedin.com/in/legrand-pierre/",
+        "https://x.com/Pi3r2Dev",
+      ],
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://augmenter.pro/#localbusiness",
+      name: "augmenter.PRO",
+      url: "https://augmenter.pro",
+      description:
+        "Consultant IA, audit informatique et transformation digitale pour PME du BTP, immobilier et industrie en Yvelines (78) et Val d'Oise (95).",
+      telephone: "+33679119774",
+      email: "vite@augmenter.pro",
+      areaServed: [
+        {
+          "@type": "AdministrativeArea",
+          name: "Yvelines (78)",
+        },
+        {
+          "@type": "AdministrativeArea",
+          name: "Val d'Oise (95)",
+        },
+        {
+          "@type": "AdministrativeArea",
+          name: "Île-de-France",
+        },
+      ],
+      priceRange: "€-€€",
+      knowsAbout: [
+        "Intelligence Artificielle",
+        "Transformation Digitale",
+        "Audit Informatique",
+        "Automatisation",
+        "Robotique",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://augmenter.pro/#website",
+      url: "https://augmenter.pro",
+      name: "augmenter.PRO",
+      publisher: { "@id": "https://augmenter.pro/#organization" },
+      inLanguage: "fr-FR",
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -58,6 +128,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <Header />
         <main>{children}</main>

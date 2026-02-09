@@ -3,9 +3,9 @@ import { ArticleLayout } from "@/components/layout/article-layout";
 import { AlertTriangle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Les 5 signes qu'il est temps de moderniser l'informatique de votre PME",
+  title: "5 signes que votre PME doit moderniser son informatique",
   description:
-    "Vous êtes dirigeant d'une PME du BTP, immobilier, industrie ou artisan dans le 95 ? Vos outils informatiques vous freinent ? Découvrez les 5 signes.",
+    "PME du BTP, immobilier ou industrie en Yvelines/Val d'Oise ? Lenteurs, pannes, coûts cachés : 5 signaux d'alerte + solutions concrètes. Audit gratuit.",
 };
 
 const signs = [
