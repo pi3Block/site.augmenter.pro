@@ -45,6 +45,9 @@ Analyse chaque page du site en lisant les fichiers source :
 - [ ] Images avec attributs alt (si applicable)
 - [ ] Contenu suffisant (> 300 mots par page indexable)
 - [ ] JSON-LD structured data présent et valide
+- [ ] Signaux E-E-A-T : expérience terrain, expertise (profondeur), autorité (credentials), fiabilité (sources, nuances)
+- [ ] Contenu people-first : le lecteur PME peut agir après lecture
+- [ ] Originalité : la page apporte une valeur absente des résultats concurrents
 
 ### 1.2 Données structurées (JSON-LD)
 
@@ -92,22 +95,43 @@ Pour chaque page, identifie :
 - Les mots-clés secondaires couverts
 - L'intention de recherche ciblée
 
-### 2.2 Recherche d'opportunités
+### 2.2 Recherche d'opportunités (data-driven)
 
-Utilise la recherche web pour :
+**Si DataForSEO MCP disponible** (prioritaire) :
 
-1. **Mots-clés prioritaires** à cibler :
+1. **Volumes réels** : Pour chaque mot-clé cible identifié en 2.1, utiliser `keywords_google_ads_search_volume` (location: "France", language: "fr") pour obtenir :
+   - Volume de recherche mensuel exact
+   - CPC (indicateur de valeur commerciale)
+   - Keyword difficulty
+
+2. **Expansion de mots-clés** : `labs_google_keyword_ideas` et `labs_google_related_keywords` pour :
+   - Découvrir des opportunités longue traîne non couvertes
+   - Identifier les clusters thématiques à cibler
+   - Repérer les questions PAA avec volume
+
+3. **SERP Analysis** : `serp_google_organic_live` sur les 5 mots-clés prioritaires :
+   - Qui occupe les top positions ?
+   - Y a-t-il des featured snippets à capturer ?
+   - AI Overviews présents ?
+
+**Si GSC MCP disponible** :
+
+4. **Performance actuelle** : `search_analytics` (dimensions: query, page ; 90 derniers jours ; rowLimit: 5000) :
+   - Quelles requêtes amènent déjà du trafic ?
+   - Quelles pages performent et lesquelles stagnent ?
+   - **Quick wins** : requêtes en position 8-20 avec impressions > 100 → enrichir ces pages pour passer en top 5
+
+5. **Gap analysis** : Croiser les mots-clés DataForSEO (opportunités marché) avec les données GSC (performance actuelle) :
+   - Mots-clés à fort volume non couverts → nouveaux articles
+   - Mots-clés positionnés mais CTR faible → optimiser title/description
+   - Mots-clés en perte de position → rafraîchir le contenu
+
+**Fallback** (si MCP non disponibles) :
+- Utiliser la recherche web pour estimer volumes et tendances sur les mots-clés prioritaires :
    - "consultant IA PME", "audit informatique PME", "transformation digitale PME"
    - "automatisation entreprise", "IA pour artisans", "digitalisation BTP"
    - Variantes locales : "consultant numérique Yvelines", "audit informatique Val d'Oise", "audit informatique 78"
-   - Variantes IA Booster : "IA booster PME", "stratégie IA PME"
-
-2. **Analyse des tendances** :
-   - Volumes de recherche et tendances
-   - Requêtes "People Also Ask" pertinentes
-   - Opportunités saisonnières
-
-3. **Gap analysis** : Mots-clés que le site devrait couvrir mais ne couvre pas encore
+- Pas de données de performance disponibles → recommander d'installer les MCP
 
 ## Phase 3 — Analyse concurrentielle
 
@@ -129,6 +153,17 @@ Pour chaque concurrent identifié, scrape leur site et analyse :
 - Points forts et faiblesses par rapport à augmenter.pro
 - Fonctionnalités différenciantes (chat, configurateur, calculateur, etc.)
 
+### 3.3 Analyse domaines concurrents (DataForSEO)
+
+**Si DataForSEO MCP disponible** :
+
+Pour chaque concurrent identifié, utiliser `labs_google_domain_rank_overview` :
+- Domain rank et organic traffic estimé
+- Nombre de mots-clés organiques
+- Mots-clés communs avec augmenter.pro
+
+Comparer les métriques domaine pour positionner augmenter.pro dans le paysage concurrentiel.
+
 ## Phase 4 — Optimisation LLM/GEO (Generative Engine Optimization)
 
 ### 4.1 Audit de visibilité IA
@@ -146,6 +181,25 @@ Teste la visibilité actuelle :
 - Recherche "consultant IA PME Yvelines" sur Perplexity/ChatGPT
 - Recherche les services clés sur Google AI Overviews
 - Identifie les lacunes de citabilité
+
+### 4.3 Évaluation E-E-A-T du contenu
+
+Pour chaque page indexable, évalue les signaux de qualité :
+
+| Page | Experience | Expertise | Autorité | Fiabilité | Score /20 | Action |
+|------|-----------|-----------|---------|-----------|-----------|--------|
+| ...  | 0-5       | 0-5       | 0-5     | 0-5       | /20       | ...    |
+
+**Barème :**
+- **Experience (0-5)** : 0 = aucun exemple concret ; 3 = exemples génériques ; 5 = cas terrain spécifiques, géolocalisés (78/95)
+- **Expertise (0-5)** : 0 = reformulation superficielle ; 3 = bonne couverture ; 5 = analyse originale, méthodologie propre
+- **Autorité (0-5)** : 0 = auteur non identifié ; 3 = auteur nommé ; 5 = credentials + missions mentionnées
+- **Fiabilité (0-5)** : 0 = affirmations non sourcées ; 3 = quelques sources ; 5 = tout sourcé + limites + ton prudent
+
+**Seuils d'action :**
+- Score < 10/20 → **priorité haute** : enrichir avec expérience terrain et sources
+- Score 10-15/20 → **priorité moyenne** : ajouter nuances et avis d'expert
+- Score > 15/20 → **correct** : maintenir
 
 ## Phase 5 — Stratégie de contenu
 
@@ -181,6 +235,7 @@ Identifie les pages ou sections à créer :
 ## Résumé exécutif
 Score SEO global : X/100
 Score LLM/GEO : X/100
+Score E-E-A-T contenu : X/20
 Points critiques : X
 Opportunités identifiées : X
 
@@ -193,6 +248,26 @@ Opportunités identifiées : X
 | Schema | Fichier | Statut | Problème |
 |--------|---------|--------|----------|
 | ...    | ...     | ...    | ...      |
+
+## Évaluation E-E-A-T par page
+| Page | Experience | Expertise | Autorité | Fiabilité | Score /20 | Action prioritaire |
+|------|-----------|-----------|---------|-----------|-----------|-------------------|
+| ...  | ...       | ...       | ...     | ...       | ...       | ...               |
+
+## Données de performance GSC (si disponible)
+| Page | Clics (90j) | Impressions | CTR | Position moy. | Top requête |
+|------|-------------|-------------|-----|---------------|-------------|
+| ...  | ...         | ...         | ... | ...           | ...         |
+
+## Quick Wins identifiés
+| Requête | Position actuelle | Impressions | Page | Action recommandée |
+|---------|------------------|-------------|------|--------------------|
+| ...     | 8-20             | > 100       | ...  | Enrichir contenu / Optimiser title |
+
+## Opportunités mots-clés (DataForSEO)
+| Mot-clé | Volume mensuel | Difficulté | CPC | Couvert ? | Action |
+|---------|---------------|------------|-----|-----------|--------|
+| ...     | ...           | ...        | ... | Oui/Non   | ...    |
 
 ## Problèmes critiques (à corriger immédiatement)
 1. ...

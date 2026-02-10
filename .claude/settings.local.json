@@ -131,13 +131,36 @@
       "WebFetch(domain:hostwizly.com)",
       "Bash(where:*)",
       "Bash(npx sharp-cli:*)",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(cmd /c \"if exist C:\\\\Users\\\\black\\\\.claude\\\\settings.json \\(type C:\\\\Users\\\\black\\\\.claude\\\\settings.json\\) else \\(echo NOT FOUND\\)\")",
+      "Bash(cmd /c \"if exist C:\\\\Users\\\\black\\\\.cursor\\\\mcp.json \\(type C:\\\\Users\\\\black\\\\.cursor\\\\mcp.json\\) else \\(echo NOT FOUND\\)\")",
+      "Bash(cmd /c type \"C:\\\\Users\\\\black\\\\.claude\\\\settings.json\")",
+      "Bash(cmd /c type \"C:\\\\Users\\\\black\\\\.cursor\\\\mcp.json\")",
+      "Bash(cmd /c \"type C:\\\\Users\\\\black\\\\.claude\\\\settings.json 2>&1\")",
+      "Bash(cmd /c \"type C:\\\\Users\\\\black\\\\.cursor\\\\mcp.json 2>&1\")",
+      "Bash(cmd /c \"dir C:\\\\Users\\\\black\\\\.claude\\\\*.json /b 2>&1\")",
+      "Bash(claude mcp add dfs-mcp --env DATAFORSEO_USERNAME=pro@pierrelegrand.fr --env DATAFORSEO_PASSWORD=cac41f3e947a471a -- npx -y dataforseo-mcp-server)"
     ]
   },
   "mcpServers": {
     "crawl4ai": {
       "transport": "sse",
       "url": "https://crawl4ai.augmenter.pro/mcp/sse"
+    },
+    "dfs-mcp": {
+      "command": "npx.cmd",
+      "args": ["-y", "dataforseo-mcp-server"],
+      "env": {
+        "DATAFORSEO_USERNAME": "pro@pierrelegrand.fr",
+        "DATAFORSEO_PASSWORD": "cac41f3e947a471a"
+      }
+    },
+    "google-search-console": {
+      "command": "npx.cmd",
+      "args": ["-y", "mcp-server-gsc"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "C:\\Users\\black\\.credentials\\augmenter-pro-201c2230b7bd.json"
+      }
     }
   }
 }

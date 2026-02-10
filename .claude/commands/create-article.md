@@ -23,17 +23,48 @@ Si aucun argument n'est fourni, demande à l'utilisateur :
 
 Avant d'écrire quoi que ce soit :
 
-1. **Recherche de mots-clés** : Utilise la recherche web pour identifier :
-   - Le volume de recherche et la concurrence du mot-clé principal
+1. **Recherche de mots-clés** :
+
+   **Si DataForSEO MCP disponible** (prioritaire) :
+   - `keywords_google_ads_search_volume` : volume exact et CPC du mot-clé principal (location: "France", language: "fr")
+   - `labs_google_keyword_ideas` : 10-20 mots-clés secondaires / longue traîne avec volumes
+   - `labs_google_related_keywords` : mots-clés sémantiquement liés pour le cocon
+
+   **Si GSC MCP disponible** :
+   - `search_analytics` : vérifier si augmenter.pro ranke déjà sur le mot-clé ou des variantes (dimensions: query, page ; derniers 90 jours)
+   - Identifier les pages existantes qui pourraient cannibaliser le nouveau contenu
+
+   **Fallback** (si MCP non disponibles) :
+   - Utiliser la recherche web pour estimer volumes et concurrence
+
+   Dans tous les cas, identifier :
    - 5-10 mots-clés secondaires / longue traîne associés
-   - Les questions fréquentes des internautes (People Also Ask)
+   - Les questions fréquentes (People Also Ask)
    - Les intentions de recherche (informationnelle, transactionnelle, navigationnelle)
 
-2. **Analyse concurrentielle** : Scrape les 3-5 premiers résultats Google pour le mot-clé principal :
+2. **Analyse concurrentielle** :
+
+   **Si DataForSEO MCP disponible** (prioritaire) :
+   - `serp_google_organic_live` : analyser le top 10 SERP réel (keyword: mot-clé principal, location: "Paris,Ile-de-France,France", language: "fr")
+   - Extraire : titres, URLs, structures des pages, featured snippets, PAA
+
+   **Fallback** :
+   - Scrape les 3-5 premiers résultats Google via recherche web / crawl4ai
+
+   Dans tous les cas, analyser :
    - Structure des articles concurrents (H2, H3)
    - Longueur moyenne du contenu
-   - Angles éditoriaux utilisés
-   - Points manquants ou opportunités de différenciation
+   - Angles éditoriaux et points manquants
+
+### 1.bis — Qualification E-E-A-T du sujet
+
+Avant de poursuivre, réponds à ces 3 questions. Si la réponse à l'une d'elles est NON, **propose un angle différent ou alerte l'utilisateur** :
+
+1. **Légitimité** : augmenter.PRO a-t-il une expérience directe ou une expertise démontrable sur ce sujet ? (Si c'est hors périmètre IA/digital/audit/PME → ne pas le traiter.)
+2. **Valeur ajoutée** : Après analyse des 3-5 premiers résultats Google, peux-tu identifier un angle, une donnée ou une méthodologie qu'aucun concurrent ne couvre ?
+3. **Utilité lecteur** : Un dirigeant de PME (BTP/immobilier/industrie, 78/95) pourra-t-il agir concrètement après lecture ?
+
+> **Règle** : Ne jamais produire un article dont la seule raison d'existence est un volume de recherche.
 
 3. **Maillage interne** : Lis les articles existants et les pages du site pour identifier les liens internes pertinents :
    - Articles de blog existants dans `src/app/blog/*/page.tsx`
@@ -107,6 +138,18 @@ export default function Article() {
 - **Données/exemples** : Inclure des chiffres, exemples concrets, études de cas (localiser si possible : "une PME à Versailles (78)")
 - **Pas de conclusion bateau** : Terminer par une ouverture, un insight actionnable ou un CTA
 
+### Qualité de contenu (E-E-A-T)
+
+Ces règles sont **PRIORITAIRES** sur les règles SEO on-page ci-dessous. En cas de conflit, privilégier la qualité du contenu.
+
+- **Expérience terrain** : Minimum 1 exemple concret issu de missions augmenter.PRO ou d'observations terrain en 78/95 (anonymiser le client si besoin). Formuler avec "dans notre expérience", "nous avons constaté chez nos clients PME".
+- **Avis d'expert** : Au moins 1 passage où l'auteur donne un avis tranché, une recommandation directe ou une mise en garde basée sur son expertise.
+- **Données et sources** : Tout chiffre cité doit être sourcé (étude, organisme, ou expérience interne). Ne pas inventer de statistiques.
+- **Limites et nuances** : Mentionner au moins 1 situation où le conseil ne s'applique pas. Cela renforce la fiabilité (Trustworthiness).
+- **Originalité** : Le contenu ne doit PAS être une reformulation des articles concurrents. Chaque section H2 doit apporter un angle absent des résultats existants.
+- **Actionnable** : Au moins 1 élément directement actionnable (checklist, étapes, questions à se poser, template).
+- **Ton** : Expert qui partage son expérience, pas encyclopédie qui compile. L'article doit "sonner" comme un consultant qui parle à un dirigeant.
+
 ### Optimisation SEO on-page
 
 - Mot-clé principal dans le H1 (title), premier paragraphe, et au moins 2 H2
@@ -173,3 +216,14 @@ Vérifie et affiche un rapport :
 - [ ] Contenu > 1200 mots
 - [ ] Aucun contenu dupliqué avec les articles existants
 - [ ] Échappement JSX correct (`&apos;`, `&amp;`, `&quot;`)
+
+### Contrôle qualité E-E-A-T
+- [ ] ≥ 1 exemple terrain / expérience de mission (anonymisé si besoin)
+- [ ] ≥ 1 avis d'expert tranché ou mise en garde
+- [ ] Toutes les données chiffrées sont sourcées (pas de statistiques inventées)
+- [ ] ≥ 1 limite ou nuance mentionnée ("cela ne s'applique pas si…")
+- [ ] Le contenu apporte une valeur absente des 5 premiers résultats Google
+- [ ] L'article est actionnable (le lecteur PME peut agir après lecture)
+- [ ] Le ton est "consultant qui conseille", pas "encyclopédie qui compile"
+- [ ] Aucun passage n'est une reformulation directe d'un concurrent
+- [ ] Le sujet relève du périmètre d'expertise augmenter.PRO

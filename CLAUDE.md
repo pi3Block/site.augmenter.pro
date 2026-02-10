@@ -134,12 +134,57 @@ The site uses Schema.org structured data for SEO and LLM discoverability:
 - Pour d’autres événements (ex. clic « Devis », téléchargement guide) : ajouter `sendGTMEvent({ event: "nom_event", ... })` dans le code au bon endroit, puis créer dans GTM un déclencheur « Événement personnalisé » sur ce nom et une balise GA4 Événement associée.
 - Dans **GA4** → **Rapports** → **Engagement** → **Événements**, tu verras tes événements (et tu pourras marquer `contact_form_submit` ou `generate_lead` comme **conversion** dans Admin → Événements → bascule « Marquer comme conversion »).
 
+### MCP SEO Tools (optionnels)
+
+Si configurés, ces MCP servers fournissent des données SEO réelles aux commandes `/create-article`, `/create-resource` et `/seo-audit` :
+
+| MCP Server | Données | Usage |
+|------------|---------|-------|
+| **DataForSEO** (`dfs-mcp`) | Volumes de recherche, difficulté, SERP, concurrents | Recherche de mots-clés, analyse concurrentielle |
+| **Google Search Console** (`google-search-console`) | Clics, impressions, CTR, positions | Performance réelle des pages, quick wins |
+
+Les commandes fonctionnent sans ces MCP (fallback sur recherche web), mais les données sont **beaucoup plus fiables** avec.
+
+**Vérifier la disponibilité** : Si un outil MCP échoue ou n'est pas configuré, basculer sur la recherche web comme fallback.
+
 ### SEO Conventions
 
 - Every page **must** export `metadata: Metadata` with optimized `title` (< 60 chars) and `description` (< 155 chars)
 - Meta titles should include **power words** (Gratuit, Guide, 2026) and **geo-targeting** (78/95, Yvelines, Val d'Oise)
 - Layout template: `"%s | augmenter.PRO"` — page titles are appended automatically
 - Blog articles pass `slug` prop to `ArticleLayout` for canonical URL in Article schema
+- When MCP SEO tools are available (DataForSEO, GSC), always prefer real data over web search estimates for keyword research and performance analysis
+
+### Qualité de Contenu & E-E-A-T
+
+augmenter.pro est un site de conseil (décisions financières pour PME) — Google applique un standard E-E-A-T élevé (domaine YMYL). Toute page publiée doit respecter ces principes.
+
+#### Identité éditoriale (Qui, Comment, Pourquoi)
+
+- **Qui** : Pierre Legrand, consultant IA & transformation digitale. Chaque article est publié sous son nom (JSON-LD `author` dans `article-layout.tsx`).
+- **Comment** : Le contenu est rédigé avec l'assistance d'outils IA et révisé par Pierre Legrand. Ne jamais prétendre que le contenu est 100% humain si ce n'est pas le cas.
+- **Pourquoi** : Le contenu existe pour aider les PME à prendre des décisions éclairées, pas pour générer du trafic. Si un sujet ne sert pas l'audience cible (PME BTP/immobilier/industrie en 78/95), ne pas le traiter.
+
+#### E-E-A-T — Critères obligatoires
+
+| Signal | Exigence | Vérification |
+|--------|----------|--------------|
+| **Experience** | ≥ 1 exemple terrain issu de missions réelles ou d'observations directes du secteur local | L'article contient un passage concret (cas client anonymisé, observation 78/95) |
+| **Expertise** | Analyse approfondie, pas de reformulation superficielle des sources existantes | Chaque section apporte un angle, un avis ou une méthodologie originale |
+| **Autorité** | Credentials naturellement intégrées (expérience sectorielle, résultats clients) | Le contexte augmenter.PRO est mentionné sans être forcé |
+| **Fiabilité** | Données chiffrées sourcées, conseils prudents, limites mentionnées | Aucune affirmation sans source ; au moins 1 nuance/limite par article |
+
+#### Contenu People-First — Règles
+
+1. **Test du lecteur** : Après lecture, le dirigeant PME doit pouvoir **agir concrètement** (checklist, étapes, décision éclairée). Si le contenu ne change rien pour lui → manque de valeur.
+2. **Valeur ajoutée** : Chaque page doit apporter quelque chose **absent des 5 premiers résultats Google** — angle unique, donnée originale, méthodologie propre, ou expérience terrain.
+3. **Pas de contenu SEO-first** : Ne jamais écrire un article JUSTE parce qu'un mot-clé a du volume. Le sujet doit croiser expertise réelle + besoin réel de l'audience.
+4. **Périmètre de compétence** : Rester dans le périmètre IA/digital/audit/transformation pour PME. Ne pas chasser des sujets trending hors expertise.
+5. **Anti-patterns interdits** :
+   - Reformuler le contenu concurrent sans valeur ajoutée
+   - Cibler un nombre de mots arbitraire (la longueur découle du sujet, pas l'inverse)
+   - Ajouter des "mises à jour" cosmétiques pour simuler la fraîcheur
+   - Multiplier les articles sur des variantes mineures d'un même sujet
 
 ### Adding a New Blog Article
 

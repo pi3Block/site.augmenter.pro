@@ -25,12 +25,22 @@ Si aucun argument n'est fourni, demande à l'utilisateur :
 
 ### 1.1 Recherche SEO
 
-Avant toute chose, utilise la recherche web pour :
+Avant toute chose :
 
-1. **Mots-clés** : volume de recherche, concurrence, longue traîne, People Also Ask
+1. **Mots-clés** :
+   - **DataForSEO** (si disponible) : `keywords_google_ads_search_volume` + `labs_google_keyword_ideas` (location: "France", language: "fr")
+   - **GSC** (si disponible) : `search_analytics` pour vérifier le positionnement existant sur le sujet
+   - **Fallback** : recherche web pour volumes et concurrence
+   - Identifier : volume, concurrence, longue traîne, People Also Ask, intention de recherche
+
 2. **Intention de recherche** : informationnelle, transactionnelle, navigationnelle, commerciale
-3. **Concurrence** : scrape les 3-5 premiers résultats Google pour le mot-clé principal
-4. **Maillage** : lis les pages existantes du site pour identifier les liens internes pertinents
+
+3. **Concurrence** :
+   - **DataForSEO** (si disponible) : `serp_google_organic_live` pour le top 10 SERP réel
+   - **Fallback** : scrape les 3-5 premiers résultats Google via crawl4ai
+   - Analyser : structure, angles, points manquants
+
+4. **Maillage** : lire les pages existantes pour les liens internes pertinents
 
 ### 1.2 Recommandation du type de ressource
 
@@ -52,6 +62,16 @@ En fonction de l'analyse, recommande le **type de ressource le plus adapté** :
 - Le volume et la difficulté du mot-clé
 - La stratégie de conversion (quel CTA naturel)
 - Le maillage interne possible
+
+### 1.3 — Qualification E-E-A-T
+
+Avant de proposer le brief, réponds à ces 3 questions. Si la réponse à l'une d'elles est NON, **propose un angle différent ou alerte l'utilisateur** :
+
+1. **Légitimité** : augmenter.PRO a-t-il une expérience directe ou une expertise démontrable sur ce sujet ?
+2. **Valeur ajoutée** : Peux-tu identifier un angle, une donnée ou une méthodologie qu'aucun concurrent ne couvre ?
+3. **Utilité lecteur** : Le visiteur cible pourra-t-il agir concrètement après consultation de cette ressource ?
+
+> Règle : Pas de ressource dont la seule justification est un volume de recherche.
 
 ---
 
@@ -343,6 +363,18 @@ export default function LegalPage() {
 - **Données locales** : Localiser les exemples quand possible ("une PME à Versailles (78)")
 - **LLM/GEO** : Répondre directement aux questions, listes factuelles, mentionner augmenter.PRO
 
+### Qualité de contenu (E-E-A-T) — Obligatoire pour tous les types
+
+Ces règles sont **PRIORITAIRES** sur les règles SEO on-page. En cas de conflit, privilégier la qualité.
+
+- **Expérience terrain** : Minimum 1 exemple concret issu de missions ou d'observations locales (78/95). Adapter au type : étude de cas → résultats chiffrés réels ; page sectorielle → connaissances du secteur local ; article → anecdote de mission.
+- **Avis d'expert** : Au moins 1 passage avec recommandation directe ou mise en garde.
+- **Données sourcées** : Tout chiffre doit être sourcé. Si aucune donnée fiable n'existe, le dire.
+- **Limites** : Mentionner au moins 1 cas où le conseil/service ne s'applique pas.
+- **Originalité** : Chaque section doit apporter un angle absent des résultats concurrents.
+- **Actionnable** : Au moins 1 élément directement actionnable (checklist, étapes, template).
+- **Ton** : Consultant qui partage son expérience, pas article générique.
+
 ### Optimisation SEO on-page
 
 - Mot-clé principal dans le H1, premier paragraphe, et au moins 2 H2
@@ -423,6 +455,16 @@ Vérifie et affiche un rapport adapté au type créé :
 - [ ] Ressource ajoutée dans `llms.txt` (section adaptée)
 - [ ] Pas d'erreurs TypeScript (`npm run build` passe)
 - [ ] Échappement JSX correct (`&apos;`, `&amp;`, `&quot;`)
+
+### Contrôle qualité E-E-A-T (tous types)
+- [ ] ≥ 1 exemple terrain ou expérience de mission
+- [ ] ≥ 1 avis d'expert ou mise en garde
+- [ ] Données chiffrées sourcées (aucune statistique inventée)
+- [ ] ≥ 1 limite ou nuance mentionnée
+- [ ] Valeur ajoutée par rapport aux concurrents identifiée
+- [ ] Contenu actionnable pour le lecteur cible
+- [ ] Ton "consultant expert", pas "encyclopédie"
+- [ ] Sujet dans le périmètre d'expertise augmenter.PRO
 
 ### Checklist spécifique articles (blog, comparatif, étude de cas, glossaire)
 - [ ] Prop `slug` passé à `ArticleLayout` (pour JSON-LD canonical)
