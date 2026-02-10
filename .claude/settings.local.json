@@ -130,7 +130,8 @@
       "WebFetch(domain:www.hostinger.com)",
       "WebFetch(domain:hostwizly.com)",
       "Bash(where:*)",
-      "Bash(npx sharp-cli:*)"
+      "Bash(npx sharp-cli:*)",
+      "Bash(git log:*)"
     ]
   },
   "mcpServers": {

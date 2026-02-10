@@ -33,6 +33,20 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      { source: "/ia-booster-pour-pme-and-independants-votre-intelligence-artificielle-de-la-strategie-a-laction", destination: "/strategie-ia-pme", permanent: true },
+      { source: "/comparatif-forces-et-faiblesses-des-llm-dans-les-processus-de-vente-commerciale", destination: "/blog/comparatif-llm-vente-commerciale", permanent: true },
+      { source: "/audit-360-signes-moderniser-informatique-pme-yvelines-val-doise", destination: "/blog/5-signes-moderniser-informatique-pme", permanent: true },
+      { source: "/construisez-votre-propre-machine-de-guerre-commerciale", destination: "/blog/machine-de-guerre-commerciale", permanent: true },
+      { source: "/rendez-vous-audit-360", destination: "/contact", permanent: true },
+      { source: "/claude-code-prompt-architecture", destination: "/blog/claude-code-prompt-architecture", permanent: true },
+      { source: "/prestations-et-tarifs", destination: "/prestations", permanent: true },
+      { source: "/actualites-pro", destination: "/blog", permanent: true },
+      { source: "/approche-360", destination: "/approche", permanent: true },
+      { source: "/projets-pro", destination: "/idees", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;
