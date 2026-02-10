@@ -16,6 +16,7 @@ Zone : Yvelines (78), Val d'Oise (95), Île-de-France.
 - **Développement sur mesure** : Applications web/mobile, chatbots IA, automatisation de workflows, intégrations CRM.
 - **Formation & Accompagnement** : Ateliers IA pour dirigeants, formation outils collaboratifs, conduite du changement.
 - **Conseil Stratégique** : Benchmark concurrentiel, choix technologiques, roadmap transformation digitale.
+- **Intégration MCP (Model Context Protocol)** : Connexion de vos outils métier (CRM, ERP, messagerie) à l'IA via le protocole MCP. Audit, déploiement de serveurs MCP, agents IA, formation équipes. PME en Yvelines (78) et Val-d'Oise (95).
 
 ## Approche
 
@@ -27,6 +28,8 @@ Zone : Yvelines (78), Val d'Oise (95), Île-de-France.
 
 ## Articles de blog
 
+- [Serveur MCP : Guide Pratique pour Connecter l'IA à Vos Outils Métier](https://augmenter.pro/blog/serveur-mcp-guide-pratique-pme) — Qu'est-ce qu'un serveur MCP ? Comment connecter CRM, ERP et messagerie à l'IA ? Guide concret pour dirigeants PME avec cas terrain, grille de coûts, et feuille de route en 5 étapes.
+- [Intégrer un Agent IA à Votre CRM/ERP : MCP Change la Donne](https://augmenter.pro/blog/serveur-mcp-integration-crm-erp) — 95% des projets IA échouent sur l'intégration. Comment le protocole MCP connecte agents IA à HubSpot, Salesforce, ERP. Comparatif MCP vs Zapier vs intégrateur, ROI chiffré.
 - [Rénovation Énergétique : Arrêtez d'acheter des leads](https://augmenter.pro/blog/machine-de-guerre-commerciale) — Comment internaliser l'acquisition client en rénovation énergétique avec l'IA et le SEO.
 - [IA & Vente Commerciale : De la Prospection au Closing](https://augmenter.pro/blog/ia-redefinit-vente-commerciale) — Comment l'IA transforme chaque étape du cycle de vente.
 - [Claude Code : Le prompt indispensable](https://augmenter.pro/blog/claude-code-prompt-architecture) — Bonnes pratiques pour utiliser Claude Code efficacement avec des fichiers .md.
@@ -83,6 +86,10 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 
 - [Stratégie IA pour PME : Diagnostic & Accompagnement](https://augmenter.pro/strategie-ia-pme) — Landing page complète sur notre accompagnement stratégique IA pour PME. Diagnostic gratuit, méthodologie en 4 étapes, cas d'usage par secteur (BTP, immobilier, industrie, services), financement Osez l'IA Bpifrance, FAQ.
 
+## Intégration MCP (Model Context Protocol)
+
+- [Intégration Serveur MCP pour PME](https://augmenter.pro/integration-mcp) — Service d'intégration du protocole MCP pour connecter CRM, ERP, messagerie et documents à l'IA. Cas d'usage par secteur (BTP, immobilier, industrie, services), méthodologie en 4 étapes (audit, conception, intégration, formation), tarifs indicatifs, FAQ, conformité RGPD. Yvelines (78) et Val-d'Oise (95).
+
 ## Audit Informatique Local
 
 - [Audit Informatique Yvelines (78)](https://augmenter.pro/audit-informatique-yvelines) — Audit informatique pour PME en Yvelines. Diagnostic gratuit 60 min, méthodologie en 4 étapes, périmètre complet (réseau, sécurité, cloud, RGPD, licences), secteurs locaux (BTP, services, commerce, santé), FAQ géo-ciblée.
@@ -100,6 +107,7 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 - https://augmenter.pro/plateforme — Plateforme IA pour Professionnels (10 modules)
 - https://augmenter.pro/audit-informatique-yvelines — Audit Informatique Yvelines (78)
 - https://augmenter.pro/audit-informatique-val-doise — Audit Informatique Val-d'Oise (95)
+- https://augmenter.pro/integration-mcp — Intégration MCP pour PME (serveurs MCP, agents IA, CRM/ERP)
 - https://augmenter.pro/mentions-legales — Mentions Légales
 - https://augmenter.pro/politique-confidentialite — Politique de Confidentialité (RGPD, cookies, droits)
 - https://augmenter.pro/cgv — Conditions Générales de Vente

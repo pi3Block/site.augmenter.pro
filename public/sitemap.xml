@@ -46,6 +46,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://augmenter.pro/integration-mcp</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://augmenter.pro/blog/serveur-mcp-guide-pratique-pme</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://augmenter.pro/blog/serveur-mcp-integration-crm-erp</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://augmenter.pro/blog/machine-de-guerre-commerciale</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

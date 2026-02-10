@@ -9,6 +9,24 @@ import Link from "next/link";
 
 const articles = [
   {
+    slug: "serveur-mcp-guide-pratique-pme",
+    title:
+      "Serveur MCP : Guide Pratique pour Connecter l'IA à Vos Outils Métier",
+    excerpt:
+      "Le protocole MCP permet à vos agents IA d'accéder directement à vos outils métier — CRM, ERP, messagerie. Voici comment ça fonctionne et par où commencer.",
+    tags: ["Intelligence Artificielle", "PME"],
+    readTime: "8 min",
+  },
+  {
+    slug: "serveur-mcp-integration-crm-erp",
+    title:
+      "Intégrer un Agent IA à Votre CRM/ERP : Pourquoi MCP Change la Donne",
+    excerpt:
+      "95% des projets IA échouent sur l'intégration. Découvrez comment le protocole MCP connecte vos agents IA à HubSpot, Salesforce ou ERP. ROI concret.",
+    tags: ["Intelligence Artificielle", "Commercial"],
+    readTime: "7 min",
+  },
+  {
     slug: "machine-de-guerre-commerciale",
     title:
       "Rénovation Énergétique : Arrêtez d'acheter des leads, construisez votre propre machine de guerre commerciale",

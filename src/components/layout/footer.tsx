@@ -10,6 +10,7 @@ const footerLinks = {
     { href: "/audit-informatique-val-doise", label: "Audit Informatique 95" },
     { href: "/prestations", label: "Développement sur mesure" },
     { href: "/prestations", label: "Formation équipes" },
+    { href: "/integration-mcp", label: "Intégration MCP" },
   ],
   ressources: [
     { href: "/strategie-ia-pme", label: "Stratégie IA PME" },
