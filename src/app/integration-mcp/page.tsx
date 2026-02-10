@@ -107,7 +107,7 @@ const faqJsonLd = {
       name: "Combien coûte une intégration MCP pour une PME ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Pour une PME de 5 à 50 salariés : un audit + prototype (1 outil) coûte entre 1 500 et 5 000 €, une intégration standard (2-3 outils) entre 5 000 et 15 000 €, et une intégration avancée (SI complet) entre 15 000 et 40 000 €. Le ROI est généralement atteint en 3 à 6 mois.",
+        text: "Pour une PME de 5 à 50 salariés : un audit + prototype (1 outil) coûte entre 500 et 1 000 €, une intégration standard (2-3 outils) entre 1 000 et 5 000 €, et une intégration avancée (SI complet) entre 5 000 et 20 000 €. Le ROI est généralement atteint en 6 à 12 mois.",
       },
     },
     {
@@ -529,7 +529,7 @@ export default function IntegrationMCPPage() {
                   Standard
                 </p>
                 <p className="mt-2 text-3xl font-bold">
-                  5 000 - 15 000 €
+                  1 000 - 5 000 €
                 </p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   2-3 outils connectés
@@ -566,7 +566,7 @@ export default function IntegrationMCPPage() {
                   Sur mesure
                 </p>
                 <p className="mt-2 text-3xl font-bold">
-                  15 000 - 40 000 €
+                  5 000 - 20 000 €
                 </p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   SI complet
@@ -664,10 +664,10 @@ export default function IntegrationMCPPage() {
                 </AccordionTrigger>
                 <AccordionContent>
                   Pour une PME de 5 à 50 salariés : un audit + prototype (1
-                  outil) coûte entre 1 500 et 5 000 €, une intégration standard
-                  (2-3 outils) entre 5 000 et 15 000 €, et une intégration
-                  avancée (SI complet) entre 15 000 et 40 000 €. Le ROI est
-                  généralement atteint en 3 à 6 mois.
+                  outil) coûte entre 500 et 1 000 €, une intégration standard
+                  (2-3 outils) entre 1 000 et 5 000 €, et une intégration
+                  avancée (SI complet) entre 5 000 et 20 000 €. Le ROI est
+                  généralement atteint en 6 à 12 mois.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="q4">

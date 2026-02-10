@@ -263,11 +263,11 @@ export default function Article() {
           du serveur MCP, et 2-4 semaines de test supervisé.
         </li>
         <li>
-          <strong>Intégration standard (2-3 outils) :</strong> 5 000 à 15 000 €
+          <strong>Intégration standard (2-3 outils) :</strong> 1 000 à 5 000 €
           — plusieurs serveurs MCP, agent IA configuré, formation des équipes.
         </li>
         <li>
-          <strong>Intégration avancée (SI complet) :</strong> 15 000 à 40 000 €
+          <strong>Intégration avancée (SI complet) :</strong> 5 000 à 20 000 €
           — ERP, CRM, messagerie, documents, workflows complexes, monitoring.
         </li>
       </ul>
