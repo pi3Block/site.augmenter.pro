@@ -241,7 +241,7 @@ La fenêtre pour dominer cette intersection est MAINTENANT — avant que les act
 
 | Article | Cluster soutenu | Priorité | Statut |
 |---|---|---|---|
-| Combien coûte un audit informatique (78) | Audit IT | P1 | 📋 |
+| Combien coûte un audit informatique (78) | Audit IT | P1 | ✅ |
 | Audit info vs audit cybersécurité | Audit IT | P1 | 📋 |
 | IA Booster / Osez l'IA : financement 80% | Stratégie IA | P1 | 📋 |
 | NIS2 PME Yvelines : guide conformité | Compliance | P1 | 📋 |
@@ -282,7 +282,7 @@ La fenêtre pour dominer cette intersection est MAINTENANT — avant que les act
 | # | Contenu | Type | Cluster | Mot-clé principal | Statut |
 |---|---|---|---|---|---|
 | 1 | NIS2 PME Yvelines : guide conformité 2026 | Article blog | Compliance | nis2 pme yvelines | ✅ Publié |
-| 2 | Combien coûte un audit informatique en Yvelines | Article blog | Audit IT | prix audit informatique pme | 📋 À faire |
+| 2 | Combien coûte un audit informatique en Yvelines | Article blog | Audit IT | prix audit informatique pme | ✅ Publié |
 | 3 | Page sectorielle BTP (78/95) | Page sectorielle | Secteurs | digitalisation btp yvelines | 📋 À faire |
 | 4 | IA Booster & Osez l'IA — financement 80% | Article blog | Stratégie IA | financement ia pme bpifrance | 📋 À faire |
 | 5 | Facturation électronique 2026 pour BTP/artisans | Article blog | Secteurs + Compliance | facturation électronique btp 2026 | 📋 À faire |
@@ -622,6 +622,7 @@ TRIMESTRIELLEMENT :
 |---|---|---|
 | 2026-02-13 | Création du document — analyse GSC, cartographie 22 pages, veille concurrentielle complète | Base de référence établie |
 | 2026-02-13 | Publication article NIS2 PME Yvelines/Val d'Oise — `/blog/nis2-pme-yvelines-val-doise` | 8e article blog, cluster Compliance lancé, FAQ JSON-LD, ~2 500 mots |
+| 2026-02-13 | Publication article coût audit informatique Yvelines — `/blog/cout-audit-informatique-yvelines` | 9e article blog, cluster Audit IT renforcé, FAQ JSON-LD (5 questions), ~2 200 mots, backlinks depuis pages piliers 78/95 |
 
 ---
 
@@ -629,10 +630,9 @@ TRIMESTRIELLEMENT :
 
 > **Quand `/create-resource` est invoqué sans sujet spécifique, proposer le prochain contenu de la file §5.**
 >
-> **Prochain contenu recommandé** : #2 — "Combien coûte un audit informatique en Yvelines ? Tarifs 2026"
-> - Cluster : Audit IT (§3.1)
-> - Axe géo : Yvelines (78) — Axe format : article pricing/coûts
-> - Concurrence : Digitemis, ASAP (national) — personne en local 78
-> - Stats à intégrer : 2 000-10 000 € HT audit standard, 7 000-20 000 € complet
-> - PAA à couvrir : "Combien coûte un audit informatique ?", "Quelle durée ?", "Comment choisir un prestataire ?"
+> **Prochain contenu recommandé** : #3 — "Page sectorielle BTP (78/95)"
+> - Cluster : Secteurs (§3.3)
+> - Axe géo : Yvelines + Val d'Oise — Axe format : page sectorielle
+> - Concurrence : ZÉRO sur "digitalisation BTP Yvelines"
+> - Stats à intégrer : 58% des petites entreprises BTP ont un site web (France Num), facturation électronique sept 2026
 > - CTA : Audit 180° gratuit → /contact

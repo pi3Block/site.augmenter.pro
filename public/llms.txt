@@ -36,6 +36,7 @@ Zone : Yvelines (78), Val d'Oise (95), Île-de-France.
 - [Comparatif LLM pour la Vente](https://augmenter.pro/blog/comparatif-llm-vente-commerciale) — Forces, faiblesses et conformité RGPD de chaque LLM pour les équipes commerciales.
 - [5 signes de moderniser l'informatique de votre PME](https://augmenter.pro/blog/5-signes-moderniser-informatique-pme) — Lenteurs, pannes, coûts cachés : les signaux d'alerte pour les PME du BTP et de l'industrie.
 - [NIS2 et PME : Guide Pratique pour les Yvelines et le Val d'Oise](https://augmenter.pro/blog/nis2-pme-yvelines-val-doise) — Directive NIS2 : votre PME en Yvelines (78) ou Val d'Oise (95) est-elle concernée ? Auto-diagnostic, 10 mesures obligatoires, sanctions, obligation indirecte via la chaîne d'approvisionnement, plan d'action en 5 étapes, ressources locales.
+- [Combien coûte un audit informatique en Yvelines ? Tarifs 2026](https://augmenter.pro/blog/cout-audit-informatique-yvelines) — Guide tarifaire transparent : grille de prix par type d'audit et taille d'entreprise (1 500 à 20 000 € HT), comparaison Audit 180° gratuit vs Audit 360° (225 €), 3 cas concrets de PME en Yvelines (BTP, services, industrie), critères de choix prestataire, FAQ prix.
 
 ## Plateforme IA (app.augmenter.pro)
 

@@ -247,7 +247,7 @@ const faqItems = [
   {
     question: "Quel est le prix d'un audit informatique dans le Val-d'Oise ?",
     answer:
-      "Le diagnostic initial de 60 min est gratuit et sans engagement. L'Audit 360° complet coûte 225 € et comprend 3h d'intervention sur site, un rapport détaillé et un plan d'action chiffré.",
+      "Le diagnostic initial de 60 min est gratuit et sans engagement. L'Audit 360° complet coûte 225 € et comprend 3h d'intervention sur site, un rapport détaillé et un plan d'action chiffré. Un audit PME standard coûte entre 2 000 et 15 000 € HT sur le marché. Détails dans notre guide tarifaire : /blog/cout-audit-informatique-yvelines",
   },
   {
     question: "Intervenez-vous à Cergy, Pontoise et Argenteuil ?",

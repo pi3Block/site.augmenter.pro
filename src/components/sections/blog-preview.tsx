@@ -9,6 +9,15 @@ import Link from "next/link";
 
 const articles = [
   {
+    slug: "cout-audit-informatique-yvelines",
+    title:
+      "Combien coûte un audit informatique en Yvelines (78) ? Guide tarifaire 2026",
+    excerpt:
+      "De 0 € à 20 000 € : grille tarifaire par taille d'entreprise, comparaison diagnostic gratuit vs audit complet, et 3 cas concrets de PME en Yvelines.",
+    tags: ["Audit 360°", "PME"],
+    readTime: "8 min",
+  },
+  {
     slug: "nis2-pme-yvelines-val-doise",
     title:
       "NIS2 et PME : Guide Pratique pour les Yvelines et le Val d'Oise (78/95)",

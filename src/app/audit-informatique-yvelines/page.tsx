@@ -247,7 +247,7 @@ const faqItems = [
   {
     question: "Combien coûte un audit informatique en Yvelines ?",
     answer:
-      "Le diagnostic initial de 60 min est gratuit et sans engagement. L'Audit 360° complet coûte 225 € et inclut 3h sur site, un rapport détaillé et un plan d'action chiffré avec des recommandations priorisées.",
+      "Le diagnostic initial de 60 min est gratuit et sans engagement. L'Audit 360° complet coûte 225 € et inclut 3h sur site, un rapport détaillé et un plan d'action chiffré. Sur le marché, un audit PME standard coûte entre 2 000 et 15 000 € HT selon la taille et le périmètre. Consultez notre guide complet sur le coût d'un audit informatique en Yvelines : /blog/cout-audit-informatique-yvelines",
   },
   {
     question: "Combien de temps dure un audit informatique complet ?",
