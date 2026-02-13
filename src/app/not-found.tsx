@@ -60,7 +60,7 @@ export default function NotFound() {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-base">
-              <Link href="/plateforme">Découvrir la plateforme</Link>
+              <Link href="/prestations">Voir nos prestations</Link>
             </Button>
           </motion.div>
 

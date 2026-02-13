@@ -246,6 +246,8 @@ La fenêtre pour dominer cette intersection est MAINTENANT — avant que les act
 | IA Booster / Osez l'IA : financement 80% | Stratégie IA | P1 | 📋 |
 | NIS2 PME Yvelines : guide conformité | Compliance | P1 | 📋 |
 | Facturation électronique BTP 2026 | Secteurs | P2 | 📋 |
+| Veille concurrentielle IA pour PME | Stratégie IA | P1 | ✅ |
+| Automatiser emails et réseaux sociaux avec l'IA | Stratégie IA | P1 | ✅ |
 | Par où commencer avec l'IA dans sa PME | Stratégie IA | P2 | 📋 |
 | ROI de l'IA dans une PME — chiffres concrets | Stratégie IA | P2 | 📋 |
 | AI Act 2026 : guide PME | Compliance | P2 | 📋 |
@@ -623,6 +625,9 @@ TRIMESTRIELLEMENT :
 | 2026-02-13 | Création du document — analyse GSC, cartographie 22 pages, veille concurrentielle complète | Base de référence établie |
 | 2026-02-13 | Publication article NIS2 PME Yvelines/Val d'Oise — `/blog/nis2-pme-yvelines-val-doise` | 8e article blog, cluster Compliance lancé, FAQ JSON-LD, ~2 500 mots |
 | 2026-02-13 | Publication article coût audit informatique Yvelines — `/blog/cout-audit-informatique-yvelines` | 9e article blog, cluster Audit IT renforcé, FAQ JSON-LD (5 questions), ~2 200 mots, backlinks depuis pages piliers 78/95 |
+| 2026-02-13 | Transformation `/plateforme` → `/projets` (page portfolio sobre, footer uniquement) + 2 articles extraits | Page plateforme dé-prominentisée : retirée du header, hero, homepage. 11 redirections 301 (plateforme + 10 modules). 5 composants platform-* supprimés. |
+| 2026-02-13 | Publication article veille concurrentielle IA PME — `/blog/veille-concurrentielle-ia-pme` | 10e article blog, cluster Stratégie IA renforcé, ~1 800 mots, guide 5 étapes |
+| 2026-02-13 | Publication article automatiser emails/réseaux sociaux IA — `/blog/automatiser-emails-reseaux-sociaux-ia` | 11e article blog, cluster Stratégie IA renforcé, ~1 600 mots, outils testés + retour terrain |
 
 ---
 

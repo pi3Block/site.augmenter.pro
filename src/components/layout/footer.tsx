@@ -14,7 +14,7 @@ const footerLinks = {
   ],
   ressources: [
     { href: "/strategie-ia-pme", label: "Stratégie IA PME" },
-    { href: "/plateforme", label: "Plateforme IA" },
+    { href: "/projets", label: "Nos projets" },
     { href: "/blog", label: "Articles & Tutos" },
     { href: "/idees", label: "Idées PRO" },
     { href: "/approche", label: "Notre approche" },

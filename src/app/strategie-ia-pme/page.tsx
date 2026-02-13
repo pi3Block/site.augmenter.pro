@@ -608,14 +608,14 @@ export default function StrategieIaPmePage() {
             </Card>
 
             <p className="mt-6 text-center text-sm text-muted-foreground">
-              Explorez aussi notre{" "}
+              Découvrez aussi nos{" "}
               <Link
-                href="/plateforme"
+                href="/projets"
                 className="text-primary underline-offset-4 hover:underline"
               >
-                plateforme IA
+                projets IA
               </Link>{" "}
-              : 10 modules pour devenir un professionnel augmenté.
+              : 10 modules développés pour automatiser le quotidien professionnel.
             </p>
           </div>
         </div>

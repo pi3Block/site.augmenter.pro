@@ -9,6 +9,24 @@ import Link from "next/link";
 
 const articles = [
   {
+    slug: "veille-concurrentielle-ia-pme",
+    title:
+      "Veille Concurrentielle IA pour PME : Guide Pratique 2026",
+    excerpt:
+      "Comment automatiser votre veille concurrentielle avec l'IA. Méthode en 5 étapes, outils recommandés et retour d'expérience terrain pour PME.",
+    tags: ["Intelligence Artificielle", "PME"],
+    readTime: "8 min",
+  },
+  {
+    slug: "automatiser-emails-reseaux-sociaux-ia",
+    title:
+      "Automatiser Emails et Réseaux Sociaux avec l'IA en PME",
+    excerpt:
+      "Gagnez 10h par semaine en automatisant vos emails et publications sociales avec l'IA. Guide pratique et outils testés pour dirigeants de PME.",
+    tags: ["Intelligence Artificielle", "PME"],
+    readTime: "7 min",
+  },
+  {
     slug: "cout-audit-informatique-yvelines",
     title:
       "Combien coûte un audit informatique en Yvelines (78) ? Guide tarifaire 2026",

@@ -96,59 +96,19 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://augmenter.pro/plateforme</loc>
+    <loc>https://augmenter.pro/projets</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://augmenter.pro/plateforme/onboarding-ia</loc>
+    <loc>https://augmenter.pro/blog/veille-concurrentielle-ia-pme</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://augmenter.pro/plateforme/dashboard-intelligent</loc>
+    <loc>https://augmenter.pro/blog/automatiser-emails-reseaux-sociaux-ia</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://augmenter.pro/plateforme/curation-ia</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://augmenter.pro/plateforme/reseau-professionnel</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://augmenter.pro/plateforme/email-intelligent</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://augmenter.pro/plateforme/publication-sociale</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://augmenter.pro/plateforme/transcription-vocale</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://augmenter.pro/plateforme/bot-telegram</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://augmenter.pro/plateforme/analyse-documents</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://augmenter.pro/plateforme/veille-concurrentielle</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://augmenter.pro/mentions-legales</loc>

@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { modules } from "@/data/modules";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://augmenter.pro";
@@ -7,12 +6,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
-    {
-      url: `${base}/plateforme`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
     {
       url: `${base}/prestations`,
       lastModified: now,
@@ -44,6 +37,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${base}/projets`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
       url: `${base}/mentions-legales`,
       lastModified: now,
       changeFrequency: "yearly",
@@ -51,14 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const modulePages: MetadataRoute.Sitemap = modules.map((mod) => ({
-    url: `${base}/plateforme/${mod.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
-
   const blogArticles: MetadataRoute.Sitemap = [
+    "veille-concurrentielle-ia-pme",
+    "automatiser-emails-reseaux-sociaux-ia",
+    "cout-audit-informatique-yvelines",
+    "nis2-pme-yvelines-val-doise",
+    "serveur-mcp-guide-pratique-pme",
+    "serveur-mcp-integration-crm-erp",
     "machine-de-guerre-commerciale",
     "ia-redefinit-vente-commerciale",
     "claude-code-prompt-architecture",
@@ -71,5 +69,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...modulePages, ...blogArticles];
+  return [...staticPages, ...blogArticles];
 }

@@ -48,6 +48,17 @@ const nextConfig: NextConfig = {
       { source: "/de-la-prospection-au-closing-comment-ia-redefinit-la-vente-commerciale", destination: "/blog/ia-redefinit-vente-commerciale", permanent: true },
       { source: "/nos-articles", destination: "/blog", permanent: true },
       { source: "/rdv-rapide", destination: "/contact", permanent: true },
+      { source: "/plateforme", destination: "/projets", permanent: true },
+      { source: "/plateforme/onboarding-ia", destination: "/projets", permanent: true },
+      { source: "/plateforme/dashboard-intelligent", destination: "/projets", permanent: true },
+      { source: "/plateforme/curation-ia", destination: "/projets", permanent: true },
+      { source: "/plateforme/reseau-professionnel", destination: "/projets", permanent: true },
+      { source: "/plateforme/email-intelligent", destination: "/projets", permanent: true },
+      { source: "/plateforme/publication-sociale", destination: "/projets", permanent: true },
+      { source: "/plateforme/transcription-vocale", destination: "/projets", permanent: true },
+      { source: "/plateforme/bot-telegram", destination: "/projets", permanent: true },
+      { source: "/plateforme/analyse-documents", destination: "/projets", permanent: true },
+      { source: "/plateforme/veille-concurrentielle", destination: "/projets", permanent: true },
     ];
   },
 };

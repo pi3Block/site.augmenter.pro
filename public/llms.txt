@@ -37,20 +37,23 @@ Zone : Yvelines (78), Val d'Oise (95), Île-de-France.
 - [5 signes de moderniser l'informatique de votre PME](https://augmenter.pro/blog/5-signes-moderniser-informatique-pme) — Lenteurs, pannes, coûts cachés : les signaux d'alerte pour les PME du BTP et de l'industrie.
 - [NIS2 et PME : Guide Pratique pour les Yvelines et le Val d'Oise](https://augmenter.pro/blog/nis2-pme-yvelines-val-doise) — Directive NIS2 : votre PME en Yvelines (78) ou Val d'Oise (95) est-elle concernée ? Auto-diagnostic, 10 mesures obligatoires, sanctions, obligation indirecte via la chaîne d'approvisionnement, plan d'action en 5 étapes, ressources locales.
 - [Combien coûte un audit informatique en Yvelines ? Tarifs 2026](https://augmenter.pro/blog/cout-audit-informatique-yvelines) — Guide tarifaire transparent : grille de prix par type d'audit et taille d'entreprise (1 500 à 20 000 € HT), comparaison Audit 180° gratuit vs Audit 360° (225 €), 3 cas concrets de PME en Yvelines (BTP, services, industrie), critères de choix prestataire, FAQ prix.
+- [Veille Concurrentielle IA pour PME : Guide Pratique 2026](https://augmenter.pro/blog/veille-concurrentielle-ia-pme) — Comment automatiser votre veille concurrentielle avec l'IA. Méthode en 5 étapes, outils recommandés et retour d'expérience terrain pour PME.
+- [Automatiser Emails et Réseaux Sociaux avec l'IA en PME](https://augmenter.pro/blog/automatiser-emails-reseaux-sociaux-ia) — Gagnez 10h par semaine en automatisant vos emails et publications sociales avec l'IA. Guide pratique et outils testés pour dirigeants de PME.
 
-## Plateforme IA (app.augmenter.pro)
+## Projets IA
 
-10 modules IA pour professionnels, 100% open source et privacy-first :
-- [A — Onboarding & Digital Persona](https://augmenter.pro/plateforme/onboarding-ia) — Audit intelligent qui génère votre profil numérique et configure votre dashboard.
-- [B — Dashboard Intelligent](https://augmenter.pro/plateforme/dashboard-intelligent) — Tableau de bord personnalisé avec widgets IA.
-- [C — Curation IA](https://augmenter.pro/plateforme/curation-ia) — Veille automatisée et curation de contenu par IA.
-- [D — Réseau Professionnel](https://augmenter.pro/plateforme/reseau-professionnel) — Gestion intelligente de votre réseau et contacts.
-- [E — Email Intelligent](https://augmenter.pro/plateforme/email-intelligent) — Rédaction et tri d'emails assistés par IA.
-- [F — Publication Sociale](https://augmenter.pro/plateforme/publication-sociale) — Création et planification de posts réseaux sociaux.
-- [G — Transcription Vocale](https://augmenter.pro/plateforme/transcription-vocale) — Transcription audio/vidéo et résumés automatiques.
-- [H — Bot Telegram](https://augmenter.pro/plateforme/bot-telegram) — Assistant IA accessible via Telegram.
-- [I — Analyse Documents](https://augmenter.pro/plateforme/analyse-documents) — Extraction et analyse intelligente de documents.
-- [J — Veille Concurrentielle](https://augmenter.pro/plateforme/veille-concurrentielle) — Surveillance automatisée de vos concurrents.
+10 modules IA développés par augmenter.PRO, open source et privacy-first :
+- Onboarding & Digital Persona — Audit intelligent et profil numérique.
+- Dashboard Intelligent — Tableau de bord personnalisé avec widgets IA.
+- Curation IA — Veille automatisée et curation de contenu.
+- Réseau Professionnel — Gestion intelligente du réseau et contacts.
+- Email Intelligent — Rédaction et tri d'emails assistés par IA.
+- Publication Sociale — Création et planification de posts multi-canal.
+- Transcription Vocale — Transcription audio/vidéo et résumés automatiques.
+- Bot Telegram — Assistant IA accessible via Telegram.
+- Analyse Documents — Extraction et analyse intelligente de documents.
+- Veille Concurrentielle — Surveillance automatisée des concurrents.
+Voir tous les projets : https://augmenter.pro/projets
 
 ## Idées d'innovation
 
@@ -106,7 +109,7 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 - https://augmenter.pro/idees — Idées IA & Automatisation
 - https://augmenter.pro/blog — Blog Articles & Tutos
 - https://augmenter.pro/contact — Contact & Audit Gratuit
-- https://augmenter.pro/plateforme — Plateforme IA pour Professionnels (10 modules)
+- https://augmenter.pro/projets — Nos Projets & Réalisations IA
 - https://augmenter.pro/audit-informatique-yvelines — Audit Informatique Yvelines (78)
 - https://augmenter.pro/audit-informatique-val-doise — Audit Informatique Val-d'Oise (95)
 - https://augmenter.pro/integration-mcp — Intégration MCP pour PME (serveurs MCP, agents IA, CRM/ERP)
