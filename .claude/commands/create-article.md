@@ -10,14 +10,28 @@ Tu es un expert en rédaction SEO pour le marché français des PME. Tu vas cré
 - **Données structurées** : Chaque article génère automatiquement un JSON-LD `Article` via `ArticleLayout`
 - **LLM optimization** : Le site a un `public/llms.txt` lu par Perplexity, ChatGPT, Claude
 
+## Document de référence stratégique
+
+**OBLIGATOIRE** : Avant toute action, consulter `STRATEGIE-EDITORIALE.md` à la racine du projet pour :
+- Vérifier la file de production prioritisée (§5) et le cluster soutenu (§3)
+- Identifier les axes de variabilité pertinents (§6)
+- Sélectionner les stats sourcées à intégrer (§7.1) et les PAA à couvrir (§7.2)
+- Suivre le protocole de crawl web (§8)
+- Après publication : mettre à jour les statuts (§5), la matrice (§4) et le journal (§11)
+
+---
+
 ## Paramètre requis
 
 Le sujet/mot-clé principal est : `$ARGUMENTS`
 
-Si aucun argument n'est fourni, demande à l'utilisateur :
-- Le sujet principal / mot-clé cible
-- Le secteur visé (BTP, immobilier, industrie, artisans, ou généraliste)
-- La zone géographique si pertinent (Yvelines 78, Val d'Oise 95, Île-de-France, ou national)
+Si aucun argument n'est fourni :
+1. **D'abord** : consulter `STRATEGIE-EDITORIALE.md` §12 pour le prochain article recommandé
+2. Proposer ce contenu avec sa justification stratégique
+3. Si l'utilisateur refuse, demander :
+   - Le sujet principal / mot-clé cible
+   - Le secteur visé (BTP, immobilier, industrie, artisans, ou généraliste)
+   - La zone géographique si pertinent (Yvelines 78, Val d'Oise 95, Île-de-France, ou national)
 
 ## Étape 1 — Recherche SEO
 
@@ -227,3 +241,9 @@ Vérifie et affiche un rapport :
 - [ ] Le ton est "consultant qui conseille", pas "encyclopédie qui compile"
 - [ ] Aucun passage n'est une reformulation directe d'un concurrent
 - [ ] Le sujet relève du périmètre d'expertise augmenter.PRO
+
+### Mise à jour stratégie éditoriale (OBLIGATOIRE)
+- [ ] `STRATEGIE-EDITORIALE.md` §5 : statut du contenu mis à jour (📋 → ✅)
+- [ ] `STRATEGIE-EDITORIALE.md` §4 : matrice de contenu mise à jour
+- [ ] `STRATEGIE-EDITORIALE.md` §11 : entrée ajoutée au journal des mises à jour
+- [ ] `STRATEGIE-EDITORIALE.md` §12 : "prochain contenu recommandé" mis à jour si nécessaire

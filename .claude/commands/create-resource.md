@@ -10,14 +10,37 @@ Tu es un expert en stratégie de contenu SEO pour le marché français des PME. 
 - **SEO/LLM stack** : JSON-LD structuré, `public/llms.txt`, `public/sitemap.xml`, `public/robots.txt`
 - **Contact** : formulaire client-side `mailto:` (pas d'API serveur)
 
+## Document de référence stratégique
+
+**OBLIGATOIRE** : Avant toute action, lire `STRATEGIE-EDITORIALE.md` à la racine du projet. Ce document contient :
+- La file de production prioritisée (§5) — respecter l'ordre sauf instruction contraire
+- Les clusters de mots-clés et pages piliers (§3) — identifier le cluster soutenu
+- Les axes de variabilité (§6) — géo, secteur, format, intention, saisonnier
+- La banque de données et stats (§7) — statistiques sourcées à intégrer
+- Les questions PAA (§7.2) — questions à couvrir en FAQ ou sous-sections
+- Le protocole de crawl (§8) — étapes de recherche obligatoires avant rédaction
+- Les optimisations techniques (§9) — titles, maillage, FAQ à améliorer
+
+**Workflow** :
+1. Lire `STRATEGIE-EDITORIALE.md` §5 et §8
+2. Si `$ARGUMENTS` est vide → proposer le prochain contenu de la file §5 (voir §12)
+3. Si `$ARGUMENTS` est fourni → vérifier la cohérence avec la stratégie (§8.3)
+4. Exécuter le protocole de recherche (§8.1 + §8.2) avant de rédiger
+5. Après publication → mettre à jour `STRATEGIE-EDITORIALE.md` (statuts §5, matrice §4, journal §11)
+
+---
+
 ## Paramètre requis
 
 Le besoin / sujet est : `$ARGUMENTS`
 
-Si aucun argument n'est fourni, demande à l'utilisateur :
-- Le besoin ou objectif business (ex: "cibler les artisans BTP", "se positionner sur Versailles", "comparer les CRM")
-- Le mot-clé principal visé
-- La zone géographique si pertinent
+Si aucun argument n'est fourni :
+1. **D'abord** : consulter `STRATEGIE-EDITORIALE.md` §12 (Référence Rapide) pour le prochain contenu recommandé
+2. Proposer ce contenu à l'utilisateur avec la justification stratégique (cluster, priorité, timing)
+3. Si l'utilisateur refuse ou veut autre chose, demander :
+   - Le besoin ou objectif business (ex: "cibler les artisans BTP", "se positionner sur Versailles", "comparer les CRM")
+   - Le mot-clé principal visé
+   - La zone géographique si pertinent
 
 ---
 
@@ -484,3 +507,9 @@ Vérifie et affiche un rapport adapté au type créé :
 - [ ] `robots: { index: false, follow: true }` dans metadata
 - [ ] Contenu conforme RGPD (si politique de confidentialité)
 - [ ] Lien ajouté dans la section "legal" du footer
+
+### Mise à jour stratégie éditoriale (OBLIGATOIRE)
+- [ ] `STRATEGIE-EDITORIALE.md` §5 : statut du contenu mis à jour (📋 → ✅)
+- [ ] `STRATEGIE-EDITORIALE.md` §4 : matrice de contenu mise à jour
+- [ ] `STRATEGIE-EDITORIALE.md` §11 : entrée ajoutée au journal des mises à jour
+- [ ] `STRATEGIE-EDITORIALE.md` §12 : "prochain contenu recommandé" mis à jour si nécessaire

@@ -9,6 +9,15 @@ import Link from "next/link";
 
 const articles = [
   {
+    slug: "nis2-pme-yvelines-val-doise",
+    title:
+      "NIS2 et PME : Guide Pratique pour les Yvelines et le Val d'Oise (78/95)",
+    excerpt:
+      "La directive NIS2 multiplie par 30 le nombre d'entreprises soumises à des obligations de cybersécurité. Votre PME est-elle concernée ? Auto-diagnostic et plan d'action.",
+    tags: ["Cybersécurité", "PME", "Audit 360°"],
+    readTime: "10 min",
+  },
+  {
     slug: "serveur-mcp-guide-pratique-pme",
     title:
       "Serveur MCP : Guide Pratique pour Connecter l'IA à Vos Outils Métier",
