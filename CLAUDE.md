@@ -203,12 +203,13 @@ Use `/create-article <sujet>` or follow this manual process:
 2. Export `metadata: Metadata` with SEO-optimized title & description
 3. Pass `slug="<slug>"` to `ArticleLayout` for JSON-LD canonical URL
 4. Pass `dateISO` (ISO 8601) and `dateModified` props to `ArticleLayout`
-5. Pass `image` prop if the article has a featured image
-6. Add the article entry to `src/components/sections/blog-preview.tsx` (first position in `articles` array)
-7. Add the URL to `public/sitemap.xml` (with `<lastmod>` in ISO 8601)
-8. Add the article to `public/news-sitemap.xml`
-9. Add the article to `public/llms.txt` in the blog section
-10. Run `npm run build` to verify
+5. Add image `public/images/blog/<slug>.webp` (WebP, 16:9, < 300 Ko) and pass `image="/images/blog/<slug>.webp"` prop
+6. Update `public/images/blog/INDEX.md` with the new image description (type, dimensions, poids, description, contexte, alt text)
+7. Add the article entry to `src/components/sections/blog-preview.tsx` (first position in `articles` array)
+8. Add the URL to `public/sitemap.xml` (with `<lastmod>` in ISO 8601)
+9. Add the article to `public/news-sitemap.xml`
+10. Add the article to `public/llms.txt` in the blog section
+11. Run `npm run build` to verify
 
 ## Key Constraints
 

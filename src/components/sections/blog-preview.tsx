@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 const articles = [
   {
@@ -16,6 +17,7 @@ const articles = [
       "Comment automatiser votre veille concurrentielle avec l'IA. Méthode en 5 étapes, outils recommandés et retour d'expérience terrain pour PME.",
     tags: ["Intelligence Artificielle", "PME"],
     readTime: "8 min",
+    image: "/images/blog/veille-concurrentielle-ia-pme.webp",
   },
   {
     slug: "automatiser-emails-reseaux-sociaux-ia",
@@ -25,6 +27,7 @@ const articles = [
       "Gagnez 10h par semaine en automatisant vos emails et publications sociales avec l'IA. Guide pratique et outils testés pour dirigeants de PME.",
     tags: ["Intelligence Artificielle", "PME"],
     readTime: "7 min",
+    image: "/images/blog/automatiser-emails-reseaux-sociaux-ia.webp",
   },
   {
     slug: "cout-audit-informatique-yvelines",
@@ -34,6 +37,7 @@ const articles = [
       "De 0 € à 20 000 € : grille tarifaire par taille d'entreprise, comparaison diagnostic gratuit vs audit complet, et 3 cas concrets de PME en Yvelines.",
     tags: ["Audit 360°", "PME"],
     readTime: "8 min",
+    image: "/images/blog/cout-audit-informatique-yvelines.webp",
   },
   {
     slug: "nis2-pme-yvelines-val-doise",
@@ -43,6 +47,7 @@ const articles = [
       "La directive NIS2 multiplie par 30 le nombre d'entreprises soumises à des obligations de cybersécurité. Votre PME est-elle concernée ? Auto-diagnostic et plan d'action.",
     tags: ["Cybersécurité", "PME", "Audit 360°"],
     readTime: "10 min",
+    image: "/images/blog/nis2-pme-yvelines-val-doise.webp",
   },
   {
     slug: "serveur-mcp-guide-pratique-pme",
@@ -52,6 +57,7 @@ const articles = [
       "Le protocole MCP permet à vos agents IA d'accéder directement à vos outils métier — CRM, ERP, messagerie. Voici comment ça fonctionne et par où commencer.",
     tags: ["Intelligence Artificielle", "PME"],
     readTime: "8 min",
+    image: "/images/blog/serveur-mcp-guide-pratique-pme.webp",
   },
   {
     slug: "serveur-mcp-integration-crm-erp",
@@ -61,6 +67,7 @@ const articles = [
       "95% des projets IA échouent sur l'intégration. Découvrez comment le protocole MCP connecte vos agents IA à HubSpot, Salesforce ou ERP. ROI concret.",
     tags: ["Intelligence Artificielle", "Commercial"],
     readTime: "7 min",
+    image: "/images/blog/serveur-mcp-integration-crm-erp.webp",
   },
   {
     slug: "machine-de-guerre-commerciale",
@@ -70,6 +77,7 @@ const articles = [
       "Découvrez comment internaliser votre acquisition client. De l'optimisation LLM SEO à la pré-qualification par commerciaux indépendants.",
     tags: ["Intelligence Artificielle", "Commercial"],
     readTime: "3 min",
+    image: "/images/blog/augmenter-pro-village-renovation-hero.webp",
   },
   {
     slug: "ia-redefinit-vente-commerciale",
@@ -78,6 +86,7 @@ const articles = [
       "L'IA s'intègre à chaque maillon du cycle de vente pour automatiser le fastidieux, révéler des insights invisibles et augmenter l'impact humain.",
     tags: ["Intelligence Artificielle", "Commercial"],
     readTime: "3 min",
+    image: "/images/blog/ia-redefinit-vente-commerciale.webp",
   },
   {
     slug: "claude-code-prompt-architecture",
@@ -87,6 +96,7 @@ const articles = [
       "Travailler avec des fichiers .md ! Faites la différence entre un projet amateur et la création de quelque chose de valeur.",
     tags: ["Claude Code"],
     readTime: "2 min",
+    image: "/images/blog/claude-code-prompt-architecture.webp",
   },
   {
     slug: "comparatif-llm-vente-commerciale",
@@ -95,6 +105,7 @@ const articles = [
       "Explorer comment l'IA transforme les pratiques de vente commerciale, avec un tableau comparatif détaillé des forces, faiblesses et impact RGPD.",
     tags: ["Intelligence Artificielle"],
     readTime: "5 min",
+    image: "/images/blog/comparatif-llm-vente-commerciale.webp",
   },
   {
     slug: "5-signes-moderniser-informatique-pme",
@@ -103,6 +114,7 @@ const articles = [
       "Vous êtes dirigeant d'une PME du BTP, immobilier ou industrie dans les Yvelines / Val d'Oise ? Découvrez les 5 signaux d'alerte.",
     tags: ["Audit 360°", "PME"],
     readTime: "3 min",
+    image: "/images/blog/5-signes-moderniser-informatique-pme.webp",
   },
 ];
 
@@ -138,7 +150,18 @@ export function BlogPreview() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <Link href={`/blog/${article.slug}`}>
-                <Card className="group h-full border-border/50 transition-all hover:border-primary/20 hover:shadow-lg">
+                <Card className="group h-full overflow-hidden border-border/50 transition-all hover:border-primary/20 hover:shadow-lg">
+                  {article.image && (
+                    <div className="relative aspect-video overflow-hidden">
+                      <Image
+                        src={article.image}
+                        alt={article.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
+                  )}
                   <CardContent className="flex h-full flex-col p-6">
                     <div className="flex flex-wrap gap-2">
                       {article.tags.map((tag) => (

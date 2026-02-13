@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { ArticleReadEvent } from "@/components/layout/article-read-event";
 import { Badge } from "@/components/ui/badge";
@@ -111,6 +112,19 @@ export function ArticleLayout({
               {readTime}
             </span>
           </div>
+
+          {image && (
+            <div className="relative mt-8 aspect-video overflow-hidden rounded-xl">
+              <Image
+                src={image}
+                alt={title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 768px"
+                priority
+              />
+            </div>
+          )}
 
           <div className="mt-12 space-y-8 text-base leading-relaxed text-foreground/90 [&_h2]:mt-12 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:tracking-tight [&_h3]:mt-8 [&_h3]:text-xl [&_h3]:font-semibold [&_li]:ml-4 [&_li]:list-disc [&_li]:text-muted-foreground [&_p]:text-muted-foreground [&_strong]:text-foreground [&_ul]:mt-3 [&_ul]:space-y-2">
             {children}
