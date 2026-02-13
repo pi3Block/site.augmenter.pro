@@ -139,7 +139,9 @@
       "Bash(cmd /c \"type C:\\\\Users\\\\black\\\\.claude\\\\settings.json 2>&1\")",
       "Bash(cmd /c \"type C:\\\\Users\\\\black\\\\.cursor\\\\mcp.json 2>&1\")",
       "Bash(cmd /c \"dir C:\\\\Users\\\\black\\\\.claude\\\\*.json /b 2>&1\")",
-      "Bash(claude mcp add dfs-mcp --env DATAFORSEO_USERNAME=pro@pierrelegrand.fr --env DATAFORSEO_PASSWORD=cac41f3e947a471a -- npx -y dataforseo-mcp-server)"
+      "Bash(claude mcp add dfs-mcp --env DATAFORSEO_USERNAME=pro@pierrelegrand.fr --env DATAFORSEO_PASSWORD=cac41f3e947a471a -- npx -y dataforseo-mcp-server)",
+      "WebFetch(domain:augmenter.pro)",
+      "Bash(npm uninstall:*)"
     ]
   },
   "mcpServers": {
@@ -149,7 +151,10 @@
     },
     "dfs-mcp": {
       "command": "npx.cmd",
-      "args": ["-y", "dataforseo-mcp-server"],
+      "args": [
+        "-y",
+        "dataforseo-mcp-server"
+      ],
       "env": {
         "DATAFORSEO_USERNAME": "pro@pierrelegrand.fr",
         "DATAFORSEO_PASSWORD": "cac41f3e947a471a"
@@ -157,7 +162,10 @@
     },
     "google-search-console": {
       "command": "npx.cmd",
-      "args": ["-y", "mcp-server-gsc"],
+      "args": [
+        "-y",
+        "mcp-server-gsc"
+      ],
       "env": {
         "GOOGLE_APPLICATION_CREDENTIALS": "C:\\Users\\black\\.credentials\\augmenter-pro-201c2230b7bd.json"
       }

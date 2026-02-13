@@ -45,6 +45,9 @@ const nextConfig: NextConfig = {
       { source: "/actualites-pro", destination: "/blog", permanent: true },
       { source: "/approche-360", destination: "/approche", permanent: true },
       { source: "/projets-pro", destination: "/idees", permanent: true },
+      { source: "/de-la-prospection-au-closing-comment-ia-redefinit-la-vente-commerciale", destination: "/blog/ia-redefinit-vente-commerciale", permanent: true },
+      { source: "/nos-articles", destination: "/blog", permanent: true },
+      { source: "/rdv-rapide", destination: "/contact", permanent: true },
     ];
   },
 };
