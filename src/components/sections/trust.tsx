@@ -6,27 +6,27 @@ import { Target, Users, Lightbulb, TrendingUp } from "lucide-react";
 const stats = [
   {
     icon: Target,
-    value: "360°",
-    label: "Approche globale",
-    description: "Humain, outils et processus alignés",
+    value: "60 min",
+    label: "Audit gratuit",
+    description: "Diagnostic complet de votre SI",
   },
   {
     icon: Users,
-    value: "PME",
-    label: "Notre cible",
-    description: "Yvelines (78) & Val d'Oise (95)",
+    value: "78 & 95",
+    label: "Zone d'intervention",
+    description: "Yvelines, Val d'Oise & à distance",
   },
   {
     icon: Lightbulb,
-    value: "IA",
-    label: "Technologies",
-    description: "Mistral AI, robotique, IoT",
+    value: "−30%",
+    label: "Temps gagné",
+    description: "En moyenne sur les tâches automatisées",
   },
   {
     icon: TrendingUp,
-    value: "Sur mesure",
-    label: "Solutions",
-    description: "Adaptées à votre métier et budget",
+    value: "48h",
+    label: "Premiers résultats",
+    description: "Quick wins déployés sous 48h",
   },
 ];
 

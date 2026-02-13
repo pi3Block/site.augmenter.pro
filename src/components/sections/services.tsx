@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Brain, Monitor, Bot } from "lucide-react";
+import { Brain, Monitor, Bot, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
 const services = [
   {
@@ -11,6 +12,7 @@ const services = [
     description:
       "L'IA ne sert pas qu'à générer des images de chats. Automatisez vos tâches répétitives, analysez vos données et prenez de meilleures décisions — adaptées à votre métier.",
     features: ["Assistants IA personnalisés", "Automatisation des processus", "Analyse prédictive"],
+    href: "/prestations",
   },
   {
     icon: Monitor,
@@ -18,6 +20,7 @@ const services = [
     description:
       "Changer d'outil, c'est un projet humain avant d'être technique. Nous accompagnons vos équipes pour adopter des solutions numériques qui simplifient vraiment le quotidien.",
     features: ["Audit des outils existants", "Migration & intégration", "Formation des équipes"],
+    href: "/prestations",
   },
   {
     icon: Bot,
@@ -25,6 +28,7 @@ const services = [
     description:
       "Drones, robots, capteurs, caméras — nous explorons les technologies émergentes adaptées à votre secteur et à vos contraintes terrain.",
     features: ["Robots autonomes (nettoyage, logistique)", "Capteurs & monitoring", "Intégration IoT"],
+    href: "/prestations",
   },
 ];
 
@@ -81,6 +85,13 @@ export function Services() {
                       </li>
                     ))}
                   </ul>
+                  <Link
+                    href={service.href}
+                    className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                  >
+                    En savoir plus
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
                 </CardContent>
               </Card>
             </motion.div>

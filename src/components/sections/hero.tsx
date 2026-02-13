@@ -29,9 +29,8 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Devenez un{" "}
-            <span className="gradient-text">professionnel augmenté</span>{" "}
-            dès aujourd&apos;hui
+            Votre PME,{" "}
+            <span className="gradient-text">augmentée par l&apos;IA</span>
           </motion.h1>
 
           <motion.p

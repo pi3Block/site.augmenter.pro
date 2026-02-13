@@ -141,7 +141,7 @@ export function BlogPreview() {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {articles.map((article, i) => (
+          {articles.slice(0, 3).map((article, i) => (
             <motion.div
               key={article.slug}
               initial={{ opacity: 0, y: 30 }}

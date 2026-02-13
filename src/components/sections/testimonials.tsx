@@ -6,17 +6,17 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const testimonials = [
   {
-    name: "Jean D.",
-    role: "Dirigeant PME",
+    name: "Arnaud L.",
+    role: "Gérant, boutique jardin — Jouy-le-Moutier (95)",
     quote:
-      "Augmenter.pro a transformé notre équipe, améliorant notre efficacité et nos résultats de manière significative.",
+      "On gérait 500 références sur des fichiers Excel éparpillés. Pierre a centralisé notre catalogue et automatisé la mise en ligne sur Le Bon Coin. Résultat : 2h de saisie en moins par jour et +35 % de demandes clients en ligne.",
     stars: 5,
   },
   {
-    name: "Sophie M.",
-    role: "Directrice commerciale",
+    name: "Maud J.",
+    role: "Architecte d'intérieur indépendante",
     quote:
-      "Une expérience incroyable ! Grâce à augmenter.pro, nos outils numériques sont désormais optimisés et performants.",
+      "L'IA pour la déco, j'y croyais pas. Pierre m'a fait découvrir des outils qui accélèrent mes moodboards et mes propositions 3D. Mes clients reçoivent leurs planches en 48h au lieu d'une semaine — et la qualité a monté d'un cran.",
     stars: 5,
   },
   {

@@ -44,6 +44,14 @@ export const metadata: Metadata = {
     title: "augmenter.PRO — Consultant IA & Transformation Digitale PME",
     description:
       "Boostez votre PME avec l'IA. Audit gratuit 60 min, digitalisation et automatisation sur mesure en Yvelines (78) et Val d'Oise (95).",
+    images: [
+      {
+        url: "/images/general/og-augmenter-pro.webp",
+        width: 1200,
+        height: 630,
+        alt: "augmenter.PRO — Consultant IA & Transformation Digitale pour PME",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -89,8 +97,16 @@ const jsonLd = {
       url: "https://augmenter.pro",
       description:
         "Consultant IA, audit informatique et transformation digitale pour PME du BTP, immobilier et industrie en Yvelines (78) et Val d'Oise (95).",
+      image: "https://augmenter.pro/icon.png",
       telephone: "+33679119774",
       email: "vite@augmenter.pro",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Jouy-le-Moutier",
+        postalCode: "95280",
+        addressRegion: "Val d'Oise",
+        addressCountry: "FR",
+      },
       areaServed: [
         {
           "@type": "AdministrativeArea",

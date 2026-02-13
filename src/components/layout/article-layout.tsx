@@ -46,8 +46,10 @@ export function ArticleLayout({
       name: "augmenter.PRO",
       url: "https://augmenter.pro",
     },
-    datePublished: dateISO,
-    ...(dateModified && { dateModified }),
+    datePublished: dateISO.includes("T") ? dateISO : `${dateISO}T00:00:00+01:00`,
+    ...(dateModified && {
+      dateModified: dateModified.includes("T") ? dateModified : `${dateModified}T00:00:00+01:00`,
+    }),
     ...(image && { image: `https://augmenter.pro${image}` }),
     isAccessibleForFree: true,
     keywords: tags.join(", "),
