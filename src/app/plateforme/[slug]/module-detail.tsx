@@ -10,11 +10,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import type { Module } from "@/data/modules";
+import { getModuleBySlug } from "@/data/modules";
 
 interface ModuleDetailProps {
-  module: Module;
-  relatedModules: Module[];
+  slug: string;
+  relatedSlugs: string[];
 }
 
 const containerVariants = {
@@ -27,7 +27,14 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
 };
 
-export function ModuleDetail({ module: mod, relatedModules }: ModuleDetailProps) {
+export function ModuleDetail({ slug, relatedSlugs }: ModuleDetailProps) {
+  const mod = getModuleBySlug(slug);
+  if (!mod) return null;
+
+  const relatedModules = relatedSlugs
+    .map((relatedSlug) => getModuleBySlug(relatedSlug))
+    .filter((module): module is NonNullable<typeof module> => module !== undefined);
+
   return (
     <div className="pt-16">
       {/* Hero */}

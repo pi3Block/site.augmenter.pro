@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { modules, getModuleBySlug, getRelatedModules } from "@/data/modules";
+import { modules, getModuleBySlug } from "@/data/modules";
 import { ModuleDetail } from "./module-detail";
 
 export function generateStaticParams() {
   return modules.map((mod) => ({ slug: mod.slug }));
 }
 
-export function generateMetadata({
+type ModulePageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({
   params,
-}: {
-  params: { slug: string };
-}): Metadata {
-  const mod = getModuleBySlug(params.slug);
+}: ModulePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const mod = getModuleBySlug(slug);
   if (!mod) return {};
 
   return {
@@ -31,15 +34,12 @@ export function generateMetadata({
   };
 }
 
-export default function ModulePage({
+export default async function ModulePage({
   params,
-}: {
-  params: { slug: string };
-}) {
-  const mod = getModuleBySlug(params.slug);
+}: ModulePageProps) {
+  const { slug } = await params;
+  const mod = getModuleBySlug(slug);
   if (!mod) notFound();
-
-  const related = getRelatedModules(mod);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -84,7 +84,7 @@ export default function ModulePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ModuleDetail module={mod} relatedModules={related} />
+      <ModuleDetail slug={mod.slug} relatedSlugs={mod.relatedSlugs} />
     </>
   );
 }

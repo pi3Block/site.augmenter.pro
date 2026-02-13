@@ -141,7 +141,12 @@
       "Bash(cmd /c \"dir C:\\\\Users\\\\black\\\\.claude\\\\*.json /b 2>&1\")",
       "Bash(claude mcp add dfs-mcp --env DATAFORSEO_USERNAME=pro@pierrelegrand.fr --env DATAFORSEO_PASSWORD=cac41f3e947a471a -- npx -y dataforseo-mcp-server)",
       "WebFetch(domain:augmenter.pro)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "WebFetch(domain:www.ipaconseils.fr)",
+      "WebFetch(domain:www.plateya.fr)",
+      "WebFetch(domain:skillx.fr)",
+      "WebFetch(domain:www.cover-me.io)",
+      "WebFetch(domain:www.perenne-it.fr)"
     ]
   },
   "mcpServers": {
