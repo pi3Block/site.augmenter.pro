@@ -114,6 +114,8 @@ export default function Article() {
       tags={["Intelligence Artificielle"]}
       readTime="5 min"
       date="2025"
+      dateISO="2025-01-01"
+      dateModified="2025-01-01"
       slug="comparatif-llm-vente-commerciale"
     >
       <h2>Tableau Comparatif</h2>

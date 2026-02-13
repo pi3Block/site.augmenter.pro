@@ -19,6 +19,8 @@ export default function VeilleConcurrentielleIAPME() {
       tags={["Intelligence Artificielle", "PME", "Stratégie"]}
       readTime="8 min"
       date="13 février 2026"
+      dateISO="2026-02-13"
+      dateModified="2026-02-13"
       slug="veille-concurrentielle-ia-pme"
     >
       <p>

@@ -15,6 +15,8 @@ export default function Article() {
       tags={["Intelligence Artificielle", "Commercial"]}
       readTime="3 min"
       date="18 novembre 2025"
+      dateISO="2025-11-18"
+      dateModified="2025-11-18"
       slug="ia-redefinit-vente-commerciale"
     >
       <h2>1. Phase de Prospection : Identifier, Personnaliser, Automatiser</h2>

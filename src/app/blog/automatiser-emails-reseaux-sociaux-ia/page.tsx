@@ -20,6 +20,8 @@ export default function AutomatiserEmailsReseauxSociauxIA() {
       tags={["Intelligence Artificielle", "PME", "Productivité"]}
       readTime="7 min"
       date="13 février 2026"
+      dateISO="2026-02-13"
+      dateModified="2026-02-13"
       slug="automatiser-emails-reseaux-sociaux-ia"
     >
       <p>

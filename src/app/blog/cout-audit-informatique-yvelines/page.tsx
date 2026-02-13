@@ -63,6 +63,8 @@ export default function Article() {
       tags={["Audit 360°", "PME"]}
       readTime="8 min"
       date="13 février 2026"
+      dateISO="2026-02-13"
+      dateModified="2026-02-13"
       slug="cout-audit-informatique-yvelines"
     >
       <script

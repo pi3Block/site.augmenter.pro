@@ -15,6 +15,9 @@ export default function Article() {
       tags={["Intelligence Artificielle", "Commercial"]}
       readTime="3 min"
       date="28 janvier 2026"
+      dateISO="2026-01-28"
+      dateModified="2026-01-28"
+      image="/images/blog/augmenter-pro-village-renovation-hero.webp"
       slug="machine-de-guerre-commerciale"
     >
       <p>

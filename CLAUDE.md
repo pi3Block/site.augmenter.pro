@@ -6,8 +6,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Marketing website for **augmenter.pro** — an AI consulting and digital transformation agency targeting French SMEs. All content is in French. Deployed as a Node.js app on Hostinger (via GitHub integration).
 
-## Important
-Utilise crawl4ai pour crawl le web !!
+## Web Crawling
+
+**Priorité : crawl4ai self-hosted** (`https://crawl4ai.augmenter.pro`)
+- Endpoint principal : `POST /md` avec `{"url": "...", "f": "raw"}`
+- Endpoint complet : `POST /crawl` avec `{"urls": ["..."]}`
+- Ne PAS utiliser firecrawl — préférer toujours crawl4ai self-hosted
+- Si le MCP crawl4ai est connecté, utiliser les outils MCP (`mcp__crawl4ai__md`, etc.)
+- Sinon, appeler l'API REST directement via curl
 
 ## Commands
 
@@ -196,10 +202,13 @@ Use `/create-article <sujet>` or follow this manual process:
 1. Create `src/app/blog/<slug>/page.tsx` using `ArticleLayout` wrapper
 2. Export `metadata: Metadata` with SEO-optimized title & description
 3. Pass `slug="<slug>"` to `ArticleLayout` for JSON-LD canonical URL
-4. Add the article entry to `src/components/sections/blog-preview.tsx` (first position in `articles` array)
-5. Add the URL to `public/sitemap.xml`
-6. Add the article to `public/llms.txt` in the blog section
-7. Run `npm run build` to verify
+4. Pass `dateISO` (ISO 8601) and `dateModified` props to `ArticleLayout`
+5. Pass `image` prop if the article has a featured image
+6. Add the article entry to `src/components/sections/blog-preview.tsx` (first position in `articles` array)
+7. Add the URL to `public/sitemap.xml` (with `<lastmod>` in ISO 8601)
+8. Add the article to `public/news-sitemap.xml`
+9. Add the article to `public/llms.txt` in the blog section
+10. Run `npm run build` to verify
 
 ## Key Constraints
 

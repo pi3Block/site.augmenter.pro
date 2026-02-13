@@ -16,6 +16,8 @@ export default function Article() {
       tags={["Intelligence Artificielle", "PME"]}
       readTime="8 min"
       date="10 février 2026"
+      dateISO="2026-02-10"
+      dateModified="2026-02-10"
       slug="serveur-mcp-guide-pratique-pme"
     >
       <p>

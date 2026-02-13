@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://augmenter.pro/sitemap.xml
+Sitemap: https://augmenter.pro/news-sitemap.xml

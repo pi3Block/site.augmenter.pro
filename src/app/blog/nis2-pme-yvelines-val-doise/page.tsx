@@ -63,6 +63,8 @@ export default function Article() {
       tags={["Cybersécurité", "PME", "Audit 360°"]}
       readTime="10 min"
       date="13 février 2026"
+      dateISO="2026-02-13"
+      dateModified="2026-02-13"
       slug="nis2-pme-yvelines-val-doise"
     >
       <script

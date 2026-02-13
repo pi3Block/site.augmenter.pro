@@ -11,6 +11,9 @@ interface ArticleLayoutProps {
   tags: string[];
   readTime: string;
   date: string;
+  dateISO: string;
+  dateModified?: string;
+  image?: string;
   slug?: string;
   children: React.ReactNode;
 }
@@ -21,6 +24,9 @@ export function ArticleLayout({
   tags,
   readTime,
   date,
+  dateISO,
+  dateModified,
+  image,
   slug,
   children,
 }: ArticleLayoutProps) {
@@ -39,10 +45,19 @@ export function ArticleLayout({
       name: "augmenter.PRO",
       url: "https://augmenter.pro",
     },
-    datePublished: date,
+    datePublished: dateISO,
+    ...(dateModified && { dateModified }),
+    ...(image && { image: `https://augmenter.pro${image}` }),
+    isAccessibleForFree: true,
     keywords: tags.join(", "),
     inLanguage: "fr-FR",
-    ...(slug && { url: `https://augmenter.pro/blog/${slug}` }),
+    ...(slug && {
+      url: `https://augmenter.pro/blog/${slug}`,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `https://augmenter.pro/blog/${slug}`,
+      },
+    }),
     isPartOf: {
       "@type": "WebSite",
       name: "augmenter.PRO",
