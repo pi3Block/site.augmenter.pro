@@ -25,7 +25,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <BlogPreview />
+      <BlogPreview showAll />
 
       <CTA />
     </div>
