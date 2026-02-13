@@ -17,6 +17,7 @@ export default function Article() {
       date="18 novembre 2025"
       dateISO="2025-11-18"
       dateModified="2025-11-18"
+      image="/images/blog/ia-redefinit-vente-commerciale.webp"
       slug="ia-redefinit-vente-commerciale"
     >
       <h2>1. Phase de Prospection : Identifier, Personnaliser, Automatiser</h2>

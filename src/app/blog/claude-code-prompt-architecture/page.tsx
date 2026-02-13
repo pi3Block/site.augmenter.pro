@@ -14,9 +14,10 @@ export default function Article() {
       excerpt="Travailler avec des fichiers .md ! Faites la différence entre un projet amateur/POC et la création de quelque chose de valeur !"
       tags={["Claude Code"]}
       readTime="2 min"
-      date="2026"
-      dateISO="2026-01-01"
-      dateModified="2026-01-01"
+      date="9 février 2026"
+      dateISO="2026-02-09"
+      dateModified="2026-02-09"
+      image="/images/blog/claude-code-prompt-architecture.webp"
       slug="claude-code-prompt-architecture"
     >
       <h2>Vous êtes mon architecte logiciel principal et ingénieur full-stack</h2>

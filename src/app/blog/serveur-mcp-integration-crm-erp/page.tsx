@@ -18,6 +18,7 @@ export default function Article() {
       date="10 février 2026"
       dateISO="2026-02-10"
       dateModified="2026-02-10"
+      image="/images/blog/serveur-mcp-integration-crm-erp.webp"
       slug="serveur-mcp-integration-crm-erp"
     >
       <p>

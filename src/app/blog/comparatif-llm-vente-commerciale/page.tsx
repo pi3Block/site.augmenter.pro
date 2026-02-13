@@ -113,9 +113,10 @@ export default function Article() {
       excerpt="Explorer comment l'IA transforme les pratiques de vente commerciale, en mettant en lumière des outils spécifiques, leurs applications pratiques, ainsi que leurs forces et faiblesses."
       tags={["Intelligence Artificielle"]}
       readTime="5 min"
-      date="2025"
-      dateISO="2025-01-01"
-      dateModified="2025-01-01"
+      date="18 novembre 2025"
+      dateISO="2025-11-18"
+      dateModified="2025-11-18"
+      image="/images/blog/comparatif-llm-vente-commerciale.webp"
       slug="comparatif-llm-vente-commerciale"
     >
       <h2>Tableau Comparatif</h2>

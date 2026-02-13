@@ -65,6 +65,7 @@ export default function Article() {
       date="13 février 2026"
       dateISO="2026-02-13"
       dateModified="2026-02-13"
+      image="/images/blog/cout-audit-informatique-yvelines.webp"
       slug="cout-audit-informatique-yvelines"
     >
       <script

@@ -1,7 +1,7 @@
 # Index des images — blog/
 
 > Ce fichier décrit textuellement chaque image du dossier `public/images/blog/` pour permettre aux LLM de comprendre leur contenu, leur contexte et leur usage optimal.
-> Thématique commune : **Génération de leads IA pour la rénovation énergétique — cas client Hivy / augmenter.pro**
+> Deux thématiques : **Génération de leads IA pour la rénovation énergétique** (images `augmenter-pro-*`) et **illustrations d'articles de blog** (images par slug d'article).
 
 ---
 
@@ -98,3 +98,123 @@
 - **Contexte éditorial** : Montre l'outil numérique utilisé par les agents en call center pour qualifier les leads. Donne une image professionnelle et technologique du processus.
 - **Usage suggéré** : Illustration pour montrer l'aspect technologique et outillé de la qualification des leads. Idéale en hero d'article ou pour illustrer la section "outils" ou "notre plateforme".
 - **Alt text suggéré** : "Agent de call center tenant une tablette affichant les 4 critères de pré-qualification pour la rénovation énergétique : propriétaire, chauffage, éligibilité aides, besoin confirmé"
+
+---
+
+## veille-concurrentielle-ia-pme.webp
+
+- **Type** : Illustration flat design (IA générée)
+- **Dimensions** : Paysage 16:9
+- **Poids** : ~97 Ko
+- **Description** : Bureau moderne en open space avec plusieurs écrans et ordinateurs. Des dashboards analytiques flottent au-dessus des postes : graphiques en barres, courbes de tendances, camemberts, et un panneau étiqueté "AI". Palette violet/lavande avec accents ambre. Silhouettes de collaborateurs en arrière-plan. Style flat design épuré.
+- **Contexte éditorial** : Image hero de l'article sur la veille concurrentielle automatisée par IA pour les PME. Évoque l'analyse de données et le monitoring stratégique.
+- **Usage suggéré** : Hero d'article "Veille Concurrentielle IA pour PME".
+- **Alt text suggéré** : "Bureau moderne avec dashboards IA d'analyse concurrentielle : graphiques, courbes et indicateurs de veille stratégique"
+
+---
+
+## automatiser-emails-reseaux-sociaux-ia.webp
+
+- **Type** : Illustration flat design (IA générée)
+- **Dimensions** : Paysage 16:9
+- **Poids** : ~275 Ko
+- **Description** : Main robotique tapant sur un clavier, d'où s'envolent des enveloppes ailées et des icônes de réseaux sociaux (Twitter, Facebook, YouTube, Instagram). Un réseau neuronal lumineux relie les flux sortants. Fond dégradé violet → ambre.
+- **Contexte éditorial** : Image hero de l'article sur l'automatisation des emails et réseaux sociaux par IA pour les PME.
+- **Usage suggéré** : Hero d'article "Automatiser Emails et Réseaux Sociaux avec l'IA en PME".
+- **Alt text suggéré** : "Main robotique automatisant l'envoi d'emails et de publications sur les réseaux sociaux via un réseau neuronal IA"
+
+---
+
+## cout-audit-informatique-yvelines.webp
+
+- **Type** : Illustration flat design (IA générée)
+- **Dimensions** : Paysage 16:9
+- **Poids** : ~76 Ko
+- **Description** : Serveur rack au centre, examiné par une loupe dorée. Autour : un écran d'ordinateur, des étiquettes de prix en euros flottantes et une calculatrice. Bureau moderne avec plantes en arrière-plan. Palette violet foncé avec accents dorés/ambre.
+- **Contexte éditorial** : Image hero de l'article sur les tarifs d'un audit informatique en Yvelines. Évoque l'examen d'une infrastructure IT avec une dimension tarifaire.
+- **Usage suggéré** : Hero d'article "Combien coûte un audit informatique en Yvelines ?".
+- **Alt text suggéré** : "Loupe inspectant un serveur informatique entouré d'étiquettes de prix en euros — concept d'audit IT et tarification"
+
+---
+
+## nis2-pme-yvelines-val-doise.webp
+
+- **Type** : Illustration flat design (IA générée)
+- **Dimensions** : Paysage 16:9
+- **Poids** : ~91 Ko
+- **Description** : Grand bouclier bleu marine avec les étoiles de l'Union européenne au centre, surplombant un bâtiment d'entreprise. Autour : postes informatiques, serveurs et un cadenas. Des arcs protecteurs ambre et violet entourent l'ensemble. Skyline urbaine stylisée en arrière-plan.
+- **Contexte éditorial** : Image hero de l'article sur la directive NIS2 pour les PME en Yvelines et Val d'Oise. Symbolise la cybersécurité européenne protégeant le réseau informatique d'une PME.
+- **Usage suggéré** : Hero d'article "NIS2 et PME en Yvelines & Val d'Oise".
+- **Alt text suggéré** : "Bouclier européen NIS2 protégeant le réseau informatique d'une PME : postes, serveurs et cadenas de cybersécurité"
+
+---
+
+## serveur-mcp-guide-pratique-pme.webp
+
+- **Type** : Illustration flat design (IA générée)
+- **Dimensions** : Paysage 16:9
+- **Poids** : ~71 Ko
+- **Description** : Serveur central lumineux connecté par des lignes courbes à trois icônes circulaires : un profil utilisateur (à gauche), un calendrier validé (en haut à droite) et une base de données (en bas à droite). Fond dégradé violet → ambre avec effet néon.
+- **Contexte éditorial** : Image hero de l'article sur le protocole MCP. Représente visuellement le concept de hub central connectant l'IA aux outils métier (utilisateurs, planning, données).
+- **Usage suggéré** : Hero d'article "Serveur MCP : Guide Pratique".
+- **Alt text suggéré** : "Serveur MCP connectant utilisateur, calendrier et base de données — concept de hub IA pour outils métier PME"
+
+---
+
+## serveur-mcp-integration-crm-erp.webp
+
+- **Type** : Illustration flat design (IA générée)
+- **Dimensions** : Paysage 16:9
+- **Poids** : ~90 Ko
+- **Description** : Robot IA sympathique au centre, connecté par des flux de données lumineux à deux plateformes : un CRM (violet, à gauche, avec fiches contacts et graphiques) et un ERP (ambre, à droite, avec engrenage et factures). Fond clair avec motifs de circuits imprimés.
+- **Contexte éditorial** : Image hero de l'article sur l'intégration d'agents IA avec CRM/ERP via MCP. Illustre le rôle de pont entre systèmes joué par le protocole.
+- **Usage suggéré** : Hero d'article "Intégrer un Agent IA à Votre CRM/ERP".
+- **Alt text suggéré** : "Robot IA connectant un CRM et un ERP via des flux de données — intégration MCP pour PME"
+
+---
+
+## ia-redefinit-vente-commerciale.webp
+
+- **Type** : Illustration flat design (IA générée)
+- **Dimensions** : Paysage 16:9
+- **Poids** : ~88 Ko
+- **Description** : Un commercial humain et un robot IA en costume se serrent la main au centre. À gauche, un funnel de vente en 3 niveaux (violet, ambre, vert). À droite, des graphiques de performance commerciale en croissance. Palette violet/ambre sur fond clair.
+- **Contexte éditorial** : Image hero de l'article sur la transformation de la vente commerciale par l'IA. Symbolise le partenariat humain-IA et la performance commerciale.
+- **Usage suggéré** : Hero d'article "Comment l'IA redéfinit la Vente Commerciale".
+- **Alt text suggéré** : "Commercial et robot IA se serrant la main devant un funnel de vente et des graphiques de performance en croissance"
+
+---
+
+## claude-code-prompt-architecture.webp
+
+- **Type** : Illustration flat design (IA générée)
+- **Dimensions** : Paysage 16:9
+- **Poids** : ~131 Ko
+- **Description** : Poste de développeur avec écran central affichant du code et un diagramme d'architecture. Autour flottent des fichiers .md, des snippets de code, des arborescences de dossiers (src, docs, api) et un flowchart. Palette entièrement violet/lavande avec accents ambre.
+- **Contexte éditorial** : Image hero de l'article sur l'utilisation de Claude Code avec un prompt d'architecture. Représente l'environnement de développement structuré avec fichiers markdown.
+- **Usage suggéré** : Hero d'article "Utiliser Claude Code sans envoyer d'abord ce prompt est une perte de temps".
+- **Alt text suggéré** : "Bureau de développeur avec code, fichiers .md et arborescence de projet — architecture logicielle avec Claude Code"
+
+---
+
+## comparatif-llm-vente-commerciale.webp
+
+- **Type** : Illustration flat design (IA générée)
+- **Dimensions** : Paysage 16:9
+- **Poids** : ~139 Ko
+- **Description** : Trois têtes de robots IA stylisées côte à côte, chacune avec un logo distinctif (OpenAI/GPT à gauche, Claude/Anthropic au centre, Google/Gemini à droite). Sous chaque tête, un diagramme radar pentagonal comparant des critères (Reasoning, Creative generation, Safety, Ethics, Speed, Multimodal understanding). Palette violet/ambre sur fond clair.
+- **Contexte éditorial** : Image hero de l'article comparatif des LLM pour la vente commerciale. Représente visuellement la comparaison entre les trois principaux modèles d'IA.
+- **Usage suggéré** : Hero d'article "Comparatif LLM pour la Vente Commerciale".
+- **Alt text suggéré** : "Comparatif de trois IA (GPT, Claude, Gemini) avec diagrammes radar de performance — forces et faiblesses pour la vente"
+
+---
+
+## 5-signes-moderniser-informatique-pme.webp
+
+- **Type** : Illustration flat design (IA générée)
+- **Dimensions** : Paysage 16:9
+- **Poids** : ~120 Ko
+- **Description** : Image divisée en deux par un éclair central. À gauche (tons gris/violet) : équipement informatique vétuste — tours PC empilées, écrans CRT, câbles emmêlés, panneaux d'alerte rouges et orange. À droite (tons ambre/doré) : infrastructure moderne — laptop, tablette, smartphone, serveur rack, icônes cloud et WiFi. Une grande flèche violet/ambre pointe de l'ancien vers le nouveau.
+- **Contexte éditorial** : Image hero de l'article sur les 5 signes de modernisation informatique. Illustre le contraste avant/après entre un parc IT obsolète et une infrastructure moderne.
+- **Usage suggéré** : Hero d'article "Les 5 signes qu'il est temps de moderniser l'informatique de votre PME".
+- **Alt text suggéré** : "Avant/après : équipement informatique vétuste avec alertes vs infrastructure moderne cloud et mobile — modernisation IT PME"

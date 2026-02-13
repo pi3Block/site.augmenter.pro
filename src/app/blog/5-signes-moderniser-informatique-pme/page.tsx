@@ -43,9 +43,10 @@ export default function Article() {
       excerpt="En tant que consultant numérique spécialisé dans les Yvelines (78) et le Val d'Oise (95), augmenter.PRO aide les PME du BTP, immobilier, industrie et artisans à identifier les faiblesses informatiques qui freinent leur croissance."
       tags={["Audit 360°", "PME"]}
       readTime="3 min"
-      date="2026"
-      dateISO="2026-01-01"
-      dateModified="2026-01-01"
+      date="9 février 2026"
+      dateISO="2026-02-09"
+      dateModified="2026-02-09"
+      image="/images/blog/5-signes-moderniser-informatique-pme.webp"
       slug="5-signes-moderniser-informatique-pme"
     >
       <h2>Pourquoi moderniser votre informatique maintenant ?</h2>

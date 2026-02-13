@@ -65,6 +65,7 @@ export default function Article() {
       date="13 février 2026"
       dateISO="2026-02-13"
       dateModified="2026-02-13"
+      image="/images/blog/nis2-pme-yvelines-val-doise.webp"
       slug="nis2-pme-yvelines-val-doise"
     >
       <script

@@ -21,6 +21,7 @@ export default function VeilleConcurrentielleIAPME() {
       date="13 février 2026"
       dateISO="2026-02-13"
       dateModified="2026-02-13"
+      image="/images/blog/veille-concurrentielle-ia-pme.webp"
       slug="veille-concurrentielle-ia-pme"
     >
       <p>
