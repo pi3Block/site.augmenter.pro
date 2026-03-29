@@ -55,7 +55,7 @@ export default function NotFound() {
           >
             <Button asChild size="lg" className="gap-2 text-base">
               <Link href="/contact">
-                Audit gratuit — 60 min
+                Diagnostic initial — 60 min
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>

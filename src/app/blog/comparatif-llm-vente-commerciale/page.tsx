@@ -4,7 +4,7 @@ import { ArticleLayout } from "@/components/layout/article-layout";
 export const metadata: Metadata = {
   title: "Comparatif LLM pour la Vente : GPT, Claude, Gemini (2026)",
   description:
-    "Tableau comparatif des IA pour la vente : forces, faiblesses et conformité RGPD de chaque LLM. Quel outil choisir pour votre équipe commerciale ?",
+    "GPT-4, Claude, Gemini — votre concurrent utilise déjà l'un d'eux pour vendre plus que vous. Lequel choisir ? Comparatif honnête, pièges RGPD inclus.",
 };
 
 const rows = [

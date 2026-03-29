@@ -3,9 +3,9 @@ import { ArticleLayout } from "@/components/layout/article-layout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "NIS2 et PME en Yvelines & Val d'Oise : Guide 2026",
+  title: "NIS2 : Vos Clients Vont Bientôt Vous L'Imposer (Guide PME 2026)",
   description:
-    "Votre PME des Yvelines (78) ou du Val d'Oise (95) est-elle concernée par NIS2 ? Auto-diagnostic, 10 mesures obligatoires et plan d'action concret.",
+    "Vos donneurs d'ordres vont exiger des clauses cyber dans vos contrats. NIS2 arrive — si vous n'êtes pas prêt, vous perdez des marchés. Plan d'action concret.",
 };
 
 const faqJsonLd = {
@@ -413,7 +413,7 @@ export default function Article() {
         C&apos;est le point de départ indispensable — on ne peut pas sécuriser
         ce qu&apos;on ne connaît pas. Nous proposons un{" "}
         <Link href="/contact">
-          diagnostic gratuit de 60 minutes
+          diagnostic initial de 60 minutes
         </Link>{" "}
         pour évaluer votre niveau de maturité.
       </p>
@@ -474,7 +474,7 @@ export default function Article() {
         </li>
         <li>
           <strong>Cybermalveillance.gouv.fr</strong> : assistance et ressources
-          gratuites pour TPE-PME
+          sans frais pour TPE-PME
         </li>
         <li>
           <strong>CCI Yvelines (78)</strong> et{" "}

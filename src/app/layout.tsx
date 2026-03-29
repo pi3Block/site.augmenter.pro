@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | augmenter.PRO",
   },
   description:
-    "Boostez votre PME avec l'IA : audit gratuit 60 min, digitalisation et automatisation sur mesure. Consultant expert en Yvelines (78) et Val d'Oise (95).",
+    "Vous dépendez de prestataires qui parlent un jargon incompréhensible ? Reprenez le contrôle de votre PME grâce à l'IA. Yvelines (78) & Val d'Oise (95).",
   keywords: [
     "consultant IA PME",
     "audit informatique PME",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "digitalisation PME Val d'Oise",
     "automatisation entreprise",
     "stratégie IA PME",
-    "audit IA gratuit",
+    "audit IA PME",
   ],
   authors: [{ name: "Pierre Legrand", url: "https://pierrelegrand.fr" }],
   creator: "augmenter.PRO",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: "augmenter.PRO",
     title: "augmenter.PRO — Consultant IA & Transformation Digitale PME",
     description:
-      "Boostez votre PME avec l'IA. Audit gratuit 60 min, digitalisation et automatisation sur mesure en Yvelines (78) et Val d'Oise (95).",
+      "Vous dépendez de prestataires qui parlent un jargon incompréhensible ? Reprenez le contrôle de votre PME grâce à l'IA. Yvelines (78) & Val d'Oise (95).",
     images: [
       {
         url: "/images/general/og-augmenter-pro.webp",

@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Serveur MCP : Guide Pratique pour Connecter l'IA à Vos Outils",
   description:
-    "Qu'est-ce qu'un serveur MCP ? Comment connecter vos outils (CRM, ERP, email) à l'IA ? Guide concret pour dirigeants PME. Exemples terrain.",
+    "Vous passez vos journées à copier-coller entre CRM, mails et Excel ? Le protocole MCP connecte l'IA directement à vos outils. Fini les allers-retours.",
 };
 
 export default function Article() {
@@ -175,7 +175,7 @@ export default function Article() {
         audit préalable sérieux. Si vos données CRM sont mal structurées ou
         incomplètes, l&apos;IA amplifiera le désordre au lieu de le résoudre.
         C&apos;est pourquoi nous commençons toujours par un{" "}
-        <Link href="/prestations">audit 180° gratuit</Link>.
+        <Link href="/prestations">audit 180° offert</Link>.
       </p>
 
       <h2>MCP et RGPD : vos données restent-elles en sécurité ?</h2>
@@ -283,7 +283,7 @@ export default function Article() {
       </p>
       <p>
         <strong>Point de départ :</strong>{" "}
-        <Link href="/contact">Notre audit 180° est gratuit</Link> et permet
+        <Link href="/contact">Notre audit 180° est offert</Link> et permet
         d&apos;évaluer vos besoins concrets avant tout engagement. C&apos;est
         60 minutes d&apos;échange qui vous donnent une vision claire de ce que
         MCP peut (et ne peut pas) faire pour vous.

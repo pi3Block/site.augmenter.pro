@@ -11,7 +11,7 @@ const plans = [
   {
     name: "Audit 180° Informatique & Organisation",
     description: "Faisons connaissance et identifions vos leviers de croissance numériques.",
-    price: "Gratuit",
+    price: "Offert",
     duration: "60 min",
     popular: false,
     features: [
@@ -19,9 +19,9 @@ const plans = [
       "Analyse de vos processus actuels",
       "Identification des quick wins",
       "Recommandations personnalisées",
-      "Aucun engagement",
+      "Sans engagement",
     ],
-    cta: "Réserver mon audit gratuit",
+    cta: "Réserver mon diagnostic",
     href: "/contact",
   },
   {
@@ -52,7 +52,7 @@ export function Pricing() {
             Prestations &amp; Tarifs
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Commencez par un audit gratuit. Pas de surprises, pas d&apos;engagement.
+            Commencez par un premier diagnostic. Sans surprises, sans engagement.
           </p>
         </div>
 

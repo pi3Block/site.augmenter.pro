@@ -27,7 +27,7 @@ export function CTA() {
               Quel est votre prochain niveau ?
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-lg text-background/70">
-              Commencez par un audit gratuit de 60 minutes. Zéro engagement, zéro
+              Commencez par un diagnostic de 60 minutes. Zéro engagement, zéro
               jargon technique — juste des solutions concrètes.
             </p>
 
@@ -38,7 +38,7 @@ export function CTA() {
                 className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
               >
                 <Link href="/contact">
-                  Réserver mon audit gratuit
+                  Réserver mon diagnostic
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>

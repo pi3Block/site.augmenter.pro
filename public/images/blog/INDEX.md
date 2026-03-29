@@ -5,6 +5,42 @@
 
 ---
 
+## configurer-odoo-ia-claude-cowork.webp
+
+- **Type** : Illustration flat design (IA générée via Gemini)
+- **Dimensions** : Paysage 16:9
+- **Poids** : ~148 Ko
+- **Description** : Écran d'ordinateur violet affichant une interface ERP (tableaux, graphiques, modules Ventes/Inventaire/RH/Finance). À gauche, un robot IA jaune/ambre entouré d'engrenages dorés, connecté à l'écran par des lignes violettes. À droite, une horloge (gain de temps) et un symbole euro barré (économie). Fond dégradé violet vers ambre avec icônes cloud, ampoule et graphiques.
+- **Contexte éditorial** : Image hero de l'article sur la configuration d'Odoo avec Claude Cowork — illustre le concept d'IA qui accélère le paramétrage ERP tout en réduisant les coûts.
+- **Usage suggéré** : Hero d'article "Configurer Odoo avec l'IA : 4 jours au lieu de 3 500 €".
+- **Alt text suggéré** : "Illustration flat design montrant un robot IA connecté à une interface ERP Odoo, avec une horloge et un symbole euro barré symbolisant le gain de temps et d'argent"
+
+---
+
+## claude-in-chrome-connecteur.webp
+
+- **Type** : Screenshot d'interface (capture réelle)
+- **Dimensions** : Paysage
+- **Poids** : ~37 Ko
+- **Description** : Panneau des connecteurs dans les paramètres de Claude Desktop. On voit la section "Connecteurs" avec Google Drive, Gmail, Google Calendar, puis "Claude in Chrome" (statut INCLUS, bouton Configurer) et "Control Chrome" (statut BUREAU, bouton Configurer). Menu latéral gauche avec Connecteurs, Claude Code, Cowork, Claude dans Chrome (Beta).
+- **Contexte éditorial** : Screenshot illustrant la configuration de Claude in Chrome nécessaire pour contrôler Odoo via le navigateur.
+- **Usage suggéré** : Illustration dans l'article sur la configuration Odoo avec Claude Cowork.
+- **Alt text suggéré** : "Panneau des connecteurs Claude Desktop montrant Claude in Chrome et Control Chrome activés"
+
+---
+
+## odoo-skill-claude-cowork.webp
+
+- **Type** : Screenshot d'interface (capture réelle)
+- **Dimensions** : Paysage (bandeau)
+- **Poids** : ~99 Ko
+- **Description** : Vue du skill "odoo-setup" installé dans Claude Desktop. On voit le nom du skill, la date de modification (25 mars 2026), l'utilisateur, et la description complète du skill de paramétrage Odoo 19.
+- **Contexte éditorial** : Screenshot montrant le Skill Odoo installé et prêt à l'emploi dans Claude Desktop.
+- **Usage suggéré** : Illustration dans l'article sur la configuration Odoo avec Claude Cowork.
+- **Alt text suggéré** : "Skill de paramétrage Odoo installé dans Claude Desktop avec sa description"
+
+---
+
 ## augmenter-pro-village-renovation-hero.webp
 
 - **Type** : Illustration artistique noir et blanc (encre/dessin)

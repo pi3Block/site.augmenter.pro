@@ -68,7 +68,7 @@ export function ContactForm() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <Badge variant="secondary" className="mb-4">
-              Audit gratuit — 60 min
+              Diagnostic initial — 60 min
             </Badge>
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
               Parlons de votre <span className="gradient-text">projet</span>

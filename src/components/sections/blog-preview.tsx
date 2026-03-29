@@ -10,6 +10,16 @@ import Image from "next/image";
 
 const articles = [
   {
+    slug: "configurer-odoo-ia-claude-cowork",
+    title:
+      "Configurer Odoo avec l'IA : 4 Jours au Lieu de 3 500 €",
+    excerpt:
+      "Comment nous avons reconfiguré tout Odoo d'un client en 4 jours avec Claude Cowork. Studio, SaaS/SH/Open Source, packages et formation incluse.",
+    tags: ["Intelligence Artificielle", "Claude Code", "PME"],
+    readTime: "12 min",
+    image: "/images/blog/configurer-odoo-ia-claude-cowork.webp",
+  },
+  {
     slug: "veille-concurrentielle-ia-pme",
     title:
       "Veille Concurrentielle IA pour PME : Guide Pratique 2026",
@@ -34,7 +44,7 @@ const articles = [
     title:
       "Combien coûte un audit informatique en Yvelines (78) ? Guide tarifaire 2026",
     excerpt:
-      "De 0 € à 20 000 € : grille tarifaire par taille d'entreprise, comparaison diagnostic gratuit vs audit complet, et 3 cas concrets de PME en Yvelines.",
+      "De 0 € à 20 000 € : grille tarifaire par taille d'entreprise, comparaison diagnostic offert vs audit complet, et 3 cas concrets de PME en Yvelines.",
     tags: ["Audit 360°", "PME"],
     readTime: "8 min",
     image: "/images/blog/cout-audit-informatique-yvelines.webp",

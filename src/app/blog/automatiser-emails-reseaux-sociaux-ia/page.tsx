@@ -185,8 +185,8 @@ export default function AutomatiserEmailsReseauxSociauxIA() {
           500-2 000 € de mise en place.
         </li>
         <li>
-          <strong>Réseaux sociaux — Budget minimal</strong> : Buffer gratuit
-          (3 canaux) + ChatGPT pour la rédaction. Budget : 0 à 15 €/mois.
+          <strong>Réseaux sociaux — Budget minimal</strong> : Buffer (version sans frais,
+          3 canaux) + ChatGPT pour la rédaction. Budget : 0 à 15 €/mois.
         </li>
         <li>
           <strong>Réseaux sociaux — Budget intermédiaire</strong> : Hootsuite
@@ -267,7 +267,7 @@ export default function AutomatiserEmailsReseauxSociauxIA() {
           messagerie (Gemini dans Gmail ou Copilot dans Outlook).
         </li>
         <li>
-          <strong>Mercredi</strong> : Créez un compte Buffer gratuit et
+          <strong>Mercredi</strong> : Créez un compte Buffer (version sans frais) et
           planifiez 3 posts pour la semaine prochaine (un retour
           d&apos;expérience, un partage d&apos;article, un conseil pratique).
         </li>
@@ -290,7 +290,7 @@ export default function AutomatiserEmailsReseauxSociauxIA() {
           href="/contact"
           className="text-primary underline-offset-4 hover:underline"
         >
-          audit gratuit de 60 minutes
+          diagnostic initial de 60 minutes
         </Link>{" "}
         — nous analysons votre quotidien numérique et identifions les gains
         rapides.

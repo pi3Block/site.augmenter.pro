@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Intégrer un Agent IA à Votre CRM/ERP : MCP Change la Donne",
   description:
-    "95% des projets IA échouent sur l'intégration. Découvrez comment le protocole MCP connecte vos agents IA à HubSpot, Salesforce ou ERP. ROI concret pour PME.",
+    "95 % des projets IA échouent — pas à cause de l'IA, mais parce que personne ne sait la brancher à vos outils. MCP résout ça. Cas concrets HubSpot, ERP.",
 };
 
 export default function Article() {
@@ -283,7 +283,7 @@ export default function Article() {
         </li>
         <li>
           <strong>2. Évaluer</strong> votre situation avec notre{" "}
-          <Link href="/contact">audit 180° gratuit (60 min)</Link> — nous
+          <Link href="/contact">audit 180° offert (60 min)</Link> — nous
           identifions les cas d&apos;usage MCP les plus rentables pour votre
           entreprise.
         </li>

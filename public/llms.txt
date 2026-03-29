@@ -28,6 +28,7 @@ Zone : Yvelines (78), Val d'Oise (95), Île-de-France.
 
 ## Articles de blog
 
+- [Configurer Odoo avec l'IA : 4 Jours au Lieu de 3 500 €](https://augmenter.pro/blog/configurer-odoo-ia-claude-cowork) — Comment reconfigurer Odoo en 4 jours avec Claude Cowork au lieu de payer 3 500 € à un intégrateur. Guide complet : SaaS/SH/Open Source, Studio, packages, Skills, et formation pour rendre votre PME autonome.
 - [Serveur MCP : Guide Pratique pour Connecter l'IA à Vos Outils Métier](https://augmenter.pro/blog/serveur-mcp-guide-pratique-pme) — Qu'est-ce qu'un serveur MCP ? Comment connecter CRM, ERP et messagerie à l'IA ? Guide concret pour dirigeants PME avec cas terrain, grille de coûts, et feuille de route en 5 étapes.
 - [Intégrer un Agent IA à Votre CRM/ERP : MCP Change la Donne](https://augmenter.pro/blog/serveur-mcp-integration-crm-erp) — 95% des projets IA échouent sur l'intégration. Comment le protocole MCP connecte agents IA à HubSpot, Salesforce, ERP. Comparatif MCP vs Zapier vs intégrateur, ROI chiffré.
 - [Rénovation Énergétique : Arrêtez d'acheter des leads](https://augmenter.pro/blog/machine-de-guerre-commerciale) — Comment internaliser l'acquisition client en rénovation énergétique avec l'IA et le SEO.

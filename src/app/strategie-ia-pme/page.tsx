@@ -30,9 +30,9 @@ import {
 } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
-  title: "Stratégie IA pour PME : Diagnostic & Accompagnement Gratuit",
+  title: "Stratégie IA pour PME : Diagnostic & Accompagnement sur Mesure",
   description:
-    "Définissez votre stratégie IA avec un expert local. Diagnostic gratuit 60 min, feuille de route personnalisée. PME Yvelines (78) & Val-d'Oise (95).",
+    "Vos concurrents utilisent l'IA et vous ne savez pas par où commencer ? On vous construit une feuille de route claire en 60 min. PME Yvelines & Val-d'Oise.",
 };
 
 const stats = [
@@ -179,7 +179,7 @@ const faqItems = [
   {
     question: "Combien coûte une stratégie IA pour une PME ?",
     answer:
-      "Notre diagnostic initial est gratuit (60 min). L\u2019Audit 360\u00b0 IA Stratégique complet coûte 225 \u20ac et inclut une feuille de route sur 6 mois. Pour le déploiement, le budget dépend des cas d\u2019usage identifiés \u2014 mais le programme Osez l\u2019IA de Bpifrance peut prendre en charge jusqu\u2019à 80 % des coûts d\u2019accompagnement.",
+      "Notre diagnostic initial est offert (60 min). L\u2019Audit 360\u00b0 IA Stratégique complet coûte 225 \u20ac et inclut une feuille de route sur 6 mois. Pour le déploiement, le budget dépend des cas d\u2019usage identifiés \u2014 mais le programme Osez l\u2019IA de Bpifrance peut prendre en charge jusqu\u2019à 80 % des coûts d\u2019accompagnement.",
   },
   {
     question:
@@ -216,7 +216,7 @@ const serviceJsonLd = {
   "@type": "Service",
   name: "Stratégie IA pour PME",
   description:
-    "Accompagnement stratégique en intelligence artificielle pour les PME : diagnostic gratuit, cartographie des cas d\u2019usage IA, feuille de route personnalisée et déploiement.",
+    "Accompagnement stratégique en intelligence artificielle pour les PME : diagnostic initial, cartographie des cas d\u2019usage IA, feuille de route personnalisée et déploiement.",
   provider: {
     "@type": "Organization",
     "@id": "https://augmenter.pro/#organization",
@@ -245,7 +245,7 @@ const serviceJsonLd = {
   offers: [
     {
       "@type": "Offer",
-      name: "Diagnostic IA gratuit",
+      name: "Diagnostic IA initial",
       price: "0",
       priceCurrency: "EUR",
       description: "Audit initial de 60 minutes pour identifier vos leviers IA",
@@ -310,7 +310,7 @@ export default function StrategieIaPmePage() {
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button asChild size="lg" className="gap-2">
                 <Link href="/contact">
-                  Diagnostic gratuit — 60 min
+                  Diagnostic initial — 60 min
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>

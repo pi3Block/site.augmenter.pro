@@ -55,13 +55,13 @@ export default function CGVPage() {
             <div>
               <h2>Article 3 — Devis et commande</h2>
               <p>
-                Toute prestation fait l&apos;objet d&apos;un devis gratuit et
+                Toute prestation fait l&apos;objet d&apos;un devis sans engagement et
                 personnalisé. Le devis est valable 30 jours à compter de sa
                 date d&apos;émission. La commande est considérée comme ferme et
                 définitive à réception du devis signé par le client.
               </p>
               <p className="mt-2">
-                Le premier échange (audit gratuit de 60 minutes) est sans
+                Le premier échange (diagnostic initial de 60 minutes) est sans
                 engagement et n&apos;entraîne aucune obligation d&apos;achat.
               </p>
             </div>

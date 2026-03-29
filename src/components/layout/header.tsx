@@ -43,7 +43,7 @@ export function Header() {
             </Link>
           ))}
           <Button asChild size="sm" className="ml-3">
-            <Link href="/contact">Audit gratuit</Link>
+            <Link href="/contact">Premier diagnostic</Link>
           </Button>
         </nav>
 
@@ -79,7 +79,7 @@ export function Header() {
               ))}
               <SheetClose asChild>
                 <Button asChild className="mt-2">
-                  <Link href="/contact">Audit gratuit</Link>
+                  <Link href="/contact">Premier diagnostic</Link>
                 </Button>
               </SheetClose>
             </nav>

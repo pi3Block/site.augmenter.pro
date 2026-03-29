@@ -35,7 +35,7 @@ import {
 export const metadata: Metadata = {
   title: "Intégration Serveur MCP pour PME | Yvelines & Val-d'Oise",
   description:
-    "Connectez vos outils métier (CRM, ERP, email) à l'IA grâce au protocole MCP. Intégration sur mesure pour PME en Île-de-France. Audit gratuit.",
+    "Connectez vos outils métier (CRM, ERP, email) à l'IA grâce au protocole MCP. Intégration sur mesure pour PME en Île-de-France. Diagnostic inclus.",
 };
 
 const serviceJsonLd = {
@@ -63,7 +63,7 @@ const serviceJsonLd = {
     itemListElement: [
       {
         "@type": "Offer",
-        name: "Audit MCP Gratuit",
+        name: "Audit MCP Initial",
         description:
           "Évaluation de 60 minutes de vos outils et cas d'usage MCP prioritaires.",
         price: "0",
@@ -174,8 +174,8 @@ const steps = [
     step: "01",
     title: "Audit & Diagnostic",
     description:
-      "60 minutes d'échange gratuit pour cartographier vos outils, identifier les cas d'usage prioritaires, et évaluer la faisabilité technique.",
-    duration: "1 heure (gratuit)",
+      "60 minutes d'échange pour cartographier vos outils, identifier les cas d'usage prioritaires, et évaluer la faisabilité technique.",
+    duration: "1 heure (offert)",
   },
   {
     icon: PenTool,
@@ -261,7 +261,7 @@ export default function IntegrationMCPPage() {
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Button asChild size="lg" className="gap-2">
                 <Link href="/contact">
-                  Audit gratuit (60 min)
+                  Diagnostic initial (60 min)
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
@@ -420,7 +420,7 @@ export default function IntegrationMCPPage() {
               Comment ça marche ?
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              4 étapes, de l&apos;audit gratuit au déploiement opérationnel.
+              4 étapes, du diagnostic initial au déploiement opérationnel.
             </p>
           </div>
           <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -497,7 +497,7 @@ export default function IntegrationMCPPage() {
                 <p className="text-xs font-semibold uppercase tracking-wider text-primary">
                   Découverte
                 </p>
-                <p className="mt-2 text-3xl font-bold">Gratuit</p>
+                <p className="mt-2 text-3xl font-bold">Offert</p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Audit 180° de 60 minutes
                 </p>

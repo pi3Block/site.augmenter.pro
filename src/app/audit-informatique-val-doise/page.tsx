@@ -43,9 +43,9 @@ import {
 } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
-  title: "Audit Informatique Val-d'Oise (95) : Diagnostic PME Gratuit",
+  title: "Audit Informatique & Cybersécurité Val-d'Oise (95) : Dès 225 €",
   description:
-    "Audit informatique pour PME en Val-d'Oise (95). Diagnostic gratuit 60 min : réseau, sécurité, cloud, RGPD. Cergy, Pontoise, Argenteuil, Sarcelles.",
+    "Vous payez une infogérance que vous ne comprenez pas ? Audit indépendant pour PME du 95. On vous montre où part votre argent — et comment en garder plus.",
 };
 
 const stats = [
@@ -69,7 +69,7 @@ const stats = [
   },
   {
     value: "60 min",
-    label: "diagnostic initial gratuit",
+    label: "diagnostic initial offert",
     detail: "Premier échange sans engagement",
     icon: CheckCircle2,
   },
@@ -161,7 +161,7 @@ const methodology = [
     description:
       "Échange téléphonique ou en présentiel dans vos locaux dans le Val-d'Oise. Nous comprenons votre activité, vos enjeux et vos contraintes.",
     details: [
-      "Entretien dirigeant de 60 min (gratuit)",
+      "Entretien dirigeant de 60 min (offert)",
       "Identification des priorités",
       "Périmètre de l'audit défini ensemble",
       "Planification de l'intervention",
@@ -247,7 +247,7 @@ const faqItems = [
   {
     question: "Quel est le prix d'un audit informatique dans le Val-d'Oise ?",
     answer:
-      "Le diagnostic initial de 60 min est gratuit et sans engagement. L'Audit 360° complet coûte 225 € et comprend 3h d'intervention sur site, un rapport détaillé et un plan d'action chiffré. Un audit PME standard coûte entre 2 000 et 15 000 € HT sur le marché. Détails dans notre guide tarifaire : /blog/cout-audit-informatique-yvelines",
+      "Le diagnostic initial de 60 min est offert, sans engagement. L'Audit 360° complet coûte 225 € et comprend 3h d'intervention sur site, un rapport détaillé et un plan d'action chiffré. Un audit PME standard coûte entre 2 000 et 15 000 € HT sur le marché. Détails dans notre guide tarifaire : /blog/cout-audit-informatique-yvelines",
   },
   {
     question: "Intervenez-vous à Cergy, Pontoise et Argenteuil ?",
@@ -303,7 +303,7 @@ const serviceJsonLd = {
   offers: [
     {
       "@type": "Offer",
-      name: "Diagnostic informatique gratuit",
+      name: "Diagnostic informatique initial",
       price: "0",
       priceCurrency: "EUR",
       description:
@@ -372,7 +372,7 @@ export default function AuditInformatiqueValDoisePage() {
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button asChild size="lg" className="gap-2">
                 <Link href="/contact">
-                  Diagnostic gratuit — 60 min
+                  Diagnostic initial — 60 min
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
@@ -559,7 +559,7 @@ export default function AuditInformatiqueValDoisePage() {
           <div className="mt-12 text-center">
             <Button asChild size="lg" className="gap-2">
               <Link href="/contact">
-                Demander un diagnostic gratuit
+                Demander un diagnostic
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>

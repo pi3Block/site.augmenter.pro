@@ -7,7 +7,7 @@ const stats = [
   {
     icon: Target,
     value: "60 min",
-    label: "Audit gratuit",
+    label: "Diagnostic offert",
     description: "Diagnostic complet de votre SI",
   },
   {

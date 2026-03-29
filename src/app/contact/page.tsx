@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact — Audit IA Gratuit 60 min | Yvelines & Val d'Oise",
+  title: "Contact — Diagnostic IA 60 min | Yvelines & Val d'Oise",
   description:
-    "Demandez votre audit gratuit de 60 min. Consultant IA & transformation digitale pour PME en Yvelines (78) et Val d'Oise (95). Réponse sous 24h.",
+    "On ne vous vendra rien pendant les 60 premières minutes. On écoute, on diagnostique, on vous dit la vérité. PME Yvelines (78) & Val d'Oise (95).",
 };
 
 export default function ContactPage() {

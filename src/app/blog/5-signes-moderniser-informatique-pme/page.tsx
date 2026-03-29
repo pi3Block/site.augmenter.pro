@@ -5,7 +5,7 @@ import { AlertTriangle } from "lucide-react";
 export const metadata: Metadata = {
   title: "5 signes que votre PME doit moderniser son informatique",
   description:
-    "PME du BTP, immobilier ou industrie en Yvelines/Val d'Oise ? Lenteurs, pannes, coûts cachés : 5 signaux d'alerte + solutions concrètes. Audit gratuit.",
+    "PME du BTP, immobilier ou industrie en Yvelines/Val d'Oise ? Lenteurs, pannes, coûts cachés : 5 signaux d'alerte + solutions concrètes. Premier diagnostic offert.",
 };
 
 const signs = [

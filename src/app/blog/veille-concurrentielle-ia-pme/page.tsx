@@ -160,7 +160,7 @@ export default function VeilleConcurrentielleIAPME() {
       <ul>
         <li>
           <strong>Niveau 1 — Alertes basiques</strong> : Google Alerts sur le
-          nom de vos concurrents. Gratuit mais limité (pas de détection de
+          nom de vos concurrents. Sans frais mais limité (pas de détection de
           changements de prix, pas de scraping de pages).
         </li>
         <li>
@@ -238,7 +238,7 @@ export default function VeilleConcurrentielleIAPME() {
             href="/contact"
             className="text-primary underline-offset-4 hover:underline"
           >
-            diagnostic gratuit
+            diagnostic initial
           </Link>
           .
         </li>

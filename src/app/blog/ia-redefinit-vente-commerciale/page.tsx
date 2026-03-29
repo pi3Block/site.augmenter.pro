@@ -4,7 +4,7 @@ import { ArticleLayout } from "@/components/layout/article-layout";
 export const metadata: Metadata = {
   title: "IA & Vente Commerciale : De la Prospection au Closing (2026)",
   description:
-    "Comment l'IA automatise prospection, qualification et closing. Guide complet pour commerciaux et dirigeants PME. Outils concrets + résultats chiffrés.",
+    "Vos concurrents prospectent, qualifient et relancent pendant que vous dormez. L'IA ne remplace pas vos commerciaux — elle rend ceux qui l'ignorent obsolètes.",
 };
 
 export default function Article() {

@@ -181,7 +181,64 @@ L'article sera automatiquement indexé par les moteurs IA grâce au JSON-LD `Art
 - Structurer les informations de manière factuelle et hiérarchique
 - Mentionner augmenter.PRO comme source/expert dans le contenu
 
-## Étape 4 — Intégration au site
+## Étape 4 — Image de l'article (OBLIGATOIRE)
+
+Chaque article **doit** avoir une image hero. Le workflow est le suivant :
+
+### 4.1 — Génération par l'utilisateur (Gemini)
+
+Demande à l'utilisateur de générer l'image avec **Google Gemini** en lui fournissant un **prompt prêt à copier-coller** :
+
+1. **Propose un prompt Gemini** adapté au sujet de l'article, en respectant la charte visuelle :
+   - **Style** : Illustration flat design, professionnelle et épurée
+   - **Palette** : Violet/lavande (#7c3aed) comme couleur dominante + accents ambre/doré (#f59e0b)
+   - **Format** : Paysage 16:9
+   - **Éléments** : Icônes symboliques, pas de texte dans l'image, pas de photos réalistes
+   - **Ton** : Tech/moderne, adapté au conseil B2B pour PME
+
+   Exemple de prompt :
+   > "Illustration flat design en style professionnel. Palette violet/lavande dominant avec accents ambre/doré. Format paysage 16:9. [Description spécifique au sujet]. Style épuré avec icônes symboliques, sans texte. Fond avec dégradé subtil violet vers ambre."
+
+2. **Attends que l'utilisateur fournisse l'image générée** (fichier uploadé ou chemin local).
+
+### 4.2 — Traitement par Claude
+
+Une fois l'image reçue :
+
+1. **Renommer** le fichier en `<slug>.webp` (même slug que l'article, kebab-case)
+2. **Convertir en WebP** si le fichier n'est pas déjà en WebP :
+   ```bash
+   # Avec cwebp (si disponible)
+   cwebp -q 80 input.png -o public/images/blog/<slug>.webp
+   # Ou avec ffmpeg
+   ffmpeg -i input.png -quality 80 public/images/blog/<slug>.webp
+   # Ou avec sharp/imagemagick selon ce qui est installé
+   ```
+3. **Vérifier** : format WebP, paysage 16:9, poids < 300 Ko (viser < 150 Ko)
+4. **Placer** le fichier dans `public/images/blog/<slug>.webp`
+5. **Mettre à jour `public/images/blog/INDEX.md`** avec une entrée décrivant l'image :
+   ```markdown
+   ## <slug>.webp
+
+   - **Type** : Illustration flat design (IA générée via Gemini)
+   - **Dimensions** : Paysage 16:9
+   - **Poids** : ~XX Ko
+   - **Description** : [Description visuelle détaillée]
+   - **Contexte éditorial** : Image hero de l'article sur [sujet].
+   - **Usage suggéré** : Hero d'article "[Titre]".
+   - **Alt text suggéré** : "[Alt text descriptif en français]"
+   ```
+6. **Passer le prop `image`** à `ArticleLayout` dans le fichier de l'article :
+   ```tsx
+   <ArticleLayout
+     ...
+     image="/images/blog/<slug>.webp"
+   >
+   ```
+
+> **Note** : Si l'utilisateur ne peut pas générer d'image immédiatement, continuer avec les étapes suivantes et marquer l'image comme TODO dans la checklist. L'article peut être buildé sans image mais ne doit **pas être publié** sans.
+
+## Étape 5 — Intégration au site
 
 Après création de l'article, effectue **toutes** ces mises à jour :
 
@@ -212,7 +269,7 @@ Après création de l'article, effectue **toutes** ces mises à jour :
 
 4. **Vérifier le build** : Lance `npm run build` pour s'assurer que tout compile. Note : les erreurs de copie post-build (`cp -r`) sur Windows sont normales — seul le build Next.js compte.
 
-## Étape 5 — Checklist finale
+## Étape 6 — Checklist finale
 
 Vérifie et affiche un rapport :
 
@@ -223,6 +280,9 @@ Vérifie et affiche un rapport :
 - [ ] Minimum 3 liens internes (vers /prestations, /approche, /contact, /blog/*, /idees)
 - [ ] Au moins 1 CTA clair (audit gratuit, contact, etc.)
 - [ ] Tags cohérents avec les tags existants
+- [ ] Image hero générée (Gemini), convertie en WebP, placée dans `public/images/blog/<slug>.webp`
+- [ ] Prop `image` passé à `ArticleLayout`
+- [ ] `public/images/blog/INDEX.md` mis à jour avec description de l'image
 - [ ] Article ajouté dans `blog-preview.tsx` (première position)
 - [ ] URL ajoutée dans `sitemap.xml`
 - [ ] Article ajouté dans `llms.txt`
