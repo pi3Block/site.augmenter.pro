@@ -85,6 +85,7 @@ INVENTAIRE — [URL de la ressource]
    - Entrée dans llms.txt : oui/non, section
    - Entrée dans blog-preview.tsx : oui/non, position
    - Entrée dans footer.tsx : oui/non, section
+   - Prompt associé dans `src/data/prompts.ts` : oui/non (vérifier `relatedArticles`)
    - Entrée dans STRATEGIE-EDITORIALE.md : oui/non, statut
 
 8. REDIRECTIONS EXISTANTES

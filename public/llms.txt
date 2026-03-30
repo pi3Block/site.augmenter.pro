@@ -41,6 +41,37 @@ Zone : Yvelines (78), Val d'Oise (95), Île-de-France.
 - [Veille Concurrentielle IA pour PME : Guide Pratique 2026](https://augmenter.pro/blog/veille-concurrentielle-ia-pme) — Comment automatiser votre veille concurrentielle avec l'IA. Méthode en 5 étapes, outils recommandés et retour d'expérience terrain pour PME.
 - [Automatiser Emails et Réseaux Sociaux avec l'IA en PME](https://augmenter.pro/blog/automatiser-emails-reseaux-sociaux-ia) — Gagnez 10h par semaine en automatisant vos emails et publications sociales avec l'IA. Guide pratique et outils testés pour dirigeants de PME.
 
+## Bibliothèque de Prompts IA
+
+Prompts prêts à l'emploi pour dirigeants de PME, à copier-coller dans ChatGPT, Claude ou Gemini :
+
+### Commercial & Vente
+- **Email de prospection B2B personnalisé** — Génère un email de prospection ciblé avec méthode (accroche-valeur-CTA, 2 variantes)
+- **Traitement des objections clients** — Réponses structurées méthode CRAC (Creuser, Reformuler, Argumenter, Conclure)
+- **Proposition commerciale structurée** — Crée une proposition complète en 7 sections à partir de notes de rendez-vous
+
+### Productivité
+- **Résumé de réunion avec plan d'actions** — Transforme des notes brutes en compte-rendu structuré avec décisions et responsables
+- **Priorisation intelligente des tâches** — Matrice Eisenhower augmentée par l'IA avec séquence optimale
+
+### Marketing
+- **Post LinkedIn professionnel** — Structure Hook-Value-CTA, 2 variantes de ton, anti-clichés LinkedIn
+- **Brief de contenu SEO** — Brief éditorial complet (mots-clés, structure H2/H3, consignes rédaction, checklist technique)
+
+### ERP & Outils Métier
+- **Skill paramétrage Odoo 19** — Prompt système complet pour configurer Odoo via Claude + Chrome (CRM, Ventes, Inventaire, Achats)
+- **Automatisation workflows CRM** — Cartographie cycle de vente, automatisations prioritaires, scoring leads, templates relance
+
+### Stratégie IA
+- **Auto-diagnostic IA pour dirigeant PME** — Évaluation maturité IA en 5 axes avec scorecard et quick wins
+- **Estimation ROI projet IA** — Calcul retour sur investissement avec coûts cachés et 3 scénarios
+
+### Cybersécurité
+- **Checklist cybersécurité PME (NIS2)** — 20 points d'évaluation basés sur NIS2, plan d'action priorisé
+- **Plan de réponse aux incidents** — Fiches réflexes pour 5 scénarios, chaîne d'alerte, obligations légales ANSSI/CNIL
+
+Voir tous les prompts : https://augmenter.pro/prompts
+
 ## Projets IA
 
 10 modules IA développés par augmenter.PRO, open source et privacy-first :
@@ -114,6 +145,7 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 - https://augmenter.pro/audit-informatique-yvelines — Audit Informatique Yvelines (78)
 - https://augmenter.pro/audit-informatique-val-doise — Audit Informatique Val-d'Oise (95)
 - https://augmenter.pro/integration-mcp — Intégration MCP pour PME (serveurs MCP, agents IA, CRM/ERP)
+- https://augmenter.pro/prompts — Bibliothèque de Prompts IA (13 prompts prêts à l'emploi pour PME)
 - https://augmenter.pro/mentions-legales — Mentions Légales
 - https://augmenter.pro/politique-confidentialite — Politique de Confidentialité (RGPD, cookies, droits)
 - https://augmenter.pro/cgv — Conditions Générales de Vente

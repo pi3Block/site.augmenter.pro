@@ -82,7 +82,8 @@ Avant de poursuivre, réponds à ces 3 questions. Si la réponse à l'une d'elle
 
 3. **Maillage interne** : Lis les articles existants et les pages du site pour identifier les liens internes pertinents :
    - Articles de blog existants dans `src/app/blog/*/page.tsx`
-   - Pages clés : `/prestations`, `/approche`, `/idees`, `/contact`
+   - Pages clés : `/prestations`, `/approche`, `/idees`, `/contact`, `/prompts`
+   - **Bibliothèque de Prompts** : Si l'article couvre un sujet pour lequel un prompt existe dans `src/data/prompts.ts`, ajouter un composant `<PromptCard slug="..." />` (import depuis `@/components/sections/prompt-card`) ou un lien vers `/prompts`
    - Liste dans `src/components/sections/blog-preview.tsx`
 
 ## Étape 2 — Stratégie de contenu
@@ -277,7 +278,8 @@ Vérifie et affiche un rapport :
 - [ ] Slug URL court et descriptif (max 4-5 mots)
 - [ ] Prop `slug` passé à `ArticleLayout` (pour JSON-LD canonical)
 - [ ] Mot-clé principal dans title, H1, meta description, premier paragraphe
-- [ ] Minimum 3 liens internes (vers /prestations, /approche, /contact, /blog/*, /idees)
+- [ ] Minimum 3 liens internes (vers /prestations, /approche, /contact, /blog/*, /idees, /prompts)
+- [ ] Si prompt associé existe dans `src/data/prompts.ts` → `<PromptCard slug="...">` intégré dans l'article
 - [ ] Au moins 1 CTA clair (audit gratuit, contact, etc.)
 - [ ] Tags cohérents avec les tags existants
 - [ ] Image hero générée (Gemini), convertie en WebP, placée dans `public/images/blog/<slug>.webp`

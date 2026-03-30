@@ -63,7 +63,7 @@ Avant toute chose :
    - **Fallback** : scrape les 3-5 premiers résultats Google via crawl4ai
    - Analyser : structure, angles, points manquants
 
-4. **Maillage** : lire les pages existantes pour les liens internes pertinents
+4. **Maillage** : lire les pages existantes pour les liens internes pertinents (dont `/prompts` si un prompt associé existe dans `src/data/prompts.ts` — utiliser `<PromptCard slug="...">` pour l'intégration visuelle)
 
 ### 1.2 Recommandation du type de ressource
 
@@ -78,6 +78,7 @@ En fonction de l'analyse, recommande le **type de ressource le plus adapté** :
 | **Étude de cas** | Montrer un résultat client concret | `/etudes-de-cas/<slug>` | Article + Review |
 | **Glossaire** | Définir un terme pour capter du trafic informationnel | `/glossaire/<slug>` | DefinedTerm |
 | **Landing page** | Page d'atterrissage campagne ou offre spécifique | `/<slug>` | Service ou Product |
+| **Prompt IA** | Prompt prêt à l'emploi pour la bibliothèque | Ajout dans `src/data/prompts.ts` + `public/downloads/` | CreativeWork (via CollectionPage /prompts) |
 | **Page légale** | Obligation réglementaire (CGV, confidentialité) | `/<slug>` | Aucun |
 
 **Justifie ton choix** en expliquant pourquoi ce format est le meilleur pour :
