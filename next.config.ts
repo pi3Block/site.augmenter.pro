@@ -59,6 +59,7 @@ const nextConfig: NextConfig = {
       { source: "/plateforme/bot-telegram", destination: "/projets", permanent: true },
       { source: "/plateforme/analyse-documents", destination: "/projets", permanent: true },
       { source: "/plateforme/veille-concurrentielle", destination: "/projets", permanent: true },
+      { source: "/quest-ce-que-lintelligence-artificielle-ia", destination: "/strategie-ia-pme", permanent: true },
     ];
   },
 };
