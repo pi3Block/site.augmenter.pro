@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Sparkles,
@@ -48,6 +48,23 @@ export function PromptLibrary() {
     PromptCategory | "all"
   >("all");
   const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  // Handle deep links like /prompts#claude-code-architecte — reset filters and scroll to the card
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+    if (!prompts.some((p) => p.id === hash)) return;
+    setActiveCategory("all");
+    setSearchQuery("");
+    // Defer to next frame so the targeted card is in the DOM
+    requestAnimationFrame(() => {
+      const el = document.getElementById(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  }, []);
 
   const filteredPrompts = useMemo(() => {
     return prompts.filter((prompt) => {
@@ -240,6 +257,8 @@ export function PromptLibrary() {
                 return (
                   <motion.div
                     key={prompt.id}
+                    id={prompt.id}
+                    className="scroll-mt-48"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}

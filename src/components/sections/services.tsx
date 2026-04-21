@@ -1,33 +1,39 @@
+// src/components/sections/services.tsx
 "use client";
 
 import { motion } from "framer-motion";
-import { Brain, Monitor, Bot, ArrowRight } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import Link from "next/link";
+import { ServiceCardStat, type ServiceData } from "@/components/widgets/service-card";
+import type { Palette } from "@/components/widgets/palettes";
 
-const services = [
+const services: Array<ServiceData & { palette: Palette }> = [
   {
-    icon: Brain,
-    title: "Intelligence artificielle",
+    tag: "Intelligence artificielle",
+    title: "L'IA au service de votre métier",
     description:
-      "L'IA ne sert pas qu'à générer des images de chats. Automatisez vos tâches répétitives, analysez vos données et prenez de meilleures décisions — adaptées à votre métier.",
-    features: ["Assistants IA personnalisés", "Automatisation des processus", "Analyse prédictive"],
+      "Automatisez vos tâches répétitives, analysez vos données et prenez de meilleures décisions — adaptées à votre métier.",
+    stat: "10h",
+    seed: 1.2,
+    palette: "violet",
     href: "/prestations",
   },
   {
-    icon: Monitor,
-    title: "Digitalisation avancée",
+    tag: "Digitalisation",
+    title: "Digitalisation avancée, humaine",
     description:
-      "Changer d'outil, c'est un projet humain avant d'être technique. Nous accompagnons vos équipes pour adopter des solutions numériques qui simplifient vraiment le quotidien.",
-    features: ["Audit des outils existants", "Migration & intégration", "Formation des équipes"],
+      "Changer d'outil est un projet humain avant d'être technique. Nous accompagnons vos équipes pour adopter des solutions qui simplifient vraiment le quotidien.",
+    stat: "3×",
+    seed: 2.4,
+    palette: "duo",
     href: "/prestations",
   },
   {
-    icon: Bot,
-    title: "Robotique & IoT",
+    tag: "Robotique & IoT",
+    title: "Robotique, capteurs & terrain",
     description:
       "Drones, robots, capteurs, caméras — nous explorons les technologies émergentes adaptées à votre secteur et à vos contraintes terrain.",
-    features: ["Robots autonomes (nettoyage, logistique)", "Capteurs & monitoring", "Intégration IoT"],
+    stat: "24/7",
+    seed: 3.7,
+    palette: "amber",
     href: "/prestations",
   },
 ];
@@ -44,20 +50,24 @@ const cardVariants = {
 
 export function Services() {
   return (
-    <section id="services" className="py-24">
+    <section
+      id="services"
+      className="py-24"
+      style={{ background: "oklch(0.08 0.02 280)" }}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Élevez votre business
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="mt-4 text-lg text-white/70">
             Augmentez vos équipes et améliorez vos processus pour des résultats
             optimaux.
           </p>
         </div>
 
         <motion.div
-          className="mt-16 grid gap-8 md:grid-cols-3"
+          className="mt-16 grid gap-5 md:grid-cols-3"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -65,35 +75,7 @@ export function Services() {
         >
           {services.map((service) => (
             <motion.div key={service.title} variants={cardVariants}>
-              <Card className="h-full border-border/50 transition-shadow hover:shadow-lg">
-                <CardContent className="p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-                    <service.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold">{service.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {service.description}
-                  </p>
-                  <ul className="mt-4 space-y-2">
-                    {service.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-center gap-2 text-sm text-muted-foreground"
-                      >
-                        <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href={service.href}
-                    className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors hover:text-primary/80"
-                  >
-                    En savoir plus
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </CardContent>
-              </Card>
+              <ServiceCardStat service={service} palette={service.palette} />
             </motion.div>
           ))}
         </motion.div>

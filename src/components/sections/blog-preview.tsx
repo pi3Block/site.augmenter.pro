@@ -1,7 +1,8 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Clock } from "lucide-react";
+import { ArrowRight, Clock, LayoutGrid } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -103,9 +104,9 @@ const articles = [
     title:
       "Utiliser Claude Code sans envoyer d'abord ce prompt est une perte de temps",
     excerpt:
-      "Travailler avec des fichiers .md ! Faites la différence entre un projet amateur et la création de quelque chose de valeur.",
-    tags: ["Claude Code"],
-    readTime: "2 min",
+      "Le prompt système + ARCHITECTURE.md qui transforme Claude Code en architecte senior. La différence entre un POC jetable et du code reprenable 6 mois plus tard.",
+    tags: ["Claude Code", "Développement", "Intelligence Artificielle"],
+    readTime: "6 min",
     image: "/images/blog/claude-code-prompt-architecture.webp",
   },
   {
@@ -128,8 +129,30 @@ const articles = [
   },
 ];
 
+// Tags ordonnés par pertinence éditoriale (pas par fréquence brute)
+const TAG_ORDER = [
+  "Intelligence Artificielle",
+  "Claude Code",
+  "Commercial",
+  "Audit 360°",
+  "Cybersécurité",
+  "PME",
+] as const;
+
+const availableTags = (() => {
+  const used = new Set<string>();
+  articles.forEach((a) => a.tags.forEach((t) => used.add(t)));
+  return TAG_ORDER.filter((t) => used.has(t));
+})();
+
 export function BlogPreview({ showAll = false }: { showAll?: boolean } = {}) {
-  const displayedArticles = showAll ? articles : articles.slice(0, 3);
+  const [activeTag, setActiveTag] = useState<string>("all");
+
+  const displayedArticles = useMemo(() => {
+    if (!showAll) return articles.slice(0, 3);
+    if (activeTag === "all") return articles;
+    return articles.filter((a) => a.tags.includes(activeTag));
+  }, [showAll, activeTag]);
 
   return (
     <section id="blog" className="bg-muted/30 py-24">
@@ -154,6 +177,58 @@ export function BlogPreview({ showAll = false }: { showAll?: boolean } = {}) {
         </div>
         )}
 
+        {showAll && (
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <button
+              type="button"
+              onClick={() => setActiveTag("all")}
+              className={`flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium transition-all ${
+                activeTag === "all"
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
+              }`}
+            >
+              <LayoutGrid className="h-3.5 w-3.5" />
+              Tous
+              <span className="ml-1 text-xs opacity-70">
+                ({articles.length})
+              </span>
+            </button>
+            {availableTags.map((tag) => {
+              const count = articles.filter((a) => a.tags.includes(tag)).length;
+              return (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => setActiveTag(tag)}
+                  className={`flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium transition-all ${
+                    activeTag === tag
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
+                  }`}
+                >
+                  {tag}
+                  <span className="ml-1 text-xs opacity-70">({count})</span>
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {showAll && displayedArticles.length === 0 ? (
+          <div className="mt-16 py-16 text-center">
+            <p className="text-lg text-muted-foreground">
+              Aucun article dans cette catégorie pour le moment.
+            </p>
+            <Button
+              variant="outline"
+              className="mt-4"
+              onClick={() => setActiveTag("all")}
+            >
+              Voir tous les articles
+            </Button>
+          </div>
+        ) : (
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {displayedArticles.map((article, i) => (
             <motion.div
@@ -200,6 +275,7 @@ export function BlogPreview({ showAll = false }: { showAll?: boolean } = {}) {
             </motion.div>
           ))}
         </div>
+        )}
 
         {!showAll && (
         <div className="mt-8 text-center md:hidden">

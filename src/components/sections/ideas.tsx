@@ -1,19 +1,21 @@
+// src/components/sections/ideas.tsx
 "use client";
 
 import { motion } from "framer-motion";
-import { ThumbsUp, ThumbsDown, ArrowRight } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { IdeaCardBigNumber, type IdeaData } from "@/components/widgets/idea-card";
+import type { Palette } from "@/components/widgets/palettes";
 
-const ideas = [
+const ideas: Array<IdeaData & { palette: Palette }> = [
   {
     number: "01",
     title: "Robot nettoyeur pour bureaux",
     description:
       "Et si un robot faisait le ménage de votre bureau ? Les chiffres sont convaincants.",
     pros: [
-      "Réduction de -20% sur le budget ménage annuel",
+      "-20 % sur le budget ménage annuel",
       "Rapports d'entretien via application",
       "Image moderne et tech pour l'entreprise",
     ],
@@ -21,6 +23,8 @@ const ideas = [
       "Coût initial élevé (location possible)",
       "Limité aux surfaces planes",
     ],
+    seed: 1.1,
+    palette: "amber",
   },
   {
     number: "02",
@@ -36,14 +40,16 @@ const ideas = [
       "Manque de jugement humain sur les cas complexes",
       "Coût des licences premium",
     ],
+    seed: 2.3,
+    palette: "violet",
   },
   {
     number: "03",
-    title: "Optimisation des tournées de livraison",
+    title: "Optimisation des tournées",
     description:
-      "Des livraisons plus malignes : optimisez vos tournées avec des algorithmes, économisez du carburant et du temps.",
+      "Des livraisons plus malignes : optimisez vos tournées avec des algorithmes, économisez carburant et temps.",
     pros: [
-      "Diminution de -30% des coûts carburant (Google OR-Tools)",
+      "-30 % sur les coûts carburant (Google OR-Tools)",
       "Livraisons plus rapides, trajets optimisés",
       "Moins de stress pour les livreurs",
     ],
@@ -51,23 +57,29 @@ const ideas = [
       "Nécessite des données précises (trafic temps réel)",
       "Investissement initial dans un logiciel TMS",
     ],
+    seed: 3.5,
+    palette: "duo",
   },
 ];
 
 export function Ideas() {
   return (
-    <section id="idees" className="py-24">
+    <section
+      id="idees"
+      className="py-24"
+      style={{ background: "oklch(0.08 0.02 280)" }}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Idées pour les PME en 2026
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="mt-4 text-lg text-white/70">
             Découvrez comment augmenter votre potentiel et votre entreprise.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2">
+        <div className="mt-16 grid gap-5 md:grid-cols-3">
           {ideas.map((idea, i) => (
             <motion.div
               key={idea.number}
@@ -76,61 +88,17 @@ export function Ideas() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
             >
-              <Card className="h-full border-border/50 transition-shadow hover:shadow-lg">
-                <CardContent className="p-6">
-                  <span className="text-sm font-bold text-primary">
-                    {idea.number}
-                  </span>
-                  <h3 className="mt-2 text-xl font-semibold">{idea.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {idea.description}
-                  </p>
-
-                  <div className="mt-6 space-y-4">
-                    <div>
-                      <div className="mb-2 flex items-center gap-2 text-sm font-medium text-green-600">
-                        <ThumbsUp className="h-4 w-4" />
-                        Avantages
-                      </div>
-                      <ul className="space-y-1.5">
-                        {idea.pros.map((pro) => (
-                          <li
-                            key={pro}
-                            className="flex items-start gap-2 text-sm text-muted-foreground"
-                          >
-                            <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green-500" />
-                            {pro}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <div className="mb-2 flex items-center gap-2 text-sm font-medium text-amber-600">
-                        <ThumbsDown className="h-4 w-4" />
-                        Points d&apos;attention
-                      </div>
-                      <ul className="space-y-1.5">
-                        {idea.cons.map((con) => (
-                          <li
-                            key={con}
-                            className="flex items-start gap-2 text-sm text-muted-foreground"
-                          >
-                            <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
-                            {con}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <IdeaCardBigNumber idea={idea} palette={idea.palette} />
             </motion.div>
           ))}
         </div>
 
         <div className="mt-10 text-center">
-          <Button asChild variant="outline" className="gap-2">
+          <Button
+            asChild
+            variant="outline"
+            className="gap-2 border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white"
+          >
             <Link href="/idees">
               Voir toutes les idées
               <ArrowRight className="h-4 w-4" />

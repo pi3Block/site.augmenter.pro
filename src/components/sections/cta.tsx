@@ -1,9 +1,11 @@
+// src/components/sections/cta.tsx
 "use client";
 
 import { motion } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { MeshAurora } from "@/components/widgets/blobs";
 
 export function CTA() {
   return (
@@ -16,7 +18,14 @@ export function CTA() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,oklch(0.541_0.281_293_/_0.3),transparent_60%),radial-gradient(circle_at_70%_50%,oklch(0.828_0.189_84.429_/_0.15),transparent_60%)]" />
+          {/* Aurora violette en fond du bloc sombre */}
+          <div
+            className="absolute inset-0"
+            style={{ opacity: 0.45 }}
+            aria-hidden
+          >
+            <MeshAurora palette="violet" seed={2.1} />
+          </div>
 
           <div className="relative">
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary">
@@ -48,7 +57,11 @@ export function CTA() {
                 size="lg"
                 className="border-background/20 bg-transparent text-background hover:bg-background/10"
               >
-                <a href="https://wa.me/33679119774" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://wa.me/33679119774"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Discuter sur WhatsApp
                 </a>
               </Button>
