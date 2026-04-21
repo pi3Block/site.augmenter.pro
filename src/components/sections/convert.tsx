@@ -3,7 +3,6 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { ArrowRight, Check, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BentoGrid, BentoCard } from "@/components/bento/bento-grid";
@@ -269,13 +268,7 @@ export function Convert() {
 
 function PlanCard({ plan }: { plan: Plan }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5 }}
-      className="relative flex h-full flex-col"
-    >
+    <div className="relative flex h-full flex-col">
       {plan.popular && (
         <span className="absolute right-0 top-0 rounded bg-primary px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-primary-foreground">
           Recommandé
@@ -326,6 +319,6 @@ function PlanCard({ plan }: { plan: Plan }) {
           <ArrowRight className="h-4 w-4" />
         </Link>
       </Button>
-    </motion.div>
+    </div>
   );
 }
