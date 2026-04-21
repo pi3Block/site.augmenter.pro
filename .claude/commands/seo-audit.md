@@ -730,38 +730,16 @@ Capturer screenshots des citations/réponses. Identifier les gaps : sur quels su
 
 augmenter.pro est un site de conseil avec décisions financières impliquées = domaine **YMYL adjacent** → standard E-E-A-T élevé.
 
-### 7.1 Barème de scoring
+**Utiliser la grille complète** : [`.claude/templates/seo/eeat-grid.md`](../templates/seo/eeat-grid.md)
 
-Pour chaque page indexable, scorer sur 20 points :
+Elle contient :
+- Barème par signal (Experience, Expertise, Autorité, Fiabilité — 0-5 chacun)
+- Check-lists auteur + autorité du domaine
+- Seuils d'action (< 10 / 10-15 / > 15)
+- Format de restitution pour le rapport
+- Anti-patterns à flagger immédiatement
 
-| Signal | 0 | 1-2 | 3 | 4 | 5 |
-|--------|---|-----|---|---|---|
-| **Experience** | Aucun exemple | Exemples génériques | Exemples sectoriels | Cas terrain anonymisés | Cas géo-localisés 78/95 chiffrés |
-| **Expertise** | Reformulation Wikipedia | Reformulation avec liens | Bonne couverture | Analyse originale | Méthodologie propriétaire |
-| **Autorité** | Auteur absent | Auteur nommé | Auteur + bio courte | Credentials mentionnés | Credentials + missions + preuves |
-| **Fiabilité** | Affirmations sans source | 1-2 sources | Sources pour chiffres clés | Sources + nuances | Tout sourcé + limites + ton prudent |
-
-### 7.2 Signaux auteur
-
-- [ ] Page auteur dédiée pour Pierre Legrand (bio, photo, credentials, missions, liens sociaux)
-- [ ] JSON-LD `Person` sur la page auteur avec `sameAs` (LinkedIn, GitHub, Twitter/X)
-- [ ] Lien auteur sur chaque article (rel=author)
-- [ ] Photo de profil cohérente sur l'ensemble du site
-- [ ] Présence sur des annuaires d'experts (LinkedIn Top Voices ? France Num ? Bpifrance ?)
-
-### 7.3 Signaux d'autorité du domaine
-
-- [ ] Mentions presse (si existantes → lien depuis page À propos)
-- [ ] Témoignages clients vérifiables (logos, citations attribuées, chiffres)
-- [ ] Études de cas détaillées avec résultats chiffrés
-- [ ] Partenariats affichés (Bpifrance IA Booster, France Num Activateur, etc.)
-- [ ] Conférences / interventions publiques
-
-### 7.4 Seuils d'action
-
-- Score < 10/20 → **priorité haute** : enrichir avec exemples terrain + sources
-- Score 10-15/20 → **priorité moyenne** : ajouter nuances + credentials
-- Score > 15/20 → **correct** : maintenir + veille concurrentielle
+Appliquer la grille à **chaque page indexable** et remplir le tableau §8 du rapport.
 
 ---
 
@@ -777,39 +755,18 @@ Depuis les keyword clusters de la Phase 3, construire une carte thématique :
 Visualiser sous forme de tableau :
 | Pilier | Article support | Mot-clé | Volume | Difficulté | Intent | Statut (existe / à créer / à refresh) |
 
-### 8.2 Calendrier éditorial (15-20 idées **rédigées**, pas juste listées)
+### 8.2 Calendrier éditorial (15-20 briefs **rédigés**, pas juste listés)
 
-Pour chaque idée, livrer un **brief prêt à rédiger** :
+**Format de chaque brief** : [`.claude/templates/seo/article-brief.md`](../templates/seo/article-brief.md)
 
-```markdown
-#### Article N°X — <Titre SEO proposé>
+Ce template couvre : titre SEO, slug, kw principal + secondaires + volumes, intent, pilier, persona cible, douleur adressée, angle différenciant, promesse, preuves, plan H2/H3, CTA, longueur, liens internes, RICE, trafic estimé, trimestre.
 
-- **Slug** : `/blog/<slug>`
-- **Mot-clé principal** : <kw> (vol: X, diff: Y, CPC: Z €)
-- **Mots-clés secondaires** : [kw1, kw2, kw3]
-- **Intent** : informational / commercial / transactional
-- **Pilier** : <nom du pilier>
-- **Cible lecteur** : <persona précis, ex. « dirigeant BTP 20-50 salariés, 78/95, curieux mais méfiant vis-à-vis de l'IA »>
-- **Douleur adressée** : <phrase-choc qui résume le problème du lecteur>
-- **Angle différenciant** : <ce qu'aucun top 10 SERP ne dit — données propres, méthodologie maison, exemple 78/95>
-- **Promesse** : <ce que le lecteur saura faire après lecture>
-- **Preuves à mobiliser** : <chiffres, sources, cas terrain, screenshots outils>
-- **Plan H2/H3** :
-  - H2 : Introduction accrocheuse (chiffre ou statement)
-  - H2 : <...>
-    - H3 : <...>
-  - H2 : <...>
-  - H2 : FAQ (3-5 questions piochées dans PAA)
-  - H2 : Conclusion + CTA
-- **CTA cible** : Audit 180° offert / Audit 360° IA Booster / page service X
-- **Longueur cible** : X mots (calibré sur la longueur moyenne du top 3 SERP)
-- **Article(s) interne(s) à linker** : [...]
-- **Score RICE** : Reach × Impact × Confidence / Effort = X
-- **Trafic mensuel estimé à 12 mois** : X visites
-- **Trimestre cible** : Q1/Q2/Q3/Q4 2026
-```
+**Produire 15 à 20 briefs** classés par RICE décroissant.
 
-Produire 15 à 20 briefs de ce format, classés par RICE décroissant. Respecter le **ton provocateur** (ex. titres du type « ChatGPT dans votre PME : 3 chantiers utiles, 5 pièges qui coûtent cher », « Automatiser votre devis BTP : ce que personne ne vous dit avant de signer ») plutôt que le SEO corporate lisse (« Les avantages de l'IA pour les PME »).
+Rappel de ton : provocateur, pas SEO corporate.
+- ✅ « ChatGPT dans votre PME : 3 chantiers utiles, 5 pièges qui coûtent cher »
+- ✅ « Automatiser votre devis BTP : ce que personne ne vous dit avant de signer »
+- ❌ « Les avantages de l'IA pour les PME »
 
 ### 8.3 Refresh planning
 
@@ -819,48 +776,11 @@ Pour les articles existants :
 - **À splitter** (page trop large cible des intents divergents)
 - **À supprimer** (zombie pages sans trafic ni rôle SEO ni valeur)
 
-### 8.4 Pages manquantes stratégiques (spécifiées, pas juste listées)
+### 8.4 Pages manquantes stratégiques (fiches spec prêtes à implémenter)
 
-Pour chaque page proposée, livrer une **fiche de spécification** prête à implémenter :
+**Format de chaque fiche** : [`.claude/templates/seo/page-spec.md`](../templates/seo/page-spec.md)
 
-```markdown
-#### Page — <Titre>
-
-- **URL cible** : `/<path>`
-- **Type** : service sectoriel / page locale / comparateur / étude de cas / hub ressources / auteur / glossaire
-- **Objectif business** : <ex. capter « consultant IA BTP 78 », convertir en Audit 180°>
-- **Mots-clés ciblés** : [principal, secondaires]
-- **Volume mensuel estimé** : X recherches
-- **H1 proposé** :
-- **Sous-titre / hook** :
-- **Plan des sections** :
-  1. Accroche + pain point
-  2. <...>
-  3. Preuves (chiffres, logos, cas)
-  4. Offre (méthodologie, livrable, prix)
-  5. FAQ (3-5 questions)
-  6. CTA
-- **Schema JSON-LD** : Service / LocalBusiness / Article / FAQPage / BreadcrumbList
-- **Images à produire** : [liste + briefs visuels]
-- **Liens internes entrants** : <quelles pages doivent pointer vers celle-ci>
-- **Liens internes sortants** : <vers quelles pages>
-- **CTA principal** :
-- **Effort estimé** : X h
-- **Priorité** : 🔴/🟠/🟡/🟢
-```
-
-Catégories de pages à considérer systématiquement :
-
-1. **Pages services par secteur** (BTP, immobilier, industrie, artisans, commerces) — 800-1500 mots + schema Service + cas sectoriel anonymisé
-2. **Pages locales** (Yvelines, Val d'Oise, et éventuellement Saint-Germain-en-Laye, Versailles, Cergy-Pontoise si volumes validés) — **ne pas spammer** : créer une page locale uniquement si (a) volume > 50/mois, (b) contenu unique et non dupliqué, (c) preuve d'ancrage local (adresse, mentions dans presse locale, clients cités)
-3. **Pages comparateurs/outils** (« ChatGPT vs Claude vs Gemini pour PME », « Make vs n8n vs Zapier », « Microsoft Copilot vs Google Gemini Workspace », « Quel LLM pour quelle tâche PME ») — intent commercial, forte citabilité LLM
-4. **Études de cas détaillées** (format avant/après chiffré, 1 par secteur) — E-E-A-T + preuve sociale + schema CaseStudy / Article
-5. **Page auteur Pierre Legrand** — bio, photo, credentials, missions réalisées, interventions publiques, sameAs LinkedIn/GitHub, schema Person
-6. **Hub ressources** (`/ressources` ou `/outils`) — centralise prompts, guides PDF, check-lists, calculateurs, en lead magnets
-7. **Glossaire IA-PME** (`/glossaire`) — 30-50 termes définis courts, intent informational, fort effet de maillage
-8. **Page « IA Booster »** dédiée (si partenariat Bpifrance officiel) — capte la requête institutionnelle
-9. **Calculateur ROI IA** — outil interactif + formulaire = lead magnet à fort taux de conversion
-10. **Page « Activateur France Num »** (si éligible) — trust signal + trafic qualifié
+Ce template couvre : URL, type, objectif business, kw + volume, H1, hook, plan des sections, schema JSON-LD, images, maillage entrant/sortant, CTA, effort, priorité — ainsi que les **10 catégories de pages à considérer systématiquement** (services sectoriels, pages locales, comparateurs, études de cas, page auteur, hub ressources, glossaire, IA Booster, calculateur ROI, Activateur France Num).
 
 ---
 

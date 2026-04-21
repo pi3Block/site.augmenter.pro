@@ -1,60 +1,128 @@
-# Handoff — Widgets animés pour site.augmenter.pro
+# Architecture frontend — augmenter.PRO
 
-10 fichiers à copier dans ton repo Next.js.
+Guide de la homepage en **layout bento** et des widgets animés réutilisables.
 
-## Création
+## Structure
 
-Crée le dossier `src/components/widgets/` et copie-colle :
+```
+src/components/
+  bento/                    ← primitives de grille bento
+    bento-grid.tsx          ← BentoGrid, BentoCard, SectionHead, Pill
+    article-bento-card.tsx  ← ArticleBentoCard (featured 16:10 ou compact 5:3)
+    pull-quote-card.tsx     ← PullQuoteCard (dark) + MiniQuoteCard (light)
 
-| De (ce projet) | Vers (ton repo) |
-|---|---|
-| `handoff/widgets/palettes.ts` | `src/components/widgets/palettes.ts` |
-| `handoff/widgets/blobs.tsx` | `src/components/widgets/blobs.tsx` |
-| `handoff/widgets/service-card.tsx` | `src/components/widgets/service-card.tsx` |
-| `handoff/widgets/idea-card.tsx` | `src/components/widgets/idea-card.tsx` |
-| `handoff/widgets/trust-stat.tsx` | `src/components/widgets/trust-stat.tsx` |
+  widgets/                  ← widgets animés Bionova (SVG morphing)
+    palettes.ts             ← 6 palettes OKLCH partagées
+    blobs.tsx               ← LiquidBlob, MeshAurora, CardShell, CornerArrow, PillTag + hook useMorph
+    service-card.tsx        ← ServiceCardStat (stat hero + blob latéral)
+    idea-card.tsx           ← IdeaCardBigNumber (numéro filigrane + aurora)
+    trust-stat.tsx          ← TrustStatCard (compact 180 px)
 
-## Remplacement (écrase les fichiers existants)
-
-| De (ce projet) | Vers (ton repo) |
-|---|---|
-| `handoff/sections/hero.tsx` | `src/components/sections/hero.tsx` |
-| `handoff/sections/trust.tsx` | `src/components/sections/trust.tsx` |
-| `handoff/sections/services.tsx` | `src/components/sections/services.tsx` |
-| `handoff/sections/ideas.tsx` | `src/components/sections/ideas.tsx` |
-| `handoff/sections/cta.tsx` | `src/components/sections/cta.tsx` |
-
-## Vérification
-
-```bash
-npm run dev
-# puis ouvrir http://localhost:3000
+  sections/                 ← sections page entières
+    hero.tsx                ← Section 1 bento (titre + 4 stats + image + mini-quote)
+    approach-services.tsx   ← Section 2 bento dark (4 étapes + 3 services + pull-quote)
+    resources.tsx           ← Section 3 bento (3 idées + 6 articles + CTA accent)
+    convert.tsx             ← Section 4 bento dark (pricing + contact + garanties + rating)
+    approach.tsx            ← /approche (FAQ + 4 piliers)
+    ideas.tsx               ← /idees
+    pricing.tsx             ← /prestations
+    blog-preview.tsx        ← /blog (liste articles)
+    cta.tsx                 ← Bloc CTA réutilisé en bas de plusieurs pages
+    prompt-card.tsx         ← /prompts
 ```
 
-Points à vérifier :
-1. ✅ Hero : aurora violet-amber discrète en fond, lisibilité du titre préservée
-2. ✅ Trust : 4 cartes sombres compactes (violet, cold, duo, amber) avec icône + stat
-3. ✅ Services : 3 cartes sombres avec gros chiffre (10h, 3×, 24/7) et blob liquid
-4. ✅ Ideas : 3 cartes sombres avec numéro filigrane 01/02/03 et aurora
-5. ✅ CTA : aurora violet discrète sur le bloc sombre existant
+## Layout bento — comment ça marche
+
+**Grille** : 12 colonnes desktop, 6 tablette, 1 mobile. Rangées de 110 px en desktop, auto en mobile.
+
+**Span & rows** : chaque `BentoCard` déclare `span={3|4|5|6|7|8|9|12}` et `rows={1..6}`. Le mapping vers Tailwind est explicite dans `bento-grid.tsx` pour que JIT scanne les classes (pas de `md:col-span-${n}`).
+
+**Variantes** :
+
+| Variante | Usage | Rendu |
+|----------|-------|-------|
+| `light` (défaut) | Cartes claires, hover lift | `bg-card` + border + shadow au hover |
+| `dark` | Sections sombres (Approach×Services, Convert) | `bg-linear-gradient(#13101d→#0f0c1a)` + border white/7% |
+| `flush` | Héberge un widget plein-cadre (ServiceCardStat etc.) | `border-transparent bg-transparent` (pas de double frame) |
+| `accent` | CTA secondaires | Gradient violet clair |
+
+**Exemple d'usage** :
+
+```tsx
+<BentoGrid>
+  <BentoCard span={6} rows={4} pad="lg">
+    <h1>Titre principal</h1>
+  </BentoCard>
+  <BentoCard span={3} rows={2} variant="flush">
+    <ServiceCardStat service={...} palette="violet" />
+  </BentoCard>
+  {/* ... */}
+</BentoGrid>
+```
+
+## Widgets animés
+
+Les widgets `widgets/*` utilisent du SVG morphing (path.d recalculé par `requestAnimationFrame` via le hook `useMorph`). Ils :
+
+- **respectent `prefers-reduced-motion: reduce`** (figent l'animation) ;
+- **gèrent leur hover** via state local + prop `hovered` dans `CardShell` ;
+- ont tous leur propre `CardShell` (border + gradient OKLCH) — donc doivent toujours être placés dans `<BentoCard variant="flush">` pour éviter un double cadre.
+
+**Palettes disponibles** (`widgets/palettes.ts`) :
+
+| Palette | Usage suggéré |
+|---------|---------------|
+| `violet` | Primary, default |
+| `amber` | Accent chaud |
+| `duo` | Violet + amber dégradé |
+| `cold` | Bleu-violet (trust/zone géo) |
+| `warm` | Orange-rouge |
+| `mono` | Neutre gris |
+
+## Animations framer-motion
+
+**⚠️ Éviter `whileInView` avec `once: true` + `margin: "-80px"` sur des éléments cachés sous le fold** : le déclenchement est flaky quand le scroll est rapide (Playwright, scroll programmatique, prerender), et les éléments restent à `opacity: 0`. Préférer :
+
+- `initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}` pour le hero ;
+- pas d'animation du tout pour les cartes bento cachées sous le fold (le design fonctionne sans) ;
+- si tu insistes sur `whileInView`, utilise `amount: 0.2` plutôt que `margin: "-80px"`.
 
 ## Accessibilité
 
-Le hook `useMorph` dans `blobs.tsx` respecte `prefers-reduced-motion: reduce` — les blobs restent statiques si l'utilisateur a activé ce setting OS. Teste en activant "Réduire les animations" dans macOS System Settings > Accessibility > Display.
+- Tous les widgets respectent `prefers-reduced-motion`.
+- Les SVG décoratifs ont `aria-hidden`.
+- Les cartes cliquables (`ServiceCardStat`, `ArticleBentoCard`) sont des `<Link>` avec `aria-label` explicite.
+- Le contraste minimum AA est respecté sur tous les variants (texte blanc sur dark ≥ 4.5:1).
 
-## Dépendances
+## Tests visuels
 
-Aucune nouvelle. Utilise uniquement `react`, `framer-motion`, `next/link`, `lucide-react` déjà présents.
+```bash
+npm run dev
+# ouvrir http://localhost:3000
+```
 
-## Dark mode
+Points à vérifier sur la homepage :
 
-Les cartes sont déjà sombres par design (peu importe le thème du site). Pas d'adaptation nécessaire.
+1. **Hero** — pill violette, titre gradient violet→amber, 4 TrustStatCard avec blobs animés, image Odoo avec overlay et badge prix, mini-quote Nathalie
+2. **Approche × Services** — 4 step-cards numérotés, 3 ServiceCardStat avec chiffres (10h/3×/24/7), PullQuote Maud à droite
+3. **Ressources** — 3 IdeaCardBigNumber alternées avec 6 articles (featured + 6 compacts) + CTA accent violet
+4. **Convert** — titre + 2 plans pricing dark avec badge "Recommandé" sur 360°, contact/engagements/rating en ligne du bas
 
-## Notes de perf
+Pour un screenshot full-page fiable : scroller jusqu'en bas puis remonter (déclenche tous les `whileInView` restants).
 
-- 7 RAF loops au pire (Trust 4 + Services 3). Acceptable sur desktop moderne.
-- Si problème mobile, wrap `useMorph` avec un `IntersectionObserver` pour ne tick que les composants visibles. À voir après mesure Lighthouse.
+## Responsive
+
+- **< 640 px** : toutes les cartes `col-span-6` (monocolonne), padding réduit
+- **640-1100 px** : grille 6 colonnes, les cartes 3-4 deviennent 6 (2 par ligne)
+- **≥ 1100 px** : grille 12 colonnes pleine
 
 ## Rollback
 
-Les 5 fichiers `sections/*.tsx` originaux sont dans `git history`. `git checkout HEAD~1 -- src/components/sections/` suffit à tout annuler.
+La refonte bento a été introduite le 2026-04-21. Pour revenir à l'ancienne homepage 9-sections :
+
+```bash
+git log --oneline src/app/page.tsx
+git checkout <commit-avant-refonte> -- src/app/page.tsx src/components/sections/hero.tsx
+```
+
+Les anciennes sections (`trust.tsx`, `services.tsx`, `testimonials.tsx`) sont conservées mais **non importées** — elles peuvent servir de base à une restauration ou être supprimées (voir `todo_corrections.md`).

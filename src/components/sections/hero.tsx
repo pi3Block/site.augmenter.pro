@@ -71,7 +71,7 @@ export function Hero() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/prestations">Voir nos prestations</Link>
+                <Link href="/approche#prestations">Voir nos prestations</Link>
               </Button>
               <span className="ml-1 inline-flex items-center gap-2 text-xs text-muted-foreground">
                 <span className="h-1 w-1 rounded-full bg-primary" />

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const suggestions = [
-  { href: "/prestations", label: "Nos prestations", icon: Search },
+  { href: "/approche#prestations", label: "Nos prestations", icon: Search },
   { href: "/blog", label: "Articles & guides", icon: BookOpen },
   { href: "/", label: "Page d'accueil", icon: Home },
 ];
@@ -60,7 +60,7 @@ export default function NotFound() {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-base">
-              <Link href="/prestations">Voir nos prestations</Link>
+              <Link href="/approche#prestations">Voir nos prestations</Link>
             </Button>
           </motion.div>
 

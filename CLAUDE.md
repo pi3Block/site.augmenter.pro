@@ -50,7 +50,7 @@ npm run lint      # ESLint
 
 ### Routing (App Router)
 
-- `/` — Homepage composing 9 section components (Hero, Trust, Services, Approach, Pricing, Ideas, Testimonials, BlogPreview, CTA)
+- `/` — Homepage composant 4 sections bento (Hero, ApproachServices, Resources, Convert) qui fusionnent les anciennes 9 sections en un flow 12-colonnes plus dense
 - `/approche` — 4-pillar approach detail + FAQ (with FAQ JSON-LD schema)
 - `/blog` — Article listing
 - `/blog/<slug>` — Individual articles (each slug has its own directory under `src/app/blog/`)
@@ -61,10 +61,25 @@ npm run lint      # ESLint
 
 ### Component Organization
 
-- `src/components/sections/` — Page-level section components (hero, services, pricing, etc.)
+- `src/components/sections/` — Page-level section components
+  - **Homepage bento** : `hero.tsx`, `approach-services.tsx`, `resources.tsx`, `convert.tsx`
+  - **Autres pages** : `approach.tsx` (/approche), `ideas.tsx` (/idees), `pricing.tsx` (/prestations), `blog-preview.tsx` (/blog), `cta.tsx` (bas de plusieurs pages), `prompt-card.tsx` (/prompts)
+  - **Orphelins** (non importés) : `trust.tsx`, `services.tsx`, `testimonials.tsx` — absorbés par les sections bento, conservés en cas de besoin
+- `src/components/bento/` — Primitives de layout bento réutilisables (`BentoGrid`, `BentoCard`, `SectionHead`, `Pill`, `ArticleBentoCard`, `PullQuoteCard`, `MiniQuoteCard`)
+- `src/components/widgets/` — Widgets animés (SVG morphing blobs) consommés par les cartes bento : `blobs.tsx` (`LiquidBlob`, `MeshAurora`, `CardShell`, `CornerArrow`, `PillTag`), `service-card.tsx`, `idea-card.tsx`, `trust-stat.tsx`, `palettes.ts` (6 palettes OKLCH : violet/amber/duo/cold/warm/mono). Respecte `prefers-reduced-motion`.
 - `src/components/layout/` — Header (fixed navbar + mobile sheet), Footer, ArticleLayout (blog wrapper with Article JSON-LD)
 - `src/components/ui/` — shadcn/ui primitives (accordion, badge, button, card, navigation-menu, separator, sheet)
 - `src/lib/utils.ts` — `cn()` utility (clsx + tailwind-merge)
+
+### Bento Layout System
+
+La homepage utilise une grille bento 12 colonnes (desktop) / 6 (tablette) / 1 (mobile) avec des rangées de 110px. Chaque `BentoCard` déclare `span` (3-12 cols) et `rows` (1-6 rangées) — le mapping vers Tailwind est explicite (pas de classes dynamiques, pour que JIT les scanne). Quatre variantes visuelles :
+- `light` — carte blanche avec hover lift (défaut)
+- `dark` — fond `#13101d` pour sections sombres
+- `flush` — carte transparente, utilisée pour héberger un widget animé plein-cadre (ServiceCardStat, IdeaCardBigNumber, TrustStatCard)
+- `accent` — gradient violet clair pour CTA secondaires
+
+**Convention** : les widgets Bionova (`ServiceCardStat`, `IdeaCardBigNumber`, `TrustStatCard`) ont leur propre `CardShell` interne et s'attendent à être placés dans une `BentoCard variant="flush"` pour éviter un double border + padding.
 
 ### Styling
 
@@ -112,7 +127,7 @@ The site uses Schema.org structured data for SEO and LLM discoverability:
 | Article | `src/components/layout/article-layout.tsx` | Each blog post (author, publisher, tags, URL) |
 | FAQPage | `src/app/approche/page.tsx` | FAQ section → Google "People Also Ask" |
 | Service + OfferCatalog | `src/app/prestations/page.tsx` | 5 services with pricing (0€ and 225€) |
-| AggregateRating + Review | `src/components/sections/testimonials.tsx` | Star ratings in Google results |
+| AggregateRating + Review | `src/components/sections/testimonials.tsx` | Star ratings in Google results — ⚠️ testimonials.tsx n'est plus importé depuis la refonte bento ; le JSON-LD doit être migré vers `convert.tsx` ou `layout.tsx` (voir `docs/todo_corrections.md`) |
 
 ### LLM/GEO Files
 

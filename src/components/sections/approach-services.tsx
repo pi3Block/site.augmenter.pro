@@ -58,7 +58,7 @@ const SERVICES: Array<ServiceData & { palette: Palette }> = [
     stat: "10h",
     seed: 1.2,
     palette: "violet",
-    href: "/prestations",
+    href: "/approche#prestations",
   },
   {
     tag: "Digitalisation",
@@ -68,7 +68,7 @@ const SERVICES: Array<ServiceData & { palette: Palette }> = [
     stat: "3×",
     seed: 2.4,
     palette: "duo",
-    href: "/prestations",
+    href: "/approche#prestations",
   },
   {
     tag: "Robotique & IoT",
@@ -78,7 +78,7 @@ const SERVICES: Array<ServiceData & { palette: Palette }> = [
     stat: "24/7",
     seed: 3.7,
     palette: "amber",
-    href: "/prestations",
+    href: "/approche#prestations",
   },
 ];
 
