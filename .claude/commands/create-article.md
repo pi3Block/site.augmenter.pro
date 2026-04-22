@@ -4,7 +4,7 @@ Tu es un expert en rédaction SEO pour le marché français des PME. Tu vas cré
 
 ## Contexte projet
 
-**À lire en premier** : [`.claude/templates/seo/project-context.md`](../templates/seo/project-context.md)
+**À lire en premier** : [`.claude/templates/seo/project-context.md`](.claude/templates/seo/project-context.md)
 
 Ce fichier centralise : positionnement, stack technique, stack SEO/LLM, audience et modalités géographiques, pyramide d'offres, contraintes éditoriales, identité éditoriale.
 
@@ -92,7 +92,7 @@ Avant de poursuivre, réponds à ces 3 questions. Si la réponse à l'une d'elle
 
 Propose à l'utilisateur un **brief éditorial complet** avant de rédiger.
 
-**Format standard** : [`.claude/templates/seo/article-brief.md`](../templates/seo/article-brief.md)
+**Format standard** : [`.claude/templates/seo/article-brief.md`](.claude/templates/seo/article-brief.md)
 
 Ce template couvre tous les champs requis : titre SEO (< 60 chars, power word — **jamais « Gratuit »**), meta description (< 155 chars), slug (kebab-case, 3-5 mots), tags, intent, pilier, cible lecteur, douleur, angle différenciant, preuves, plan H2/H3, longueur calibrée, liens internes, CTA (Audit 180° offert / Audit 360° / contact), RICE, trafic estimé.
 
@@ -155,7 +155,7 @@ export default function Article() {
 
 Ces règles sont **PRIORITAIRES** sur les règles SEO on-page ci-dessous. En cas de conflit, privilégier la qualité du contenu.
 
-**Grille de scoring détaillée** : [`.claude/templates/seo/eeat-grid.md`](../templates/seo/eeat-grid.md) — utiliser pour auto-scorer l'article après rédaction (objectif ≥ 15/20).
+**Grille de scoring détaillée** : [`.claude/templates/seo/eeat-grid.md`](.claude/templates/seo/eeat-grid.md) — utiliser pour auto-scorer l'article après rédaction (objectif ≥ 15/20).
 
 Principes à respecter dans la rédaction :
 - **Expérience terrain** : minimum 1 exemple concret issu de missions augmenter.PRO ou d'observations 78/95 (anonymiser si besoin). Formuler : « dans notre expérience », « nous avons constaté chez nos clients PME ».

@@ -186,7 +186,7 @@ export default function Article() {
         Le prix exact dépend de votre contexte. Un cabinet comptable de 30 personnes
         avec un seul serveur cloud sera moins cher à auditer qu&apos;une PME industrielle
         de 30 personnes avec 3 sites, des automates et un ERP on-premise. Consultez{" "}
-        <Link href="/prestations">nos tarifs détaillés</Link> pour connaître le
+        <Link href="/approche#prestations">nos tarifs détaillés</Link> pour connaître le
         positionnement d&apos;augmenter.PRO.
       </p>
 

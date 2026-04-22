@@ -6,7 +6,7 @@ Cet audit doit croiser : (1) l'état technique du site, (2) les données réelle
 
 ## Contexte projet
 
-**À lire en premier** : [`.claude/templates/seo/project-context.md`](../templates/seo/project-context.md)
+**À lire en premier** : [`.claude/templates/seo/project-context.md`](.claude/templates/seo/project-context.md)
 
 Ce fichier centralise : positionnement, stack technique, stack SEO/LLM en place, **audience et modalités géographiques** (formation présentielle 78/95 vs. visio national vs. déplacements gros projets), pyramide d'offres, contraintes éditoriales (mot « gratuit » interdit, ton provocateur, people-first), identité éditoriale, conventions de code.
 
@@ -726,7 +726,7 @@ Capturer screenshots des citations/réponses. Identifier les gaps : sur quels su
 
 augmenter.pro est un site de conseil avec décisions financières impliquées = domaine **YMYL adjacent** → standard E-E-A-T élevé.
 
-**Utiliser la grille complète** : [`.claude/templates/seo/eeat-grid.md`](../templates/seo/eeat-grid.md)
+**Utiliser la grille complète** : [`.claude/templates/seo/eeat-grid.md`](.claude/templates/seo/eeat-grid.md)
 
 Elle contient :
 - Barème par signal (Experience, Expertise, Autorité, Fiabilité — 0-5 chacun)
@@ -753,7 +753,7 @@ Visualiser sous forme de tableau :
 
 ### 8.2 Calendrier éditorial (15-20 briefs **rédigés**, pas juste listés)
 
-**Format de chaque brief** : [`.claude/templates/seo/article-brief.md`](../templates/seo/article-brief.md)
+**Format de chaque brief** : [`.claude/templates/seo/article-brief.md`](.claude/templates/seo/article-brief.md)
 
 Ce template couvre : titre SEO, slug, kw principal + secondaires + volumes, intent, pilier, persona cible, douleur adressée, angle différenciant, promesse, preuves, plan H2/H3, CTA, longueur, liens internes, RICE, trafic estimé, trimestre.
 
@@ -774,7 +774,7 @@ Pour les articles existants :
 
 ### 8.4 Pages manquantes stratégiques (fiches spec prêtes à implémenter)
 
-**Format de chaque fiche** : [`.claude/templates/seo/page-spec.md`](../templates/seo/page-spec.md)
+**Format de chaque fiche** : [`.claude/templates/seo/page-spec.md`](.claude/templates/seo/page-spec.md)
 
 Ce template couvre : URL, type, objectif business, kw + volume, H1, hook, plan des sections, schema JSON-LD, images, maillage entrant/sortant, CTA, effort, priorité — ainsi que les **10 catégories de pages à considérer systématiquement** (services sectoriels, pages locales, comparateurs, études de cas, page auteur, hub ressources, glossaire, IA Booster, calculateur ROI, Activateur France Num).
 
@@ -810,7 +810,7 @@ Produire un **tableau des incohérences détectées** avec : page concernée, pr
 
 ### 9.2 Propositions de copy prêt-à-coller
 
-**Format de chaque page** : [`.claude/templates/seo/copy-proposal.md`](../templates/seo/copy-proposal.md)
+**Format de chaque page** : [`.claude/templates/seo/copy-proposal.md`](.claude/templates/seo/copy-proposal.md)
 
 Ce template couvre : H1 actuel + 3 propositions A (provocateur), B (aspirationnel), C (pragmatique), meta title + variantes, meta description + variantes, CTA + variantes. Il inclut la grille de décision par ton, des exemples de patterns et les contraintes (mot « gratuit » interdit, longueurs, power words, géo).
 
@@ -818,7 +818,7 @@ Ce template couvre : H1 actuel + 3 propositions A (provocateur), B (aspirationne
 
 ### 9.3 Réécriture des cartes services / pricing
 
-**Format de chaque carte** : [`.claude/templates/seo/service-card.md`](../templates/seo/service-card.md)
+**Format de chaque carte** : [`.claude/templates/seo/service-card.md`](.claude/templates/seo/service-card.md)
 
 Ce template couvre : nom de l'offre, accroche, pour qui / pour qui pas, livrable concret, durée, méthodologie, prix + justification de palier, preuves, CTA, schema JSON-LD.
 
@@ -826,7 +826,7 @@ Appliquer à **chaque service** présent dans `services.tsx` / `pricing.tsx` / `
 
 ### 9.4 Enrichissement de l'offre (nouveaux paliers / produits)
 
-**Pyramide d'offres de référence** : voir [`.claude/templates/seo/service-card.md`](../templates/seo/service-card.md) section « Pyramide d'offres de référence » (Lead magnet → Audit 180° offert → Audit 360° → Atelier collectif → Sprint découverte → Accompagnement mensuel → Abonnement veille → Hotline IA → Prestations sur mesure).
+**Pyramide d'offres de référence** : voir [`.claude/templates/seo/service-card.md`](.claude/templates/seo/service-card.md) section « Pyramide d'offres de référence » (Lead magnet → Audit 180° offert → Audit 360° → Atelier collectif → Sprint découverte → Accompagnement mensuel → Abonnement veille → Hotline IA → Prestations sur mesure).
 
 Analyser la pyramide actuelle du site vs. celle de référence et proposer les paliers manquants. Pour chaque proposition, justifier :
 - **Pourquoi maintenant** (signal marché / gap concurrentiel)
@@ -871,7 +871,7 @@ Cette table = **backlog éditorial/commercial actionnable** à intégrer dans le
 
 ### Format du rapport
 
-**Structure complète du rapport** : [`.claude/templates/seo/report.md`](../templates/seo/report.md)
+**Structure complète du rapport** : [`.claude/templates/seo/report.md`](.claude/templates/seo/report.md)
 
 Ce template couvre les 13 sections standard :
 1. Outils utilisés

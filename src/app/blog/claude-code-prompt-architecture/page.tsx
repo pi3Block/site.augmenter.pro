@@ -78,7 +78,7 @@ export default function Article() {
         <strong>comment l&apos;intégrer à votre workflow</strong>, et vous
         donne le prompt complet à copier-coller. C&apos;est le même que nous
         utilisons chez{" "}
-        <Link href="/prestations">augmenter.PRO</Link> sur tous les projets
+        <Link href="/approche">augmenter.PRO</Link> sur tous les projets
         Claude Code qui partent vers la production.
       </p>
 
@@ -562,7 +562,7 @@ export default function Article() {
           notre retour d&apos;expérience sur Odoo en 4 jours
         </Link>{" "}
         (méthode, Skills, packages), ou nos{" "}
-        <Link href="/prestations">prestations d&apos;accompagnement</Link>{" "}
+        <Link href="/approche#prestations">prestations d&apos;accompagnement</Link>{" "}
         IA &amp; transformation digitale.
       </p>
     </ArticleLayout>

@@ -4,7 +4,7 @@ Tu es un expert en stratégie de contenu SEO et en architecture Next.js. Tu vas 
 
 ## Contexte projet
 
-**À lire en premier** : [`.claude/templates/seo/project-context.md`](../templates/seo/project-context.md)
+**À lire en premier** : [`.claude/templates/seo/project-context.md`](.claude/templates/seo/project-context.md)
 
 Ce fichier centralise : positionnement, stack technique, stack SEO/LLM, audience et modalités géographiques, pyramide d'offres, contraintes éditoriales, identité éditoriale.
 
@@ -136,10 +136,10 @@ Pour chaque ressource résultante, utiliser le template approprié :
 
 | Cas | Template |
 |---|---|
-| Nouvelle ressource créée (Split, Type change article, Move) | [`.claude/templates/seo/article-brief.md`](../templates/seo/article-brief.md) |
-| Nouvelle page custom créée (Split vers page sectorielle/locale, Type change page) | [`.claude/templates/seo/page-spec.md`](../templates/seo/page-spec.md) |
-| Réécriture copy / enrichissement (Update, Enrich, Restructure) | [`.claude/templates/seo/copy-proposal.md`](../templates/seo/copy-proposal.md) |
-| Modification d'une offre / service | [`.claude/templates/seo/service-card.md`](../templates/seo/service-card.md) |
+| Nouvelle ressource créée (Split, Type change article, Move) | [`.claude/templates/seo/article-brief.md`](.claude/templates/seo/article-brief.md) |
+| Nouvelle page custom créée (Split vers page sectorielle/locale, Type change page) | [`.claude/templates/seo/page-spec.md`](.claude/templates/seo/page-spec.md) |
+| Réécriture copy / enrichissement (Update, Enrich, Restructure) | [`.claude/templates/seo/copy-proposal.md`](.claude/templates/seo/copy-proposal.md) |
+| Modification d'une offre / service | [`.claude/templates/seo/service-card.md`](.claude/templates/seo/service-card.md) |
 
 Champs minimums à documenter par ressource résultante : titre SEO (< 60 chars), meta description (< 155 chars), type, slug/route, contenu conservé/modifié/ajouté/supprimé, nouveaux liens internes, JSON-LD adapté.
 
@@ -296,7 +296,7 @@ Après avoir ajouté des redirections, vérifier qu'il n'y a pas de **double red
 
 ### 5.2 E-E-A-T — Vérifier après modification
 
-Re-scorer la ressource avec la grille [`.claude/templates/seo/eeat-grid.md`](../templates/seo/eeat-grid.md) — la modification ne doit **jamais** dégrader le score E-E-A-T.
+Re-scorer la ressource avec la grille [`.claude/templates/seo/eeat-grid.md`](.claude/templates/seo/eeat-grid.md) — la modification ne doit **jamais** dégrader le score E-E-A-T.
 
 - [ ] Le contenu modifié conserve ≥ 1 exemple terrain
 - [ ] Le contenu modifié conserve ≥ 1 avis d'expert

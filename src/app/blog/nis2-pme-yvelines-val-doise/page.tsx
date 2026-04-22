@@ -336,7 +336,7 @@ export default function Article() {
         Le coût moyen d&apos;une cyberattaque pour une PME se situe entre{" "}
         <strong>14 720 € et 59 000 €</strong> — et peut grimper à 466 000 €
         selon la gravité (Sekost, CriseHelp). Un{" "}
-        <Link href="/prestations">audit de cybersécurité complet</Link> coûte
+        <Link href="/approche#prestations">audit de cybersécurité complet</Link> coûte
         entre 2 000 et 10 000 € HT. L&apos;investissement dans la conformité
         est un <em>assurance</em>, pas un coût.
       </p>

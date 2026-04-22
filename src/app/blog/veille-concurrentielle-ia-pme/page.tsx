@@ -309,7 +309,7 @@ export default function VeilleConcurrentielleIAPME() {
         , ou pour un accompagnement personnalisé sur la mise en place d&apos;une
         veille automatisée, consultez nos{" "}
         <Link
-          href="/prestations"
+          href="/approche#prestations"
           className="text-primary underline-offset-4 hover:underline"
         >
           prestations d&apos;audit et de conseil IA

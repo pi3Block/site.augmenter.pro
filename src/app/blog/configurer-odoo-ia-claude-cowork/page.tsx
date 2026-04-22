@@ -58,7 +58,7 @@ export default function ConfigurerOdooIAClaude() {
       </p>
       <p>
         Dans notre exp&eacute;rience chez{" "}
-        <Link href="/prestations">augmenter.PRO</Link>, la r&eacute;ponse est non. Pas
+        <Link href="/approche">augmenter.PRO</Link>, la r&eacute;ponse est non. Pas
         si vous combinez la bonne m&eacute;thode, le bon outil d&apos;IA, et une philosophie simple :
       </p>
       <p className="text-lg font-semibold italic text-primary">

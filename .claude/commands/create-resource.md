@@ -4,7 +4,7 @@ Tu es un expert en stratégie de contenu SEO pour le marché français des PME. 
 
 ## Contexte projet
 
-**À lire en premier** : [`.claude/templates/seo/project-context.md`](../templates/seo/project-context.md)
+**À lire en premier** : [`.claude/templates/seo/project-context.md`](.claude/templates/seo/project-context.md)
 
 Ce fichier centralise : positionnement, stack technique, stack SEO/LLM, audience et modalités géographiques, pyramide d'offres, contraintes éditoriales, identité éditoriale.
 
@@ -107,8 +107,8 @@ Propose un brief complet **avant de coder**, au format adapté au type de ressou
 
 | Type de ressource | Template de brief |
 |---|---|
-| Article / comparatif / étude de cas / glossaire | [`.claude/templates/seo/article-brief.md`](../templates/seo/article-brief.md) |
-| Page sectorielle / page locale / landing / hub | [`.claude/templates/seo/page-spec.md`](../templates/seo/page-spec.md) |
+| Article / comparatif / étude de cas / glossaire | [`.claude/templates/seo/article-brief.md`](.claude/templates/seo/article-brief.md) |
+| Page sectorielle / page locale / landing / hub | [`.claude/templates/seo/page-spec.md`](.claude/templates/seo/page-spec.md) |
 
 **Champs supplémentaires spécifiques à create-resource** (à ajouter au brief choisi) :
 - **Type de ressource** choisi + **justification** (pourquoi ce format vs. les autres)
@@ -394,7 +394,7 @@ export default function LegalPage() {
 
 Ces règles sont **PRIORITAIRES** sur les règles SEO on-page. En cas de conflit, privilégier la qualité.
 
-**Grille de scoring** : [`.claude/templates/seo/eeat-grid.md`](../templates/seo/eeat-grid.md) — auto-scorer la ressource après rédaction (objectif ≥ 15/20).
+**Grille de scoring** : [`.claude/templates/seo/eeat-grid.md`](.claude/templates/seo/eeat-grid.md) — auto-scorer la ressource après rédaction (objectif ≥ 15/20).
 
 Principes à respecter :
 - **Expérience terrain** : ≥ 1 exemple concret 78/95, adapté au type (étude de cas → résultats chiffrés, page sectorielle → connaissance locale, article → anecdote).

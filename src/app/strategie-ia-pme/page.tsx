@@ -315,7 +315,7 @@ export default function StrategieIaPmePage() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/prestations">Découvrir nos prestations</Link>
+                <Link href="/approche#prestations">Découvrir nos prestations</Link>
               </Button>
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
@@ -468,7 +468,7 @@ export default function StrategieIaPmePage() {
           </div>
           <div className="mt-12 text-center">
             <Button asChild size="lg" className="gap-2">
-              <Link href="/prestations">
+              <Link href="/approche#prestations">
                 Voir les tarifs détaillés
                 <ArrowRight className="h-4 w-4" />
               </Link>

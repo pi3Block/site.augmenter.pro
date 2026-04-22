@@ -376,7 +376,7 @@ export default function AuditInformatiqueYvelinesPage() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/prestations">Voir nos prestations</Link>
+                <Link href="/approche#prestations">Voir nos prestations</Link>
               </Button>
             </div>
             <p className="mt-4 text-sm text-muted-foreground">

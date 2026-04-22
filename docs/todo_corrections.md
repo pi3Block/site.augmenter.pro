@@ -28,22 +28,6 @@ Priorité : 🔴 bloquant · 🟠 important · 🟢 cosmétique.
 
 ---
 
-## 🟢 Legacy à nettoyer
-
-Les sections suivantes ne sont plus importées nulle part depuis la refonte des pages internes, mais restent conservées pour faciliter un éventuel rollback :
-
-- [src/components/sections/approach.tsx](../src/components/sections/approach.tsx) — ancien composant 4-piliers de `/approche`
-- [src/components/sections/ideas.tsx](../src/components/sections/ideas.tsx) — ancienne grille 3-col de `/idees`
-- [src/components/sections/pricing.tsx](../src/components/sections/pricing.tsx) — ancien pricing de `/prestations` (route supprimée)
-- [src/components/sections/blog-preview.tsx](../src/components/sections/blog-preview.tsx) — ancien bloc home + `/blog showAll`
-- [src/components/sections/cta.tsx](../src/components/sections/cta.tsx) — toujours utilisé par `/audit-informatique-*`, `/integration-mcp`, `/strategie-ia-pme`, `article-layout.tsx` → à **conserver**
-
-**Fix** (~15 min) : supprimer `approach.tsx`, `ideas.tsx`, `pricing.tsx`, `blog-preview.tsx` une fois la refonte validée en prod.
-
-Vérifier d'abord avec `grep -r 'from "@/components/sections/{approach,ideas,pricing,blog-preview}"' src/` — doit retourner vide.
-
----
-
 ## 🟠 Variants widgets non implémentées (issue de la maquette Home.html)
 
 Le prototype [Home.html](../Home.html) prévoyait **3 variantes de ServiceCard** (Liquid/Circuit/Mesh) et **3 variantes d'IdeaCard** (BigNumber/Stat/Split) pour varier visuellement. Actuellement une seule variante existe par famille :
@@ -60,35 +44,19 @@ Le prototype [Home.html](../Home.html) prévoyait **3 variantes de ServiceCard**
 
 ---
 
-## 🟢 Performance — RAF loops cumulés
+---
 
-La homepage lance désormais **jusqu'à 10 `requestAnimationFrame` simultanés** (4 TrustStatCard Hero + 3 ServiceCardStat + 3 IdeaCardBigNumber). La page `/blog` n'en lance qu'1, `/idees` 4 (1 TrustStat + 3 Ideas), `/approche` en lance aussi plusieurs. Chaque hook `useMorph` dans [blobs.tsx](../src/components/widgets/blobs.tsx) tourne en continu tant que le composant est monté (hors `prefers-reduced-motion`).
+## Backlog cosmétique 🟢
 
-**Non mesuré en conditions réelles** — probablement OK desktop moderne, potentiellement lourd mobile/M1 bas de gamme.
+Les items de polissage/nettoyage non-bloquants ont été déplacés dans [docs/backlog-cleanup.md](backlog-cleanup.md) :
 
-**Fix si besoin** : wrapper `useMorph` avec un `IntersectionObserver` pour ne ticker que les widgets visibles. Mesurer d'abord Lighthouse avant d'optimiser.
+1. Suppression des 4 sections legacy non importées (`approach.tsx`, `ideas.tsx`, `pricing.tsx`, `blog-preview.tsx`)
+2. Mesure Lighthouse mobile des RAF loops
+3. Risque double-padding de `BentoCard` si on oublie `variant="flush"`
+4. Révision des docs éditoriaux (prevision_contenu, STRATEGIE-EDITORIALE — février 2026)
 
 ---
 
-## 🟢 `BentoCard` — double padding risque
+## Prochaine action suggérée
 
-Si on oublie `variant="flush"` en passant un widget Bionova (qui a déjà son `CardShell`), on obtient : border BentoCard + padding BentoCard + border CardShell + padding CardShell = double cadre disgracieux.
-
-**Mitigation possible** : détecter automatiquement via `React.Children.only` si l'enfant a un `displayName` de widget Bionova, et forcer `flush`. Mais l'explicite est probablement mieux ici.
-
-**Alternative** : documenter clairement la convention dans [docs/README.md](README.md) (déjà fait, section "Widgets animés").
-
----
-
-## 🟢 Autres incohérences documentaires
-
-- [docs/prevision_contenu.md](prevision_contenu.md) et [docs/STRATEGIE-EDITORIALE.md](STRATEGIE-EDITORIALE.md) datent de février 2026, à réviser si les priorités éditoriales ont bougé depuis avril.
-
----
-
-## Prochaines actions suggérées (ordre)
-
-1. 🟢 Supprimer les 4 fichiers legacy non importés (15 min) — voir section "Legacy à nettoyer".
-2. 🟢 Mesurer Lighthouse mobile pour valider la perf des RAF loops (et ajouter un IntersectionObserver si nécessaire).
-3. 🟠 Décider si on implémente les variantes ServiceCard/IdeaCard supplémentaires pour plus de diversité visuelle.
-4. 🟢 Réviser `prevision_contenu.md` et `STRATEGIE-EDITORIALE.md`.
+🟠 Décider si on implémente les variantes ServiceCard/IdeaCard supplémentaires pour plus de diversité visuelle sur les sections bento. Effort : 1 h par variante, ~4 h au total.

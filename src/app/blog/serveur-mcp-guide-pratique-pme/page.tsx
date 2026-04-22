@@ -175,7 +175,7 @@ export default function Article() {
         audit préalable sérieux. Si vos données CRM sont mal structurées ou
         incomplètes, l&apos;IA amplifiera le désordre au lieu de le résoudre.
         C&apos;est pourquoi nous commençons toujours par un{" "}
-        <Link href="/prestations">audit 180° offert</Link>.
+        <Link href="/approche#prestations">audit 180° offert</Link>.
       </p>
 
       <h2>MCP et RGPD : vos données restent-elles en sécurité ?</h2>

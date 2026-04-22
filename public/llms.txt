@@ -11,7 +11,7 @@ Zone : Yvelines (78), Val d'Oise (95), Île-de-France.
 
 ## Services
 
-- **Audit 180° (Gratuit)** : Échange de 60 min pour identifier vos besoins en IA et digitalisation. Sans engagement.
+- **Audit 180° (Offert)** : Échange de 60 min pour identifier vos besoins en IA et digitalisation. Sans engagement.
 - **Audit 360° IA Stratégique (225 €)** : Diagnostic complet de 3h couvrant infrastructure, workflows et équipes. Livrable : plan d'action chiffré et priorisé.
 - **Développement sur mesure** : Applications web/mobile, chatbots IA, automatisation de workflows, intégrations CRM.
 - **Formation & Accompagnement** : Ateliers IA pour dirigeants, formation outils collaboratifs, conduite du changement.

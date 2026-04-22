@@ -298,7 +298,7 @@ export default function AutomatiserEmailsReseauxSociauxIA() {
       <p>
         Consultez également nos{" "}
         <Link
-          href="/prestations"
+          href="/approche#prestations"
           className="text-primary underline-offset-4 hover:underline"
         >
           prestations d&apos;accompagnement IA

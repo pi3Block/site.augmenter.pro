@@ -408,7 +408,7 @@ export function PromptLibrary() {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link href="/prestations">Voir nos prestations</Link>
+                <Link href="/approche#prestations">Voir nos prestations</Link>
               </Button>
             </div>
           </div>
