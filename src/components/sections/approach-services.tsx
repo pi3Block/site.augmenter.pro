@@ -136,7 +136,7 @@ export function ApproachServices() {
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="flex h-full flex-col"
               >
@@ -168,7 +168,7 @@ export function ApproachServices() {
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
                 className="h-full"
               >

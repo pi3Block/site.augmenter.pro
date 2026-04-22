@@ -4,11 +4,13 @@ Tu es un expert en rédaction SEO pour le marché français des PME. Tu vas cré
 
 ## Contexte projet
 
-- **Site vitrine** Next.js 16, `output: "standalone"`, déployé sur Hostinger
-- **Audience** : PME françaises (BTP, immobilier, industrie, artisans) — Yvelines (78) et Val d'Oise (95)
-- **Objectif** : Acquisition organique → conversion vers Audit 180° gratuit ou Audit 360° (225 €)
-- **Données structurées** : Chaque article génère automatiquement un JSON-LD `Article` via `ArticleLayout`
-- **LLM optimization** : Le site a un `public/llms.txt` lu par Perplexity, ChatGPT, Claude
+**À lire en premier** : [`.claude/templates/seo/project-context.md`](../templates/seo/project-context.md)
+
+Ce fichier centralise : positionnement, stack technique, stack SEO/LLM, audience et modalités géographiques, pyramide d'offres, contraintes éditoriales, identité éditoriale.
+
+Spécifique aux articles :
+- Chaque article génère automatiquement un JSON-LD `Article` via `ArticleLayout` (passer le prop `slug` pour l'URL canonique)
+- L'objectif de conversion par défaut est : Audit 180° offert (gratuit mais **jamais** écrire « gratuit ») → Audit 360° IA Booster (225 €)
 
 ## Document de référence stratégique
 
@@ -86,19 +88,15 @@ Avant de poursuivre, réponds à ces 3 questions. Si la réponse à l'une d'elle
    - **Bibliothèque de Prompts** : Si l'article couvre un sujet pour lequel un prompt existe dans `src/data/prompts.ts`, ajouter un composant `<PromptCard slug="..." />` (import depuis `@/components/sections/prompt-card`) ou un lien vers `/prompts`
    - Liste dans `src/components/sections/blog-preview.tsx`
 
-## Étape 2 — Stratégie de contenu
+## Étape 2 — Stratégie de contenu (brief éditorial)
 
-Propose à l'utilisateur un **brief éditorial** avant de rédiger :
+Propose à l'utilisateur un **brief éditorial complet** avant de rédiger.
 
-- **Titre SEO** (< 60 caractères, inclut le mot-clé principal + power word : Gratuit, Guide, 2026, etc.)
-- **Meta description** (< 155 caractères, inclut un CTA + géo-ciblage si pertinent)
-- **Slug URL** proposé (kebab-case, court, max 4-5 mots — ex: `/blog/audit-ia-pme` pas `/blog/comment-realiser-un-audit-ia-pour-votre-pme`)
-- **Tags** pertinents (aligner avec les tags existants : `"Intelligence Artificielle"`, `"Commercial"`, `"Audit 360°"`, `"PME"`, `"Claude Code"`)
-- **Temps de lecture estimé**
-- **Plan de l'article** (structure H2/H3)
-- **Mots-clés cibles** : principal + secondaires intégrés naturellement
-- **Liens internes prévus** : vers quelles pages/articles, avec quel texte d'ancrage
-- **CTA principal** : quel service pousser (Audit 180° gratuit, Audit 360°, contact)
+**Format standard** : [`.claude/templates/seo/article-brief.md`](../templates/seo/article-brief.md)
+
+Ce template couvre tous les champs requis : titre SEO (< 60 chars, power word — **jamais « Gratuit »**), meta description (< 155 chars), slug (kebab-case, 3-5 mots), tags, intent, pilier, cible lecteur, douleur, angle différenciant, preuves, plan H2/H3, longueur calibrée, liens internes, CTA (Audit 180° offert / Audit 360° / contact), RICE, trafic estimé.
+
+**Tags existants à aligner** : `"Intelligence Artificielle"`, `"Commercial"`, `"Audit 360°"`, `"PME"`, `"Claude Code"`.
 
 **Attends la validation de l'utilisateur avant de passer à l'étape 3.**
 
@@ -157,13 +155,16 @@ export default function Article() {
 
 Ces règles sont **PRIORITAIRES** sur les règles SEO on-page ci-dessous. En cas de conflit, privilégier la qualité du contenu.
 
-- **Expérience terrain** : Minimum 1 exemple concret issu de missions augmenter.PRO ou d'observations terrain en 78/95 (anonymiser le client si besoin). Formuler avec "dans notre expérience", "nous avons constaté chez nos clients PME".
-- **Avis d'expert** : Au moins 1 passage où l'auteur donne un avis tranché, une recommandation directe ou une mise en garde basée sur son expertise.
-- **Données et sources** : Tout chiffre cité doit être sourcé (étude, organisme, ou expérience interne). Ne pas inventer de statistiques.
-- **Limites et nuances** : Mentionner au moins 1 situation où le conseil ne s'applique pas. Cela renforce la fiabilité (Trustworthiness).
-- **Originalité** : Le contenu ne doit PAS être une reformulation des articles concurrents. Chaque section H2 doit apporter un angle absent des résultats existants.
-- **Actionnable** : Au moins 1 élément directement actionnable (checklist, étapes, questions à se poser, template).
-- **Ton** : Expert qui partage son expérience, pas encyclopédie qui compile. L'article doit "sonner" comme un consultant qui parle à un dirigeant.
+**Grille de scoring détaillée** : [`.claude/templates/seo/eeat-grid.md`](../templates/seo/eeat-grid.md) — utiliser pour auto-scorer l'article après rédaction (objectif ≥ 15/20).
+
+Principes à respecter dans la rédaction :
+- **Expérience terrain** : minimum 1 exemple concret issu de missions augmenter.PRO ou d'observations 78/95 (anonymiser si besoin). Formuler : « dans notre expérience », « nous avons constaté chez nos clients PME ».
+- **Avis d'expert** : au moins 1 passage avec avis tranché, recommandation directe ou mise en garde.
+- **Données et sources** : tout chiffre doit être sourcé. Ne jamais inventer de statistiques.
+- **Limites et nuances** : au moins 1 situation où le conseil ne s'applique pas.
+- **Originalité** : chaque H2 apporte un angle absent du top 5 SERP — pas de reformulation.
+- **Actionnable** : ≥ 1 élément actionnable (checklist, étapes, template).
+- **Ton** : consultant qui partage son expérience, pas encyclopédie. **Ton provocateur encouragé** sur les accroches (parler aux douleurs PME, pas SEO corporate lisse).
 
 ### Optimisation SEO on-page
 
@@ -280,7 +281,7 @@ Vérifie et affiche un rapport :
 - [ ] Mot-clé principal dans title, H1, meta description, premier paragraphe
 - [ ] Minimum 3 liens internes (vers /prestations, /approche, /contact, /blog/*, /idees, /prompts)
 - [ ] Si prompt associé existe dans `src/data/prompts.ts` → `<PromptCard slug="...">` intégré dans l'article
-- [ ] Au moins 1 CTA clair (audit gratuit, contact, etc.)
+- [ ] Au moins 1 CTA clair (Audit 180° offert, contact, etc. — **pas** « gratuit »)
 - [ ] Tags cohérents avec les tags existants
 - [ ] Image hero générée (Gemini), convertie en WebP, placée dans `public/images/blog/<slug>.webp`
 - [ ] Prop `image` passé à `ArticleLayout`

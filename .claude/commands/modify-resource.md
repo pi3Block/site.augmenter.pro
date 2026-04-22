@@ -4,13 +4,14 @@ Tu es un expert en stratégie de contenu SEO et en architecture Next.js. Tu vas 
 
 ## Contexte projet
 
-- **Site vitrine** Next.js 16, déployé sur Hostinger (Node.js SSR)
-- **Audience** : PME françaises (BTP, immobilier, industrie, artisans) — Yvelines (78) et Val d'Oise (95)
-- **SEO/LLM stack** : JSON-LD structuré, `public/llms.txt`, `public/sitemap.xml`, `public/robots.txt`
-- **Redirections** : `next.config.ts` → `async redirects()` (permanent: true pour les 301)
-- **Blog** : `ArticleLayout` avec JSON-LD Article auto, routes statiques `src/app/blog/<slug>/page.tsx`
-- **Pages custom** : JSON-LD inline, composant `<CTA />` en fin de page
-- **Données inline** : pas de CMS, tout est hardcodé dans les composants
+**À lire en premier** : [`.claude/templates/seo/project-context.md`](../templates/seo/project-context.md)
+
+Ce fichier centralise : positionnement, stack technique, stack SEO/LLM, audience et modalités géographiques, pyramide d'offres, contraintes éditoriales, identité éditoriale.
+
+Spécifique à la modification/restructuration :
+- **Redirections** : `next.config.ts` → `async redirects()` avec `permanent: true` pour les 301
+- **Données inline** : pas de CMS — tout est hardcodé dans les composants, donc la modification passe toujours par de l'édition de fichiers TSX
+- **Règle SEO critique** : toute URL supprimée ou déplacée DOIT avoir une redirection 301
 
 ## Document de référence stratégique
 
@@ -131,15 +132,16 @@ Pour chaque changement d'URL, créer un tableau :
 
 ### 2.2 Plan de contenu
 
-Pour chaque ressource résultante, décrire :
+Pour chaque ressource résultante, utiliser le template approprié :
 
-- **Titre SEO** (< 60 chars)
-- **Meta description** (< 155 chars)
-- **Type** : article / page sectorielle / page locale / etc.
-- **Slug / route**
-- **Contenu** : ce qui est conservé, modifié, ajouté, supprimé
-- **Liens internes** : nouveaux liens sortants prévus
-- **JSON-LD** : type et propriétés
+| Cas | Template |
+|---|---|
+| Nouvelle ressource créée (Split, Type change article, Move) | [`.claude/templates/seo/article-brief.md`](../templates/seo/article-brief.md) |
+| Nouvelle page custom créée (Split vers page sectorielle/locale, Type change page) | [`.claude/templates/seo/page-spec.md`](../templates/seo/page-spec.md) |
+| Réécriture copy / enrichissement (Update, Enrich, Restructure) | [`.claude/templates/seo/copy-proposal.md`](../templates/seo/copy-proposal.md) |
+| Modification d'une offre / service | [`.claude/templates/seo/service-card.md`](../templates/seo/service-card.md) |
+
+Champs minimums à documenter par ressource résultante : titre SEO (< 60 chars), meta description (< 155 chars), type, slug/route, contenu conservé/modifié/ajouté/supprimé, nouveaux liens internes, JSON-LD adapté.
 
 ### 2.3 Impact sur le maillage interne
 
@@ -294,11 +296,14 @@ Après avoir ajouté des redirections, vérifier qu'il n'y a pas de **double red
 
 ### 5.2 E-E-A-T — Vérifier après modification
 
+Re-scorer la ressource avec la grille [`.claude/templates/seo/eeat-grid.md`](../templates/seo/eeat-grid.md) — la modification ne doit **jamais** dégrader le score E-E-A-T.
+
 - [ ] Le contenu modifié conserve ≥ 1 exemple terrain
 - [ ] Le contenu modifié conserve ≥ 1 avis d'expert
 - [ ] Les données chiffrées sont toujours sourcées et à jour
 - [ ] Les limites/nuances sont toujours présentes
 - [ ] Le contenu reste actionnable pour le lecteur
+- [ ] Aucune occurrence du mot « gratuit » introduite par la modification (remplacer systématiquement par « offert », « sans engagement », « inclus »)
 
 ### 5.3 SEO — Vérifier après modification
 

@@ -4,11 +4,13 @@ Tu es un expert en stratégie de contenu SEO pour le marché français des PME. 
 
 ## Contexte projet
 
-- **Site vitrine** Next.js 16, déployé sur Hostinger (Node.js SSR)
-- **Audience** : PME françaises (BTP, immobilier, industrie, artisans) — Yvelines (78) et Val d'Oise (95)
-- **Objectif** : Acquisition organique → conversion vers Audit 180° gratuit ou Audit 360° (225 €)
-- **SEO/LLM stack** : JSON-LD structuré, `public/llms.txt`, `public/sitemap.xml`, `public/robots.txt`
+**À lire en premier** : [`.claude/templates/seo/project-context.md`](../templates/seo/project-context.md)
+
+Ce fichier centralise : positionnement, stack technique, stack SEO/LLM, audience et modalités géographiques, pyramide d'offres, contraintes éditoriales, identité éditoriale.
+
+Spécifique aux ressources multi-types (cette commande) :
 - **Contact** : formulaire client-side `mailto:` (pas d'API serveur)
+- L'étape 1.2 ci-dessous recommande le **type de ressource** le plus adapté (article, page sectorielle, locale, comparatif, étude de cas, glossaire, landing, prompt, page légale)
 
 ## Document de référence stratégique
 
@@ -101,18 +103,19 @@ Avant de proposer le brief, réponds à ces 3 questions. Si la réponse à l'une
 
 ## Étape 2 — Brief éditorial
 
-Propose un brief complet **avant de coder** :
+Propose un brief complet **avant de coder**, au format adapté au type de ressource.
 
-- **Type de ressource** choisi + justification
-- **Titre SEO** (< 60 caractères, power word + géo si pertinent)
-- **Meta description** (< 155 caractères, CTA inclus)
-- **Slug URL** (kebab-case, court, max 4-5 mots)
-- **Route complète** (ex: `/secteurs/btp`, `/blog/guide-ia-pme`, `/zones/versailles-78`)
-- **Tags** si applicable (aligner avec les tags existants : `"Intelligence Artificielle"`, `"Commercial"`, `"Audit 360°"`, `"PME"`, `"Claude Code"`)
-- **JSON-LD** prévu (quel schema, quelles propriétés clés)
-- **Plan de la page** (structure H2/H3 ou sections pour les pages custom)
-- **Liens internes prévus** : vers quelles pages, avec quel texte d'ancrage (minimum 3)
-- **CTA principal** : Audit 180° gratuit, Audit 360°, contact, ou autre
+| Type de ressource | Template de brief |
+|---|---|
+| Article / comparatif / étude de cas / glossaire | [`.claude/templates/seo/article-brief.md`](../templates/seo/article-brief.md) |
+| Page sectorielle / page locale / landing / hub | [`.claude/templates/seo/page-spec.md`](../templates/seo/page-spec.md) |
+
+**Champs supplémentaires spécifiques à create-resource** (à ajouter au brief choisi) :
+- **Type de ressource** choisi + **justification** (pourquoi ce format vs. les autres)
+- **JSON-LD prévu** (schema + propriétés clés — voir section « JSON-LD par type de ressource » plus bas)
+- **CTA principal** : Audit 180° offert / Audit 360° / contact / ou autre — **jamais** « gratuit »
+
+**Tags existants à aligner** (si article) : `"Intelligence Artificielle"`, `"Commercial"`, `"Audit 360°"`, `"PME"`, `"Claude Code"`.
 
 **Attends la validation de l'utilisateur avant de passer à l'étape 3.**
 
@@ -362,14 +365,14 @@ export default function LegalPage() {
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Audit IA Gratuit pour PME",
+  "name": "Audit IA 180° offert pour PME",
   "description": "...",
   "provider": { "@type": "Organization", "@id": "https://augmenter.pro/#organization" },
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "EUR",
-    "description": "Audit gratuit de 60 minutes"
+    "description": "Audit 180° offert de 60 minutes, sans engagement"
   }
 }
 ```
@@ -391,13 +394,16 @@ export default function LegalPage() {
 
 Ces règles sont **PRIORITAIRES** sur les règles SEO on-page. En cas de conflit, privilégier la qualité.
 
-- **Expérience terrain** : Minimum 1 exemple concret issu de missions ou d'observations locales (78/95). Adapter au type : étude de cas → résultats chiffrés réels ; page sectorielle → connaissances du secteur local ; article → anecdote de mission.
-- **Avis d'expert** : Au moins 1 passage avec recommandation directe ou mise en garde.
-- **Données sourcées** : Tout chiffre doit être sourcé. Si aucune donnée fiable n'existe, le dire.
-- **Limites** : Mentionner au moins 1 cas où le conseil/service ne s'applique pas.
-- **Originalité** : Chaque section doit apporter un angle absent des résultats concurrents.
-- **Actionnable** : Au moins 1 élément directement actionnable (checklist, étapes, template).
-- **Ton** : Consultant qui partage son expérience, pas article générique.
+**Grille de scoring** : [`.claude/templates/seo/eeat-grid.md`](../templates/seo/eeat-grid.md) — auto-scorer la ressource après rédaction (objectif ≥ 15/20).
+
+Principes à respecter :
+- **Expérience terrain** : ≥ 1 exemple concret 78/95, adapté au type (étude de cas → résultats chiffrés, page sectorielle → connaissance locale, article → anecdote).
+- **Avis d'expert** : ≥ 1 passage avec recommandation ou mise en garde.
+- **Données sourcées** : tout chiffre sourcé. Si aucune donnée fiable n'existe, le dire.
+- **Limites** : ≥ 1 cas où le conseil/service ne s'applique pas.
+- **Originalité** : chaque section = angle absent du top 5 SERP.
+- **Actionnable** : ≥ 1 checklist / étapes / template.
+- **Ton** : consultant qui partage son expérience. **Ton provocateur encouragé** sur les accroches.
 
 ### Optimisation SEO on-page
 
@@ -474,7 +480,7 @@ Vérifie et affiche un rapport adapté au type créé :
 - [ ] Slug URL court et descriptif (max 4-5 mots)
 - [ ] Mot-clé principal dans title, H1, meta description, premier paragraphe
 - [ ] Minimum 3 liens internes
-- [ ] Au moins 1 CTA clair (audit gratuit, contact, etc.)
+- [ ] Au moins 1 CTA clair (Audit 180° offert, contact, etc. — **pas** « gratuit »)
 - [ ] URL ajoutée dans `sitemap.xml` (priorité adaptée)
 - [ ] Ressource ajoutée dans `llms.txt` (section adaptée)
 - [ ] Pas d'erreurs TypeScript (`npm run build` passe)

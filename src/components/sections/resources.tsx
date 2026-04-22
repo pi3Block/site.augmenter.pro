@@ -163,7 +163,7 @@ export function Resources() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5 }}
               className="h-full"
             >
@@ -187,7 +187,7 @@ export function Resources() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="h-full"
             >
@@ -214,7 +214,7 @@ export function Resources() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="h-full"
             >

@@ -136,11 +136,10 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 
 - https://augmenter.pro — Accueil
 - https://augmenter.pro/strategie-ia-pme — Stratégie IA pour PME (diagnostic, accompagnement, financement)
-- https://augmenter.pro/prestations — Prestations & Tarifs
-- https://augmenter.pro/approche — Notre Approche 360°
+- https://augmenter.pro/approche — Approche, Prestations & Tarifs (méthode 360°, audits 180°/360°)
 - https://augmenter.pro/idees — Idées IA & Automatisation
 - https://augmenter.pro/blog — Blog Articles & Tutos
-- https://augmenter.pro/contact — Contact & Audit Gratuit
+- https://augmenter.pro/contact — Contact & Audit offert
 - https://augmenter.pro/projets — Nos Projets & Réalisations IA
 - https://augmenter.pro/audit-informatique-yvelines — Audit Informatique Yvelines (78)
 - https://augmenter.pro/audit-informatique-val-doise — Audit Informatique Val-d'Oise (95)

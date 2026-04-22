@@ -63,6 +63,49 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Avis clients — 5★ partagés entre l'affichage UI (section Convert du Hero bento)
+ * et le schema Review/AggregateRating attaché au LocalBusiness ci-dessous.
+ * Source : retours clients collectés 2025-2026.
+ */
+const REVIEWS = [
+  {
+    name: "Arnaud L.",
+    role: "Gérant, boutique jardin — Jouy-le-Moutier (95)",
+    quote:
+      "On gérait 500 références sur des fichiers Excel éparpillés. Pierre a centralisé notre catalogue et automatisé la mise en ligne sur Le Bon Coin. Résultat : 2h de saisie en moins par jour et +35 % de demandes clients en ligne.",
+    stars: 5,
+  },
+  {
+    name: "Maud J.",
+    role: "Architecte d'intérieur indépendante",
+    quote:
+      "L'IA pour la déco, j'y croyais pas. Pierre m'a fait découvrir des outils qui accélèrent mes moodboards et mes propositions 3D. Mes clients reçoivent leurs planches en 48h au lieu d'une semaine — et la qualité a monté d'un cran.",
+    stars: 5,
+  },
+  {
+    name: "Marc L.",
+    role: "Responsable informatique, PME industrielle",
+    quote:
+      "L'audit 360° a révélé des failles de sécurité que nous ignorions. En 3 mois, notre infrastructure est passée de vulnérable à conforme RGPD, avec un budget IT réduit de 20 %.",
+    stars: 5,
+  },
+  {
+    name: "Nathalie R.",
+    role: "Gérante, entreprise BTP",
+    quote:
+      "Nos devis prenaient 2 heures, maintenant 15 minutes. L'automatisation mise en place par augmenter.pro a libéré mon équipe pour se concentrer sur les chantiers.",
+    stars: 5,
+  },
+  {
+    name: "Karim B.",
+    role: "Consultant indépendant",
+    quote:
+      "En tant qu'indépendant, je pensais que l'IA n'était pas pour moi. Pierre m'a montré comment gagner 8 heures par semaine avec des outils simples. Mon chiffre d'affaires a augmenté de 30 % en 6 mois.",
+    stars: 5,
+  },
+];
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -129,6 +172,23 @@ const jsonLd = {
         "Automatisation",
         "Robotique",
       ],
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5",
+        reviewCount: String(REVIEWS.length),
+        bestRating: "5",
+        worstRating: "1",
+      },
+      review: REVIEWS.map((r) => ({
+        "@type": "Review",
+        author: { "@type": "Person", name: r.name },
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: String(r.stars),
+          bestRating: "5",
+        },
+        reviewBody: r.quote,
+      })),
     },
     {
       "@type": "WebSite",

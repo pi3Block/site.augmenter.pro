@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Marketing website for **augmenter.pro** — an AI consulting and digital transformation agency targeting French SMEs. All content is in French. Deployed as a Node.js app on Hostinger (via GitHub integration).
 
+**Zone d'intervention** : formation **en présentiel** en Yvelines (78) et Val d'Oise (95) ; conseil, audit et accompagnement **en visio ou téléphone partout en France** ; déplacements possibles pour les gros projets. Le 78/95 est donc un **ancrage de crédibilité locale**, pas une exclusivité commerciale.
+
+**Contexte partagé par toutes les commandes SEO** : [`.claude/templates/seo/project-context.md`](.claude/templates/seo/project-context.md) — à consulter avant toute création/modification de contenu.
+
 ## Web Crawling
 
 **Priorité : crawl4ai self-hosted** (`https://crawl4ai.augmenter.pro`)
@@ -50,21 +54,21 @@ npm run lint      # ESLint
 
 ### Routing (App Router)
 
-- `/` — Homepage composant 4 sections bento (Hero, ApproachServices, Resources, Convert) qui fusionnent les anciennes 9 sections en un flow 12-colonnes plus dense
-- `/approche` — 4-pillar approach detail + FAQ (with FAQ JSON-LD schema)
-- `/blog` — Article listing
+- `/` — Homepage en 4 sections bento (Hero, ApproachServices, Resources, Convert) qui fusionnent les anciennes 9 sections en un flow 12-colonnes plus dense
+- `/approche` — Approche, prestations & tarifs en bento (Hero, 4 piliers, audits 180°/360°, FAQ). **Canonicale pour l'offre** — absorbe l'ancienne route `/prestations` (redirect 308 via [next.config.ts](next.config.ts), ancre `#prestations`). Split server+client : `page.tsx` (metadata) + `approche-view.tsx` (`"use client"`)
+- `/blog` — Liste d'articles en layout bento. Split server+client : `page.tsx` + `blog-view.tsx`
 - `/blog/<slug>` — Individual articles (each slug has its own directory under `src/app/blog/`)
 - `/contact` — Contact form (server component page.tsx + client component contact-form.tsx)
-- `/idees` — Business ideas showcase
-- `/prestations` — Services & pricing (with Service/Offer JSON-LD schema)
+- `/idees` — Catalogue d'idées IA/automatisation en bento. Split server+client : `page.tsx` + `idees-view.tsx`
 - `/mentions-legales` — Legal page
 
 ### Component Organization
 
 - `src/components/sections/` — Page-level section components
   - **Homepage bento** : `hero.tsx`, `approach-services.tsx`, `resources.tsx`, `convert.tsx`
-  - **Autres pages** : `approach.tsx` (/approche), `ideas.tsx` (/idees), `pricing.tsx` (/prestations), `blog-preview.tsx` (/blog), `cta.tsx` (bas de plusieurs pages), `prompt-card.tsx` (/prompts)
-  - **Orphelins** (non importés) : `trust.tsx`, `services.tsx`, `testimonials.tsx` — absorbés par les sections bento, conservés en cas de besoin
+  - **Composants partagés** : `cta.tsx` (bas de plusieurs pages internes), `prompt-card.tsx` (/prompts)
+  - **Legacy (à supprimer)** : `approach.tsx`, `ideas.tsx`, `pricing.tsx`, `blog-preview.tsx` — plus utilisés depuis la refonte bento des pages /approche, /idees, /blog. Conservés temporairement pour faciliter le rollback
+- `src/app/{approche,blog,idees}/*-view.tsx` — Implémentations client des pages bento (contiennent toute la UI + les données inline)
 - `src/components/bento/` — Primitives de layout bento réutilisables (`BentoGrid`, `BentoCard`, `SectionHead`, `Pill`, `ArticleBentoCard`, `PullQuoteCard`, `MiniQuoteCard`)
 - `src/components/widgets/` — Widgets animés (SVG morphing blobs) consommés par les cartes bento : `blobs.tsx` (`LiquidBlob`, `MeshAurora`, `CardShell`, `CornerArrow`, `PillTag`), `service-card.tsx`, `idea-card.tsx`, `trust-stat.tsx`, `palettes.ts` (6 palettes OKLCH : violet/amber/duo/cold/warm/mono). Respecte `prefers-reduced-motion`.
 - `src/components/layout/` — Header (fixed navbar + mobile sheet), Footer, ArticleLayout (blog wrapper with Article JSON-LD)
@@ -112,7 +116,7 @@ public/images/
   ```
 - **Alt text** : toujours renseigner un `alt` descriptif en français (SEO + accessibilité)
 - **Priorité** : ajouter `priority` uniquement sur les images above-the-fold (hero, LCP)
-- **Blog** : nommer l'image du même slug que l'article — ex. article `audit-seo-gratuit` → `blog/audit-seo-gratuit.webp`
+- **Blog** : nommer l'image du même slug que l'article — ex. article `audit-seo-offert` → `blog/audit-seo-offert.webp`
 - **INDEX.md** : chaque sous-dossier d'images doit contenir un fichier `INDEX.md` décrivant textuellement chaque image (type, description visuelle, contexte éditorial, usage suggéré, alt text suggéré). Ce fichier sert de référence pour les LLM et pour maintenir la cohérence des alt texts.
 
 ## SEO & LLM Optimization
@@ -126,8 +130,8 @@ The site uses Schema.org structured data for SEO and LLM discoverability:
 | Organization + LocalBusiness + WebSite | `src/app/layout.tsx` | Global identity, geo-targeting (78/95), contact, social links |
 | Article | `src/components/layout/article-layout.tsx` | Each blog post (author, publisher, tags, URL) |
 | FAQPage | `src/app/approche/page.tsx` | FAQ section → Google "People Also Ask" |
-| Service + OfferCatalog | `src/app/prestations/page.tsx` | 5 services with pricing (0€ and 225€) |
-| AggregateRating + Review | `src/components/sections/testimonials.tsx` | Star ratings in Google results — ⚠️ testimonials.tsx n'est plus importé depuis la refonte bento ; le JSON-LD doit être migré vers `convert.tsx` ou `layout.tsx` (voir `docs/todo_corrections.md`) |
+| Service + OfferCatalog | `src/app/approche/approche-view.tsx` (variable `servicesJsonLd`) | 5 services with pricing (0€ and 225€) — l'ancienne route `/prestations` est redirigée 308 vers `/approche#prestations` via [next.config.ts](next.config.ts) |
+| AggregateRating + Review | `src/app/layout.tsx` (imbriqué dans le nœud `LocalBusiness` du `@graph`) | Star ratings dans les SERP Google — 5 reviews constantes dans le tableau `REVIEWS` en haut du fichier |
 
 ### LLM/GEO Files
 
@@ -174,7 +178,7 @@ Les commandes fonctionnent sans ces MCP (fallback sur recherche web), mais les d
 ### SEO Conventions
 
 - Every page **must** export `metadata: Metadata` with optimized `title` (< 60 chars) and `description` (< 155 chars)
-- Meta titles should include **power words** (Gratuit, Guide, 2026) and **geo-targeting** (78/95, Yvelines, Val d'Oise)
+- Meta titles should include **power words** (Guide, Offert, 2026, Sans Engagement) and **geo-targeting uniquement quand pertinent** (78/95 pour contenus liés à la formation présentielle ; sinon, formulation nationale « PME française », « dirigeant PME »). Le mot « gratuit » est **interdit**.
 - Layout template: `"%s | augmenter.PRO"` — page titles are appended automatically
 - Blog articles pass `slug` prop to `ArticleLayout` for canonical URL in Article schema
 - When MCP SEO tools are available (DataForSEO, GSC), always prefer real data over web search estimates for keyword research and performance analysis
@@ -187,7 +191,7 @@ augmenter.pro est un site de conseil (décisions financières pour PME) — Goog
 
 - **Qui** : Pierre Legrand, consultant IA & transformation digitale. Chaque article est publié sous son nom (JSON-LD `author` dans `article-layout.tsx`).
 - **Comment** : Le contenu est rédigé avec l'assistance d'outils IA et révisé par Pierre Legrand. Ne jamais prétendre que le contenu est 100% humain si ce n'est pas le cas.
-- **Pourquoi** : Le contenu existe pour aider les PME à prendre des décisions éclairées, pas pour générer du trafic. Si un sujet ne sert pas l'audience cible (PME BTP/immobilier/industrie en 78/95), ne pas le traiter.
+- **Pourquoi** : Le contenu existe pour aider les PME à prendre des décisions éclairées, pas pour générer du trafic. Si un sujet ne sert pas l'audience cible (PME française, secteurs BTP/immobilier/industrie/artisans — avec ancrage local 78/95 pour la formation présentielle), ne pas le traiter.
 
 #### E-E-A-T — Critères obligatoires
 

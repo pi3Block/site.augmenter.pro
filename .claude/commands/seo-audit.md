@@ -6,21 +6,17 @@ Cet audit doit croiser : (1) l'état technique du site, (2) les données réelle
 
 ## Contexte projet
 
-- **Site** : augmenter.pro — site vitrine Next.js 16, `output: "standalone"`, Node.js sur Hostinger
-- **Audience** : PME françaises (BTP, immobilier, industrie, artisans) — Yvelines (78) et Val d'Oise (95)
-- **Objectif** : Acquisition organique de leads qualifiés via SEO local et thématique
-- **Conversion** : Audit 180° offert (60 min) → Audit 360° IA Booster (225 €) → Prestations sur mesure
-- **Contrainte éditoriale** : le mot « gratuit » est interdit sur le site (préférer « offert », « sans engagement », « inclus »)
-- **Ton éditorial** : accroches provocatrices, parler aux douleurs PME, pas de SEO corporate lisse
+**À lire en premier** : [`.claude/templates/seo/project-context.md`](../templates/seo/project-context.md)
 
-### Stack SEO/LLM en place
+Ce fichier centralise : positionnement, stack technique, stack SEO/LLM en place, **audience et modalités géographiques** (formation présentielle 78/95 vs. visio national vs. déplacements gros projets), pyramide d'offres, contraintes éditoriales (mot « gratuit » interdit, ton provocateur, people-first), identité éditoriale, conventions de code.
 
-- **JSON-LD** : Organization, LocalBusiness, WebSite (layout.tsx), Article (article-layout.tsx), FAQPage (approche), Service/OfferCatalog (prestations), AggregateRating/Review (testimonials)
-- **llms.txt** : `public/llms.txt` pour les crawlers LLM
-- **robots.txt** + **sitemap.xml** statiques dans `public/`
-- **Meta titles** avec power words et géo-ciblage
-- **Contact** : split server/client (page.tsx + contact-form.tsx) pour permettre les metadata
-- **GTM + GA4** : `NEXT_PUBLIC_GTM_ID`, events `contact_form_submit` et `lecture_article`
+Spécifique à cette commande — l'audit SEO doit croiser :
+1. État technique du site
+2. Données réelles de performance (GSC)
+3. Opportunités marché (DataForSEO)
+4. Paysage concurrentiel
+5. Visibilité moteurs génératifs (ChatGPT, Perplexity, AI Overviews)
+6. Qualité E-E-A-T du contenu
 
 ---
 
@@ -814,90 +810,32 @@ Produire un **tableau des incohérences détectées** avec : page concernée, pr
 
 ### 9.2 Propositions de copy prêt-à-coller
 
-Pour chaque page clé, proposer **2-3 variations A/B** prêtes à être testées.
+**Format de chaque page** : [`.claude/templates/seo/copy-proposal.md`](../templates/seo/copy-proposal.md)
 
-**Format :**
+Ce template couvre : H1 actuel + 3 propositions A (provocateur), B (aspirationnel), C (pragmatique), meta title + variantes, meta description + variantes, CTA + variantes. Il inclut la grille de décision par ton, des exemples de patterns et les contraintes (mot « gratuit » interdit, longueurs, power words, géo).
 
-```markdown
-#### Page : <path>
-
-**Hero H1 — version actuelle**
-> <texte actuel>
-
-**Proposition A (ton provocateur — douleur frontale)**
-> <nouveau H1>
-> <sous-titre>
-
-**Proposition B (ton aspirationnel — bénéfice chiffré)**
-> <nouveau H1>
-> <sous-titre>
-
-**Proposition C (ton pragmatique — méthode/preuve)**
-> <nouveau H1>
-> <sous-titre>
-
-**Meta title (≤ 60 chars) — version actuelle** : ...
-**Propositions** :
-1. ...
-2. ...
-3. ...
-
-**Meta description (≤ 155 chars) — version actuelle** : ...
-**Propositions** :
-1. ...
-2. ...
-
-**CTA principal — version actuelle** : « ... »
-**Propositions** :
-1. ...
-2. ...
-```
-
-Couvrir systématiquement : home (hero), prestations, approche, idées PRO, blog index, contact.
+**Pages à couvrir systématiquement** : home (hero + sections stratégiques), `/prestations`, `/approche`, `/idees`, `/blog`, `/contact`, top 5 articles par trafic GSC.
 
 ### 9.3 Réécriture des cartes services / pricing
 
-Pour chaque service présent dans `services.tsx` / `pricing.tsx` / `prestations/page.tsx`, proposer :
-- **Nom** alternatif si le naming actuel est flou
-- **Accroche** (1 phrase, douleur adressée)
-- **Livrable concret** (« vous repartez avec… »)
-- **À qui c'est utile / à qui ce n'est pas fait**
-- **Durée / format**
-- **Prix affiché** + justification de palier
-- **CTA spécifique**
+**Format de chaque carte** : [`.claude/templates/seo/service-card.md`](../templates/seo/service-card.md)
 
-Cette clarté transforme des pages descriptives en pages de vente.
+Ce template couvre : nom de l'offre, accroche, pour qui / pour qui pas, livrable concret, durée, méthodologie, prix + justification de palier, preuves, CTA, schema JSON-LD.
+
+Appliquer à **chaque service** présent dans `services.tsx` / `pricing.tsx` / `prestations/page.tsx` pour transformer des pages descriptives en pages de vente.
 
 ### 9.4 Enrichissement de l'offre (nouveaux paliers / produits)
 
-Analyser la pyramide d'offres actuelle et proposer si pertinent :
+**Pyramide d'offres de référence** : voir [`.claude/templates/seo/service-card.md`](../templates/seo/service-card.md) section « Pyramide d'offres de référence » (Lead magnet → Audit 180° offert → Audit 360° → Atelier collectif → Sprint découverte → Accompagnement mensuel → Abonnement veille → Hotline IA → Prestations sur mesure).
 
-- **Lead magnets gratuits** (avant Audit 180°) :
-  - Guide PDF « 5 chantiers IA rentables en PME BTP » (ou autre secteur)
-  - Check-list « Suis-je prêt pour un audit IA ? » (10 questions)
-  - Calculateur ROI IA (outil interactif → email capture)
-  - Bibliothèque de prompts (extension de `prompts.ts`)
-- **Paliers intermédiaires** (entre 225€ et prestations sur mesure) :
-  - Atelier collectif 1/2 journée (4-6 PME) : 450-750€/pers
-  - Sprint découverte 2 semaines : ~1500€
-  - Accompagnement mensuel (coaching dirigeant) : 500-900€/mois
-- **Offres récurrentes** :
-  - Abonnement veille + Q&A : 150€/mois
-  - Hotline IA (support outils) : 300€/mois
-- **Formats pédagogiques** :
-  - Mini-webinar trimestriel
-  - Cohorte « IA pour dirigeants PME » (format 6 semaines)
-- **Partenariats / labels** :
-  - Dossier Activateur France Num (si éligible)
-  - Référencement Bpifrance IA Booster (si non déjà actif)
-  - MonCompteFormation pour offres de formation
-
-Pour chaque proposition, justifier :
+Analyser la pyramide actuelle du site vs. celle de référence et proposer les paliers manquants. Pour chaque proposition, justifier :
 - **Pourquoi maintenant** (signal marché / gap concurrentiel)
 - **Pour qui** (persona)
 - **Revenu attendu** (estimation volume × prix)
 - **Effort de mise en place**
 - **Risque principal**
+
+Considérer également : **partenariats / labels** (Activateur France Num, Bpifrance IA Booster, MonCompteFormation) et **formats pédagogiques** (webinar trimestriel, cohorte « IA pour dirigeants PME » 6 semaines).
 
 ### 9.5 Cohérence cross-pages (audit des liens et des CTAs)
 
@@ -933,219 +871,24 @@ Cette table = **backlog éditorial/commercial actionnable** à intégrer dans le
 
 ### Format du rapport
 
-```markdown
-# Audit SEO augmenter.pro — <date>
+**Structure complète du rapport** : [`.claude/templates/seo/report.md`](../templates/seo/report.md)
 
-## Résumé exécutif
-- Score SEO technique : X/100
-- Score Performance (Core Web Vitals) : X/100
-- Score Contenu & E-E-A-T : X/100
-- Score Visibilité GEO/LLM : X/100
-- **Score global : X/100**
+Ce template couvre les 13 sections standard :
+1. Outils utilisés
+2. Audit technique (on-page, Core Web Vitals, indexation, JSON-LD, maillage, fichiers SEO)
+3. Performance GSC (vue d'ensemble, top requêtes/pages, quick wins, cannibalisations, évolution)
+4. Analyse sémantique (DataForSEO)
+5. Concurrence
+6. Backlinks
+7. Visibilité GEO (moteurs IA)
+8. E-E-A-T par page (grille `eeat-grid.md`)
+9. Stratégie de contenu (topical map, briefs, refresh, fiches spec)
+10. Recommandations éditoriales & cohérence offre (copy, services, enrichissement, dérives, backlog)
+11. Plan d'action priorisé (🔴🟠🟡🟢)
+12. Roadmap 90j / 6 mois / 12 mois
+13. KPIs à suivre (baseline + cibles M3/M6/M12)
 
-- Pages indexées / soumises : X / Y (Z %)
-- Backlinks / referring domains : X / Y
-- Clics GSC 90j : X (±Δ%)
-- Impressions GSC 90j : X (±Δ%)
-- Position moyenne : X.X
-
-**Top 3 points critiques**
-1. ...
-2. ...
-3. ...
-
-**Top 3 opportunités** (impact × faisabilité)
-1. ...
-2. ...
-3. ...
-
----
-
-## 1. Outils utilisés
-| Outil | État | Usage |
-|-------|------|-------|
-| GSC MCP | ✅/❌ | ... |
-| DataForSEO MCP | ✅/❌ | ... |
-| crawl4ai | ✅/❌ | ... |
-| Playwright | ✅/❌ | ... |
-
-## 2. Audit technique
-### 2.1 Pages (on-page)
-| Page | Title (chars) | Meta (chars) | H1 | Liens int. | JSON-LD | Score /10 |
-
-### 2.2 Core Web Vitals (Lighthouse mobile)
-| Page | Perf | LCP | INP | CLS | A11y | BP | SEO |
-
-### 2.3 Indexation (GSC)
-| URL | Indexé ? | Canonical OK ? | Last crawl | Rich results |
-
-### 2.4 JSON-LD
-| Schema | Fichier | Statut | Problème |
-
-### 2.5 Maillage interne
-- Pages orphelines : [...]
-- Profondeur max : X clics
-- Top 5 pages receveuses : [...]
-
-### 2.6 Fichiers SEO
-- robots.txt : ✅/⚠️
-- sitemap.xml : X URLs, Y indexées
-- news-sitemap.xml : ...
-- llms.txt : ...
-
-## 3. Performance GSC (90 jours)
-### 3.1 Vue d'ensemble
-[graphe ou tableau clics/impressions]
-
-### 3.2 Top requêtes
-| Requête | Clics | Impr. | CTR | Pos. | Intent |
-
-### 3.3 Top pages
-| Page | Clics | Impr. | CTR | Pos. |
-
-### 3.4 Quick Wins (position 8-20)
-| Requête | Position | Impr. | Page | Action |
-
-### 3.5 Cannibalisations détectées
-| Requête | Pages concurrentes | Action |
-
-### 3.6 Évolution vs période précédente
-| Metric | Période courante | Période précédente | Δ |
-
-## 4. Analyse sémantique (DataForSEO)
-### 4.1 Mots-clés positionnés
-- Total : X | Top 3 : Y | Top 10 : Z
-- Trafic organique estimé : X/mois
-
-### 4.2 Opportunités mots-clés
-| Mot-clé | Volume | Diff. | CPC | Intent | Cluster | Couvert ? | Priorité |
-
-### 4.3 Intent distribution
-- Informational : X %
-- Commercial : Y %
-- Transactional : Z %
-- Navigational : W %
-
-### 4.4 SERP analysis top 10 keywords
-| KW | Features | Top 3 | Longueur moy. | Opportunité |
-
-## 5. Concurrence
-### 5.1 Panorama
-| Concurrent | Type | DR | KW org. | Trafic est. | Overlap |
-
-### 5.2 Content gap (pages à créer)
-| Mot-clé | Volume | Diff. | Ranké par | Action |
-
-### 5.3 Forces/faiblesses
-| Concurrent | Forces | Faiblesses | Opportunité |
-
-## 6. Backlinks
-- Summary : X backlinks, Y referring domains, spam score Z %
-- Top referring domains : [...]
-- Ancre-cloud : [...]
-- Prospects digital PR (intersection concurrents) : [liste priorisée]
-
-## 7. Visibilité GEO (moteurs IA)
-### 7.1 Mentions LLM
-| LLM | Mentions | Top requête | Page citée |
-
-### 7.2 AI Overviews Google
-| Requête | AI Overview présent ? | Sources citées | augmenter.pro cité ? |
-
-### 7.3 Tests directs
-[screenshots + verdict par prompt testé]
-
-### 7.4 Audit llms.txt
-- Couverture : X %
-- Actions correctives : [...]
-
-## 8. E-E-A-T par page
-| Page | Exp | Expertise | Autorité | Fiab. | /20 | Action |
-
-## 9. Stratégie de contenu
-### 9.1 Topical map
-[diagramme ou tableau pilier/supports]
-
-### 9.2 Calendrier éditorial (15-20 briefs rédigés)
-[Un brief complet par idée, cf. format Phase 8.2 — titre, angle, plan H2, RICE, trimestre]
-
-### 9.3 Refresh planning
-| Page | Dernière maj | Action | Priorité |
-
-### 9.4 Pages à créer (fiches spec)
-[Une fiche par page, cf. format Phase 8.4 — H1, hook, plan, schema, liens, effort]
-
-## 10. Recommandations éditoriales & cohérence de l'offre
-### 10.1 Incohérences détectées
-| Page | Élément | Problème | Correction proposée | Priorité |
-
-### 10.2 Copy prêt-à-coller (home + pages clés)
-[Pour chaque page : H1 actuel + 3 propositions A/B/C, meta title + propositions, meta description + propositions, CTA + propositions — cf. Phase 9.2]
-
-### 10.3 Cartes services/pricing réécrites
-[Pour chaque service : nom, accroche, livrable, cible, durée, prix, CTA — cf. Phase 9.3]
-
-### 10.4 Enrichissement de l'offre
-| Proposition | Type | Cible | Prix | Revenu estimé /mois | Effort | Risque |
-|-------------|------|-------|------|--------------------|--------|--------|
-| Guide PDF BTP | Lead magnet | ... | 0 € | ... | ... | ... |
-| Atelier collectif | Palier intermédiaire | ... | 650 € | ... | ... | ... |
-| Abonnement veille | Récurrent | ... | 150 €/mois | ... | ... | ... |
-
-### 10.5 Dérives de cohérence cross-pages
-| Page | Élément (CTA / lien / prix / nom) | Écart constaté | Correction |
-
-### 10.6 Backlog consolidé (éditorial + offre + technique)
-| # | Type | Titre / objet | URL | Effort (h) | Priorité | Trimestre |
-
-## 11. Plan d'action priorisé
-
-### 🔴 Critique (cette semaine)
-1. ...
-
-### 🟠 Haute priorité (ce mois)
-1. ...
-
-### 🟡 Moyen terme (trimestre)
-1. ...
-
-### 🟢 Fond de roadmap (année)
-1. ...
-
-## 12. Roadmap 90 jours / 6 mois / 12 mois
-
-**Mois 1 — Fondations**
-- Semaine 1 : corrections techniques critiques (canonical, indexation, headers sécurité)
-- Semaine 2 : optimisation des pages en position 8-20 (Quick Wins GSC)
-- Semaine 3 : enrichissement E-E-A-T des 3 pages les plus stratégiques
-- Semaine 4 : rédaction 1 article pilier
-
-**Mois 2 — Expansion**
-- 2 articles supports par semaine (8 total)
-- Création de 3 pages services sectorielles
-- Démarrage digital PR (10 prospects)
-
-**Mois 3 — Accélération**
-- Page auteur Pierre Legrand complète
-- Études de cas chiffrées (3)
-- Optimisation LLM : llms.txt v2 + FAQ enrichie
-- Mesure d'impact vs baseline Phase 0
-
-**Mois 4-6** — [à détailler selon résultats M1-M3]
-
-**Mois 7-12** — [à détailler]
-
-## 13. KPIs à suivre
-| KPI | Baseline | Cible M3 | Cible M6 | Cible M12 |
-|-----|----------|----------|----------|-----------|
-| Clics GSC / mois | X | +20 % | +50 % | +100 % |
-| Impressions GSC / mois | X | +30 % | +80 % | +150 % |
-| Position moyenne | X.X | < X-1 | < X-2 | ... |
-| KW top 10 (DFS) | X | +50 % | +150 % | +300 % |
-| Referring domains | X | +10 | +30 | +80 |
-| Mentions LLM / mois | X | +X | ... | ... |
-| Leads organiques / mois | X | ... | ... | ... |
-```
+Copier ce template comme point de départ puis remplir chaque section avec les données collectées aux phases 1-9.
 
 ### Actions automatiques (si l'utilisateur le demande)
 
