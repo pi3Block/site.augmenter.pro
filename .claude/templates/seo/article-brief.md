@@ -8,6 +8,7 @@ Format standard pour les briefs d'articles livrés par `/seo-audit` (Phase 8.2) 
 #### Article N°X — <Titre SEO proposé>
 
 - **Slug** : `/blog/<slug-3-5-mots-kebab-case>`
+- **Format** : `guide` / `tutoriel` / `comparatif` / `cas-client` / `glossaire` / `rapport-sectoriel-local` (voir détail ci-dessous)
 - **Mot-clé principal** : <kw> (volume: X/mois, difficulté: Y, CPC: Z €)
 - **Mots-clés secondaires** : [kw1, kw2, kw3]
 - **Intent** : informational / commercial / transactional / navigational
@@ -32,6 +33,19 @@ Format standard pour les briefs d'articles livrés par `/seo-audit` (Phase 8.2) 
 - **Trimestre cible** : Q1/Q2/Q3/Q4 <année>
 ```
 
+## Format `rapport-sectoriel-local` (spécifique GEO)
+
+Format optimisé pour la visibilité dans les LLMs (ChatGPT Search, Perplexity, Gemini AI Mode). Les moteurs génératifs privilégient les contenus qui ressemblent à des sources crédibles (rapport, étude, classement) plutôt qu'à des pages services.
+
+**Caractéristiques** :
+- **Titre type** : « Rapport <année> : <catégorie> à <ville/région> » ou « Étude <année> : <indicateur> dans <secteur> <zone> »
+- **Longueur** : court mais propre (800-1500 mots, pas un guide long)
+- **Structure obligatoire** : executive summary ≤ 100 mots → méthodologie en 3 lignes → tableau comparatif / classement → analyse → conclusion
+- **Contenu central** : au moins **1 tableau** (notations, classement, comparatif) et **1 chiffre clé sourcé** par section
+- **Angle** : neutre / analytique (pas commercial direct) — la crédibilité prime
+- **Source-friendly URL** : `/blog/rapport-<secteur>-<zone>-<annee>` (ex. `/blog/rapport-cabinets-ia-pme-yvelines-2026`)
+- **Cible** : 2-3 briefs de ce format minimum sur 15-20 dans le calendrier éditorial trimestriel
+
 ## Contraintes éditoriales
 
 - **Mot « gratuit » interdit** — préférer « offert », « sans engagement », « inclus »
@@ -41,3 +55,11 @@ Format standard pour les briefs d'articles livrés par `/seo-audit` (Phase 8.2) 
 - **E-E-A-T obligatoire** : ≥ 1 exemple terrain chiffré, sources citées, ton prudent avec limites mentionnées
 - **People-first** : après lecture, le dirigeant PME doit pouvoir **agir concrètement**
 - **Périmètre** : rester dans IA/digital/audit/transformation pour PME 78/95
+
+---
+
+**Utilisé par** :
+- [`/seo-audit`](../../commands/seo-audit.md) — Phase 8.2 (calendrier éditorial, 15-20 briefs)
+- [`/create-article`](../../commands/create-article.md) — Étape 2 (brief éditorial avant rédaction)
+- [`/create-resource`](../../commands/create-resource.md) — Étape 2 (si type = article / comparatif / étude de cas / glossaire)
+- [`/modify-resource`](../../commands/modify-resource.md) — Étape 2.2 (Split, Type change article, Move)

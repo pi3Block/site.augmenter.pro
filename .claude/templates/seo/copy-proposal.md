@@ -82,3 +82,9 @@ Format standard pour les propositions de réécriture de copy livrées par `/seo
 - **Power words** : Gratuit interdit → substituer par « offert », « instant », « immédiat », « sans CB »
 - **Géo-ciblage** : 78, 95, Yvelines, Val d'Oise, Saint-Germain, Versailles, Cergy — quand pertinent
 - **Cohérence** : une fois la variante retenue, propager **à l'identique** sur toutes les occurrences du CTA/slogan (Phase 9.5 du seo-audit)
+
+---
+
+**Utilisé par** :
+- [`/seo-audit`](../../commands/seo-audit.md) — Phase 9.2 (copy prêt-à-coller home + pages clés)
+- [`/modify-resource`](../../commands/modify-resource.md) — Étape 2.2 (Update / Enrich / Restructure)

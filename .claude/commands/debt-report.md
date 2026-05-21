@@ -4,13 +4,12 @@ Tu es un architecte logiciel senior. Tu vas analyser le projet **augmenter.pro**
 
 ## Contexte projet
 
-- **Site vitrine** Next.js 16, `output: "standalone"`, Node.js sur Hostinger
-- **Données 100% inline** — articles, témoignages, pricing, idées, FAQ : tout est hardcodé dans les composants
-- **Pas de base de données, pas d'auth, pas de CMS**
-- **SEO/LLM stack** : JSON-LD, llms.txt, sitemap.xml, robots.txt
-- **Build Windows** : les scripts post-build (`cp -r`) échouent sur Windows — le build Next.js lui-même réussit
-- **Blog** : routes statiques par dossier (`src/app/blog/<slug>/page.tsx`), pas de `[slug]` dynamique
-- **Contact** : pattern server/client split — `page.tsx` (metadata) + `contact-form.tsx` (client, mailto:)
+**À lire en premier** : [`.claude/templates/shared/project-context.md`](.claude/templates/shared/project-context.md) — stack, patterns architecturaux, conventions de code, build/déploiement.
+
+Spécifique à `/debt-report` :
+- Focus dette technique = lisibilité long-terme. Pas de réécriture cosmétique, pas de chasse à la perfection.
+- Considérer le **coût d'opportunité** : refactor ✕ valeur vs ajout de feature.
+- Le projet est petit, mono-développeur — privilégier les patterns simples à maintenir seul.
 
 ## Phase 1 — Analyse de l'architecture
 

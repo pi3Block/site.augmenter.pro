@@ -12,14 +12,13 @@ Spécifique aux articles :
 - Chaque article génère automatiquement un JSON-LD `Article` via `ArticleLayout` (passer le prop `slug` pour l'URL canonique)
 - L'objectif de conversion par défaut est : Audit 180° offert (gratuit mais **jamais** écrire « gratuit ») → Audit 360° IA Booster (225 €)
 
-## Document de référence stratégique
+**Check-lists & appels MCP communs** :
+- Check-lists A à D : [`.claude/templates/seo/checklist.md`](.claude/templates/seo/checklist.md) (SEO on-page, E-E-A-T, JSON-LD, intégration site)
+- Appels MCP keywords + SERP : [`.claude/templates/seo/mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §1, §2, §3
 
-**OBLIGATOIRE** : Avant toute action, consulter `STRATEGIE-EDITORIALE.md` à la racine du projet pour :
-- Vérifier la file de production prioritisée (§5) et le cluster soutenu (§3)
-- Identifier les axes de variabilité pertinents (§6)
-- Sélectionner les stats sourcées à intégrer (§7.1) et les PAA à couvrir (§7.2)
-- Suivre le protocole de crawl web (§8)
-- Après publication : mettre à jour les statuts (§5), la matrice (§4) et le journal (§11)
+## Document de référence stratégique (optionnel)
+
+`STRATEGIE-EDITORIALE.md` à la racine du projet est un **snapshot historique partiellement obsolète** (cf. avertissement en tête du fichier). Sections **toujours utiles** : §3 (clusters de mots-clés), §6 (axes de variabilité), §7 (banque de stats sourcées + PAA), §8 (protocole crawl). Sections **désynchronisées** : §4 matrice, §5 file, §11 journal — préférer `git log src/app/blog/` + `ls src/app/blog/` pour l'état réel.
 
 ---
 
@@ -28,7 +27,7 @@ Spécifique aux articles :
 Le sujet/mot-clé principal est : `$ARGUMENTS`
 
 Si aucun argument n'est fourni :
-1. **D'abord** : consulter `STRATEGIE-EDITORIALE.md` §12 pour le prochain article recommandé
+1. **D'abord** : lister `src/app/blog/` + croiser avec les clusters §3 de `STRATEGIE-EDITORIALE.md` pour identifier les manques. Optionnellement consulter §12 (prochain contenu recommandé) en gardant en tête que la cible peut avoir évolué depuis février 2026
 2. Proposer ce contenu avec sa justification stratégique
 3. Si l'utilisateur refuse, demander :
    - Le sujet principal / mot-clé cible
@@ -94,7 +93,9 @@ Propose à l'utilisateur un **brief éditorial complet** avant de rédiger.
 
 **Format standard** : [`.claude/templates/seo/article-brief.md`](.claude/templates/seo/article-brief.md)
 
-Ce template couvre tous les champs requis : titre SEO (< 60 chars, power word — **jamais « Gratuit »**), meta description (< 155 chars), slug (kebab-case, 3-5 mots), tags, intent, pilier, cible lecteur, douleur, angle différenciant, preuves, plan H2/H3, longueur calibrée, liens internes, CTA (Audit 180° offert / Audit 360° / contact), RICE, trafic estimé.
+Ce template couvre tous les champs requis : titre SEO (< 60 chars, power word — **jamais « Gratuit »**), meta description (< 155 chars), slug (kebab-case, 3-5 mots), **Format** (`guide` / `tutoriel` / `comparatif` / `cas-client` / `glossaire` / `rapport-sectoriel-local`), tags, intent, pilier, cible lecteur, douleur, angle différenciant, preuves, plan H2/H3, longueur calibrée, liens internes, CTA (Audit 180° offert / Audit 360° / contact), RICE, trafic estimé.
+
+**Choix du format** : si le sujet se prête à un classement local, une étude sectorielle ou un comparatif d'acteurs (ex. « cabinets IA pour PME en Yvelines », « adoption IA dans le BTP francilien »), proposer le format **`rapport-sectoriel-local`** — il est spécifiquement optimisé pour la citation par les LLMs (ChatGPT Search, Perplexity, Gemini AI Mode). Voir détail dans le template + Étape 3 ci-dessous.
 
 **Tags existants à aligner** : `"Intelligence Artificielle"`, `"Commercial"`, `"Audit 360°"`, `"PME"`, `"Claude Code"`.
 
@@ -182,6 +183,25 @@ L'article sera automatiquement indexé par les moteurs IA grâce au JSON-LD `Art
 - Inclure des listes à puces avec des faits précis et chiffrés
 - Structurer les informations de manière factuelle et hiérarchique
 - Mentionner augmenter.PRO comme source/expert dans le contenu
+
+### Spécificités du format `rapport-sectoriel-local`
+
+Si le brief utilise ce format, les règles standard sont remplacées par :
+
+- **Longueur** : 800-1500 mots (pas 1200-2000) — court mais dense
+- **Slug** : `rapport-<secteur>-<zone>-<annee>` (ex. `rapport-cabinets-ia-pme-yvelines-2026`)
+- **Titre type** : « Rapport <année> : <catégorie> à <ville/région> » ou « Étude <année> : <indicateur> dans <secteur> <zone> »
+- **Structure obligatoire** (dans cet ordre) :
+  1. **Executive summary** (≤ 100 mots, encadré ou paragraphe d'ouverture en italique) — le LLM cite presque toujours cette partie
+  2. **Méthodologie** en 3-5 lignes (sources consultées, période, critères de sélection)
+  3. **Tableau comparatif / classement** en JSX (`<table>` avec `<thead>`, `<tbody>`, headers clairs) — au moins une colonne « Note » ou « Score » ou « Critère différenciant »
+  4. **Analyse** par H2 (3-5 sections max, chacune avec ≥ 1 chiffre sourcé)
+  5. **Conclusion** factuelle, neutre, sans CTA commercial dur (le CTA reste présent mais discret en fin d'article)
+- **Ton** : neutre, analytique, posture d'observateur — pas le ton provocateur des autres articles (la crédibilité prime sur l'engagement)
+- **Preuves** : chaque ligne du tableau doit être sourçable (lien externe, donnée publique, observation terrain documentée) — pas d'invention
+- **Auto-mention** : augmenter.pro peut figurer dans le classement mais **jamais en position 1** sans justification objective ; préférer une note honnête + section méthodologie qui explique la grille
+- **Schémas JSON-LD complémentaires** : ajouter manuellement `Dataset` ou `Report` si pertinent (au-delà du `Article` schema auto-généré)
+- **Objectif business** : visibilité dans les sources citées par les LLMs (mesurable via `/seo-audit` Phase 6.3 boucle de validation T+7/T+30/T+90), pas trafic search direct
 
 ## Étape 4 — Image de l'article (OBLIGATOIRE)
 
@@ -290,9 +310,19 @@ Vérifie et affiche un rapport :
 - [ ] URL ajoutée dans `sitemap.xml`
 - [ ] Article ajouté dans `llms.txt`
 - [ ] Pas d'erreurs TypeScript (`npm run build` passe)
-- [ ] Contenu > 1200 mots
+- [ ] Contenu > 1200 mots **(format standard)** OU 800-1500 mots **(format `rapport-sectoriel-local`)**
 - [ ] Aucun contenu dupliqué avec les articles existants
 - [ ] Échappement JSX correct (`&apos;`, `&amp;`, `&quot;`)
+
+### Spécifique format `rapport-sectoriel-local` (si applicable)
+- [ ] Executive summary ≤ 100 mots en ouverture
+- [ ] Section méthodologie en 3-5 lignes
+- [ ] Au moins 1 `<table>` avec colonne « Note » / « Score » / critère différenciant
+- [ ] Chaque ligne du tableau est sourçable (pas d'invention)
+- [ ] Ton neutre/analytique (pas le ton provocateur des autres articles)
+- [ ] augmenter.pro pas en position 1 du classement sans justification objective
+- [ ] Slug au format `rapport-<secteur>-<zone>-<annee>`
+- [ ] URL + requête locale cible loggées dans `docs/seo-audits/<date>-data/geo-prompts.md` pour le re-test T+7 / T+30 / T+90 (cf. `/seo-audit` Phase 6.3)
 
 ### Contrôle qualité E-E-A-T
 - [ ] ≥ 1 exemple terrain / expérience de mission (anonymisé si besoin)
@@ -305,8 +335,5 @@ Vérifie et affiche un rapport :
 - [ ] Aucun passage n'est une reformulation directe d'un concurrent
 - [ ] Le sujet relève du périmètre d'expertise augmenter.PRO
 
-### Mise à jour stratégie éditoriale (OBLIGATOIRE)
-- [ ] `STRATEGIE-EDITORIALE.md` §5 : statut du contenu mis à jour (📋 → ✅)
-- [ ] `STRATEGIE-EDITORIALE.md` §4 : matrice de contenu mise à jour
-- [ ] `STRATEGIE-EDITORIALE.md` §11 : entrée ajoutée au journal des mises à jour
-- [ ] `STRATEGIE-EDITORIALE.md` §12 : "prochain contenu recommandé" mis à jour si nécessaire
+### Mise à jour stratégie éditoriale (optionnel)
+- [ ] Si l'article ouvre un nouveau cluster ou pivote la roadmap : noter dans `docs/prevision_contenu.md` et/ou mettre à jour `STRATEGIE-EDITORIALE.md` §3 (clusters). Les sections §4/§5/§11 du doc sont marquées comme désynchronisées — pas la peine de les tenir à jour à la main.

@@ -13,10 +13,13 @@ Spécifique à la modification/restructuration :
 - **Données inline** : pas de CMS — tout est hardcodé dans les composants, donc la modification passe toujours par de l'édition de fichiers TSX
 - **Règle SEO critique** : toute URL supprimée ou déplacée DOIT avoir une redirection 301
 
-## Document de référence stratégique
+**Check-lists & appels MCP communs** :
+- Check-lists A à E : [`.claude/templates/seo/checklist.md`](.claude/templates/seo/checklist.md) (SEO on-page, E-E-A-T, JSON-LD, intégration site, **§E spécifique modify/restructure**)
+- Appels MCP performance & indexation : [`.claude/templates/seo/mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §1.4 (page × query) + §1.7 (`index_inspect` post-modification)
 
-**OBLIGATOIRE** : Lire `STRATEGIE-EDITORIALE.md` à la racine du projet avant toute modification.
-Ce document contient la file de production (§5), les clusters (§3), la matrice de contenu (§4) et le journal (§11).
+## Document de référence stratégique (optionnel)
+
+`STRATEGIE-EDITORIALE.md` à la racine du projet est un **snapshot historique partiellement obsolète** (cf. avertissement en tête du fichier). Sections **toujours utiles** : §3 (clusters de mots-clés), §6 (axes de variabilité), §7 (banque de stats sourcées + PAA). Sections **désynchronisées** : §4 matrice, §5 file, §11 journal — préférer `git log` + `ls src/app/` pour l'état réel des ressources.
 
 ---
 
@@ -87,7 +90,6 @@ INVENTAIRE — [URL de la ressource]
    - Entrée dans blog-preview.tsx : oui/non, position
    - Entrée dans footer.tsx : oui/non, section
    - Prompt associé dans `src/data/prompts.ts` : oui/non (vérifier `relatedArticles`)
-   - Entrée dans STRATEGIE-EDITORIALE.md : oui/non, statut
 
 8. REDIRECTIONS EXISTANTES
    - Vérifier dans next.config.ts si des redirections pointent vers cette URL
@@ -153,7 +155,6 @@ Champs minimums à documenter par ressource résultante : titre SEO (< 60 chars)
 | `sitemap.xml` | Supprimer ancien, ajouter nouveau |
 | `llms.txt` | Supprimer ancien, ajouter nouveau |
 | `next.config.ts` | Ajouter redirect 301 |
-| `STRATEGIE-EDITORIALE.md` | Mettre à jour statut et matrice |
 
 **Attends la validation de l'utilisateur avant de passer à l'étape 3.**
 
@@ -172,8 +173,7 @@ Respecter cet ordre pour éviter les liens cassés pendant le processus :
 4. AJOUTER les redirections dans next.config.ts
 5. METTRE À JOUR les références (sitemap, llms.txt, blog-preview, footer)
 6. METTRE À JOUR les liens internes dans toutes les pages impactées
-7. METTRE À JOUR STRATEGIE-EDITORIALE.md
-8. BUILD pour vérifier
+7. BUILD pour vérifier
 ```
 
 ### 3.2 Redirections dans next.config.ts
@@ -240,7 +240,6 @@ Pour chaque URL modifiée ou supprimée, ajouter dans `async redirects()` :
 3. **Ajouter** la redirection 301 vers la page la plus pertinente
 4. **Supprimer** l'entrée de sitemap.xml, llms.txt, blog-preview.tsx, footer.tsx
 5. **Mettre à jour** tous les liens internes qui pointaient vers cette page
-6. **Mettre à jour** STRATEGIE-EDITORIALE.md (statut → supprimé/fusionné)
 
 ---
 
@@ -256,7 +255,6 @@ Pour chaque URL modifiée ou supprimée, ajouter dans `async redirects()` :
 | **`blog-preview.tsx`** | Supprimer/modifier/ajouter entrée article | Grep slug |
 | **`footer.tsx`** | Modifier/ajouter/supprimer lien si applicable | Grep URL |
 | **Toutes les pages `src/app/`** | Mettre à jour `<Link href="...">` | Grep ancienne URL |
-| **`STRATEGIE-EDITORIALE.md`** | Mettre à jour §4 (matrice), §5 (file), §11 (journal) | Manuel |
 
 ### 4.2 Grep exhaustif des liens internes
 
@@ -266,7 +264,6 @@ Pour chaque URL modifiée ou supprimée, ajouter dans `async redirects()` :
 # Pour chaque ancienne URL supprimée ou déplacée :
 grep -r "ancien-slug" src/ --include="*.tsx" --include="*.ts"
 grep -r "ancien-slug" public/ --include="*.txt" --include="*.xml"
-grep -r "ancien-slug" STRATEGIE-EDITORIALE.md
 ```
 
 Si des résultats apparaissent → mettre à jour ces fichiers.
@@ -346,11 +343,8 @@ Le build Next.js doit passer sans erreur. Vérifier que toutes les pages apparai
 - [ ] CTA présent sur chaque page modifiée
 - [ ] E-E-A-T préservé (exemples terrain, avis expert, données sourcées, limites)
 
-#### Stratégie éditoriale
-- [ ] `STRATEGIE-EDITORIALE.md` §4 : matrice de contenu mise à jour
-- [ ] `STRATEGIE-EDITORIALE.md` §5 : statuts mis à jour si applicable
-- [ ] `STRATEGIE-EDITORIALE.md` §11 : entrée ajoutée au journal
-- [ ] `STRATEGIE-EDITORIALE.md` §12 : prochain contenu recommandé mis à jour si nécessaire
+#### Stratégie éditoriale (optionnel)
+- [ ] Si la modification ouvre/ferme un cluster ou pivote la roadmap : noter dans `docs/prevision_contenu.md` et/ou mettre à jour `STRATEGIE-EDITORIALE.md` §3 (clusters). Les sections §4/§5/§11 du doc sont marquées comme désynchronisées — pas la peine de les tenir à jour à la main.
 
 #### Build
 - [ ] `npm run build` passe sans erreur

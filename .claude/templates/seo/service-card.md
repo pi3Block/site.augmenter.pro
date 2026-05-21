@@ -48,3 +48,9 @@ Lors d'une refonte d'offre, vérifier :
 - **Cohérence des prix** entre `pricing.tsx`, `prestations/page.tsx` et tous les CTAs
 - **JSON-LD Service** systématique avec `areaServed` (78/95), `provider` (Organization), `offers` (prix)
 - **Anti-patterns** : pas de palier à 19 €/mois qui commoditise, pas de palier « Enterprise » sans prix affiché quand le marché cible est PME
+
+---
+
+**Utilisé par** :
+- [`/seo-audit`](../../commands/seo-audit.md) — Phase 9.3 (réécriture cartes services / pricing) + Phase 9.4 (pyramide d'offres de référence)
+- [`/modify-resource`](../../commands/modify-resource.md) — Étape 2.2 (Modification d'une offre / service)

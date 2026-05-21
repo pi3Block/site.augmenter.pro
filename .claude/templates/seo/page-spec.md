@@ -51,3 +51,10 @@ Format standard pour les pages non éditoriales proposées par `/seo-audit` (Pha
 - Entrée ajoutée à `public/sitemap.xml` avec `<lastmod>` ISO 8601
 - Entrée ajoutée à `public/llms.txt` si indexable
 - Si client-component requis, split server/client (page.tsx + <name>-client.tsx)
+
+---
+
+**Utilisé par** :
+- [`/seo-audit`](../../commands/seo-audit.md) — Phase 8.4 (pages manquantes stratégiques)
+- [`/create-resource`](../../commands/create-resource.md) — Étape 2 (si type = page sectorielle / locale / landing / hub)
+- [`/modify-resource`](../../commands/modify-resource.md) — Étape 2.2 (Split vers page custom, Type change page)

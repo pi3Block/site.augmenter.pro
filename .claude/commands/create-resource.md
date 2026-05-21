@@ -12,23 +12,19 @@ Spécifique aux ressources multi-types (cette commande) :
 - **Contact** : formulaire client-side `mailto:` (pas d'API serveur)
 - L'étape 1.2 ci-dessous recommande le **type de ressource** le plus adapté (article, page sectorielle, locale, comparatif, étude de cas, glossaire, landing, prompt, page légale)
 
-## Document de référence stratégique
+**Check-lists & appels MCP communs** :
+- Check-lists A à D : [`.claude/templates/seo/checklist.md`](.claude/templates/seo/checklist.md) (SEO on-page, E-E-A-T, JSON-LD, intégration site)
+- Appels MCP keywords + SERP : [`.claude/templates/seo/mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §1, §2, §3
 
-**OBLIGATOIRE** : Avant toute action, lire `STRATEGIE-EDITORIALE.md` à la racine du projet. Ce document contient :
-- La file de production prioritisée (§5) — respecter l'ordre sauf instruction contraire
-- Les clusters de mots-clés et pages piliers (§3) — identifier le cluster soutenu
-- Les axes de variabilité (§6) — géo, secteur, format, intention, saisonnier
-- La banque de données et stats (§7) — statistiques sourcées à intégrer
-- Les questions PAA (§7.2) — questions à couvrir en FAQ ou sous-sections
-- Le protocole de crawl (§8) — étapes de recherche obligatoires avant rédaction
-- Les optimisations techniques (§9) — titles, maillage, FAQ à améliorer
+## Document de référence stratégique (optionnel)
+
+`STRATEGIE-EDITORIALE.md` à la racine du projet est un **snapshot historique partiellement obsolète** (cf. avertissement en tête du fichier). Sections **toujours utiles** : §3 (clusters de mots-clés et pages piliers), §6 (axes de variabilité géo/secteur/format/intention/saisonnier), §7 (banque de stats sourcées + PAA), §8 (protocole de crawl). Sections **désynchronisées** : §4 matrice, §5 file, §11 journal — préférer `git log` + `ls src/app/` + `ls src/app/blog/` pour l'état réel. §9 (optimisations techniques) à re-vérifier après refonte bento.
 
 **Workflow** :
-1. Lire `STRATEGIE-EDITORIALE.md` §5 et §8
-2. Si `$ARGUMENTS` est vide → proposer le prochain contenu de la file §5 (voir §12)
-3. Si `$ARGUMENTS` est fourni → vérifier la cohérence avec la stratégie (§8.3)
-4. Exécuter le protocole de recherche (§8.1 + §8.2) avant de rédiger
-5. Après publication → mettre à jour `STRATEGIE-EDITORIALE.md` (statuts §5, matrice §4, journal §11)
+1. Lister les ressources existantes (`ls src/app/`, `ls src/app/blog/`) pour cartographier l'état réel
+2. Si `$ARGUMENTS` est vide → identifier les manques en croisant avec les clusters §3, optionnellement consulter §12 (cible peut avoir évolué depuis février 2026)
+3. Si `$ARGUMENTS` est fourni → vérifier l'absence de doublon dans les pages existantes
+4. Exécuter le protocole de recherche §8.1 + §8.2 avant de rédiger
 
 ---
 
@@ -37,7 +33,7 @@ Spécifique aux ressources multi-types (cette commande) :
 Le besoin / sujet est : `$ARGUMENTS`
 
 Si aucun argument n'est fourni :
-1. **D'abord** : consulter `STRATEGIE-EDITORIALE.md` §12 (Référence Rapide) pour le prochain contenu recommandé
+1. **D'abord** : lister `src/app/` + `src/app/blog/`, croiser avec les clusters §3 de `STRATEGIE-EDITORIALE.md` pour identifier les manques. Optionnellement consulter §12 (prochain contenu recommandé) en gardant en tête que la cible peut avoir évolué depuis février 2026
 2. Proposer ce contenu à l'utilisateur avec la justification stratégique (cluster, priorité, timing)
 3. Si l'utilisateur refuse ou veut autre chose, demander :
    - Le besoin ou objectif business (ex: "cibler les artisans BTP", "se positionner sur Versailles", "comparer les CRM")
@@ -515,8 +511,5 @@ Vérifie et affiche un rapport adapté au type créé :
 - [ ] Contenu conforme RGPD (si politique de confidentialité)
 - [ ] Lien ajouté dans la section "legal" du footer
 
-### Mise à jour stratégie éditoriale (OBLIGATOIRE)
-- [ ] `STRATEGIE-EDITORIALE.md` §5 : statut du contenu mis à jour (📋 → ✅)
-- [ ] `STRATEGIE-EDITORIALE.md` §4 : matrice de contenu mise à jour
-- [ ] `STRATEGIE-EDITORIALE.md` §11 : entrée ajoutée au journal des mises à jour
-- [ ] `STRATEGIE-EDITORIALE.md` §12 : "prochain contenu recommandé" mis à jour si nécessaire
+### Mise à jour stratégie éditoriale (optionnel)
+- [ ] Si la ressource ouvre un nouveau cluster ou pivote la roadmap : noter dans `docs/prevision_contenu.md` et/ou mettre à jour `STRATEGIE-EDITORIALE.md` §3 (clusters). Les sections §4/§5/§11 du doc sont marquées comme désynchronisées — pas la peine de les tenir à jour à la main.

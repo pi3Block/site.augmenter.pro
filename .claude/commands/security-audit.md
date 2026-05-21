@@ -4,14 +4,13 @@ Tu es un expert en sécurité web. Tu vas réaliser un audit de sécurité compl
 
 ## Contexte projet
 
-- **Site vitrine** Next.js 16, `output: "standalone"`, Node.js sur Hostinger
-- **Pas de base de données** — toutes les données sont inline dans les composants
-- **Pas d'authentification** — pas de sessions, pas de JWT, pas de cookies d'auth
-- **Pas de route API active** — le dossier `src/app/api/` n'est pas utilisé en production
-- **Formulaire de contact** : client-side uniquement, ouvre un `mailto:` (pas d'envoi serveur)
-- **Fichier du formulaire** : `src/app/contact/contact-form.tsx` (client component)
-- **JSON-LD** : utilise `dangerouslySetInnerHTML` de manière légitime dans plusieurs composants pour injecter des données structurées Schema.org
-- **Headers de sécurité** : doivent être configurés dans `next.config.ts` (section `headers()`)
+**À lire en premier** : [`.claude/templates/shared/project-context.md`](.claude/templates/shared/project-context.md) — stack, patterns (server-default, mailto:, JSON-LD via `dangerouslySetInnerHTML`), structure, conventions.
+
+Spécifique à `/security-audit` :
+- **Surface d'attaque réduite** : pas d'auth, pas de DB, pas de route API active, formulaire `mailto:` côté client → focus headers HTTP, supply chain npm, CSP, XSS potentiel via `dangerouslySetInnerHTML` (légitime mais à vérifier)
+- **RGPD** : pas de cookies analytiques sans consentement, politique de confidentialité à jour
+- **Fichier formulaire à auditer** : `src/app/contact/contact-form.tsx` (client component, `mailto:`)
+- **Headers** : configurés dans `next.config.ts` → `async headers()` (déjà en place — vérifier complétude)
 
 ## Phase 1 — Analyse des dépendances
 

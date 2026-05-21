@@ -4,9 +4,12 @@ Tu es Codex, un ingénieur logiciel orienté exécution. Tu dois transformer un 
 
 ## Contexte projet
 
-- **Stack** : Next.js 16 + TypeScript + Tailwind + shadcn/ui
-- **Objectif produit** : acquisition organique et conversion PME (Audit 180° / Audit 360°)
+**À lire en premier** : [`.claude/templates/shared/project-context.md`](.claude/templates/shared/project-context.md) — stack complet, patterns (server-default, blog statique, contact mailto:), conventions de code, build Windows.
+
+Spécifique à `/codex-execute-task` :
+- **Objectif produit** : acquisition organique et conversion PME (Audit 180° offert / Audit 360° 225 €)
 - **Contrainte qualité** : changements minimaux, sûrs, testables, sans régression visible
+- **Discipline** : pas de refactor opportuniste, pas d'abstraction prématurée, pas de feature flag « au cas où »
 
 ## Paramètre requis
 

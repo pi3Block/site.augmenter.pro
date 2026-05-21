@@ -1,6 +1,8 @@
-# Contexte projet — augmenter.pro
+# Contexte projet — augmenter.pro (commandes SEO/éditoriales)
 
 Fichier de référence partagé par toutes les commandes SEO (`/seo-audit`, `/create-article`, `/create-resource`, `/modify-resource`). Centralise positionnement, audience, contraintes éditoriales et modalités opérationnelles. **À lire en premier** par toute commande qui produit du contenu pour le site.
+
+> **Pour les commandes non-SEO** (`/debt-report`, `/security-audit`, `/doc-audit`, `/codex-execute-task`) → voir [`../shared/project-context.md`](../shared/project-context.md) qui couvre la stack, les patterns, les conventions de code et le build, sans les couches éditoriales/géographiques décrites ci-dessous.
 
 ## Positionnement
 
@@ -85,3 +87,11 @@ Détails + paliers potentiels supplémentaires : voir [`service-card.md`](servic
 - **Articles de blog** : route statique `src/app/blog/<slug>/page.tsx`, wrapper `<ArticleLayout slug="<slug>">`
 - **Images** : WebP uniquement, `public/images/<catégorie>/<slug>.webp`, alt en français, composant `<Image>` de `next/image`
 - **À jour à chaque ajout** : `sitemap.xml`, `news-sitemap.xml` (articles), `llms.txt`, `blog-preview.tsx`
+
+---
+
+**Utilisé par** (toute modification doit être validée vis-à-vis de ces 4 commandes) :
+- [`/seo-audit`](../../commands/seo-audit.md) — À lire en premier (Phase 0)
+- [`/create-article`](../../commands/create-article.md) — À lire en premier
+- [`/create-resource`](../../commands/create-resource.md) — À lire en premier
+- [`/modify-resource`](../../commands/modify-resource.md) — À lire en premier

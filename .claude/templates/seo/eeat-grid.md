@@ -53,3 +53,11 @@ augmenter.pro est un site de conseil avec décisions financières impliquées = 
 - Article sans exemple concret, uniquement théorique → score Experience plafonné à 2/5
 - Page commerciale sans preuves (logos, chiffres, témoignages) → score global < 10
 - Contenu contenant « gratuit » (mot interdit) → à corriger avant scoring
+
+---
+
+**Utilisé par** :
+- [`/seo-audit`](../../commands/seo-audit.md) — Phase 7 (évaluation E-E-A-T approfondie par page) + §8 du rapport
+- [`/create-article`](../../commands/create-article.md) — Étape 3 (qualité de contenu, scoring après rédaction)
+- [`/create-resource`](../../commands/create-resource.md) — Étape 3 (E-E-A-T obligatoire, tous types)
+- [`/modify-resource`](../../commands/modify-resource.md) — Étape 5.2 (re-scoring post-modification : ne doit jamais régresser)

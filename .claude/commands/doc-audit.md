@@ -4,12 +4,12 @@ Tu es un expert en documentation technique. Tu vas auditer et améliorer la docu
 
 ## Contexte projet
 
-- **Site vitrine** Next.js 16, `output: "standalone"`, Node.js sur Hostinger
-- **Données inline** — pas de CMS, pas de base de données
-- **SEO/LLM stack** : JSON-LD structuré, `llms.txt`, `sitemap.xml`, `robots.txt`
-- **Commandes Claude** : 5 commandes dans `.claude/commands/`
-- **Blog** : articles statiques dans `src/app/blog/<slug>/page.tsx`
-- **Contact** : pattern server/client split (page.tsx metadata + contact-form.tsx client)
+**À lire en premier** : [`.claude/templates/shared/project-context.md`](.claude/templates/shared/project-context.md) — stack, patterns, conventions, fichiers SEO/LLM à maintenir cohérents.
+
+Spécifique à `/doc-audit` :
+- **Sources de vérité documentaires** : `CLAUDE.md` (instructions Claude), `STRATEGIE-EDITORIALE.md` (référence éditoriale, sections obsolètes flaguées dans le header), `docs/` (audits datés, backlog cleanup, prevision contenu).
+- **Commandes Claude** : 8 commandes dans `.claude/commands/` (4 SEO + 4 non-SEO). Templates dans `.claude/templates/seo/` et `.claude/templates/shared/`.
+- **Critère d'audit** : un nouvel arrivant doit pouvoir comprendre l'architecture + lancer le dev server en < 15 min via `CLAUDE.md` + `README.md`.
 
 ## Phase 1 — Inventaire de la documentation existante
 

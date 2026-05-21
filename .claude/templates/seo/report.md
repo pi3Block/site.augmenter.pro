@@ -117,18 +117,62 @@ Le rapport est **autonome** (un lecteur qui n'a pas assisté à l'audit doit pou
 - Prospects digital PR (intersection concurrents) : [liste priorisée]
 
 ## 7. Visibilité GEO (moteurs IA)
-### 7.1 Mentions LLM
-| LLM | Mentions | Top requête | Page citée |
 
-### 7.2 AI Overviews Google
-| Requête | AI Overview présent ? | Sources citées | augmenter.pro cité ? |
+### 7.1 Accessibilité bots IA (prérequis bloquant)
+| Bot | robots.txt | Test fetch User-Agent | Verdict |
+|-----|-----------|----------------------|---------|
+| GPTBot | ✅/❌ | 200/4XX | ✅/🔴 |
+| OAI-SearchBot | | | |
+| ClaudeBot | | | |
+| Google-Extended | | | |
+| PerplexityBot | | | |
+| CCBot | | | |
 
-### 7.3 Tests directs
-[screenshots + verdict par prompt testé]
+### 7.2 Mentions LLM agrégées (DFS)
+| LLM | Mentions / 90j | Top requête déclencheuse | Page citée | Domaines co-cités |
 
-### 7.4 Audit llms.txt
-- Couverture : X %
+### 7.3 Tests directs multi-moteurs (prompt × moteur)
+| Prompt | ChatGPT | Perplexity | Gemini AI Mode | AI Overviews | Brave | Bing Copilot | Claude |
+|--------|---------|-----------|----------------|--------------|-------|--------------|--------|
+| « Quel consultant IA PME Yvelines » | cité pos 2, URL `/strategie-ia-pme` | non | non | non | cité pos 3 | n/a | n/a |
+| ... | | | | | | | |
+
+→ **Taux de capture global** : X % des prompts × moteurs où augmenter.pro est cité.
+
+### 7.4 AI Overviews / SGE Google
+| Requête | AIO présent ? | Sources citées (3-5 URLs) | augmenter.pro cité ? | Caractéristiques sources retenues |
+
+### 7.5 Entity author Pierre Legrand
+- Page auteur dédiée : ✅/❌
+- Person JSON-LD complet (sameAs, knowsAbout, etc.) : ✅/❌
+- `Article.author` ref @id (pas string) sur ArticleLayout : ✅/❌
+- Mention LinkedIn / GitHub / France Num alignées : ✅/❌
+
+### 7.6 NAP consistency
+| Élément | Forme(s) trouvée(s) | Divergence ? | Correction |
+| Nom (augmenter.PRO / .pro / Augmenter Pro) | | | |
+| Adresse | | | |
+| Téléphone | | | |
+| SIRET / TVA | | | |
+
+### 7.7 `llms.txt` + `llms-full.txt`
+- `llms.txt` couverture : X % (services / articles / FAQ / dates)
+- `llms-full.txt` présent : ✅/❌ | Taille : X MB
+- Référencement dans robots.txt + llms.txt : ✅/❌
 - Actions correctives : [...]
+
+### 7.8 Citation triggers (top 10 pages stratégiques)
+| Page | Définition intro | Tableau | Stats sourcées | Listes | FAQ Q→A | Timestamp | Attribution | Auteur+lien | TL;DR | Slug court | Score /10 |
+|------|------------------|---------|---------------|--------|---------|-----------|-------------|-------------|-------|-----------|-----------|
+
+### 7.9 Entity mentions externes
+| Source | Mention actuelle | Action | Priorité |
+| Wikidata | | | |
+| LinkedIn | | | |
+| GitHub | | | |
+| France Num Activateur | | | |
+| Bpifrance IA Booster | | | |
+| Presse | | | |
 
 ## 8. E-E-A-T par page
 [Utiliser la grille de `.claude/templates/seo/eeat-grid.md`]
@@ -218,3 +262,10 @@ Le rapport est **autonome** (un lecteur qui n'a pas assisté à l'audit doit pou
 | Mentions LLM / mois | X | +X | ... | ... |
 | Leads organiques / mois | X | ... | ... | ... |
 ```
+
+---
+
+**Utilisé par** :
+- [`/seo-audit`](../../commands/seo-audit.md) — Phase 10 (structure du rapport final, sauvegardé dans `docs/seo-audits/<YYYY-MM-DD>-audit.md`)
+
+**Exemple récent** : [`docs/seo-audits/2026-05-21-audit.md`](../../../docs/seo-audits/2026-05-21-audit.md)
