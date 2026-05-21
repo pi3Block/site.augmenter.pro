@@ -11,6 +11,16 @@ import Image from "next/image";
 
 const articles = [
   {
+    slug: "rapport-adoption-ia-btp-francilien-2026",
+    title:
+      "Rapport 2026 : Adoption de l'IA dans le BTP francilien",
+    excerpt:
+      "Tableau de maturité par sous-secteur (gros œuvre, second œuvre, artisanat, négoce) croisé avec les usages IA réels en 2026. Sources publiques + observations terrain 78/95.",
+    tags: ["Intelligence Artificielle", "PME", "Rapport sectoriel"],
+    readTime: "6 min",
+    image: "/images/blog/rapport-adoption-ia-btp-francilien-2026.webp",
+  },
+  {
     slug: "configurer-odoo-ia-claude-cowork",
     title:
       "Configurer Odoo avec l'IA : 4 Jours au Lieu de 3 500 €",
