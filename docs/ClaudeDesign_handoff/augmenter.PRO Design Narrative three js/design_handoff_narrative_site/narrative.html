@@ -1,0 +1,1634 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>augmenter.PRO — Le récit</title>
+<link rel="icon" href="assets/icon.svg" />
+<link rel="stylesheet" href="colors_and_type.css" />
+<style>
+  /* ============================================================
+     PAGE SHELL
+     ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-stopped { overflow: clip; }
+
+  body {
+    background: var(--neutral-50);
+    color: var(--fg);
+    overflow-x: clip;
+    cursor: none;
+  }
+
+  /* keep selection on-brand instead of stock blue */
+  ::selection { background: var(--primary); color: #fff; }
+
+  /* ----- canvas backdrop ----- */
+  #bg {
+    position: fixed; inset: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ----- custom cursor ----- */
+  .cursor, .cursor-ring {
+    position: fixed; top: 0; left: 0;
+    pointer-events: none;
+    z-index: 1000;
+    will-change: transform;
+    mix-blend-mode: difference;
+  }
+  .cursor {
+    width: 6px; height: 6px;
+    margin: -3px 0 0 -3px;
+    background: #fff;
+    border-radius: 50%;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    margin: -18px 0 0 -18px;
+    border: 1px solid rgb(255 255 255 / 60%);
+    border-radius: 50%;
+    transition: width .25s, height .25s, margin .25s, border-color .25s;
+  }
+  .cursor-hover .cursor-ring {
+    width: 64px; height: 64px;
+    margin: -32px 0 0 -32px;
+    border-color: #fff;
+  }
+
+  /* ============================================================
+     FIXED CHROME
+     ============================================================ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 32px;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    color: #fff;
+  }
+  .nav > * { pointer-events: auto; }
+  .brand {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+    color: inherit;
+  }
+  .brand .mark {
+    width: 22px; height: 22px;
+    background: var(--violet-600);
+    border-radius: 6px;
+    display: grid; place-items: center;
+    color: #fff;
+  }
+  .brand .mark svg { width: 13px; height: 13px; }
+  .brand .pro { color: var(--violet-400); }
+  .nav-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: inherit;
+    opacity: 0.85;
+    display: inline-flex; gap: 18px;
+  }
+  .nav-meta b { font-weight: 500; opacity: 0.6; }
+
+  /* ----- chapter rail (right) ----- */
+  .rail {
+    position: fixed;
+    right: 32px; top: 50%;
+    transform: translateY(-50%);
+    z-index: 40;
+    display: flex; flex-direction: column; gap: 14px;
+    mix-blend-mode: difference;
+    color: #fff;
+  }
+  .rail button {
+    appearance: none; background: transparent; border: 0;
+    cursor: none;
+    display: flex; align-items: center; gap: 12px;
+    color: inherit;
+    font: inherit;
+    padding: 4px 0;
+  }
+  .rail .num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    width: 18px;
+    transition: opacity .3s;
+  }
+  .rail .dash {
+    height: 1px; width: 16px;
+    background: currentColor; opacity: 0.3;
+    transition: width .35s, opacity .35s;
+  }
+  .rail .lbl {
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity .35s, transform .35s;
+    white-space: nowrap;
+  }
+  .rail .is-active .num { opacity: 1; }
+  .rail .is-active .dash { width: 32px; opacity: 0.8; }
+  .rail .is-active .lbl { opacity: 0.9; transform: translateX(0); }
+
+  /* ----- bottom progress bar ----- */
+  .progress {
+    position: fixed;
+    left: 32px; right: 32px; bottom: 22px;
+    z-index: 40;
+    display: flex; align-items: center; gap: 16px;
+    mix-blend-mode: difference;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .progress .track {
+    flex: 1; height: 1px; background: rgb(255 255 255 / 25%); position: relative;
+  }
+  .progress .fill {
+    position: absolute; inset: 0;
+    background: #fff;
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+  .progress .ticks {
+    position: absolute; inset: -3px 0;
+    display: flex; justify-content: space-between;
+    pointer-events: none;
+  }
+  .progress .ticks span {
+    width: 1px; height: 7px; background: rgb(255 255 255 / 40%);
+  }
+
+  /* ============================================================
+     CHAPTER PRIMITIVES
+     ============================================================ */
+  main { position: relative; z-index: 1; }
+
+  .chapter {
+    min-height: 100vh;
+    padding: 140px 40px 120px;
+    display: flex; flex-direction: column;
+    position: relative;
+    isolation: isolate;
+  }
+  .chapter .wrap {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    flex: 1;
+    display: flex; flex-direction: column;
+    gap: 56px;
+    justify-content: center;
+  }
+  .chapter-head {
+    display: flex; align-items: baseline;
+    gap: 18px;
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .chapter-head .idx { color: var(--primary); }
+  .chapter-head .sep {
+    flex: 0 0 80px; height: 1px; background: currentColor; opacity: 0.4;
+    align-self: center;
+  }
+
+  /* enormous narrative headlines */
+  .chapter h2.lede {
+    font-size: clamp(40px, 7.5vw, 112px);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.96;
+    margin: 0;
+    max-width: 18ch;
+    text-wrap: balance;
+  }
+  .chapter h2.lede em,
+  .chapter h2.lede em .word > span {
+    font-style: normal;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  /* same gradient swap-in for ch-07's larger ember headline */
+  .ch-07 h2.lede em,
+  .ch-07 h2.lede em .word > span {
+    background: linear-gradient(135deg, var(--violet-300), var(--amber-400));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .chapter h2.lede u {
+    text-decoration: none;
+    background-image: linear-gradient(transparent 65%, var(--amber-400) 65%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 0 .1em;
+  }
+  .lede .word { display: inline-block; overflow: hidden; vertical-align: top; }
+  .lede .word > span { display: inline-block; }
+
+  .chapter .sub {
+    max-width: 56ch;
+    font-size: clamp(17px, 1.3vw, 22px);
+    line-height: 1.5;
+    color: var(--fg-muted);
+    margin: 0;
+  }
+
+  /* annotation block (kicker + caption pair) */
+  .annot {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 28px;
+    align-items: start;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-soft);
+    max-width: 760px;
+  }
+  .annot .k {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    padding-top: 4px;
+  }
+  .annot .v {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--fg);
+    margin: 0;
+  }
+
+  /* eyebrow pill (matches design system) */
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    border: 1px solid oklch(0.541 0.281 293 / 25%);
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 13px; font-weight: 500;
+    width: max-content;
+  }
+  .pill::before {
+    content: ""; width: 6px; height: 6px;
+    background: var(--primary); border-radius: 50%;
+    box-shadow: 0 0 0 4px oklch(0.541 0.281 293 / 18%);
+  }
+
+  /* ============================================================
+     CH 01 — DAWN
+     ============================================================ */
+  .ch-01 { color: var(--neutral-950); }
+  .ch-01 .stamp {
+    position: absolute;
+    right: 40px; top: 140px;
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--fg-muted);
+    line-height: 2;
+  }
+  .ch-01 .stamp strong { color: var(--fg); font-weight: 500; }
+  .ch-01 .signoff {
+    display: flex; align-items: center; gap: 18px;
+    font-family: var(--font-mono);
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-top: 24px;
+  }
+  .ch-01 .signoff .av {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--violet-300), var(--amber-400));
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%);
+  }
+  .ch-01 .signoff b { color: var(--fg); font-weight: 500; }
+
+  /* ============================================================
+     CH 02 — REALITY (warm cool neutral)
+     ============================================================ */
+  .ch-02 { color: var(--neutral-950); }
+  .ch-02 .grid {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 64px;
+    align-items: end;
+  }
+  .map {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-xl);
+    background: rgb(255 255 255 / 60%);
+    backdrop-filter: blur(8px);
+    overflow: hidden;
+  }
+  .map svg { width: 100%; height: 100%; display: block; }
+  .map .legend {
+    position: absolute;
+    bottom: 14px; left: 16px;
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .map .pin {
+    position: absolute;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 0 6px oklch(0.541 0.281 293 / 18%);
+    transform: translate(-50%, -50%);
+  }
+  .map .pin.is-home {
+    background: var(--amber-400);
+    box-shadow: 0 0 0 6px oklch(0.828 0.189 84 / 28%);
+  }
+  .map .pin-lbl {
+    position: absolute;
+    transform: translate(-50%, calc(-100% - 8px));
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--fg); color: var(--bg);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+  }
+
+  /* ============================================================
+     CH 03 — PILIERS (deep violet)
+     ============================================================ */
+  .ch-03 { color: var(--neutral-50); }
+  .ch-03 .chapter-head { color: rgb(255 255 255 / 65%); }
+  .ch-03 .chapter-head .idx { color: var(--amber-400); }
+  .ch-03 .pill {
+    border-color: rgb(255 255 255 / 25%);
+    background: rgb(255 255 255 / 8%);
+    color: #fff;
+  }
+  .ch-03 .pill::before { background: var(--amber-400); box-shadow: 0 0 0 4px rgb(252 211 77 / 25%); }
+  .ch-03 .sub { color: rgb(255 255 255 / 70%); }
+  .ch-03 h2.lede u { background-image: linear-gradient(transparent 65%, var(--amber-400) 65%); }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgb(255 255 255 / 12%);
+    border: 1px solid rgb(255 255 255 / 12%);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+  }
+  .pillar {
+    padding: 36px 30px 30px;
+    background: rgb(255 255 255 / 4%);
+    backdrop-filter: blur(12px);
+    display: flex; flex-direction: column; gap: 18px;
+    min-height: 320px;
+    transition: background .3s;
+  }
+  .pillar:hover { background: rgb(255 255 255 / 9%); }
+  .pillar .ico {
+    width: 44px; height: 44px;
+    background: rgb(255 255 255 / 10%);
+    border: 1px solid rgb(255 255 255 / 15%);
+    border-radius: var(--radius-lg);
+    display: grid; place-items: center;
+    color: var(--amber-400);
+  }
+  .pillar .ico svg { width: 22px; height: 22px; }
+  .pillar h3 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0;
+    color: #fff;
+  }
+  .pillar .quote {
+    font-size: 14px; line-height: 1.55;
+    color: rgb(255 255 255 / 70%);
+    font-style: italic;
+    margin: 0;
+  }
+  .pillar ul {
+    list-style: none; padding: 0; margin: auto 0 0;
+    display: flex; flex-direction: column; gap: 8px;
+    font-size: 13px; color: rgb(255 255 255 / 80%);
+  }
+  .pillar li {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .pillar li::before {
+    content: ""; width: 5px; height: 5px;
+    background: var(--amber-400);
+    border-radius: 50%;
+    flex: 0 0 5px;
+  }
+  .pillar .num {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.12em;
+    color: rgb(255 255 255 / 45%);
+  }
+
+  /* ============================================================
+     CH 04 — APPROCHE (amber warmth)
+     ============================================================ */
+  .ch-04 { color: var(--neutral-950); }
+  .ch-04 .chapter-head .idx { color: var(--amber-500); }
+  .ch-04 .pill {
+    border-color: oklch(0.769 0.188 70 / 35%);
+    background: oklch(0.828 0.189 84 / 14%);
+    color: oklch(0.5 0.13 70);
+  }
+  .ch-04 .pill::before { background: var(--amber-500); box-shadow: 0 0 0 4px oklch(0.828 0.189 84 / 25%); }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    counter-reset: step;
+  }
+  .step {
+    position: relative;
+    padding: 28px 24px 24px;
+    background: rgb(255 255 255 / 78%);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column; gap: 14px;
+    min-height: 240px;
+  }
+  .step .marker {
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .step .marker .n {
+    font-size: 38px; font-weight: 700; letter-spacing: -0.03em;
+    color: var(--amber-500);
+    line-height: 1;
+    text-transform: none;
+  }
+  .step h3 {
+    font-size: 19px; font-weight: 600; letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .step p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--fg-muted); }
+  .step .ico { color: var(--primary); }
+  .step .ico svg { width: 20px; height: 20px; }
+
+  /* ============================================================
+     CH 05 — NUMBERS (night)
+     ============================================================ */
+  .ch-05 { color: var(--neutral-50); }
+  .ch-05 .chapter-head { color: rgb(255 255 255 / 60%); }
+  .ch-05 .chapter-head .idx { color: var(--amber-400); }
+  .ch-05 .pill {
+    border-color: rgb(255 255 255 / 25%);
+    background: rgb(255 255 255 / 6%);
+    color: #fff;
+  }
+  .ch-05 .pill::before { background: var(--amber-400); box-shadow: 0 0 0 4px rgb(252 211 77 / 25%); }
+  .ch-05 .sub { color: rgb(255 255 255 / 70%); }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid rgb(255 255 255 / 14%);
+    border-bottom: 1px solid rgb(255 255 255 / 14%);
+  }
+  .stat {
+    padding: 42px 28px 32px;
+    border-right: 1px solid rgb(255 255 255 / 12%);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .stat:last-child { border-right: 0; }
+  .stat .v {
+    font-size: clamp(48px, 5.5vw, 84px);
+    font-weight: 700; letter-spacing: -0.04em;
+    line-height: 0.95;
+    color: #fff;
+    font-feature-settings: "tnum";
+  }
+  .stat .v small { font-size: 0.5em; opacity: 0.6; font-weight: 500; letter-spacing: 0; }
+  .stat .k {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgb(255 255 255 / 55%);
+  }
+  .stat .desc {
+    font-size: 13px; line-height: 1.5;
+    color: rgb(255 255 255 / 75%);
+    margin-top: 4px;
+  }
+
+  /* ============================================================
+     CH 06 — VOICES (back to light)
+     ============================================================ */
+  .ch-06 { color: var(--neutral-950); }
+  .voices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .voice {
+    padding: 28px;
+    background: rgb(255 255 255 / 80%);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column; gap: 18px;
+    position: relative;
+  }
+  .voice .stars {
+    color: var(--amber-400);
+    display: flex; gap: 2px;
+    font-size: 14px;
+  }
+  .voice .stars svg { width: 14px; height: 14px; fill: currentColor; }
+  .voice blockquote {
+    font-size: 15px; line-height: 1.6;
+    color: var(--fg);
+    margin: 0;
+    font-style: italic;
+    quotes: "«\00a0" "\00a0»";
+  }
+  .voice blockquote::before { content: open-quote; color: var(--primary); }
+  .voice blockquote::after { content: close-quote; color: var(--primary); }
+  .voice .by {
+    display: flex; align-items: center; gap: 12px;
+    margin-top: auto; padding-top: 14px;
+    border-top: 1px solid var(--border-soft);
+  }
+  .voice .by .av {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--violet-300), var(--violet-500));
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%);
+    flex: 0 0 32px;
+  }
+  .voice .by div { display: flex; flex-direction: column; }
+  .voice .by b { font-size: 13px; font-weight: 600; }
+  .voice .by span {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .voice .gain {
+    position: absolute; top: 24px; right: 24px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    border: 1px solid oklch(0.541 0.281 293 / 25%);
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.05em;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* ============================================================
+     CH 07 — CTA / EMBER (deep night)
+     ============================================================ */
+  .ch-07 {
+    color: var(--neutral-50);
+    min-height: 100vh;
+  }
+  .ch-07 .chapter-head { color: rgb(255 255 255 / 60%); }
+  .ch-07 .chapter-head .idx { color: var(--amber-400); }
+  .ch-07 .wrap { justify-content: center; gap: 48px; }
+  .ch-07 .pill {
+    border-color: rgb(255 255 255 / 25%);
+    background: rgb(255 255 255 / 6%);
+    color: #fff;
+  }
+  .ch-07 .pill::before { background: var(--amber-400); box-shadow: 0 0 0 4px rgb(252 211 77 / 25%); }
+  .ch-07 h2.lede {
+    font-size: clamp(48px, 9vw, 144px);
+    max-width: 14ch;
+  }
+  .ch-07 h2.lede em {
+    background: linear-gradient(135deg, var(--violet-300), var(--amber-400));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .ch-07 .sub { color: rgb(255 255 255 / 75%); max-width: 52ch; }
+  .ch-07 .ctas {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .ch-07 .btn {
+    appearance: none; border: 0;
+    cursor: none;
+    padding: 14px 22px;
+    font-family: inherit; font-size: 15px; font-weight: 500;
+    border-radius: var(--radius-md);
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: background .2s, color .2s, transform .2s;
+  }
+  .ch-07 .btn.primary {
+    background: var(--primary);
+    color: #fff;
+  }
+  .ch-07 .btn.primary:hover { background: oklch(0.491 0.27 292); }
+  .ch-07 .btn.ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgb(255 255 255 / 30%);
+  }
+  .ch-07 .btn.ghost:hover { background: rgb(255 255 255 / 8%); }
+  .ch-07 .btn svg { width: 16px; height: 16px; }
+  .ch-07 .contact {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    gap: 38px;
+    margin-top: 16px;
+    padding-top: 24px;
+    border-top: 1px solid rgb(255 255 255 / 14%);
+  }
+  .ch-07 .contact div {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .ch-07 .contact .k {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgb(255 255 255 / 50%);
+  }
+  .ch-07 .contact .v {
+    font-size: 15px; color: #fff;
+  }
+  .ch-07 .colophon {
+    position: absolute;
+    left: 40px; bottom: 60px; right: 40px;
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgb(255 255 255 / 40%);
+  }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 980px) {
+    .chapter { padding: 120px 24px 100px; }
+    .ch-02 .grid { grid-template-columns: 1fr; gap: 32px; }
+    .pillars { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat { border-right: 0; border-bottom: 1px solid rgb(255 255 255 / 12%); }
+    .voices { grid-template-columns: 1fr; }
+    .rail { display: none; }
+    .nav { padding: 16px 20px; }
+    .progress { left: 20px; right: 20px; }
+    .ch-01 .stamp { position: static; text-align: left; margin-bottom: 32px; }
+  }
+  @media (max-width: 620px) {
+    .steps { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr; }
+    .ch-07 .contact { grid-template-columns: 1fr; gap: 18px; }
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     WEBGL BACKDROP
+     ============================================================ -->
+<canvas id="bg"></canvas>
+
+<!-- ============================================================
+     CUSTOM CURSOR
+     ============================================================ -->
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor" id="cursorDot"></div>
+
+<!-- ============================================================
+     FIXED CHROME
+     ============================================================ -->
+<nav class="nav">
+  <a href="#ch-01" class="brand" data-hover>
+    <span class="mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+    </span>
+    <span>augmenter<span class="pro">.PRO</span></span>
+  </a>
+  <div class="nav-meta">
+    <span><b>Conseil&nbsp;·</b> IA &amp; digitalisation</span>
+    <span><b>Zone&nbsp;·</b> Yvelines · Val d'Oise</span>
+  </div>
+</nav>
+
+<aside class="rail" id="rail">
+  <button data-target="#ch-01"><span class="num">01</span><span class="dash"></span><span class="lbl">Préambule</span></button>
+  <button data-target="#ch-02"><span class="num">02</span><span class="dash"></span><span class="lbl">Le terrain</span></button>
+  <button data-target="#ch-03"><span class="num">03</span><span class="dash"></span><span class="lbl">Trois piliers</span></button>
+  <button data-target="#ch-04"><span class="num">04</span><span class="dash"></span><span class="lbl">La méthode</span></button>
+  <button data-target="#ch-05"><span class="num">05</span><span class="dash"></span><span class="lbl">Les preuves</span></button>
+  <button data-target="#ch-06"><span class="num">06</span><span class="dash"></span><span class="lbl">Les voix</span></button>
+  <button data-target="#ch-07"><span class="num">07</span><span class="dash"></span><span class="lbl">La suite</span></button>
+</aside>
+
+<div class="progress">
+  <span id="progLeft">CH.01 — Préambule</span>
+  <div class="track"><div class="fill" id="progFill"></div>
+    <div class="ticks"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+  <span id="progRight">00 / 07</span>
+</div>
+
+<main>
+
+<!-- ============================================================
+     CH 01 — PRÉAMBULE / DAWN
+     ============================================================ -->
+<section class="chapter ch-01" id="ch-01" data-mood="dawn" data-screen-label="01 Préambule">
+  <div class="wrap">
+    <div class="chapter-head" data-anim="line">
+      <span class="idx">CH.01</span><span class="sep"></span><span>Préambule</span>
+    </div>
+    <span class="pill" data-anim="up">Un récit en sept chapitres</span>
+    <h2 class="lede" data-anim="words">
+      Votre PME, <em>augmentée</em> par l'IA.<br/>
+      Sans gourou, sans <u>jargon</u>.
+    </h2>
+    <p class="sub" data-anim="up">
+      Pierre Legrand accompagne les PME et indépendants des Yvelines et du Val d'Oise à trouver l'équilibre entre performance humaine et numérique. IA, digitalisation, robotique — des solutions sur mesure qui tiennent la route.
+    </p>
+    <div class="signoff" data-anim="up">
+      <span class="av"></span>
+      <span>Récit de mission · <b>Pierre Legrand</b> · Consultant indépendant</span>
+    </div>
+  </div>
+  <div class="stamp" data-anim="up">
+    Mai 2026<br/>
+    <strong>Jouy-le-Moutier (95)</strong><br/>
+    47°N · 2°E
+  </div>
+</section>
+
+<!-- ============================================================
+     CH 02 — LE TERRAIN
+     ============================================================ -->
+<section class="chapter ch-02" id="ch-02" data-mood="reality" data-screen-label="02 Le terrain">
+  <div class="wrap">
+    <div class="chapter-head" data-anim="line">
+      <span class="idx">CH.02</span><span class="sep"></span><span>Le terrain</span>
+    </div>
+    <span class="pill" data-anim="up">78 · 95 · en présentiel ou à distance</span>
+    <h2 class="lede" data-anim="words">
+      Pas la Silicon&nbsp;Valley.<br/>
+      Le <em>Vexin</em>, la vallée de l'Oise,<br/>
+      des artisans qui veulent <u>avancer</u>.
+    </h2>
+    <div class="grid">
+      <div class="map" data-anim="up">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="none">
+          <!-- abstract region grid -->
+          <defs>
+            <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+            </pattern>
+          </defs>
+          <rect width="400" height="300" fill="url(#g)" color="#666"/>
+          <!-- Seine / Oise (suggested) -->
+          <path d="M 30 230 Q 110 200 180 220 T 320 180 Q 360 165 390 145" fill="none" stroke="#6b7280" stroke-width="2" opacity="0.35"/>
+          <path d="M 110 60 Q 150 110 210 130 T 320 180" fill="none" stroke="#6b7280" stroke-width="2" opacity="0.35"/>
+          <!-- 78 & 95 region blobs -->
+          <path d="M 90 100 Q 70 150 80 200 Q 110 240 170 230 Q 210 215 220 175 Q 215 130 180 105 Q 135 80 90 100 Z" fill="oklch(0.541 0.281 293 / 7%)" stroke="oklch(0.541 0.281 293 / 25%)" stroke-width="1"/>
+          <path d="M 200 60 Q 175 95 195 130 Q 230 155 280 145 Q 320 130 325 95 Q 315 60 270 50 Q 225 45 200 60 Z" fill="oklch(0.541 0.281 293 / 7%)" stroke="oklch(0.541 0.281 293 / 25%)" stroke-width="1"/>
+          <text x="135" y="170" font-family="JetBrains Mono, monospace" font-size="9" fill="oklch(0.541 0.281 293)" letter-spacing="2">YVELINES · 78</text>
+          <text x="225" y="100" font-family="JetBrains Mono, monospace" font-size="9" fill="oklch(0.541 0.281 293)" letter-spacing="2">VAL D'OISE · 95</text>
+        </svg>
+        <div class="pin is-home" style="left: 50%; top: 47%;"></div>
+        <div class="pin-lbl" style="left: 50%; top: 47%;">Jouy-le-Moutier · base</div>
+        <div class="pin" style="left: 26%; top: 62%;"></div>
+        <div class="pin" style="left: 32%; top: 42%;"></div>
+        <div class="pin" style="left: 64%; top: 38%;"></div>
+        <div class="pin" style="left: 70%; top: 60%;"></div>
+        <div class="pin" style="left: 18%; top: 52%;"></div>
+        <div class="legend">Couverture · rayon ~45 km · 12 missions / mois</div>
+      </div>
+      <div>
+        <div class="annot" data-anim="up">
+          <div class="k">Profil client</div>
+          <p class="v">Gérants de PME (5 à 80 personnes), indépendants, artisans. BTP, immobilier, industrie, services. Non-techniques. Allergiques aux promesses creuses.</p>
+        </div>
+        <div class="annot" data-anim="up">
+          <div class="k">Demande type</div>
+          <p class="v">« Mes équipes passent trop de temps sur des tâches répétitives. » « J'ai entendu parler d'IA — qu'est-ce que je peux en faire, concrètement, dans mon métier ? »</p>
+        </div>
+        <div class="annot" data-anim="up">
+          <div class="k">Promesse</div>
+          <p class="v">Pas de PowerPoint à 80 slides. Un diagnostic, une feuille de route, des outils qui fonctionnent dès la semaine suivante.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CH 03 — TROIS PILIERS / VIOLET
+     ============================================================ -->
+<section class="chapter ch-03" id="ch-03" data-mood="violet" data-screen-label="03 Trois piliers">
+  <div class="wrap">
+    <div class="chapter-head" data-anim="line">
+      <span class="idx">CH.03</span><span class="sep"></span><span>Trois piliers</span>
+    </div>
+    <span class="pill" data-anim="up">Prestations</span>
+    <h2 class="lede" data-anim="words">
+      L'IA ne sert pas qu'à<br/>
+      générer des images <em>de chats</em>.
+    </h2>
+    <p class="sub" data-anim="up">
+      Trois disciplines, une seule logique : régler des problèmes réels. Chaque mission part de votre métier, jamais de la techno.
+    </p>
+    <div class="pillars" data-anim="reveal">
+      <div class="pillar">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4.5 4.5 0 0 0-4.5 4.5v.5A4.5 4.5 0 0 0 3 11.5a4.5 4.5 0 0 0 4 4.47V18a3 3 0 0 0 3 3h2a3 3 0 0 0 3-3v-2.03a4.5 4.5 0 0 0 4-4.47A4.5 4.5 0 0 0 16.5 7v-.5A4.5 4.5 0 0 0 12 2z"/><path d="M12 2v19"/></svg>
+        </div>
+        <h3>Intelligence artificielle</h3>
+        <p class="quote">« L'IA ne sert pas qu'à générer des images de chats. »</p>
+        <ul>
+          <li>Automatisation de tâches répétitives</li>
+          <li>Assistants métier, agents internes</li>
+          <li>Intégration MCP &amp; API</li>
+        </ul>
+        <span class="num">— 01 / 03</span>
+      </div>
+      <div class="pillar">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+        </div>
+        <h3>Digitalisation avancée</h3>
+        <p class="quote">« Changer d'outil, c'est un projet humain avant d'être technique. »</p>
+        <ul>
+          <li>Audit informatique 180°</li>
+          <li>Choix &amp; intégration d'outils</li>
+          <li>Formation des équipes</li>
+        </ul>
+        <span class="num">— 02 / 03</span>
+      </div>
+      <div class="pillar">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M9 4h6"/><path d="M12 4v4"/><circle cx="9" cy="14" r="1.5"/><circle cx="15" cy="14" r="1.5"/></svg>
+        </div>
+        <h3>Robotique &amp; IoT</h3>
+        <p class="quote">« Drones, robots, capteurs, caméras — les yeux et les bras du numérique. »</p>
+        <ul>
+          <li>Capture terrain (drones, caméras)</li>
+          <li>Capteurs &amp; télémétrie</li>
+          <li>Pilotage d'équipements</li>
+        </ul>
+        <span class="num">— 03 / 03</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CH 04 — LA MÉTHODE / AMBER
+     ============================================================ -->
+<section class="chapter ch-04" id="ch-04" data-mood="amber" data-screen-label="04 La méthode">
+  <div class="wrap">
+    <div class="chapter-head" data-anim="line">
+      <span class="idx">CH.04</span><span class="sep"></span><span>La méthode</span>
+    </div>
+    <span class="pill" data-anim="up">Notre approche · 4 étapes</span>
+    <h2 class="lede" data-anim="words">
+      La performance naît de<br/>
+      l'<em>équilibre</em> entre l'humain,<br/>
+      ses outils, ses <u>habitudes</u>.
+    </h2>
+    <div class="steps" data-anim="stagger">
+      <div class="step">
+        <div class="marker"><span>Diagnostic</span><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span></div>
+        <div class="marker"><span class="n">01</span></div>
+        <h3>Écouter le terrain</h3>
+        <p>60 minutes pour comprendre votre activité, vos irritants, vos contraintes. Sans démo, sans tablier marketing.</p>
+      </div>
+      <div class="step">
+        <div class="marker"><span>Outils</span><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span></div>
+        <div class="marker"><span class="n">02</span></div>
+        <h3>Choisir juste</h3>
+        <p>On ne change pas d'outil par mode. On choisit ce qui répond à un besoin, dans votre budget, intégrable avec l'existant.</p>
+      </div>
+      <div class="step">
+        <div class="marker"><span>Formation</span><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6"/><path d="M2 10 12 5l10 5-10 5z"/><path d="M6 12v5a8 4 0 0 0 12 0v-5"/></svg></span></div>
+        <div class="marker"><span class="n">03</span></div>
+        <h3>Embarquer l'équipe</h3>
+        <p>Un outil que personne n'utilise n'a aucune valeur. Sessions courtes, formats pratiques, support après la mise en place.</p>
+      </div>
+      <div class="step">
+        <div class="marker"><span>Itération</span><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.6V8.7a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.4v3.9a4 4 0 0 1-4 4H3"/></svg></span></div>
+        <div class="marker"><span class="n">04</span></div>
+        <h3>Mesurer, ajuster</h3>
+        <p>Trois mois plus tard, on regarde ensemble ce qui marche, ce qu'il faut corriger. Pas de promesse à vie, des engagements tenus.</p>
+      </div>
+    </div>
+    <div class="annot" data-anim="up">
+      <div class="k">Audit 180°</div>
+      <p class="v"><b>Offert · 60 min · sans engagement.</b> Diagnostic informatique de votre structure et premières pistes concrètes.</p>
+    </div>
+    <div class="annot" data-anim="up">
+      <div class="k">Audit 360° IA</div>
+      <p class="v"><b>225 €&nbsp;· ~3h · livrable PDF.</b> Cartographie des cas d'usage IA pertinents pour votre métier, hiérarchisés par impact &amp; faisabilité.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CH 05 — LES PREUVES / NIGHT
+     ============================================================ -->
+<section class="chapter ch-05" id="ch-05" data-mood="night" data-screen-label="05 Les preuves">
+  <div class="wrap">
+    <div class="chapter-head" data-anim="line">
+      <span class="idx">CH.05</span><span class="sep"></span><span>Les preuves</span>
+    </div>
+    <span class="pill" data-anim="up">Chiffres de terrain · 2025</span>
+    <h2 class="lede" data-anim="words">
+      Ce qui compte n'est pas<br/>
+      le <em>buzz</em>, mais ce qu'on <u>mesure</u>.
+    </h2>
+    <p class="sub" data-anim="up">
+      Quelques chiffres observés sur les missions de l'année écoulée. Pas de moyenne marketing : des cas réels, anonymisés, vérifiables.
+    </p>
+    <div class="stats" data-anim="counters">
+      <div class="stat">
+        <div class="v"><span data-count="-30" data-suffix="%">0</span></div>
+        <div class="k">Gain de temps moyen</div>
+        <div class="desc">Sur les tâches automatisées après mise en place (admin, devis, relances).</div>
+      </div>
+      <div class="stat">
+        <div class="v"><span data-count="48" data-suffix="h">0</span></div>
+        <div class="k">Délai de premier livrable</div>
+        <div class="desc">Du diagnostic au premier outil opérationnel, sur un cas d'usage cadré.</div>
+      </div>
+      <div class="stat">
+        <div class="v">2h <small>→</small> <span data-count="15" data-suffix="min">0</span></div>
+        <div class="k">Tâche type compressée</div>
+        <div class="desc">Cas d'un cabinet immobilier — synthèse de visites par assistant IA dédié.</div>
+      </div>
+      <div class="stat">
+        <div class="v"><span data-count="0" data-suffix="">0</span></div>
+        <div class="k">Engagement long terme</div>
+        <div class="desc">Aucun abonnement obligatoire. Vous gardez la main sur vos outils et vos données.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CH 06 — LES VOIX / LIGHT
+     ============================================================ -->
+<section class="chapter ch-06" id="ch-06" data-mood="light" data-screen-label="06 Les voix">
+  <div class="wrap">
+    <div class="chapter-head" data-anim="line">
+      <span class="idx">CH.06</span><span class="sep"></span><span>Les voix</span>
+    </div>
+    <span class="pill" data-anim="up">Ce que disent nos clients</span>
+    <h2 class="lede" data-anim="words">
+      Trois <em>gérants</em>, trois métiers,<br/>
+      la même remarque : <u>« enfin clair ».</u>
+    </h2>
+    <div class="voices" data-anim="stagger">
+      <article class="voice">
+        <span class="gain">−32 % de temps admin</span>
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        </div>
+        <blockquote>Je pensais qu'il fallait être ingénieur. En fait Pierre a posé trois questions, regardé comment on bossait, et on a sorti un outil qui tient la route en deux semaines.</blockquote>
+        <div class="by">
+          <span class="av"></span>
+          <div>
+            <b>Arnaud L.</b>
+            <span>Gérant boutique jardin · Jouy-le-Moutier (95)</span>
+          </div>
+        </div>
+      </article>
+      <article class="voice">
+        <span class="gain">2h → 15 min</span>
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        </div>
+        <blockquote>L'audit IA m'a remis les pieds sur terre. Pas besoin d'une révolution — un assistant qui résume mes visites et me prépare les comptes-rendus. Discret, efficace, et je dors mieux.</blockquote>
+        <div class="by">
+          <span class="av"></span>
+          <div>
+            <b>Sophie M.</b>
+            <span>Conseillère immobilier · Cergy (95)</span>
+          </div>
+        </div>
+      </article>
+      <article class="voice">
+        <span class="gain">48h livrable</span>
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        </div>
+        <blockquote>On avait un drone qu'on ne savait pas exploiter. Pierre a fait le pont entre nos relevés terrain et notre logiciel de devis. Aujourd'hui c'est devenu une routine, plus une corvée.</blockquote>
+        <div class="by">
+          <span class="av"></span>
+          <div>
+            <b>Karim B.</b>
+            <span>Gérant entreprise de couverture · Conflans (78)</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CH 07 — LA SUITE / EMBER
+     ============================================================ -->
+<section class="chapter ch-07" id="ch-07" data-mood="ember" data-screen-label="07 La suite">
+  <div class="wrap">
+    <div class="chapter-head" data-anim="line">
+      <span class="idx">CH.07</span><span class="sep"></span><span>La suite</span>
+    </div>
+    <span class="pill" data-anim="up">Prochain chapitre · le vôtre</span>
+    <h2 class="lede" data-anim="words">
+      Quel est votre<br/>
+      <em>prochain niveau&nbsp;?</em>
+    </h2>
+    <p class="sub" data-anim="up">
+      Zéro engagement, zéro jargon technique — juste un échange concret pour comprendre où l'IA et le numérique peuvent vous faire gagner du temps, de l'argent, ou de la sérénité.
+    </p>
+    <div class="ctas" data-anim="up">
+      <a class="btn primary" href="#contact" data-hover>
+        Réserver l'audit 180° offert
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a class="btn ghost" href="#prestations" data-hover>
+        Voir les prestations
+      </a>
+    </div>
+    <div class="contact" data-anim="up">
+      <div>
+        <span class="k">Pierre Legrand</span>
+        <span class="v">Consultant indépendant</span>
+      </div>
+      <div>
+        <span class="k">Email</span>
+        <span class="v">vite@augmenter.pro</span>
+      </div>
+      <div>
+        <span class="k">Téléphone</span>
+        <span class="v">+33 6 79 11 97 74</span>
+      </div>
+    </div>
+  </div>
+  <div class="colophon">
+    <span>augmenter.PRO · 2026</span>
+    <span>Récit · 7 chapitres · fin</span>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     LIBRARIES
+     ============================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
+<script>
+/* ============================================================
+   PAINTED-TEXTURE WEBGL BACKDROP (Three.js shader)
+   Domain-warped FBM noise, cursor-driven flow, color palettes
+   morphing per chapter.
+   ============================================================ */
+(function setupBg(){
+  const canvas = document.getElementById('bg');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
+  const scene  = new THREE.Scene();
+  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+  // ---- mood palettes (3 colors each, sRGB) ----
+  // c0 = base / paper, c1 = wash, c2 = ink-deep
+  const palettes = {
+    dawn:    [[0.985,0.985,0.985], [0.94,0.92,0.97 ], [0.78,0.74,0.94 ]],
+    reality: [[0.97 ,0.97 ,0.96 ], [0.86,0.87,0.90 ], [0.36,0.36,0.42 ]],
+    violet:  [[0.16 ,0.10 ,0.30 ], [0.32,0.16,0.62 ], [0.74,0.60,0.96 ]],
+    amber:   [[0.99 ,0.96 ,0.90 ], [0.97,0.83,0.50 ], [0.78,0.52,0.13 ]],
+    night:   [[0.06 ,0.05 ,0.10 ], [0.14,0.10,0.24 ], [0.98,0.78,0.34 ]],
+    light:   [[0.98 ,0.98 ,0.99 ], [0.92,0.90,0.97 ], [0.55,0.45,0.86 ]],
+    ember:   [[0.05 ,0.03 ,0.10 ], [0.20,0.10,0.36 ], [0.98,0.65,0.27 ]],
+  };
+
+  const uniforms = {
+    uTime:       { value: 0 },
+    uMouse:      { value: new THREE.Vector2(0.5, 0.5) },
+    uMouseVel:   { value: new THREE.Vector2(0, 0) },
+    uRes:        { value: new THREE.Vector2(1, 1) },
+    uC0:         { value: new THREE.Color().fromArray(palettes.dawn[0]) },
+    uC1:         { value: new THREE.Color().fromArray(palettes.dawn[1]) },
+    uC2:         { value: new THREE.Color().fromArray(palettes.dawn[2]) },
+    uContrast:   { value: 0.6 },     // how much the dark color shows
+    uGrain:      { value: 0.05 },
+    uMouseStrength: { value: 0.7 },
+  };
+
+  const vert = `
+    void main() { gl_Position = vec4(position, 1.0); }
+  `;
+
+  // GLSL fragment — paint-like fbm with domain warp + mouse pull
+  const frag = `
+    precision highp float;
+    uniform float uTime;
+    uniform vec2  uMouse;
+    uniform vec2  uMouseVel;
+    uniform vec2  uRes;
+    uniform vec3  uC0;
+    uniform vec3  uC1;
+    uniform vec3  uC2;
+    uniform float uContrast;
+    uniform float uGrain;
+    uniform float uMouseStrength;
+
+    // hash + value noise (cheap, smooth)
+    float hash(vec2 p){
+      p = fract(p * vec2(123.34, 456.21));
+      p += dot(p, p + 45.32);
+      return fract(p.x * p.y);
+    }
+    float vnoise(vec2 p){
+      vec2 i = floor(p);
+      vec2 f = fract(p);
+      vec2 u = f*f*(3.0 - 2.0*f);
+      float a = hash(i);
+      float b = hash(i + vec2(1.,0.));
+      float c = hash(i + vec2(0.,1.));
+      float d = hash(i + vec2(1.,1.));
+      return mix(mix(a,b,u.x), mix(c,d,u.x), u.y);
+    }
+    float fbm(vec2 p){
+      float v = 0.0;
+      float a = 0.5;
+      mat2 r = mat2(0.8,-0.6,0.6,0.8);
+      for (int i = 0; i < 5; i++) {
+        v += a * vnoise(p);
+        p = r * p * 2.02;
+        a *= 0.5;
+      }
+      return v;
+    }
+
+    void main(){
+      vec2 uv = gl_FragCoord.xy / uRes.xy;
+      // aspect-correct space so brushstrokes don't squash
+      vec2 p = uv;
+      p.x *= uRes.x / uRes.y;
+
+      // mouse in same space
+      vec2 m = uMouse;
+      m.x *= uRes.x / uRes.y;
+
+      float t = uTime * 0.06;
+
+      // Mouse-driven displacement: pull paint towards cursor, with falloff.
+      vec2 toMouse = m - p;
+      float md = length(toMouse);
+      float pullFalloff = exp(-md * 3.2);                // localized
+      vec2 pull = toMouse * pullFalloff * uMouseStrength * 0.35;
+      // velocity smears it directionally
+      pull += uMouseVel * pullFalloff * 1.2;
+
+      // Domain warping (gives the brushy / impasto look)
+      vec2 q;
+      q.x = fbm(p * 2.0 + vec2(0.0, t));
+      q.y = fbm(p * 2.0 + vec2(5.2, -t));
+      vec2 r;
+      r.x = fbm(p * 2.2 + 4.0 * q + vec2(1.7, 9.2) + pull);
+      r.y = fbm(p * 2.2 + 4.0 * q + vec2(8.3, 2.8) - pull);
+      float n = fbm(p * 1.8 + 4.0 * r + pull * 2.0);
+
+      // Map noise to color: paper -> wash -> ink-deep
+      float wash = smoothstep(0.20, 0.85, n + 0.1 * r.y);
+      float ink  = smoothstep(0.55, 0.95, n + 0.15 * r.x) * uContrast;
+
+      vec3 col = mix(uC0, uC1, wash);
+      col = mix(col, uC2, ink);
+
+      // gentle vignette
+      float vig = smoothstep(1.2, 0.4, length(uv - 0.5) * 1.3);
+      col *= mix(0.92, 1.0, vig);
+
+      // soft luminous halo near cursor
+      float halo = exp(-md * 4.0) * 0.18;
+      col += halo * (uC2 * 0.6 + 0.2);
+
+      // film grain (stable per pixel + slow time)
+      float g = (hash(gl_FragCoord.xy + floor(uTime * 14.0)) - 0.5) * uGrain;
+      col += g;
+
+      gl_FragColor = vec4(col, 1.0);
+    }
+  `;
+
+  const geo  = new THREE.PlaneGeometry(2, 2);
+  const mat  = new THREE.ShaderMaterial({ uniforms, vertexShader: vert, fragmentShader: frag });
+  const mesh = new THREE.Mesh(geo, mat);
+  scene.add(mesh);
+
+  function resize(){
+    const w = window.innerWidth, h = window.innerHeight;
+    renderer.setSize(w, h, false);
+    uniforms.uRes.value.set(w, h);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // mouse tracking with velocity
+  const mouseTarget = new THREE.Vector2(0.5, 0.5);
+  const mouseSmooth = new THREE.Vector2(0.5, 0.5);
+  const mousePrev   = new THREE.Vector2(0.5, 0.5);
+  window.addEventListener('pointermove', (e) => {
+    mouseTarget.set(e.clientX / window.innerWidth, 1 - e.clientY / window.innerHeight);
+  });
+  // touch fallback
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches[0]) {
+      mouseTarget.set(e.touches[0].clientX / window.innerWidth,
+                      1 - e.touches[0].clientY / window.innerHeight);
+    }
+  }, { passive: true });
+
+  // Slow ambient drift when idle (so background still feels alive)
+  let lastMoveAt = performance.now();
+  window.addEventListener('pointermove', () => lastMoveAt = performance.now());
+
+  const clock = new THREE.Clock();
+  function tick(){
+    const dt = clock.getDelta();
+    const t  = clock.elapsedTime;
+
+    // smooth mouse
+    mouseSmooth.lerp(mouseTarget, Math.min(1, dt * 6));
+
+    // ambient drift if idle
+    const idle = (performance.now() - lastMoveAt) > 1400;
+    if (idle) {
+      const wob = new THREE.Vector2(
+        0.5 + Math.cos(t * 0.18) * 0.18,
+        0.5 + Math.sin(t * 0.22) * 0.18,
+      );
+      mouseSmooth.lerp(wob, dt * 0.6);
+    }
+
+    // velocity
+    const vx = (mouseSmooth.x - mousePrev.x);
+    const vy = (mouseSmooth.y - mousePrev.y);
+    uniforms.uMouseVel.value.set(vx * 8, vy * 8);
+    mousePrev.copy(mouseSmooth);
+
+    uniforms.uMouse.value.copy(mouseSmooth);
+    uniforms.uTime.value = t;
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(tick);
+  }
+  tick();
+
+  // Expose palette tween hook
+  window.__bgSet = function(moodFrom, moodTo, p) {
+    const a = palettes[moodFrom] || palettes.dawn;
+    const b = palettes[moodTo]   || palettes.dawn;
+    const mix = (i, j) => a[i][j] + (b[i][j] - a[i][j]) * p;
+    uniforms.uC0.value.setRGB(mix(0,0), mix(0,1), mix(0,2));
+    uniforms.uC1.value.setRGB(mix(1,0), mix(1,1), mix(1,2));
+    uniforms.uC2.value.setRGB(mix(2,0), mix(2,1), mix(2,2));
+  };
+  window.__bgConfig = function(mood){
+    // chapter-aware contrast/grain so dark chapters feel inky, light ones airy
+    const conf = {
+      dawn:    { contrast: 0.55, grain: 0.045, strength: 0.7 },
+      reality: { contrast: 0.65, grain: 0.05,  strength: 0.7 },
+      violet:  { contrast: 0.95, grain: 0.05,  strength: 1.0 },
+      amber:   { contrast: 0.85, grain: 0.05,  strength: 0.9 },
+      night:   { contrast: 1.00, grain: 0.06,  strength: 1.1 },
+      light:   { contrast: 0.65, grain: 0.045, strength: 0.7 },
+      ember:   { contrast: 1.10, grain: 0.06,  strength: 1.2 },
+    }[mood] || { contrast: 0.6, grain: 0.05, strength: 0.7 };
+    gsap.to(uniforms.uContrast,   { value: conf.contrast,  duration: 1.2, ease: 'power2.out' });
+    gsap.to(uniforms.uGrain,      { value: conf.grain,     duration: 1.2, ease: 'power2.out' });
+    gsap.to(uniforms.uMouseStrength, { value: conf.strength, duration: 1.2, ease: 'power2.out' });
+  };
+})();
+</script>
+
+<script>
+/* ============================================================
+   CUSTOM CURSOR
+   ============================================================ */
+(function cursor(){
+  if (window.matchMedia('(max-width: 620px)').matches) return;
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  const pos  = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+  const target = { x: pos.x, y: pos.y };
+  window.addEventListener('pointermove', (e) => {
+    target.x = e.clientX; target.y = e.clientY;
+    dot.style.transform = `translate(${target.x}px, ${target.y}px)`;
+  });
+  function loop(){
+    pos.x += (target.x - pos.x) * 0.18;
+    pos.y += (target.y - pos.y) * 0.18;
+    ring.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
+    requestAnimationFrame(loop);
+  }
+  loop();
+  document.querySelectorAll('[data-hover], a, button').forEach(el => {
+    el.addEventListener('pointerenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('pointerleave', () => document.body.classList.remove('cursor-hover'));
+  });
+})();
+</script>
+
+<script>
+/* ============================================================
+   LENIS — ultra-smooth scroll, piped into GSAP ScrollTrigger
+   ============================================================ */
+gsap.registerPlugin(ScrollTrigger);
+
+const lenis = new Lenis({
+  duration: 1.15,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true,
+  smoothTouch: false,
+  wheelMultiplier: 1.0,
+});
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => lenis.raf(time * 1000));
+gsap.ticker.lagSmoothing(0);
+
+// Make sure ScrollTrigger recomputes positions after Lenis is wired,
+// otherwise sections near the bottom can be flagged "already past" before
+// their entry animation has a chance to fire.
+window.addEventListener('load', () => ScrollTrigger.refresh());
+
+// rail click → scrollTo via lenis
+document.querySelectorAll('[data-target], a[href^="#ch-"]').forEach(b => {
+  b.addEventListener('click', (e) => {
+    const sel = b.dataset.target || b.getAttribute('href');
+    if (!sel || !sel.startsWith('#')) return;
+    const el = document.querySelector(sel);
+    if (!el) return;
+    e.preventDefault();
+    lenis.scrollTo(el, { duration: 1.4, easing: (t) => 1 - Math.pow(1 - t, 3) });
+  });
+});
+</script>
+
+<script>
+/* ============================================================
+   GSAP SCROLL-TRIGGERED CINEMATIC SCENES
+   ============================================================ */
+(function scenes(){
+  // ---- 1. Split-into-words helper for "lede" headlines ----
+  document.querySelectorAll('[data-anim="words"]').forEach(h => {
+    // Walk text nodes, wrap each whitespace-separated word in span.word>span
+    const walk = (node) => {
+      const children = Array.from(node.childNodes);
+      children.forEach(c => {
+        if (c.nodeType === 3) {
+          const parts = c.textContent.split(/(\s+)/);
+          const frag  = document.createDocumentFragment();
+          parts.forEach(p => {
+            if (/^\s+$/.test(p) || p === '') {
+              frag.appendChild(document.createTextNode(p));
+            } else {
+              const w = document.createElement('span');
+              w.className = 'word';
+              const inner = document.createElement('span');
+              inner.textContent = p;
+              w.appendChild(inner);
+              frag.appendChild(w);
+            }
+          });
+          c.parentNode.replaceChild(frag, c);
+        } else if (c.nodeType === 1 && !c.classList.contains('word')) {
+          walk(c);
+        }
+      });
+    };
+    walk(h);
+  });
+
+  // ---- 2. Per-chapter entry timelines ----
+  document.querySelectorAll('.chapter').forEach((sec, idx) => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sec,
+        start: 'top 85%',
+        once: true,  // play once and lock in — never reverse on scroll back
+      },
+      defaults: { ease: 'power3.out' },
+    });
+
+    const line = sec.querySelector('[data-anim="line"]');
+    if (line) {
+      tl.from(line, { opacity: 0, y: 14, duration: 0.6 }, 0);
+    }
+
+    const lede = sec.querySelector('[data-anim="words"]');
+    if (lede) {
+      const inners = lede.querySelectorAll('.word > span');
+      tl.from(inners, {
+        yPercent: 110,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.035,
+      }, 0.05);
+    }
+
+    sec.querySelectorAll('[data-anim="up"]').forEach((el, i) => {
+      tl.from(el, { opacity: 0, y: 28, duration: 0.7 }, 0.25 + i * 0.06);
+    });
+
+    const stagger = sec.querySelectorAll('[data-anim="stagger"] > *');
+    if (stagger.length) {
+      tl.from(stagger, {
+        opacity: 0, y: 36,
+        duration: 0.75, stagger: 0.09,
+      }, 0.35);
+    }
+
+    const reveal = sec.querySelectorAll('[data-anim="reveal"] > *');
+    if (reveal.length) {
+      tl.from(reveal, {
+        opacity: 0, y: 36,
+        scale: 0.985, transformOrigin: 'center bottom',
+        duration: 0.8, stagger: 0.12,
+      }, 0.3);
+    }
+
+    // counters (ch-05)
+    const counters = sec.querySelectorAll('[data-anim="counters"] [data-count]');
+    if (counters.length) {
+      counters.forEach((node, i) => {
+        const end = parseFloat(node.dataset.count);
+        const suffix = node.dataset.suffix || '';
+        const start = end < 0 ? 0 : 0;
+        const obj = { v: start };
+        tl.to(obj, {
+          v: end,
+          duration: 1.2,
+          ease: 'power2.out',
+          onUpdate: () => {
+            const val = end < 0 ? Math.ceil(obj.v) : Math.floor(obj.v);
+            node.textContent = (end === 0 && suffix === '' ? '0' : val) + suffix;
+          },
+        }, 0.5 + i * 0.1);
+      });
+    }
+  });
+
+  // ---- 3. Parallax / sticky-ish drift on lede headings ----
+  document.querySelectorAll('.chapter').forEach(sec => {
+    const lede = sec.querySelector('.lede');
+    if (!lede) return;
+    gsap.to(lede, {
+      yPercent: -12,
+      scrollTrigger: {
+        trigger: sec,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+  });
+
+  // chapter heads drift in opposite direction for depth
+  document.querySelectorAll('.chapter-head').forEach(h => {
+    gsap.to(h, {
+      xPercent: 6,
+      scrollTrigger: {
+        trigger: h.closest('.chapter'),
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+  });
+
+  // ---- 4. Stat block subtle scrub-zoom on ch-05 ----
+  const stats = document.querySelector('.stats');
+  if (stats) {
+    gsap.from(stats, {
+      scale: 0.96, transformOrigin: 'center center',
+      scrollTrigger: {
+        trigger: stats,
+        start: 'top 90%',
+        end: 'top 30%',
+        scrub: 0.6,
+      },
+    });
+  }
+})();
+</script>
+
+<script>
+/* ============================================================
+   MOOD TRANSITIONS + RAIL + PROGRESS
+   Drives the painted background palette via window.__bgSet
+   based on which chapter is currently in view.
+   ============================================================ */
+(function mood(){
+  const sections = Array.from(document.querySelectorAll('.chapter'));
+  const moods    = sections.map(s => s.dataset.mood);
+  const labels   = ['Préambule','Le terrain','Trois piliers','La méthode','Les preuves','Les voix','La suite'];
+
+  const railBtns = document.querySelectorAll('.rail button');
+  const progFill = document.getElementById('progFill');
+  const progLeft = document.getElementById('progLeft');
+  const progRight= document.getElementById('progRight');
+  const body     = document.body;
+
+  let lastIdx = -1;
+
+  function tick(){
+    const scrollY = window.scrollY;
+    const vh      = window.innerHeight;
+    const total   = document.documentElement.scrollHeight - vh;
+    const prog    = Math.min(1, Math.max(0, scrollY / total));
+
+    // continuous chapter position [0 .. N-1]
+    let activeIdx = 0;
+    let frac = 0;
+    for (let i = 0; i < sections.length; i++) {
+      const rect = sections[i].getBoundingClientRect();
+      const top  = rect.top;
+      // when section is straddling the viewport, this is the active one
+      if (top <= vh * 0.5) {
+        activeIdx = i;
+        const sectionH = rect.height;
+        // fraction of the way through THIS section (0..1)
+        const into = Math.min(1, Math.max(0, (vh * 0.5 - top) / sectionH));
+        frac = into;
+      }
+    }
+
+    // palette tween: blend between current chapter's mood and the next
+    const moodA = moods[activeIdx];
+    const moodB = moods[Math.min(moods.length - 1, activeIdx + 1)];
+    // we only really want the blend to happen in the last ~40% of the section
+    const blend = Math.max(0, Math.min(1, (frac - 0.6) / 0.4));
+    if (window.__bgSet) window.__bgSet(moodA, moodB, blend);
+
+    if (activeIdx !== lastIdx) {
+      lastIdx = activeIdx;
+      // chapter-level config tween
+      if (window.__bgConfig) window.__bgConfig(moodA);
+      // rail
+      railBtns.forEach((b, i) => b.classList.toggle('is-active', i === activeIdx));
+      // progress label
+      progLeft.textContent  = `CH.${String(activeIdx + 1).padStart(2,'0')} — ${labels[activeIdx]}`;
+      progRight.textContent = `${String(activeIdx + 1).padStart(2,'0')} / 07`;
+      // doc-level mood class (used nowhere now, but available)
+      body.dataset.mood = moodA;
+    }
+
+    progFill.style.transform = `scaleX(${prog})`;
+
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+
+</body>
+</html>
