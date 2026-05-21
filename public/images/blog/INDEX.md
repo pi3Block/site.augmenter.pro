@@ -254,3 +254,27 @@
 - **Contexte éditorial** : Image hero de l'article sur les 5 signes de modernisation informatique. Illustre le contraste avant/après entre un parc IT obsolète et une infrastructure moderne.
 - **Usage suggéré** : Hero d'article "Les 5 signes qu'il est temps de moderniser l'informatique de votre PME".
 - **Alt text suggéré** : "Avant/après : équipement informatique vétuste avec alertes vs infrastructure moderne cloud et mobile — modernisation IT PME"
+
+---
+
+## ia-contradicteur-prompts-dirigeant-pme.webp
+
+- **Type** : Illustration flat design (IA générée via Gemini)
+- **Dimensions** : Paysage 16:9 (1600×900)
+- **Poids** : ~35 Ko
+- **Description** : Deux bulles de dialogue stylisées face à face sur fond dégradé violet vers ambre. À gauche, bulle contenant la silhouette d'un dirigeant en costume avec cravate (icône buste lavande). À droite, bulle contenant un cerveau humain avec des circuits imprimés et nœuds (symbolisant l'IA). Au centre entre les deux bulles, un bouclier ambre/doré orné d'une épée croisée — symbole de confrontation constructive et de pressure-test. Style épuré, sans texte. Étincelle Gemini discrète en bas à droite.
+- **Contexte éditorial** : Image hero de l'article sur l'usage de l'IA comme contradicteur. Illustre le concept central : forcer l'IA à challenger le dirigeant plutôt qu'à le valider, à travers une mise en scène de débat face-à-face médié par l'image de l'épée + bouclier (l'IA comme outil pour tester la solidité d'une décision).
+- **Usage suggéré** : Hero d'article "L'IA comme contradicteur : 5 prompts pour pressure-tester vos décisions de dirigeant PME".
+- **Alt text suggéré** : "Dirigeant et IA face à face dans deux bulles de dialogue séparées par une épée et un bouclier — symbolise l'usage de l'IA comme contradicteur pour pressure-tester les décisions"
+
+---
+
+## rapport-adoption-ia-btp-francilien-2026.webp
+
+- **Type** : Illustration flat design (IA générée via Gemini)
+- **Dimensions** : Paysage 16:9 (1600×900)
+- **Poids** : ~47 Ko
+- **Description** : Composition en deux moitiés sur fond dégradé violet vers ambre. À gauche, silhouette stylisée d'un chantier BTP : trois grues à tour violet/ambre dressées au-dessus d'immeubles en construction (deux finis, un en cours avec poutres apparentes). À droite, représentation analytique : graphique de barres ascendant avec flèche de croissance ambre, surmonté d'une tête de robot IA en profil, complété en bas par un engrenage circuit imprimé et une icône de document devis (euro + stylo). Les deux moitiés sont reliées par des lignes fines évoquant un circuit / tableau de bord. Style épuré, sans texte. Étincelle Gemini en bas à droite.
+- **Contexte éditorial** : Image hero du rapport sectoriel local sur l'adoption IA dans le BTP francilien. Illustre la rencontre entre le monde physique du chantier (gauche) et les outils numériques/IA qui transforment progressivement le secteur (droite : devis, planning, automatisation, analyse de données).
+- **Usage suggéré** : Hero d'article "Rapport 2026 : Adoption de l'IA dans le BTP francilien — état des lieux".
+- **Alt text suggéré** : "Chantier BTP avec grues à gauche et tableau de bord IA à droite (graphique, robot, engrenage, devis) — symbolise l'adoption de l'IA dans le secteur du bâtiment francilien"

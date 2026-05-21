@@ -264,7 +264,7 @@ Une fois l'image reçue :
 
 Après création de l'article, effectue **toutes** ces mises à jour :
 
-1. **`src/components/sections/blog-preview.tsx`** : Ajoute le nouvel article en **PREMIÈRE position** du tableau `articles` :
+1. **`src/app/blog/blog-view.tsx`** (⚠️ **vraie source de vérité** de la page `/blog` depuis la refonte bento) : Ajoute le nouvel article en **PREMIÈRE position** du tableau `ARTICLES` :
    ```tsx
    {
      slug: "<slug>",
@@ -272,8 +272,11 @@ Après création de l'article, effectue **toutes** ces mises à jour :
      excerpt: "<excerpt>",
      tags: ["Tag1", "Tag2"],
      readTime: "<X> min",
+     image: "/images/blog/<slug>.webp",
    },
    ```
+
+   > Note : `src/components/sections/blog-preview.tsx` est **legacy** (plus utilisé depuis la refonte bento) — ne pas y toucher sauf demande explicite. Cf. CLAUDE.md « Composant Organization → Legacy (à supprimer) ».
 
 2. **`public/sitemap.xml`** : Ajoute une entrée `<url>` pour le nouvel article :
    ```xml
@@ -306,7 +309,7 @@ Vérifie et affiche un rapport :
 - [ ] Image hero générée (Gemini), convertie en WebP, placée dans `public/images/blog/<slug>.webp`
 - [ ] Prop `image` passé à `ArticleLayout`
 - [ ] `public/images/blog/INDEX.md` mis à jour avec description de l'image
-- [ ] Article ajouté dans `blog-preview.tsx` (première position)
+- [ ] Article ajouté dans `src/app/blog/blog-view.tsx` (première position du tableau `ARTICLES`)
 - [ ] URL ajoutée dans `sitemap.xml`
 - [ ] Article ajouté dans `llms.txt`
 - [ ] Pas d'erreurs TypeScript (`npm run build` passe)

@@ -27,6 +27,24 @@ interface Article extends ArticleBentoData {
 
 const ARTICLES: Article[] = [
   {
+    slug: "ia-contradicteur-prompts-dirigeant-pme",
+    title: "L'IA comme contradicteur : 5 prompts pour challenger vos décisions",
+    excerpt:
+      "ChatGPT vous donne toujours raison ? 5 prompts copiables pour transformer l'IA en contradicteur honnête et identifier vos angles morts avant chaque décision structurante.",
+    tags: ["Intelligence Artificielle", "PME"],
+    readTime: "9 min",
+    image: "/images/blog/ia-contradicteur-prompts-dirigeant-pme.webp",
+  },
+  {
+    slug: "rapport-adoption-ia-btp-francilien-2026",
+    title: "Rapport 2026 : Adoption de l'IA dans le BTP francilien",
+    excerpt:
+      "Tableau de maturité par sous-secteur (gros œuvre, second œuvre, artisanat, négoce) croisé avec les usages IA réels en 2026. Sources publiques + observations terrain 78/95.",
+    tags: ["Intelligence Artificielle", "PME", "Rapport sectoriel"],
+    readTime: "6 min",
+    image: "/images/blog/rapport-adoption-ia-btp-francilien-2026.webp",
+  },
+  {
     slug: "configurer-odoo-ia-claude-cowork",
     title: "Configurer Odoo avec l'IA : 4 Jours au Lieu de 3 500 €",
     excerpt:
