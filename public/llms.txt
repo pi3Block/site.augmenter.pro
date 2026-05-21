@@ -132,9 +132,23 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 - [Audit Informatique Yvelines (78)](https://augmenter.pro/audit-informatique-yvelines) — Audit informatique pour PME en Yvelines. Diagnostic gratuit 60 min, méthodologie en 4 étapes, périmètre complet (réseau, sécurité, cloud, RGPD, licences), secteurs locaux (BTP, services, commerce, santé), FAQ géo-ciblée.
 - [Audit Informatique Val-d'Oise (95)](https://augmenter.pro/audit-informatique-val-doise) — Audit informatique pour PME en Val-d'Oise. Diagnostic gratuit 60 min, méthodologie en 4 étapes, périmètre complet (réseau, sécurité, cloud, RGPD, licences), secteurs locaux (logistique, BTP, commerce, industrie), FAQ géo-ciblée.
 
+## Auteur
+
+augmenter.PRO est fondé et animé par **Pierre Legrand**, consultant IA et transformation digitale pour PME françaises.
+
+- **Profil** : https://augmenter.pro/auteur/pierre-legrand
+- **Spécialisations** : IA générative, Claude Code, Odoo, automatisation (n8n/Make), audit IT, NIS2, MCP Protocol
+- **Zone** : Yvelines (78), Val d'Oise (95) en présentiel ; visio France entière pour conseil et accompagnement
+- **LinkedIn** : https://www.linkedin.com/in/legrand-pierre/
+- **X/Twitter** : https://x.com/Pi3r2Dev
+- **Contact** : vite@augmenter.pro · +33 6 79 11 97 74
+
+Tous les articles du blog sont rédigés par Pierre Legrand, avec assistance d'outils IA et révision personnelle.
+
 ## Pages
 
 - https://augmenter.pro — Accueil
+- https://augmenter.pro/auteur/pierre-legrand — Pierre Legrand, consultant IA & transformation digitale (bio, expertise, missions)
 - https://augmenter.pro/strategie-ia-pme — Stratégie IA pour PME (diagnostic, accompagnement, financement)
 - https://augmenter.pro/approche — Approche, Prestations & Tarifs (méthode 360°, audits 180°/360°)
 - https://augmenter.pro/idees — Idées IA & Automatisation
@@ -148,3 +162,9 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 - https://augmenter.pro/mentions-legales — Mentions Légales
 - https://augmenter.pro/politique-confidentialite — Politique de Confidentialité (RGPD, cookies, droits)
 - https://augmenter.pro/cgv — Conditions Générales de Vente
+
+## Version étendue pour LLM
+
+Pour ingestion complète du contenu en une seule requête, utiliser :
+
+- [llms-full.txt](https://augmenter.pro/llms-full.txt) — markdown complet de toutes les pages indexables (~170 KB, 23 pages), conforme au standard [llmstxt.org](https://llmstxt.org/).
