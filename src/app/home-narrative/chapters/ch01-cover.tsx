@@ -18,11 +18,11 @@ export function H01Cover() {
       </div>
       <div ref={ledeRef}>
         <Lede>
-          Reprenez le <em>contrôle</em>.
+          Votre <em>côté PRO</em>
           <br />
-          Votre côté PRO
+          avec un cran
           <br />
-          avec un cran d&apos;<u>avance</u>.
+          d&apos;<u>avance.</u>
         </Lede>
       </div>
       <p
