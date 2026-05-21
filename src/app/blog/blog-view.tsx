@@ -24,6 +24,7 @@ import {
   type ArticleBentoData,
 } from "@/components/bento/article-bento-card";
 import { TrustStatCard } from "@/components/widgets/trust-stat";
+import { ShaderBackdrop } from "@/components/widgets/shader-backdrop";
 
 interface Article extends ArticleBentoData {
   excerpt?: string;
@@ -171,12 +172,17 @@ export function BlogView() {
               rows={3}
               pad="lg"
               mobileMinH="280px"
-              className="justify-end"
+              className="relative isolate justify-end overflow-hidden"
             >
+              {/* Three.js shader paint — same engine as home/approche, palette
+                  dawn for readability. 60% opacity so the dark text remains
+                  comfortably above WCAG AA. */}
+              <ShaderBackdrop mood="dawn" opacity={0.6} />
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
+                className="relative z-10"
               >
                 <Pill tone="primary" size="md">
                   <BookOpen className="h-3 w-3" />
@@ -187,7 +193,7 @@ export function BlogView() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.08 }}
-                className="mt-4 text-[clamp(2rem,4vw,3.25rem)] font-bold leading-[1.02] tracking-[-0.035em]"
+                className="relative z-10 mt-4 text-[clamp(2rem,4vw,3.25rem)] font-bold leading-[1.02] tracking-[-0.035em]"
               >
                 Articles &amp; <span className="gradient-text">Tutos</span>
               </motion.h1>
@@ -195,7 +201,7 @@ export function BlogView() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.16 }}
-                className="mt-4 max-w-xl text-[0.95rem] leading-normal text-muted-foreground"
+                className="relative z-10 mt-4 max-w-xl text-[0.95rem] leading-normal text-muted-foreground"
               >
                 Conseils pratiques pour les professionnels qui veulent passer au
                 niveau supérieur. <strong className="font-semibold text-foreground">IA, commercial, audit, cybersécurité</strong> —
