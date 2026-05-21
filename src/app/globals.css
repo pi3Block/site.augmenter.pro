@@ -151,3 +151,59 @@ html {
 .hero-gradient {
   background: radial-gradient(ellipse 80% 50% at 50% -20%, oklch(0.894 0.057 293 / 40%), transparent);
 }
+
+/* ============================================================
+   Narrative scroll tokens (used by /approche narrative chapters).
+   Mirror handoff colors_and_type.css naming so the primitives stay
+   1:1 with the design reference.
+   ============================================================ */
+:root {
+  /* Direct violet / amber aliases (handoff uses --violet-X, our @theme
+     inline only exposes --color-violet-X). */
+  --violet-50: oklch(0.969 0.016 293);
+  --violet-100: oklch(0.943 0.029 294);
+  --violet-200: oklch(0.894 0.057 293);
+  --violet-300: oklch(0.811 0.111 293);
+  --violet-400: oklch(0.702 0.183 293);
+  --violet-500: oklch(0.606 0.25 292);
+  --violet-600: oklch(0.541 0.281 293);
+  --violet-700: oklch(0.491 0.27 292);
+  --violet-900: oklch(0.38 0.189 293);
+  --amber-400: oklch(0.828 0.189 84.429);
+  --amber-500: oklch(0.769 0.188 70.08);
+
+  /* Neutrals — handoff naming */
+  --neutral-0: oklch(1 0 0);
+  --neutral-50: oklch(0.985 0 0);
+  --neutral-100: oklch(0.97 0 0);
+  --neutral-200: oklch(0.922 0 0);
+  --neutral-600: oklch(0.556 0 0);
+  --neutral-950: oklch(0.145 0 0);
+
+  /* Semantic aliases for narrative primitives */
+  --fg: var(--foreground);
+  --fg-muted: var(--muted-foreground);
+  --primary-soft: oklch(0.541 0.281 293 / 10%);
+  --border-soft: oklch(0.922 0 0 / 40%);
+
+  --gradient-brand: linear-gradient(
+    135deg,
+    oklch(0.606 0.25 292),
+    oklch(0.828 0.189 84.429)
+  );
+  --gradient-ember: linear-gradient(
+    135deg,
+    oklch(0.811 0.111 293),
+    oklch(0.828 0.189 84.429)
+  );
+}
+
+/* Narrative chapter theming — opt-in per <section data-theme="dark"> rather
+   than global .dark class, so the narrative can mix light + dark moods
+   without flipping the site theme. */
+[data-narrative-theme="dark"],
+[data-theme="dark"] {
+  --fg: oklch(0.985 0 0);
+  --fg-muted: oklch(1 0 0 / 70%);
+  --border-soft: oklch(1 0 0 / 12%);
+}
