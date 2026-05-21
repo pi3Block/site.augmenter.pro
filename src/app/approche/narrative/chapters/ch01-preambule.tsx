@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
 import { Chapter } from "../primitives/chapter";
 import { Pill } from "../primitives/pill";
@@ -45,7 +46,13 @@ export function Ch01Preambule() {
         />
         <span>
           Récit de méthode ·{" "}
-          <b className="font-medium text-(--fg)">Pierre Legrand</b>{" "}
+          <Link
+            href="/auteur/pierre-legrand"
+            data-hover
+            className="font-medium text-(--fg) underline-offset-2 hover:underline"
+          >
+            Pierre Legrand
+          </Link>{" "}
           · Consultant indépendant
         </span>
       </div>
