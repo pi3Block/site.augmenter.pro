@@ -62,7 +62,7 @@ Si on oublie `variant="flush"` en passant un widget Bionova (`ServiceCardStat`, 
 
 ## 4. Réviser les docs éditoriaux (février 2026)
 
-[docs/prevision_contenu.md](prevision_contenu.md) et [docs/STRATEGIE-EDITORIALE.md](STRATEGIE-EDITORIALE.md) datent de février 2026. Depuis :
+[docs/prevision_contenu.md](prevision_contenu.md) et [STRATEGIE-EDITORIALE.md](../STRATEGIE-EDITORIALE.md) (racine) datent de février 2026. Depuis :
 
 - La refonte bento a changé la hiérarchie visuelle (ex : le hero met `/approche#prestations` en CTA primaire).
 - La route `/prestations` a été absorbée par `/approche`.

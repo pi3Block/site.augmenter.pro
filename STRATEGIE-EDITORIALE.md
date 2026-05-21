@@ -1,10 +1,22 @@
 # Stratégie Éditoriale & Acquisition de Leads — augmenter.PRO
 
-> **Document vivant** — Responsable de la stratégie de contenu et d'optimisation d'acquisition.
-> Consommé par la commande `/create-resource` pour décider quoi produire, dans quel ordre, avec quel angle.
+> ⚠️ **Snapshot historique — partiellement obsolète au 2026-05-21**
 >
-> **Dernière mise à jour** : 2026-02-13
-> **Prochaine révision** : Après chaque publication ou mensuellement (mettre à jour GSC, statuts, priorités)
+> | Section | État |
+> |---|---|
+> | §1 Positionnement, §3 Clusters, §6 Axes, §7 Banque de stats/PAA, §10 Métriques | ✅ Toujours pertinent |
+> | §2 Données GSC | ⚠️ Snapshot 2026-02-13 — **superseded par** [`docs/seo-audits/2026-05-21-audit.md`](docs/seo-audits/2026-05-21-audit.md) §3 (baseline live) |
+> | §3 Clusters | ⚠️ **Cluster Claude Code / Odoo / Prompt manquant** — c'est désormais le 1er cluster en trafic (cf. audit 2026-05-21 §3.2 / §9.1) ; décision A/B à prendre avant d'éditer §3 |
+> | §4 Matrice, §5 File de production, §11 Journal | ❌ Désynchronisé — 4+ articles publiés depuis le 2026-02-13 ne sont pas reflétés (claude-code-prompt-architecture #1 trafic, configurer-odoo-ia-claude-cowork #2 trafic, etc.). Utiliser `git log src/app/blog/` et lister `src/app/blog/` pour l'état réel |
+> | §8 Protocole crawl | ✅ Pertinent — mais **bibliothèque MCP complète** désormais centralisée dans [`.claude/templates/seo/mcp-calls.md`](.claude/templates/seo/mcp-calls.md) (signatures vérifiées, pièges paramétrage) |
+> | §9 Optimisations techniques | ⚠️ À re-vérifier après refonte bento + audit 2026-05-21 §11 (plan d'action priorisé) |
+> | §12 Prochaine action | ⚠️ Cible "Page sectorielle BTP" toujours valide (page non créée), **mais** audit 2026-05-21 révèle un cluster Claude/Odoo dominant — voir §12 ci-dessous pour le nouvel arbre de décision |
+>
+> **Source de vérité opérationnelle** : `git log` + `src/app/blog/` + GSC live + [`docs/seo-audits/`](docs/seo-audits/) (audits datés) + `docs/prevision_contenu.md` (roadmap ad hoc).
+> **Ce document** : matériel de référence (positionnement, clusters de mots-clés, banque de stats/PAA, protocoles éditoriaux). Ne pas confondre avec un dashboard temps réel.
+>
+> **Dernière mise à jour de fond** : 2026-02-13
+> **Dernière revue de cohérence** : 2026-05-21 (post-audit `/seo-audit` — header + §8 + §11 + §12 mis à jour ; §3, §4, §5 restent intentionnellement à refresh manuel sur décision Pierre)
 
 ---
 
@@ -49,7 +61,7 @@ La fenêtre pour dominer cette intersection est MAINTENANT — avant que les act
 
 **Fréquence** : Mensuelle (1ère semaine du mois)
 
-**Requêtes de crawl** (utiliser crawl4ai ou firecrawl) :
+**Requêtes de crawl** (utiliser crawl4ai self-hosted) :
 ```
 # Blogs concurrents à crawler pour détecter nouveau contenu
 - https://www.ipaconseils.fr/blog/          → NIS2, compliance, Yvelines
@@ -503,7 +515,7 @@ ORDRE DE PRIORITÉ :
 
 3. Fallback (si MCP indisponible) :
    - Recherche web : "{mot-clé} volume recherche france 2026"
-   - crawl4ai / firecrawl : scraper les 5 premiers résultats Google pour le mot-clé cible
+   - crawl4ai self-hosted (`https://crawl4ai.augmenter.pro`) : scraper les 5 premiers résultats Google pour le mot-clé cible. Firecrawl interdit (cf. [CLAUDE.md](CLAUDE.md))
 ```
 
 ### 8.2 Analyse concurrentielle (par contenu)
@@ -628,16 +640,40 @@ TRIMESTRIELLEMENT :
 | 2026-02-13 | Transformation `/plateforme` → `/projets` (page portfolio sobre, footer uniquement) + 2 articles extraits | Page plateforme dé-prominentisée : retirée du header, hero, homepage. 11 redirections 301 (plateforme + 10 modules). 5 composants platform-* supprimés. |
 | 2026-02-13 | Publication article veille concurrentielle IA PME — `/blog/veille-concurrentielle-ia-pme` | 10e article blog, cluster Stratégie IA renforcé, ~1 800 mots, guide 5 étapes |
 | 2026-02-13 | Publication article automatiser emails/réseaux sociaux IA — `/blog/automatiser-emails-reseaux-sociaux-ia` | 11e article blog, cluster Stratégie IA renforcé, ~1 600 mots, outils testés + retour terrain |
+| 2026-03-29 | Publication article Configurer Odoo avec l'IA (Claude Cowork) — `/blog/configurer-odoo-ia-claude-cowork` | 12e article blog, **cluster Claude Code / Odoo non documenté** ; deviendra #2 page en clics (118 clics / 1 985 impr / pos 5.8 à 90j post-publi — cf. audit 2026-05-21) |
+| 2026-04-21 | Publication article Claude Code prompt architecture — `/blog/claude-code-prompt-architecture` | 13e article blog, **cluster Claude Code** ; STAR du site (200 clics / 5 200 impr / pos 7.2 à 30j post-publi) |
+| 2026-04-22 | Refonte bento `/approche` (absorbe `/prestations` via redirect 308) — voir [docs/backlog-cleanup.md](docs/backlog-cleanup.md) | Architecture front modernisée ; impact SEO non encore mesuré (à comparer dans le prochain audit) |
+| 2026-05-21 | Audit SEO `/seo-audit` complet — [docs/seo-audits/2026-05-21-audit.md](docs/seo-audits/2026-05-21-audit.md) | Baseline GSC 90j établie : 363 clics, 15 724 impressions, position 12.7. Découverte cluster Claude/Odoo. Doublon `docs/STRATEGIE-EDITORIALE.md` supprimé. 2 nouveaux templates créés ([checklist.md](.claude/templates/seo/checklist.md), [mcp-calls.md](.claude/templates/seo/mcp-calls.md)) |
 
 ---
 
 ## 12. Référence Rapide — Prochaine Action
 
-> **Quand `/create-resource` est invoqué sans sujet spécifique, proposer le prochain contenu de la file §5.**
->
-> **Prochain contenu recommandé** : #3 — "Page sectorielle BTP (78/95)"
+> **Quand `/create-resource` est invoqué sans sujet spécifique, proposer un contenu en fonction de l'arbre de décision ci-dessous.**
+
+### Arbre de décision (post-audit 2026-05-21)
+
+**Si décision A retenue (capitaliser Claude Code)** — voir audit 2026-05-21 §9.1 :
+> **Prochain contenu** : pilier `/claude-code-pour-pme` (page sectorielle + 1er article satellite)
+> - Cluster : 🆕 **Claude Code / Odoo / Prompt engineering** (non documenté en §3 — à créer §3.7)
+> - Axe géo : National (audience dev/CTO, pas géo-locale)
+> - Axe format : Page sectorielle + lead magnet PDF « 10 prompts Claude Code prêts pour PME »
+> - Concurrence : FAIBLE en francophone (à confirmer via `serp_organic_live_advanced` cf. [`mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §3)
+> - Stats à intégrer : 5 200 impr/mois actuelles sur `claude-code-prompt-architecture`, 1 985 impr/mois sur `configurer-odoo-ia-claude-cowork`
+> - CTA : Formation Claude Code dirigeants/CTO PME (650 € / 1/2 jour visio — palier à packager)
+
+**Si décision B retenue (rester sur la stratégie 78/95)** — fallback :
+> **Prochain contenu** : #3 historique — "Page sectorielle BTP (78/95)"
 > - Cluster : Secteurs (§3.3)
 > - Axe géo : Yvelines + Val d'Oise — Axe format : page sectorielle
 > - Concurrence : ZÉRO sur "digitalisation BTP Yvelines"
-> - Stats à intégrer : 58% des petites entreprises BTP ont un site web (France Num), facturation électronique sept 2026
-> - CTA : Audit 180° gratuit → /contact
+> - Stats à intégrer : 58 % des petites entreprises BTP ont un site web (France Num), facturation électronique sept 2026
+> - CTA : Audit 180° offert → /contact
+
+### Décision Pierre
+
+- [ ] Option A — Capitaliser Claude Code (créer pilier + offre dédiée)
+- [ ] Option B — Stratégie 78/95 historique (page sectorielle BTP)
+- [ ] Option C — Hybride : créer le pilier Claude Code en **mode mesure 90j** (pas d'offre dédiée tant que les leads ne convertissent pas), parallèlement lancer la page BTP
+
+> Tant que la décision n'est pas prise, `/create-resource` sans argument doit **demander la décision A/B/C** plutôt que de produire le contenu par défaut.
