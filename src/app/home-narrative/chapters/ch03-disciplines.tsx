@@ -108,12 +108,12 @@ function DisciplineCard({ d }: { d: Discipline }) {
   );
 }
 
-export function H02Disciplines() {
+export function H03Disciplines() {
   const ledeRef = useRef<HTMLDivElement>(null);
   useWordSplitter(ledeRef);
 
   return (
-    <Chapter id="h-02" num="02" title="Trois disciplines" mood="violet" theme="dark">
+    <Chapter id="h-03" num="03" title="Trois disciplines" mood="violet" theme="dark">
       <div data-anim="up">
         <Pill variant="glass">Prestations · Trois disciplines</Pill>
       </div>

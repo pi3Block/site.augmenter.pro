@@ -126,12 +126,12 @@ function FeatureCard({ item }: { item: FeatureItem }) {
   );
 }
 
-export function H04Recit() {
+export function H05Recit() {
   const ledeRef = useRef<HTMLDivElement>(null);
   useWordSplitter(ledeRef);
 
   return (
-    <Chapter id="h-04" num="04" title="Le récit continue" mood="amber" theme="light">
+    <Chapter id="h-05" num="05" title="Le récit continue" mood="amber" theme="light">
       <div data-anim="up">
         <Pill variant="amber">Le récit continue</Pill>
       </div>
