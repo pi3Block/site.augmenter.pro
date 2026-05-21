@@ -23,6 +23,7 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import { sendGTMEvent } from "@next/third-parties/google";
+import { ShaderBackdrop } from "@/components/widgets/shader-backdrop";
 import {
   prompts,
   categories,
@@ -109,10 +110,13 @@ export function PromptLibrary() {
   return (
     <>
       {/* Hero */}
-      <section className="hero-gradient relative overflow-hidden py-24">
+      <section className="relative isolate overflow-hidden py-24">
+        {/* Static radial fallback — visible during shader mount + when reduce-motion */}
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_80%,oklch(0.894_0.057_293_/_0.15),transparent_50%),radial-gradient(circle_at_70%_20%,oklch(0.828_0.189_84.429_/_0.08),transparent_50%)]" />
+        {/* Three.js shader paint — same engine as the home & blog hero */}
+        <ShaderBackdrop mood="dawn" opacity={0.6} className="-z-10" />
 
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-3xl text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
