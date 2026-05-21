@@ -27,19 +27,21 @@ Lis l'arborescence complète du projet et vérifie :
 
 ### 1.2 Duplication de données (dette majeure connue)
 
-Le site duplique les données des articles de blog en **deux endroits** :
+Depuis la refonte bento, la liste articles est **dans `src/app/blog/blog-view.tsx`** (tableau `ARTICLES`). Le fichier `src/components/sections/blog-preview.tsx` est désormais **legacy** — vérifier qu'il n'est plus importé nulle part (`grep -r "blog-preview\|BlogPreview" src/`) et le **supprimer** si confirmé non utilisé. Si encore importé : signaler les imports résiduels.
 
-1. **`src/components/sections/blog-preview.tsx`** — tableau `articles` avec slug, title, excerpt, tags, readTime
+Duplication restante : les données des articles existent en **deux endroits** :
+
+1. **`src/app/blog/blog-view.tsx`** — tableau `ARTICLES` avec slug, title, excerpt, tags, readTime, image
 2. **`src/app/blog/<slug>/page.tsx`** — chaque article contient les mêmes infos dans `<ArticleLayout>` props + `metadata`
 
 **Risques** :
-- Désynchronisation titre/excerpt/tags entre la preview et la page réelle
-- Oubli de mettre à jour l'un des deux endroits lors d'un ajout/modification
-- La commande `/create-article` documente la mise à jour des deux, mais c'est error-prone
+- Désynchronisation titre/excerpt/tags entre la liste et la page réelle
+- Oubli de mettre à jour `blog-view.tsx` lors de l'ajout d'un article (l'article existe mais n'apparaît pas sur `/blog`)
+- La commande `/create-article` documente la mise à jour des deux
 
 **Évaluer** :
 - Faut-il centraliser dans un fichier `src/data/articles.ts` importé par les deux ?
-- Ou accepter la duplication avec un mécanisme de vérification (commande /doc-audit) ?
+- Ou accepter la duplication avec un mécanisme de vérification (commande `/doc-audit` §2.4) ?
 - Impact DX vs complexité de la factorisation
 
 ### 1.3 Autres duplications potentielles
@@ -196,7 +198,7 @@ Génère un rapport structuré avec scoring :
 ## Dette moyenne (impact sur la maintenabilité)
 | # | Problème | Fichier(s) | Impact | Effort fix |
 |---|----------|------------|--------|------------|
-| 1 | Duplication articles blog-preview ↔ pages | blog-preview.tsx + blog/*/page.tsx | MOYEN | 2h |
+| 1 | Duplication articles blog-view ↔ pages (+ blog-preview.tsx legacy à supprimer) | blog-view.tsx + blog/*/page.tsx (+ blog-preview.tsx) | MOYEN | 2h |
 | 2 | SVG résiduels Create Next App | public/*.svg (5 fichiers) | FAIBLE | 5min |
 | 3 | ... | ... | ... | ... |
 

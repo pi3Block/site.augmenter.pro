@@ -78,7 +78,8 @@ Lis tous les composants avec `"use client"` et vérifie :
 - `src/components/sections/pricing.tsx`
 - `src/components/sections/ideas.tsx`
 - `src/components/sections/testimonials.tsx`
-- `src/components/sections/blog-preview.tsx`
+- `src/app/blog/blog-view.tsx` (vraie source liste `/blog`)
+- `src/components/sections/blog-preview.tsx` (legacy post-refonte bento)
 - `src/components/sections/cta.tsx`
 - `src/components/sections/trust.tsx`
 - `src/components/layout/header.tsx`

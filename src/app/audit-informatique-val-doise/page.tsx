@@ -754,7 +754,7 @@ export default function AuditInformatiqueValDoisePage() {
         </div>
       </section>
 
-      <CTA />
+      <CTA variant="audit-95" />
     </div>
   );
 }

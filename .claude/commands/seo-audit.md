@@ -125,7 +125,7 @@ Pour chaque URL, extraire :
 - **Profondeur** : calculer la distance en clics depuis la home (cible ≤ 3)
 - **Header** (`header.tsx`) : cohérence des liens principaux + CTA
 - **Footer** (`footer.tsx`) : liens secondaires, mentions légales, sitemap HTML
-- **Cross-linking éditorial** : vérifier `blog-preview.tsx`, `services.tsx`, `pricing.tsx`, `ideas.tsx`, `related-content.tsx`
+- **Cross-linking éditorial** : vérifier `src/app/blog/blog-view.tsx` (liste articles `/blog` — vraie source), `services.tsx`, `pricing.tsx`, `ideas.tsx`, `related-content.tsx` (note : `src/components/sections/blog-preview.tsx` est legacy post-refonte bento)
 - **Diversité des ancres** : éviter les ancres répétitives (« cliquez ici », « en savoir plus ») — favoriser des ancres descriptives et riches en mot-clé secondaire
 - **Ratio de liens internes par page** : cible minimum 3-5 liens contextuels sortants par article long
 

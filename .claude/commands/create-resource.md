@@ -439,7 +439,7 @@ Après création de la ressource, effectue **toutes** les mises à jour applicab
 
 ### 4.2 Si type = article de blog
 
-3. **`src/components/sections/blog-preview.tsx`** — Ajouter en **PREMIÈRE position** du tableau `articles` :
+3. **`src/app/blog/blog-view.tsx`** (⚠️ **vraie source de vérité** de la page `/blog` depuis la refonte bento) — Ajouter en **PREMIÈRE position** du tableau `ARTICLES` :
    ```tsx
    {
      slug: "<slug>",
@@ -447,8 +447,11 @@ Après création de la ressource, effectue **toutes** les mises à jour applicab
      excerpt: "<excerpt>",
      tags: ["Tag1", "Tag2"],
      readTime: "<X> min",
+     image: "/images/blog/<slug>.webp",
    },
    ```
+
+   > Note : `src/components/sections/blog-preview.tsx` est **legacy** (plus utilisé depuis la refonte bento) — ne pas y toucher sauf demande explicite.
 
 ### 4.3 Si type = page sectorielle, locale, ou légale
 
@@ -500,7 +503,7 @@ Vérifie et affiche un rapport adapté au type créé :
 - [ ] Tags cohérents avec les tags existants
 - [ ] Contenu > 1200 mots (articles) ou > 600 mots (glossaire)
 - [ ] Aucun contenu dupliqué avec les articles existants
-- [ ] Article ajouté dans `blog-preview.tsx` (si type = article blog, première position)
+- [ ] Article ajouté dans `src/app/blog/blog-view.tsx` (si type = article blog, première position du tableau `ARTICLES`)
 
 ### Checklist spécifique pages custom (sectorielle, locale, landing)
 - [ ] JSON-LD inline valide (Service, LocalBusiness, ou autre)

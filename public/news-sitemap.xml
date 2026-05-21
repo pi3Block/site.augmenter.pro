@@ -2,6 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://augmenter.pro/blog/ia-contradicteur-prompts-dirigeant-pme</loc>
+    <news:news>
+      <news:publication>
+        <news:name>augmenter.PRO</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-21</news:publication_date>
+      <news:title>L'IA comme contradicteur : 5 prompts pour pressure-tester vos décisions de dirigeant PME</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://augmenter.pro/blog/rapport-adoption-ia-btp-francilien-2026</loc>
+    <news:news>
+      <news:publication>
+        <news:name>augmenter.PRO</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-21</news:publication_date>
+      <news:title>Rapport 2026 : Adoption de l'IA dans le BTP francilien — état des lieux</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://augmenter.pro/blog/veille-concurrentielle-ia-pme</loc>
     <news:news>
       <news:publication>

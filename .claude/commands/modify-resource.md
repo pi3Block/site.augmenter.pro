@@ -12,6 +12,7 @@ Spécifique à la modification/restructuration :
 - **Redirections** : `next.config.ts` → `async redirects()` avec `permanent: true` pour les 301
 - **Données inline** : pas de CMS — tout est hardcodé dans les composants, donc la modification passe toujours par de l'édition de fichiers TSX
 - **Règle SEO critique** : toute URL supprimée ou déplacée DOIT avoir une redirection 301
+- ⚠️ **Liste articles** : la **vraie source de vérité** de la page `/blog` est `src/app/blog/blog-view.tsx` (tableau `ARTICLES`). Le composant `src/components/sections/blog-preview.tsx` est **legacy** depuis la refonte bento — partout dans ce document où `blog-preview.tsx` est mentionné comme cible de modif/ajout/suppression pour la liste d'articles, **utiliser `blog-view.tsx` à la place**. Les autres références (footer, sitemap, llms.txt) restent inchangées.
 
 **Check-lists & appels MCP communs** :
 - Check-lists A à E : [`.claude/templates/seo/checklist.md`](.claude/templates/seo/checklist.md) (SEO on-page, E-E-A-T, JSON-LD, intégration site, **§E spécifique modify/restructure**)

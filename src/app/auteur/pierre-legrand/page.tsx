@@ -392,7 +392,7 @@ export default function PierreLegrandPage() {
         </div>
       </article>
 
-      <CTA />
+      <CTA variant="auteur" />
     </div>
   );
 }

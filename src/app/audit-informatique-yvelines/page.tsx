@@ -751,7 +751,7 @@ export default function AuditInformatiqueYvelinesPage() {
         </div>
       </section>
 
-      <CTA />
+      <CTA variant="audit-78" />
     </div>
   );
 }

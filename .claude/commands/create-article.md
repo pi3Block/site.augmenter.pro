@@ -85,7 +85,7 @@ Avant de poursuivre, réponds à ces 3 questions. Si la réponse à l'une d'elle
    - Articles de blog existants dans `src/app/blog/*/page.tsx`
    - Pages clés : `/prestations`, `/approche`, `/idees`, `/contact`, `/prompts`
    - **Bibliothèque de Prompts** : Si l'article couvre un sujet pour lequel un prompt existe dans `src/data/prompts.ts`, ajouter un composant `<PromptCard slug="..." />` (import depuis `@/components/sections/prompt-card`) ou un lien vers `/prompts`
-   - Liste dans `src/components/sections/blog-preview.tsx`
+   - Liste dans `src/app/blog/blog-view.tsx` (vraie source de vérité de la page `/blog`)
 
 ## Étape 2 — Stratégie de contenu (brief éditorial)
 

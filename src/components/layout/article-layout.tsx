@@ -144,7 +144,7 @@ export function ArticleLayout({
         </div>
       </article>
 
-      <CTA />
+      <CTA variant="blog" />
     </div>
   );
 }
