@@ -1097,3 +1097,98 @@ Dans `docs/seo-audits/2026-05-21-data/` (à compléter post-audit) :
 ---
 
 *Audit produit par le workflow `/seo-audit` le 2026-05-21. Auteur : Pierre Legrand (avec assistance Claude Code). Prochain audit complet recommandé : Q3 2026 (août-septembre) après implémentation des items 🔴 critiques.*
+
+---
+
+## 14. Addendum — Décisions stratégiques 2026-05-21 (brainstorm post-audit)
+
+> Décisions actées en brainstorm le 2026-05-21 entre Pierre Legrand et Claude Code, à la lecture des findings de cet audit. **Ces décisions priment sur les recommandations initiales** des sections §9 (stratégie de contenu) et §10 (recommandations éditoriales) quand il y a conflit.
+
+### 14.1 Persona unifié
+
+**Décision** : le persona cible unique est **"dirigeant PME tech-curieux"** — gérant 10-200 salariés, francophone, qui code peut-être occasionnellement, déjà sur Odoo ou veut migrer, formé scientifique/tech, débordé mais curieux des LLMs.
+
+**Données qui ont fondé la décision** :
+- Les 5 témoignages publiés (cf. `layout.tsx`) sont 3/5 dirigeants PME + 2/5 indépendants. Zéro dev, zéro CTO de scale-up.
+- Le cluster Claude Code/Odoo (88 % du trafic) draine, selon l'intuition Pierre, **majoritairement des dirigeants qui codent occasionnellement** (pas des freelance devs sans pouvoir d'achat).
+
+**Implication** : le pilier topical map #1 (§9.1, pilier A) se renomme **"Claude Code/Odoo pour dirigeant PME"** (et non plus "pour dev"). Le ton des articles existants doit être recalibré (moins de jargon dev, plus de promesse business — gain de temps, autonomie vs intégrateur, ROI mesurable).
+
+### 14.2 Positionnement 2027
+
+**Décision** : double positionnement assumé — **"Référence francophone Claude Code/Odoo pour dirigeants PME + base PME locale 78/95"**. Ambition nationale + Belgique/Suisse francophone sur le tech, ancrage local sur l'audit IT/cybersécurité.
+
+**Implication** : abandon de l'option "ignorer le cluster tech et corriger juste les titles" (scénario L3 du brainstorm). Le pilier Claude Code/Odoo devient un investissement stratégique long terme, pas un bonus.
+
+### 14.3 Voix éditoriale
+
+**Décision** : **tutoiement direct, ton qui parle au dirigeant**, sur **toutes les pages** y compris les landings commerciales (Atelier 650 €, Cohorte 990 €). Le ton "provocateur, douleur-centric" reste en accroche Google + intro. Pas de bascule vouvoiement selon le type de contenu (refusée pour cohérence).
+
+### 14.4 Binôme d'offres Q2-Q3 2026
+
+**Décision** : binôme A validé — deux offres nouvelles à lancer :
+
+| Offre | Prix | Format | Cible SEO/persona | Lancement |
+|-------|------|--------|--------------------|-----------|
+| **Atelier Claude Code dirigeant PME** | 650 € HT | 1/2 journée, présentiel 78/95 ou visio, 1 participant | Cluster `prompt claude code` (138 imp/mois pos 7) + persona dirigeant tech-curieux | Sem. 24-25, mise en vente début juillet 2026 |
+| **Cohorte "IA pour dirigeants PME"** | 990 €/pers HT | 6 semaines, 8-12 personnes/promo, mix visio + 2 présentiels Yvelines | Format différenciant français (pas de concurrent direct) — promo #1 rentrée septembre | Sem. 26-28, mise en vente juillet, promo #1 septembre |
+
+**Conservation** :
+- Audit 180° offert (60 min) — inchangé
+- Audit 360° IA Booster (225 €) — inchangé
+- Prestations sur mesure — inchangé
+
+**Reportés en Q4 2026 ou T1 2027** (selon traction du binôme A) :
+- Sprint Odoo + Claude (4 jours, 6 500 €)
+- Formation OPCO 5 jours certifiée Qualiopi (3 500 €)
+- Abonnement veille IA PME (150 €/mois)
+- Lead magnet PDF "Grille financements IA PME 2026"
+- Calculateur ROI IA interactif
+
+### 14.5 Roadmap d'activation 12 semaines (mai → août 2026)
+
+Capacité confirmée : **10-12 h/semaine** dédiées à ces chantiers (mode investi). Aucune contrainte business externe à intégrer.
+
+| Sem. | Période | Chantier | Effort | Output mesurable |
+|------|---------|----------|-------|------------------|
+| **22** | 25-31 mai 2026 | Quick wins SEO purs : 4 titles/descriptions (cf. §10.2) + `dateModified` sur `comparatif-llm-vente-commerciale` + LinkedIn aligné (poste Pierre Legrand "Consultant IA chez augmenter.pro" + Company Page si absente) | 6 h | +30-50 clics/mois sous 4-6 sem. |
+| **23** | 1-7 juin | Refresh `claude-code-prompt-architecture` : +1000 mots (skills, agents.md), TL;DR de 5 bullets, attribution explicite Pierre, FAQ schema. Ton recalibré dirigeant tech-curieux. | 5 h | Article #1 prêt à porter les 2 offres |
+| **24-25** | 8-21 juin | Landing `/atelier-claude-code-dirigeant-pme` (650 €). Bridge éditorial dans l'article #1 (Claude Code prompt) vers la landing. Mise en vente début juillet. | 12-15 h | Atelier vendable, 1ère session juillet |
+| **26-28** | 22 juin - 12 juillet | Landing `/cohorte-ia-dirigeants-pme` (990 €). Programme 6 semaines détaillé. Recrutement promo #1 (objectif : 8-12 inscrits pour démarrage rentrée septembre). | 18-20 h | Cohorte vendable, promo #1 démarrage 1er septembre |
+| **27+** | 13 juillet → | Chantier GEO entity en // : Wikidata Q-item Pierre Legrand + augmenter.pro, candidature France Num Activateur, candidature Bpifrance IA Booster. Audit GMB existant. | 4-6 h/mois | Effet M6-M12 sur capture LLM + autorité |
+
+### 14.6 Google Business Profile — note de mise à jour
+
+**Information découverte post-brainstorm** : Pierre dispose **déjà d'un GMB** (URL Google Maps : `https://share.google/BxDVGb2j21kBJUJbb`).
+
+**Conséquence** : la recommandation initiale du §11 item 2 ("Créer un Google Business Profile") devient **"Auditer et optimiser le GMB existant"**. Checklist d'audit GMB à passer en semaine 27 :
+- [ ] Catégorie principale et secondaires alignées sur "Consultant en informatique", "Service de formation", "Conseil en entreprise" (ou similaire pertinent FR)
+- [ ] NAP (Name / Address / Phone) **strictement cohérent** avec le JSON-LD LocalBusiness du site (Jouy-le-Moutier 95280)
+- [ ] Description GMB optimisée avec les mots-clés cibles 78/95
+- [ ] Services listés (Audit 180°, Audit 360°, Atelier Claude Code dès semaine 25)
+- [ ] Photos professionnelles (entrée, équipe, livrables types)
+- [ ] Premiers posts hebdomadaires (annonces, articles de blog, témoignages)
+- [ ] Reviews migrées (les 5 témoignages du site → demander reviews Google aux mêmes clients)
+- [ ] Q&A section pré-remplie
+
+**Impact attendu post-optimisation** : récupération du long-tail local 78/95 (40+ villes, ~700 imp/mois actuellement non monétisées).
+
+### 14.7 Modifications à propager dans les sections antérieures du rapport
+
+| Section | Modification suite à l'addendum |
+|---------|--------------------------------|
+| §9.1 — Topical map | Pilier A renommé "Claude Code/Odoo **pour dirigeant PME**" ; pilier I (Formation IA dirigeant PME) reporté en Q4 |
+| §9.4 — Pages à créer | `/formation-claude-code-pme` se transforme en `/atelier-claude-code-dirigeant-pme` (650 €). Ajouter `/cohorte-ia-dirigeants-pme`. Reporter `/sprint-odoo-claude` et `/formation-ia-dirigeant-pme` |
+| §10.4 — Enrichissement de l'offre | 5 propositions sur 7 reportées (cf. §14.4 ci-dessus) |
+| §11 — Plan d'action 🔴 item 2 | Devient "Auditer et optimiser le GMB existant" (et non "Créer") |
+| §13 — KPIs | Ajouter ligne dédiée "Inscriptions cohorte #1" (cible promo #1 = 8 minimum, sept. 2026) + "Ventes Atelier Claude Code" (cible 4-6/mois à M6) |
+
+### 14.8 Décisions parking (à reprendre quand pertinent)
+
+- **Domiciliation pro 78/95** vs adresse personnelle Jouy-le-Moutier — à trancher quand on audite le GMB (sem. 27). Impact sur les mentions légales si changement.
+- **Phase 5 Backlinks DFS** — pas de souscription tant que digital PR organique n'a pas produit ses 5 premiers backlinks de qualité.
+- **Score E-E-A-T** — à recalculer après cas clients chiffrés publiés (cible M3-M6).
+
+---
+
+*Addendum produit par le workflow `/seo-audit` continuation le 2026-05-21 (brainstorm post-audit). Acté par Pierre Legrand.*
