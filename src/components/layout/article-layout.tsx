@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Clock, Calendar } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, User } from "lucide-react";
 import { ArticleReadEvent } from "@/components/layout/article-read-event";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -38,8 +38,9 @@ export function ArticleLayout({
     description: excerpt,
     author: {
       "@type": "Person",
+      "@id": "https://augmenter.pro/auteur/pierre-legrand#person",
       name: "Pierre Legrand",
-      url: "https://pierrelegrand.fr",
+      url: "https://augmenter.pro/auteur/pierre-legrand",
     },
     publisher: {
       "@type": "Organization",
@@ -104,7 +105,16 @@ export function ArticleLayout({
 
           <p className="mt-4 text-lg text-muted-foreground">{excerpt}</p>
 
-          <div className="mt-6 flex items-center gap-4 text-sm text-muted-foreground">
+          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+            <span className="flex items-center gap-1">
+              <User className="h-4 w-4" />
+              <Link
+                href="/auteur/pierre-legrand"
+                className="font-medium text-foreground hover:underline"
+              >
+                Pierre Legrand
+              </Link>
+            </span>
             <span className="flex items-center gap-1">
               <Calendar className="h-4 w-4" />
               {date}

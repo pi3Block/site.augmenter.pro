@@ -19,6 +19,7 @@ const footerLinks = {
     { href: "/blog", label: "Articles & Tutos" },
     { href: "/idees", label: "Idées PRO" },
     { href: "/approche", label: "Notre approche" },
+    { href: "/auteur/pierre-legrand", label: "Pierre Legrand" },
   ],
   legal: [
     { href: "/mentions-legales", label: "Mentions légales" },

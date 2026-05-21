@@ -359,6 +359,16 @@ export function ApprocheView() {
                 <strong className="font-semibold text-foreground">habitudes</strong>.
                 PME, ETI et indépendants des Yvelines (78) et du Val d&apos;Oise (95).
               </p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Accompagnement assuré par{" "}
+                <Link
+                  href="/auteur/pierre-legrand"
+                  className="font-medium underline-offset-2 hover:underline"
+                >
+                  Pierre Legrand
+                </Link>
+                , consultant IA &amp; transformation digitale.
+              </p>
               <div className="mt-5 flex flex-wrap items-center gap-2.5">
                 <Button asChild size="lg" className="gap-2">
                   <Link href="/contact">
