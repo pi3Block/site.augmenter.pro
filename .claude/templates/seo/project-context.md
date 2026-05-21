@@ -4,9 +4,16 @@ Fichier de référence partagé par toutes les commandes SEO (`/seo-audit`, `/cr
 
 > **Pour les commandes non-SEO** (`/debt-report`, `/security-audit`, `/doc-audit`, `/codex-execute-task`) → voir [`../shared/project-context.md`](../shared/project-context.md) qui couvre la stack, les patterns, les conventions de code et le build, sans les couches éditoriales/géographiques décrites ci-dessous.
 
+> **Dernière mise à jour** : 2026-05-21 (post-brainstorm `/seo-audit` — persona unique précisé, double positionnement acté, binôme A d'offres Q2-Q3 2026 planifié). **Source de vérité des décisions stratégiques** : [`/docs/seo-audits/2026-05-21-audit-complet.md`](../../../docs/seo-audits/2026-05-21-audit-complet.md) §14 Addendum.
+
 ## Positionnement
 
-**augmenter.pro** est le site vitrine d'une agence de conseil IA & transformation digitale pour PME françaises. Objectif : acquisition organique de leads qualifiés via SEO local, thématique et GEO (moteurs IA génératifs).
+**augmenter.pro** est le site vitrine d'un cabinet de conseil IA pour PME françaises, positionné sur **un double vecteur** :
+
+1. **Référence francophone Claude Code & Odoo pour dirigeants PME** (cible nationale + Belgique/Suisse francophone). Cluster sémantique dominant : Claude Code prompt (60 500 imp/mois FR, +1264 % yearly), Odoo IA, MCP, agents IA, automatisation. **C'est le moteur SEO actuel** (88 % du trafic).
+2. **Base PME locale Yvelines (78) et Val d'Oise (95)** pour l'audit informatique, la cybersécurité et la formation présentielle. Cluster local sur "audit informatique 78/95", "audit cybersécurité Yvelines", etc.
+
+**Objectif** : acquisition organique de leads qualifiés via SEO thématique (cluster Claude Code/Odoo) + SEO local (78/95) + GEO (moteurs IA génératifs — chantier ouvert Q3 2026).
 
 ## Stack technique
 
@@ -28,7 +35,17 @@ Fichier de référence partagé par toutes les commandes SEO (`/seo-audit`, `/cr
 
 ## Audience & modalités géographiques
 
-augmenter.PRO sert des **PME françaises** (BTP, immobilier, industrie, artisans, commerces). La zone géographique doit être nuancée selon les modalités d'intervention :
+### Persona unique : dirigeant PME tech-curieux
+
+augmenter.PRO sert **un persona principal et unique** : le **dirigeant PME tech-curieux** — gérant 10-200 salariés, francophone, qui code peut-être occasionnellement, est déjà sur Odoo ou veut migrer, formation scientifique/tech, débordé mais curieux des LLMs. Veut **comprendre** la techno (ChatGPT, Claude, Odoo, automatisation) sans jargon et sans dépendre d'un intégrateur opaque.
+
+**Décision brainstorm 2026-05-21** : les lecteurs réels des articles top (`claude-code-prompt-architecture`, `configurer-odoo-ia-claude-cowork`) sont majoritairement ces dirigeants tech-curieux (pas des freelance devs sans pouvoir d'achat). Donc le cluster SEO tech ≈ persona commercial cible — pas de schizophrénie de positionnement.
+
+Secteurs servis : BTP, immobilier, industrie, artisans, commerces, services. PME 10-200 salariés.
+
+### Modalités géographiques
+
+La zone géographique doit être nuancée selon les modalités d'intervention :
 
 | Modalité | Zone | Implication SEO |
 |---|---|---|
@@ -54,6 +71,8 @@ augmenter.PRO sert des **PME françaises** (BTP, immobilier, industrie, artisans
 
 ## Pyramide d'offres (synthèse)
 
+### Offres en place
+
 | Palier | Prix | Format | Zone | Cible |
 |---|---|---|---|---|
 | Lead magnet | 0 € | PDF / check-list / outil | National | Tout prospect |
@@ -61,18 +80,37 @@ augmenter.PRO sert des **PME françaises** (BTP, immobilier, industrie, artisans
 | Audit 360° IA Booster | 225 € | 1 demi-journée | Visio ou présentiel 78/95 | Dirigeant prêt à investir |
 | Prestations sur mesure | sur devis | Projet dédié | National (déplacements gros projets) | Missions spécifiques |
 
+### Offres planifiées Q2-Q3 2026 (binôme A acté brainstorm 2026-05-21)
+
+| Palier | Prix | Format | Zone | Cible | Lancement |
+|---|---|---|---|---|---|
+| **Atelier Claude Code dirigeant PME** | 650 € HT | 1/2 journée, 1 participant | Présentiel 78/95 ou visio | Dirigeant tech-curieux (cluster SEO `prompt claude code`) | Sem. 24-25 (mise en vente début juillet 2026) |
+| **Cohorte "IA pour dirigeants PME"** | 990 €/pers HT | 6 semaines, 8-12 personnes/promo, mix visio + 2 présentiels | Yvelines présentiel + visio France | Dirigeant PME tech-curieux, format communautaire | Sem. 26-28 (mise en vente juillet, promo #1 rentrée septembre) |
+
+### Offres reportées (Q4 2026 ou T1 2027 selon traction du binôme A)
+
+- Sprint Odoo + Claude (4 jours, 6 500 €) — sur site PME
+- Formation OPCO 5 jours certifiée Qualiopi (3 500 €)
+- Abonnement veille IA PME (150 €/mois)
+- Lead magnet PDF « Grille financements IA PME 2026 »
+- Calculateur ROI IA interactif
+
 Détails + paliers potentiels supplémentaires : voir [`service-card.md`](service-card.md).
 
 ## Contraintes éditoriales
 
-1. **Mot « gratuit » interdit** — utiliser « offert », « sans engagement », « inclus », « sans CB », « 0 € »
+1. **Mot « gratuit » interdit** — utiliser « offert », « sans engagement », « inclus », « sans CB », « 0 € ». Exception : citer un concurrent ou critiquer l'usage du mot (cf. `ch07-audits.tsx`).
 2. **Ton provocateur** — parler aux douleurs PME, pas de SEO corporate lisse
    - ✅ « ChatGPT dans votre PME : 3 chantiers utiles, 5 pièges qui coûtent cher »
    - ❌ « Les avantages de l'IA pour les PME »
-3. **People-first** : après lecture, le dirigeant PME doit pouvoir **agir concrètement**
-4. **Pas de contenu SEO-first** : ne jamais écrire un article JUSTE parce qu'un mot-clé a du volume
-5. **Périmètre** : rester dans IA / digital / audit / transformation pour PME. Pas de sujets trending hors expertise
-6. **E-E-A-T élevé** (YMYL adjacent — décisions financières) : chaque page importante doit passer la grille [`eeat-grid.md`](eeat-grid.md) (objectif ≥ 15/20)
+3. **Tutoiement vs vouvoiement — règle de découplage** (actée brainstorm 2026-05-21) :
+   - **Pages commerciales** (landings, meta titles/descriptions, CTAs) → **tutoiement direct** ("ton prestataire te facture", "reprends le contrôle")
+   - **Récits narratifs** (home `/` et `/approche` narrative scroll, articles de fond) → **vouvoiement** maintenu (ton littéraire/journalistique)
+   - Raison : le tutoiement matche le côté "coach direct" en SERP/landing, le vouvoiement préserve la posture éditoriale du récit
+4. **People-first** : après lecture, le dirigeant PME doit pouvoir **agir concrètement**
+5. **Pas de contenu SEO-first** : ne jamais écrire un article JUSTE parce qu'un mot-clé a du volume
+6. **Périmètre élargi (post-brainstorm 2026-05-21)** : pilier #1 = Claude Code / Odoo / MCP / agents IA pour dirigeants PME (cluster gagnant SEO). Pilier #2 = audit IT / cybersécurité / NIS2 local 78/95. Hors périmètre : sujets trending IA grand public sans angle dirigeant PME.
+7. **E-E-A-T élevé** (YMYL adjacent — décisions financières) : chaque page importante doit passer la grille [`eeat-grid.md`](eeat-grid.md) (objectif ≥ 15/20)
 
 ## Identité éditoriale
 

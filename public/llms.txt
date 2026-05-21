@@ -1,13 +1,19 @@
 # augmenter.PRO
 
-> Consultant IA et transformation digitale pour PME en Yvelines (78) et Val d'Oise (95), France.
+> Consultant IA pour dirigeants PME : Claude Code, Odoo, automatisation, audit IT. Visio partout en France, présentiel Yvelines (78) et Val d'Oise (95), déplacements sur demande pour les projets nationaux.
 
 ## À propos
 
-augmenter.PRO est un cabinet de conseil fondé par Pierre Legrand, spécialisé dans l'accompagnement des PME, ETI et indépendants vers la transformation numérique. Notre approche unique en 4 piliers (technique, processus, humain, stratégie) garantit un équilibre entre performance et bien-être des équipes.
+augmenter.PRO est un cabinet de conseil fondé par Pierre Legrand, **spécialisé Claude Code et Odoo pour dirigeants PME** (et secondairement audit informatique & cybersécurité local en Yvelines/Val d'Oise).
 
-Secteurs : BTP, immobilier, industrie, artisanat.
-Zone : Yvelines (78), Val d'Oise (95), Île-de-France.
+La cible est le **dirigeant PME tech-curieux** — gérant 10-200 salariés qui veut comprendre ChatGPT, Claude, Odoo, l'automatisation, sans jargon et sans dépendre d'un intégrateur opaque. Notre approche unique en 4 piliers (technique, processus, humain, stratégie) garantit un équilibre entre performance et autonomie des équipes.
+
+**Modalités d'intervention** :
+- Conseil, audit, accompagnement : visio partout en France (+ Belgique et Suisse francophone).
+- Formation présentielle : Yvelines (78) et Val d'Oise (95).
+- Déplacements sur demande pour les projets de grande ampleur partout en France.
+
+Secteurs servis : BTP, immobilier, industrie, artisanat, commerce, services. PME 10-200 salariés.
 
 ## Services
 
@@ -40,7 +46,7 @@ Zone : Yvelines (78), Val d'Oise (95), Île-de-France.
 - [Comparatif LLM pour la Vente](https://augmenter.pro/blog/comparatif-llm-vente-commerciale) — Forces, faiblesses et conformité RGPD de chaque LLM pour les équipes commerciales.
 - [5 signes de moderniser l'informatique de votre PME](https://augmenter.pro/blog/5-signes-moderniser-informatique-pme) — Lenteurs, pannes, coûts cachés : les signaux d'alerte pour les PME du BTP et de l'industrie.
 - [NIS2 et PME : Guide Pratique pour les Yvelines et le Val d'Oise](https://augmenter.pro/blog/nis2-pme-yvelines-val-doise) — Directive NIS2 : votre PME en Yvelines (78) ou Val d'Oise (95) est-elle concernée ? Auto-diagnostic, 10 mesures obligatoires, sanctions, obligation indirecte via la chaîne d'approvisionnement, plan d'action en 5 étapes, ressources locales.
-- [Combien coûte un audit informatique en Yvelines ? Tarifs 2026](https://augmenter.pro/blog/cout-audit-informatique-yvelines) — Guide tarifaire transparent : grille de prix par type d'audit et taille d'entreprise (1 500 à 20 000 € HT), comparaison Audit 180° gratuit vs Audit 360° (225 €), 3 cas concrets de PME en Yvelines (BTP, services, industrie), critères de choix prestataire, FAQ prix.
+- [Combien coûte un audit informatique en Yvelines ? Tarifs 2026](https://augmenter.pro/blog/cout-audit-informatique-yvelines) — Guide tarifaire transparent : grille de prix par type d'audit et taille d'entreprise (1 500 à 20 000 € HT), comparaison Audit 180° offert vs Audit 360° (225 €), 3 cas concrets de PME en Yvelines (BTP, services, industrie), critères de choix prestataire, FAQ prix.
 - [Veille Concurrentielle IA pour PME : Guide Pratique 2026](https://augmenter.pro/blog/veille-concurrentielle-ia-pme) — Comment automatiser votre veille concurrentielle avec l'IA. Méthode en 5 étapes, outils recommandés et retour d'expérience terrain pour PME.
 - [Automatiser Emails et Réseaux Sociaux avec l'IA en PME](https://augmenter.pro/blog/automatiser-emails-reseaux-sociaux-ia) — Gagnez 10h par semaine en automatisant vos emails et publications sociales avec l'IA. Guide pratique et outils testés pour dirigeants de PME.
 
@@ -124,7 +130,7 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 
 ## Stratégie IA pour PME
 
-- [Stratégie IA pour PME : Diagnostic & Accompagnement](https://augmenter.pro/strategie-ia-pme) — Landing page complète sur notre accompagnement stratégique IA pour PME. Diagnostic gratuit, méthodologie en 4 étapes, cas d'usage par secteur (BTP, immobilier, industrie, services), financement Osez l'IA Bpifrance, FAQ.
+- [Stratégie IA pour PME : Diagnostic & Accompagnement](https://augmenter.pro/strategie-ia-pme) — Landing page complète sur notre accompagnement stratégique IA pour PME. Diagnostic offert, méthodologie en 4 étapes, cas d'usage par secteur (BTP, immobilier, industrie, services), financement Osez l'IA Bpifrance, FAQ.
 
 ## Intégration MCP (Model Context Protocol)
 
@@ -132,8 +138,8 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 
 ## Audit Informatique Local
 
-- [Audit Informatique Yvelines (78)](https://augmenter.pro/audit-informatique-yvelines) — Audit informatique pour PME en Yvelines. Diagnostic gratuit 60 min, méthodologie en 4 étapes, périmètre complet (réseau, sécurité, cloud, RGPD, licences), secteurs locaux (BTP, services, commerce, santé), FAQ géo-ciblée.
-- [Audit Informatique Val-d'Oise (95)](https://augmenter.pro/audit-informatique-val-doise) — Audit informatique pour PME en Val-d'Oise. Diagnostic gratuit 60 min, méthodologie en 4 étapes, périmètre complet (réseau, sécurité, cloud, RGPD, licences), secteurs locaux (logistique, BTP, commerce, industrie), FAQ géo-ciblée.
+- [Audit Informatique Yvelines (78)](https://augmenter.pro/audit-informatique-yvelines) — Audit informatique pour PME en Yvelines. Diagnostic offert 60 min, méthodologie en 4 étapes, périmètre complet (réseau, sécurité, cloud, RGPD, licences), secteurs locaux (BTP, services, commerce, santé), FAQ géo-ciblée.
+- [Audit Informatique Val-d'Oise (95)](https://augmenter.pro/audit-informatique-val-doise) — Audit informatique pour PME en Val-d'Oise. Diagnostic offert 60 min, méthodologie en 4 étapes, périmètre complet (réseau, sécurité, cloud, RGPD, licences), secteurs locaux (logistique, BTP, commerce, industrie), FAQ géo-ciblée.
 
 ## Auteur
 
@@ -154,7 +160,7 @@ Tous les articles du blog sont rédigés par Pierre Legrand, avec assistance d'o
 - https://augmenter.pro/auteur/pierre-legrand — Pierre Legrand, consultant IA & transformation digitale (bio, expertise, missions)
 - https://augmenter.pro/strategie-ia-pme — Stratégie IA pour PME (diagnostic, accompagnement, financement)
 - https://augmenter.pro/approche — Approche, Prestations & Tarifs (méthode 360°, audits 180°/360°)
-- https://augmenter.pro/idees — Idées IA & Automatisation
+- https://augmenter.pro/idees — Idées IA pour PME : 9 cas d'usage qui facturent (immobilier, courtage, BTP, notariat, commerce, outils PME) — avantages, points d'attention, ROI mesurable
 - https://augmenter.pro/blog — Blog Articles & Tutos
 - https://augmenter.pro/contact — Contact & Audit offert
 - https://augmenter.pro/projets — Nos Projets & Réalisations IA

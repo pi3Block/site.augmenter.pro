@@ -73,6 +73,47 @@ Deux pages principales sont des **expériences scroll narrative** (Three.js shad
 | `/prompts`, `/projets`, `/strategie-ia-pme`, `/integration-mcp`, `/audit-informatique-{yvelines,val-doise}`, `/auteur/pierre-legrand` | Pages classiques | Header/Footer globaux + le CTA widget en bas |
 | `/mentions-legales`, `/cgv`, `/politique-confidentialite` | Legal | Header/Footer globaux |
 
+### Site-wide hero shader pattern
+
+Toutes les pages classiques (en dehors des 2 narrative `/` et `/approche`)
+ont un même hero pattern : un `ShaderBackdrop` Three.js localisé derrière
+le contenu du hero.
+
+[src/components/widgets/shader-backdrop.tsx](src/components/widgets/shader-backdrop.tsx) — extracted version of `BackgroundCanvas` :
+- Même fragment shader (FBM 5 octaves + domain warp + curseur smear + grain) que les narrative pages
+- `position: absolute; inset: 0` à l'intérieur du parent (pas fixed full-screen comme sur le narrative)
+- Mood statique passé en prop (pas de mood observer — un seul mood pour la vie du composant)
+- Coords mouse relatives au canvas (pas au viewport) → le smear suit le curseur quand on hover la section
+- `ResizeObserver` qui suit les redimensionnements du parent
+- `alpha: true` + prop `opacity` → la peinture peut blend avec le fond du parent
+- `prefers-reduced-motion` → fallback gradient CSS statique
+- SSR-safe (dynamic import de Three.js)
+
+Pattern d'usage standard sur un hero :
+
+```tsx
+<section className="relative isolate overflow-hidden py-24">
+  <ShaderBackdrop mood="dawn" opacity={0.6} className="-z-10" />
+  <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
+    {/* hero content */}
+  </div>
+</section>
+```
+
+Pour un hero qui est une BentoCard (cas `/blog` + `/idees`) :
+
+```tsx
+<BentoCard className="relative isolate justify-end overflow-hidden">
+  <ShaderBackdrop mood="dawn" opacity={0.6} />
+  <h1 className="relative z-10 ...">Titre</h1>
+  ...
+</BentoCard>
+```
+
+Pages où c'est en place : `/blog` (hero card + featured article image overlay avec mix-blend-soft-light), `/prompts`, `/projets`, `/idees`, `/strategie-ia-pme`, `/integration-mcp`, `/audit-informatique-yvelines`, `/audit-informatique-val-doise`, `/contact`, `/auteur/pierre-legrand`. Mood **dawn** (paper near-white + violet wash) + opacity **0.6** sur la plupart, **0.55** sur l'auteur (un peu plus subtil pour ne pas voler la vedette au gros avatar PL violet), **0.45** sur l'image du featured article (avec `mix-blend-soft-light` pour blender avec l'image).
+
+⚠ Pour le featured article uniquement : 1 seul canvas WebGL par page sur /blog. Si on veut étendre aux 14 autres cards, il faudrait un `IntersectionObserver` qui mount/unmount le canvas selon la visibilité, sinon 15 contextes WebGL concurrents = GPU saturé.
+
 ### Narrative Scroll System
 
 L'infrastructure narrative vit dans [src/app/approche/narrative/](src/app/approche/narrative/) et est réutilisée cross-route par `/` qui importe depuis ce path. Pas de duplication.
@@ -136,9 +177,10 @@ src/app/home-narrative/
   - **Legacy** : `approach.tsx`, `blog-preview.tsx`, `ideas.tsx`, `pricing.tsx` — plus utilisés, conservés temporairement pour rollback. À supprimer dans un cleanup pass.
 - [src/app/blog/blog-view.tsx](src/app/blog/blog-view.tsx) + [src/app/idees/idees-view.tsx](src/app/idees/idees-view.tsx) — pages bento client (data inline)
 - [src/components/bento/](src/components/bento/) — Primitives bento (`BentoGrid`, `BentoCard`, `SectionHead`, `Pill`, `ArticleBentoCard`, `PullQuoteCard`, `MiniQuoteCard`) — **utilisées uniquement sur /blog et /idees** (les pages bento restantes)
-- [src/components/widgets/](src/components/widgets/) — Widgets animés (SVG morphing) :
-  - `blobs.tsx` : `LiquidBlob`, `MeshAurora`, `CardShell`, `CornerArrow`, `PillTag`
+- [src/components/widgets/](src/components/widgets/) — Widgets animés :
+  - `blobs.tsx` : `LiquidBlob`, `MeshAurora`, `CardShell`, `CornerArrow`, `PillTag` (SVG morphing)
   - `service-card.tsx`, `idea-card.tsx`, `trust-stat.tsx` — wrappers `CardShell + LiquidBlob`
+  - **`shader-backdrop.tsx`** : Three.js shader localisé (clone du narrative `BackgroundCanvas`, voir « Site-wide hero shader pattern » plus haut). Utilisé sur 10+ pages heroes + en mix-blend overlay sur l'image du featured article /blog.
   - `palettes.ts` : 6 palettes OKLCH (violet / amber / duo / cold / warm / mono)
   - Respecte `prefers-reduced-motion` via `useMorph` qui fige le seed.
 - [src/components/layout/](src/components/layout/) — Header (fixed navbar + mobile sheet), **Footer mini-cockpit** (dark, 3 cols + social), ArticleLayout (blog wrapper + Article JSON-LD)
@@ -274,7 +316,8 @@ Use `/create-article <sujet>` or follow this manual process:
 9. Add article dans [public/news-sitemap.xml](public/news-sitemap.xml)
 10. Add article dans [public/llms.txt](public/llms.txt) section blog
 11. Si l'article est suffisamment fort, hand-pick dans [src/app/home-narrative/chapters/ch05-recit.tsx](src/app/home-narrative/chapters/ch05-recit.tsx) — la home featuring 3 articles, à curater
-12. Run `npm run build` to verify
+12. Tag(s) doivent matcher les filter pills cliquables de `/blog` : `IA` / `PME` / `Commercial` / `Cybersécurité` / `Audit 360°`. Si tu utilises un tag différent (`Productivité`, `Intégration`, `Claude Code`, etc.), l'article n'apparaîtra que sous le filtre « Tout ». **Ne pas utiliser « Intelligence Artificielle » comme tag** — utiliser `IA` (normalisé site-wide).
+13. Run `npm run build` to verify
 
 ## Key Constraints
 

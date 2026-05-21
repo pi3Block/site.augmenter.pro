@@ -2,6 +2,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import {
   CardShell,
   MeshAurora,
@@ -22,20 +23,27 @@ export interface IdeaData {
 interface IdeaCardBigNumberProps {
   idea: IdeaData;
   palette?: Palette;
+  /** Si fourni, la card devient un Link vers cet href et affiche un badge "Cas client →". */
+  href?: string;
+  /** Libellé du badge si href est présent (défaut : "Cas client"). */
+  hrefLabel?: string;
 }
 
 /**
  * IdeaCardBigNumber — variante "A" (Numéro filigrane).
  * Numéro géant en fond + Aurora + premier pro/con.
+ * Cliquable si href est fourni (renvoie typiquement vers un article du blog).
  */
 export function IdeaCardBigNumber({
   idea,
   palette = "amber",
+  href,
+  hrefLabel = "Cas client",
 }: IdeaCardBigNumberProps) {
   const [hovered, setHovered] = React.useState(false);
   const p = PALETTES[palette];
 
-  return (
+  const card = (
     <div className="h-[380px]">
       <CardShell palette={palette} hovered={hovered} onHover={setHovered}>
         <MeshAurora palette={palette} hovered={hovered} seed={idea.seed} />
@@ -57,7 +65,14 @@ export function IdeaCardBigNumber({
         </div>
 
         <div className="absolute inset-0 flex flex-col p-7">
-          <PillTag>Idée {idea.number}</PillTag>
+          <div className="flex items-center justify-between gap-2">
+            <PillTag>Idée {idea.number}</PillTag>
+            {href && (
+              <span className="inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/[0.08] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-white/85 backdrop-blur-sm">
+                {hrefLabel} →
+              </span>
+            )}
+          </div>
 
           <h3 className="mt-4 max-w-[280px] text-[24px] font-semibold leading-tight tracking-tight">
             {idea.title}
@@ -81,5 +96,13 @@ export function IdeaCardBigNumber({
         <CornerArrow hovered={hovered} />
       </CardShell>
     </div>
+  );
+
+  if (!href) return card;
+
+  return (
+    <Link href={href} className="block h-full no-underline">
+      {card}
+    </Link>
   );
 }

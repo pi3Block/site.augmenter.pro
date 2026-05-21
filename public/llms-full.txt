@@ -3,7 +3,7 @@
 > Version étendue de llms.txt (cf. [llmstxt.org](https://llmstxt.org/)). Contenu markdown complet des pages indexables de augmenter.pro, optimisé pour ingestion par les LLMs (ChatGPT, Claude, Perplexity, Gemini, etc.) en une seule requête.
 > Dernière génération : 2026-05-21
 
-Auteur du site : Pierre Legrand — consultant IA & transformation digitale pour PME (Yvelines 78 / Val d'Oise 95 en présentiel ; visio partout en France).
+Auteur du site : Pierre Legrand — consultant IA pour dirigeants PME, spécialisé Claude Code, Odoo, automatisation et audit informatique. Visio partout en France (et Belgique/Suisse francophone), présentiel Yvelines (78) et Val d'Oise (95), déplacements sur demande pour les projets nationaux de grande ampleur.
 
 ## Index
 
@@ -18,6 +18,9 @@ Auteur du site : Pierre Legrand — consultant IA & transformation digitale pour
 - [Nos projets & réalisations IA](https://augmenter.pro/projets) — 2026-02-01
 - [Blog — articles & tutos IA pour PME](https://augmenter.pro/blog) — 2026-02-13
 - [Contact & diagnostic offert](https://augmenter.pro/contact) — 2026-02-01
+- [Le « patron-goulot » : quand l'IA rend le dirigeant PME encore plus indispensable](https://augmenter.pro/blog/patron-goulot-paradoxe-ia-dirigeant-pme) — 2026-05-21
+- [L'IA comme contradicteur : 5 prompts pour pressure-tester vos décisions de dirigeant PME](https://augmenter.pro/blog/ia-contradicteur-prompts-dirigeant-pme) — 2026-05-21
+- [Rapport 2026 : Adoption de l'IA dans le BTP francilien — état des lieux](https://augmenter.pro/blog/rapport-adoption-ia-btp-francilien-2026) — 2026-05-21
 - [Configurer Odoo avec l'IA : 4 jours au lieu de 3 500 €](https://augmenter.pro/blog/configurer-odoo-ia-claude-cowork) — 2026-03-29
 - [Serveur MCP : guide pratique pour connecter l'IA à vos outils métier](https://augmenter.pro/blog/serveur-mcp-guide-pratique-pme) — 2026-02-10
 - [Intégrer un agent IA à votre CRM/ERP : MCP change la donne](https://augmenter.pro/blog/serveur-mcp-integration-crm-erp) — 2026-02-10
@@ -668,7 +671,7 @@ dateModified: 2026-02-01
 # Idées PRO
 Des idées concrètes, chiffrées et honnêtes pour augmenter votre entreprise. **Avantages ET points d'attention** — pour décider en connaissance de cause.
 ToutFacilityAssistantLogistique
-−30 %
+30 %
 ROI moyen
 sur les cas clients implémentés
 / catalogue
@@ -1009,6 +1012,110 @@ On écoute, on diagnostique, on vous dit la vérité. Si ça matche, on avance e
 
 ---
 
+## https://augmenter.pro/blog/patron-goulot-paradoxe-ia-dirigeant-pme
+
+dateModified: 2026-05-21
+
+# Le « patron-goulot » : quand l'IA rend le dirigeant PME encore plus indispensable
+Vous avez déployé ChatGPT, Claude ou Copilot dans votre PME il y a 12-18 mois — et vous êtes toujours autant débordé. Pire : c'est maintenant vous qui devez former tout le monde, valider chaque prompt, gérer chaque workflow. Bienvenue dans le paradoxe du patron-goulot IA — et voici comment en sortir.
+![Le patron-goulot : quand l'IA rend le dirigeant PME encore plus indispensable](https://augmenter.pro/images/blog/patron-goulot-paradoxe-ia-dirigeant-pme.webp)
+## La promesse trahie de l'IA en PME : « ça devait me libérer du temps »
+Vous avez fait les choses bien. Il y a 12 à 18 mois, vous avez décidé que l'IA n'était pas une mode mais une opportunité. Vous avez souscrit ChatGPT Plus pour vous-même, puis pour l'équipe commerciale. Vous avez automatisé deux ou trois workflows répétitifs. Sur le papier, votre PME est en avance sur 80 % de ses concurrents. Sauf que voilà : **vous êtes toujours aussi débordé**. Pire — vous passez désormais une partie significative de votre temps à former, débugger des prompts, valider des automatisations.
+## Les 5 signaux du patron-goulot IA
+Grille d'auto-diagnostic. Si vous cochez 3 signaux ou plus, vous êtes dans la zone rouge — et l'urgence n'est pas d'ajouter de l'IA, c'est de restructurer comment elle est organisée.
+### Signal 1 — Vous êtes le seul à créer les prompts qui marchent vraiment
+Vos équipes utilisent ChatGPT, mais pour les sorties sérieuses elles vous demandent « le prompt ». Vous avez votre stash personnel de 15-20 prompts éprouvés. Sans vous, l'IA produit du tiède. Diagnostic : votre savoir-prompt est **tacite et personnel**.
+### Signal 2 — Quand vous partez 1 semaine, les workflows tombent
+Vos jolies automatisations cassent dès que vous êtes absent — API qui change, webhook qui expire, modèle qui hallucine — et personne ne sait quoi faire. Vos automatisations n'ont **pas de responsable autre que vous**.
+### Signal 3 — Vos équipes attendent votre validation pour chaque automatisation
+Au lieu de créer et tester, vos équipes vous demandent si « c'est OK ». Il n'y a **pas de gouvernance déléguée**.
+### Signal 4 — Le centre de connaissance IA de la boîte, c'est votre Notion personnel
+L'actif IA de votre PME vit dans votre tête et votre stockage personnel. Ce n'est pas un actif d'entreprise, c'est un patrimoine personnel qu'une démission peut effacer.
+### Signal 5 — Vous passez plus de temps à former qu'à diriger
+Au-dessus de 5 heures hebdo passées à expliquer un usage IA à un collègue, vous n'êtes plus dirigeant : vous êtes responsable formation interne IA avec un job de dirigeant en plus.
+## Pourquoi l'IA aggrave ce schéma (au lieu de le résoudre)
+Anthropic formule cela dans son Founder's Playbook de juin 2026 : « At MVP, the founder being in every loop was an asset. At Launch, that same instinct becomes the constraint. » Avant l'IA, vos équipes faisaient leurs tâches dans des outils maîtrisés. Avec l'IA, chaque nouvelle tâche est un mini-projet d'apprentissage qui remonte vers vous. L'IA n'a pas créé le problème de centralisation, elle l'a **amplifié et accéléré**.
+## Le protocole en 4 étapes pour passer en système-centré
+### Étape 1 — Documenter les prompts gagnants dans un CLAUDE.md d'équipe
+Document unique partagé contenant 15-25 prompts de référence par fonction, avec contexte d'usage, prompt copiable, exemple de sortie, pièges connus. Maintenu par les équipes, pas par vous.
+### Étape 2 — Identifier 1 référent IA par fonction (pas par équipe)
+Pas un « responsable IA » transverse (nouveau goulot). Un référent par fonction métier — 4 à 6 référents, chacun expert métier qui a appris à intégrer l'IA dans son métier.
+### Étape 3 — Mettre en place une revue mensuelle des workflows
+Une heure par mois, les référents : (1) quels workflows sont tombés, (2) nouveaux usages testés, (3) quoi propager, (4) quoi abandonner. Compte-rendu de 10 lignes archivé.
+### Étape 4 — Tester votre organisation en « semaine sans patron »
+Partez vraiment une semaine, téléphone fermé. Les workflows survivants sont systémisés. Ceux qui tombent indiquent où il manque un référent ou une procédure.
+## Le test ultime : votre PME survit-elle 2 semaines à vos vacances ?
+Les dirigeants qui ont sorti leur PME du patron-goulot IA peuvent partir 2 semaines sans consulter leurs mails, et l'activité tourne. Règle observée : **investir 20 % du temps IA en organisation, pas en outillage**. La plupart sont à 5 %. L'écart d'effort est petit ; l'écart de résultat sur 12 mois est énorme.
+
+---
+
+## https://augmenter.pro/blog/ia-contradicteur-prompts-dirigeant-pme
+
+dateModified: 2026-05-21
+
+# L'IA comme contradicteur : 5 prompts pour pressure-tester vos décisions de dirigeant PME
+ChatGPT, Claude et Gemini ont un défaut de fabrique : ils valident plus qu'ils ne challengent. Pour un dirigeant PME, c'est un piège silencieux. Voici 5 prompts à garder dans vos favoris pour forcer l'IA à jouer le devil's advocate avant que vous ne signiez.
+![L'IA comme contradicteur : 5 prompts pour pressure-tester vos décisions de dirigeant PME](https://augmenter.pro/images/blog/ia-contradicteur-prompts-dirigeant-pme.webp)
+## Pourquoi votre ChatGPT vous flatte (et pourquoi c'est dangereux)
+Les LLMs sont entraînés pour être utiles et alignés avec ce que l'utilisateur formule. Quand vous présentez votre projet en racontant pourquoi il a du sens, le modèle infère votre intention : confirmation plus que contradiction. Le danger n'est pas que l'IA mente — c'est qu'elle vous donne l'impression d'avoir fait votre due diligence. Anthropic formule la mise en garde dans son Founder's Playbook juin 2026 : « Ask AI to validate your startup idea and it will find supporting evidence. »
+## Les 5 prompts contradicteurs
+### Prompt #1 — Argumente pour mon concurrent
+« Joue le rôle du dirigeant de mon concurrent. Tu apprends que je m'apprête à prendre cette décision. Explique en 5 points pourquoi tu es content qu'on aille dans ce sens — pourquoi cette décision t'arrange. Sois cynique, pragmatique. »
+### Prompt #2 — Pré-mortem à 12 mois
+« Nous sommes dans 12 mois. Ce projet a échoué totalement. Raconte la chronologie de cet échec : qu'est-ce qui a déraillé en premier, quel signal faible a été ignoré, quelle décision tardive a aggravé les choses. Sois précis, mentionne des chiffres réalistes. »
+### Prompt #3 — Trouve trois hypothèses cachées
+« Identifie les 3 hypothèses implicites les plus risquées que mon raisonnement présuppose sans les formuler. Pour chacune : énonce-la comme affirmation testable, indique ce qui se passe si elle est fausse, suggère comment la valider sous 2 semaines. »
+### Prompt #4 — Cherche les preuves qui contredisent ma thèse
+« Cherche tout ce qui contredit cette thèse : études contraires, exemples d'entreprises similaires qui ont essayé et échoué, arguments d'experts du secteur, tendances de fond qui rendent ma thèse obsolète. Ne cherche pas à équilibrer artificiellement. »
+### Prompt #5 — Joue le rôle de mon DAF le plus prudent
+« Tu es mon directeur financier expérimenté. Tu as la confiance du dirigeant ce qui te donne le droit de dire non. Réponds en deux temps : 3 raisons financières précises pour reporter, et la contre-proposition pour atteindre le même objectif avec moins de risque. »
+## Matrice par type de décision
+- Lancement d'offre / nouveau marché : prompts #1 + #2 + #4
+- Embauche stratégique : prompts #3 + #5
+- Investissement outil / logiciel : prompts #3 + #5 + #2
+- Pivot stratégique : les 5 dans l'ordre
+## Le piège du prompt « réponds objectivement » (ne marche pas)
+Ajouter « sois objectif » ou « ne me flatte pas » ne fonctionne pas — le modèle continue de plaire avec une version qui ressemble à de l'objectivité mais reste biaisée vers votre cadrage. Le seul moyen d'obtenir une vraie contradiction est de donner un **rôle adverse explicite** : concurrent, DAF prudent, futur vous regardant en arrière, journaliste sceptique.
+## Ce que change cette pratique sur 6 mois
+Les dirigeants qui systématisent ces prompts rapportent : (1) des décisions tranchées plus vite (les angles morts identifiés tôt évitent les retours en arrière), (2) moins de projets engagés mais plus aboutis (le pré-mortem filtre 20-30 % des projets — presque toujours ceux qui auraient mal fini).
+
+---
+
+## https://augmenter.pro/blog/rapport-adoption-ia-btp-francilien-2026
+
+dateModified: 2026-05-21
+
+# Rapport 2026 : Adoption de l'IA dans le BTP francilien — état des lieux
+Tableau de maturité par sous-secteur (gros œuvre, second œuvre, artisanat, négoce) croisé avec les usages IA réels en 2026. Compilation à partir de sources publiques (Bpifrance, FFB) et d'observations terrain dans les Yvelines et le Val d'Oise.
+![Rapport 2026 : Adoption de l'IA dans le BTP francilien](https://augmenter.pro/images/blog/rapport-adoption-ia-btp-francilien-2026.webp)
+## Résumé exécutif
+En 2026, l'adoption de l'IA dans le BTP francilien reste hétérogène. Les entreprises de gros œuvre s'en emparent d'abord pour la planification chantier ; le second œuvre et l'artisanat privilégient le devis-facture et la communication client ; le négoce, malgré une donnée clients riche, reste en retrait sur les usages relationnels. Trois usages se détachent comme prioritaires pour les PME de 10 à 50 salariés : automatisation du devis, assistance à la rédaction de comptes-rendus chantier, tri intelligent des appels d'offres.
+## Méthodologie
+Croisement de trois sources : (1) publications publiques disponibles en mai 2026 — études Bpifrance Le Lab, baromètres FFB, données CCI Île-de-France ; (2) revue des outils IA réellement proposés au secteur (Tolteck, ProDevis, solutions BIM + IA) ; (3) observations terrain augmenter.PRO auprès d'une trentaine de PME du BTP 78/95 sur les 12 derniers mois. Niveaux de maturité qualitatifs (faible / émergent / en cours / établi).
+## Tableau de maturité IA — BTP francilien 2026
+| Sous-secteur | Devis & facture | Planning chantier | Comptes-rendus | Relation client | Maturité globale |
+|---|---|---|---|---|---|
+| Gros œuvre | Émergent | En cours | Émergent | Faible | Émergent + |
+| Second œuvre | En cours | Émergent | Émergent | Émergent | Émergent + |
+| Artisanat (<10 sal.) | En cours | Faible | Faible | Émergent | Émergent |
+| Négoce de matériaux | Émergent | Faible | Faible | Émergent | Émergent |
+Source : compilation augmenter.PRO à partir d'observations terrain (PME 78/95, 12 mois) et sources publiques (FFB, Bpifrance Le Lab, CCI Île-de-France).
+## Gros œuvre : la planification chantier en tête
+Les entreprises de gros œuvre francilien (20-80 salariés, parc de chantiers multiples) s'emparent vite des outils d'assistance à la planification. La complexité d'un planning multi-corps d'état rend le ROI immédiat dès qu'un outil aide à anticiper un retard. Limite : adoption concentrée chez les entreprises > 30 salariés ; en dessous, le frein principal est l'absence de référent numérique interne.
+## Second œuvre et artisanat : le devis-facture en porte d'entrée
+Le point de bascule en 2026 est le **devis automatisé**. Tolteck ou ProDevis ont intégré des assistants IA capables de générer une trame de devis à partir d'une description en langage naturel ou d'une photo de plan. Pour un artisan qui produit 5-15 devis par semaine, le gain horaire est tangible. En relation client, les artisans utilisent ChatGPT/Claude pour reformuler des messages aux clients particuliers.
+## Négoce de matériaux : la relation client B2B sous-exploitée
+Sous-secteur le plus paradoxal du rapport. Historique de transactions client riche (fréquences d'achat, paniers, saisonnalités par chantier) qui se prête à la personnalisation et la relance commerciale. Or, l'adoption reste limitée à des automatisations basiques. Frein culturel : le négoce raisonne en volume traité, peu en relation clientèle structurée.
+## Trois usages prioritaires en 2026 pour une PME BTP 10-50 salariés
+1. **Automatisation de la production de devis** — outil métier (Tolteck, ProDevis, Codial) ou ChatGPT + tableur. Gain typique : 30 à 50 % du temps de rédaction.
+2. **Assistance à la rédaction de comptes-rendus chantier** — note vocale en fin de journée → CR structuré en 5 minutes au lieu de 30. Cible : conducteurs de travaux et chefs d'équipe.
+3. **Tri intelligent des appels d'offres** — pour les PME qui répondent régulièrement à des marchés publics ou consultations privées. Assistant qui résume le CCTP et pré-évalue la pertinence : 1 à 2 jours de qualification gagnés par semaine.
+Trois caractéristiques communes : gain de temps immédiat, pas de refonte SI, lançables en moins de 30 jours sans accompagnement lourd.
+## Conclusion
+Le BTP francilien n'est ni en avance ni en retard sur l'adoption de l'IA en 2026 : il est dans la phase où les cas d'usage utiles se distinguent des effets de mode. Les entreprises qui prennent un temps d'avance ne sont pas celles qui investissent dans des outils complexes, mais celles qui adressent un irritant opérationnel précis avec un outil simple. La fenêtre d'apprentissage reste ouverte sur 2026 et 2027.
+
+---
+
 ## https://augmenter.pro/blog/configurer-odoo-ia-claude-cowork
 
 dateModified: 2026-03-29
@@ -1051,7 +1158,7 @@ Odoo.sh est la plateforme cloud d'Odoo avec accès au code. Vous pouvez installe
 
 **Fait notable** : en février 2026, Fabien Pinckaers (CEO d'Odoo) a annoncé l'arrivée du _vibe coding_ natif dans Odoo.sh — la possibilité de générer des modules en langage naturel directement depuis la plateforme.
 ### Odoo Community (Open Source) : liberté totale, complexité incluse
-La version gratuite, open source (LGPL-v3). Vous hébergez vous-même, vous avez accès à tout le code, mais vous perdez des modules clés : Studio, Helpdesk, Marketing Automation, Qualité, Maintenance, et le support officiel.
+La version libre, open source (LGPL-v3). Vous hébergez vous-même, vous avez accès à tout le code, mais vous perdez des modules clés : Studio, Helpdesk, Marketing Automation, Qualité, Maintenance, et le support officiel.
   * **Prix** : 0 € de licence, mais coûts d'hébergement et maintenance à votre charge
   * **Avantage** : aucun coût de licence, liberté totale
   * **Limite** : pas de Studio, pas de support, modules Enterprise absents, mises à jour manuelles
@@ -1060,7 +1167,7 @@ La version gratuite, open source (LGPL-v3). Vous hébergez vous-même, vous avez
 ### Quel mode choisir ? Tableau comparatif
 Critère | SaaS (Online) | Odoo.sh | Community  
 ---|---|---|---  
-Licence | Enterprise | Enterprise | LGPL (gratuit)  
+Licence | Enterprise | Enterprise | LGPL (libre)
 Modules custom | Non | Oui | Oui  
 Studio | Plan Custom uniquement | Oui | Non  
 Maintenance | Automatique | Assistée | Manuelle  
@@ -1179,7 +1286,7 @@ Vous utilisez Odoo et vous voulez tester cette approche ? Voici une checklist ac
   5. **Montez en complexité** : restructuration de données, workflows multi-étapes, rapports personnalisés
 
 **Limite importante** : cette approche fonctionne très bien pour le **paramétrage et la configuration** (80 % des besoins). Pour le développement Python custom (modules sur mesure, intégrations API complexes), vous aurez toujours besoin d'un développeur — mais même là, l'IA accélère considérablement le travail. Sur Odoo.sh, le vibe coding permet déjà de générer des modules entiers en langage naturel.
-Et si vous voulez un accompagnement pour démarrer, c'est exactement ce que nous faisons. Notre [Audit 180° gratuit](https://augmenter.pro/contact) vous permet d'évaluer en 60 minutes ce que l'IA peut apporter à votre utilisation d'Odoo — et combien vous pouvez économiser par rapport à votre prestataire actuel.
+Et si vous voulez un accompagnement pour démarrer, c'est exactement ce que nous faisons. Notre [Audit 180° offert](https://augmenter.pro/contact) vous permet d'évaluer en 60 minutes ce que l'IA peut apporter à votre utilisation d'Odoo — et combien vous pouvez économiser par rapport à votre prestataire actuel.
 Pour en savoir plus sur la connexion entre IA et outils métier, consultez aussi nos articles sur le [protocole MCP pour connecter l'IA à vos outils](https://augmenter.pro/blog/serveur-mcp-guide-pratique-pme) et l'[intégration d'agents IA à votre CRM/ERP](https://augmenter.pro/blog/serveur-mcp-integration-crm-erp).
 ## Quel est votre prochain niveau ?
 Commencez par un diagnostic de 60 minutes. Zéro engagement, zéro jargon technique — juste des solutions concrètes.

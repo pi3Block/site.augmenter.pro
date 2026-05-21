@@ -29,7 +29,7 @@ const disciplines: Discipline[] = [
     quote: "« L'IA ne sert pas qu'à générer des images de chats. »",
     features: [
       "Automatisation de tâches répétitives",
-      "Assistants métier, agents internes",
+      "Claude Code & assistants métier",
       "Intégration MCP & API",
     ],
     palette: "violet",
@@ -42,7 +42,7 @@ const disciplines: Discipline[] = [
     quote: "« Changer d'outil, c'est un projet humain avant d'être technique. »",
     features: [
       "Audit informatique 180°",
-      "Choix & intégration d'outils",
+      "Paramétrage Odoo & outils métier",
       "Formation des équipes",
     ],
     palette: "duo",

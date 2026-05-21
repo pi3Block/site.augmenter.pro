@@ -14,7 +14,7 @@ export function H01Cover() {
   return (
     <Chapter id="h-01" num="01" title="Cover" mood="dawn" theme="light">
       <div data-anim="up">
-        <Pill>Consultant IA &amp; digital · PME française</Pill>
+        <Pill>Consultant IA pour dirigeants PME · Claude Code, Odoo, audit IT</Pill>
       </div>
       <div ref={ledeRef}>
         <Lede>
@@ -29,9 +29,10 @@ export function H01Cover() {
         data-anim="up"
         className="max-w-[58ch] text-[clamp(17px,1.5vw,22px)] leading-relaxed text-(--fg-muted)"
       >
-        Nous accompagnons les PME et indépendants à trouver l&apos;équilibre
-        parfait entre performance humaine et numérique. IA, digitalisation,
-        robotique — des solutions sur mesure qui tiennent la route.
+        Nous accompagnons les dirigeants PME qui veulent comprendre Claude
+        Code, Odoo et l&apos;IA — sans jargon, sans intégrateur opaque.
+        Présentiel Yvelines (78) et Val-d&apos;Oise (95), visio partout en
+        France.
       </p>
       <div
         data-anim="up"
@@ -54,7 +55,7 @@ export function H01Cover() {
           >
             Pierre Legrand
           </Link>{" "}
-          · Consultant indépendant
+          · Consultant IA pour dirigeants PME
         </span>
       </div>
     </Chapter>

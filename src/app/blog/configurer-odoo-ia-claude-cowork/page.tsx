@@ -151,7 +151,7 @@ export default function ConfigurerOdooIAClaude() {
 
       <h3>Odoo Community (Open Source) : libert&eacute; totale, complexit&eacute; incluse</h3>
       <p>
-        La version gratuite, open source (LGPL-v3). Vous h&eacute;bergez vous-m&ecirc;me,
+        La version libre, open source (LGPL-v3). Vous h&eacute;bergez vous-m&ecirc;me,
         vous avez acc&egrave;s &agrave; tout le code, mais vous perdez des modules cl&eacute;s :
         Studio, Helpdesk, Marketing Automation, Qualit&eacute;, Maintenance, et le
         support officiel.
@@ -179,7 +179,7 @@ export default function ConfigurerOdooIAClaude() {
               <td className="py-2 pr-4 font-medium">Licence</td>
               <td className="py-2 pr-4">Enterprise</td>
               <td className="py-2 pr-4">Enterprise</td>
-              <td className="py-2">LGPL (gratuit)</td>
+              <td className="py-2">LGPL (libre)</td>
             </tr>
             <tr className="border-b">
               <td className="py-2 pr-4 font-medium">Modules custom</td>
@@ -570,7 +570,7 @@ export default function ConfigurerOdooIAClaude() {
       <p>
         Et si vous voulez un accompagnement pour d&eacute;marrer, c&apos;est exactement ce
         que nous faisons. Notre{" "}
-        <Link href="/contact">Audit 180&deg; gratuit</Link> vous
+        <Link href="/contact">Audit 180&deg; offert</Link> vous
         permet d&apos;&eacute;valuer en 60 minutes ce que l&apos;IA peut apporter &agrave; votre utilisation
         d&apos;Odoo &mdash; et combien vous pouvez &eacute;conomiser par rapport &agrave; votre prestataire actuel.
       </p>
