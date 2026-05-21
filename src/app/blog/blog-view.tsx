@@ -201,31 +201,6 @@ export function BlogView() {
                 niveau supérieur. <strong className="font-semibold text-foreground">IA, commercial, audit, cybersécurité</strong> —
                 sans jargon, terrain.
               </motion.p>
-              <div
-                className="mt-5 flex flex-wrap gap-2"
-                role="tablist"
-                aria-label="Filtres par catégorie"
-              >
-                {FILTERS.map((label) => {
-                  const isActive = activeFilter === label;
-                  return (
-                    <button
-                      key={label}
-                      type="button"
-                      role="tab"
-                      aria-selected={isActive}
-                      onClick={() => setActiveFilter(label)}
-                      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
-                        isActive
-                          ? "border border-foreground bg-foreground text-background"
-                          : "border border-border bg-background text-muted-foreground hover:border-foreground/40 hover:text-foreground"
-                      }`}
-                    >
-                      {label}
-                    </button>
-                  );
-                })}
-              </div>
             </BentoCard>
 
             {/* Stat articles */}
@@ -252,10 +227,31 @@ export function BlogView() {
             eyebrow="/ tous les articles"
             title="Tous les contenus, du plus récent au plus ancien."
             controls={
-              <Pill tone="primary" size="md">
-                <Sparkles className="h-3 w-3" />
-                Mis à jour aujourd&apos;hui
-              </Pill>
+              <div
+                className="flex flex-wrap gap-2"
+                role="tablist"
+                aria-label="Filtres par catégorie"
+              >
+                {FILTERS.map((label) => {
+                  const isActive = activeFilter === label;
+                  return (
+                    <button
+                      key={label}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => setActiveFilter(label)}
+                      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+                        isActive
+                          ? "border border-foreground bg-foreground text-background"
+                          : "border border-border bg-background text-muted-foreground hover:border-foreground/40 hover:text-foreground"
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
             }
           />
 
