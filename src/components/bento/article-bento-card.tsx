@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Pill } from "./bento-grid";
+import { ShaderBackdrop } from "@/components/widgets/shader-backdrop";
 
 export interface ArticleBentoData {
   slug: string;
@@ -55,6 +56,16 @@ export function ArticleBentoCard({
           sizes={featured ? "(max-width:768px) 100vw, 33vw" : "(max-width:768px) 100vw, 25vw"}
           className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />
+        {/* Painterly Three.js overlay — mix-blend-soft-light keeps the image
+            recognisable, just tints it with the violet/amber narrative palette.
+            Featured cards only (perf : 1 canvas, not 15). */}
+        {featured && (
+          <ShaderBackdrop
+            mood="violet"
+            opacity={0.45}
+            className="mix-blend-soft-light"
+          />
+        )}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -64,7 +75,7 @@ export function ArticleBentoCard({
           }}
         />
         {featured && (
-          <div className="absolute left-3 top-3">
+          <div className="absolute left-3 top-3 z-10">
             <Pill tone="solid" size="sm">
               À la une
             </Pill>
