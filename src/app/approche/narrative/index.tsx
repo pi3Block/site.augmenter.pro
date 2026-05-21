@@ -10,11 +10,12 @@ import { useMoodObserver } from "./mood-observer";
 import { Ch01Preambule } from "./chapters/ch01-preambule";
 import { Ch02Terrain } from "./chapters/ch02-terrain";
 import { Ch03Piliers } from "./chapters/ch03-piliers";
-import { Ch04Methode } from "./chapters/ch04-methode";
-import { Ch05Preuves } from "./chapters/ch05-preuves";
-import { Ch06Audits } from "./chapters/ch06-audits";
-import { Ch07Questions } from "./chapters/ch07-questions";
-import { Ch08Suite } from "./chapters/ch08-suite";
+import { Ch04Interlude } from "./chapters/ch04-interlude";
+import { Ch05Methode } from "./chapters/ch05-methode";
+import { Ch06Preuves } from "./chapters/ch06-preuves";
+import { Ch07Audits } from "./chapters/ch07-audits";
+import { Ch08Questions } from "./chapters/ch08-questions";
+import { Ch09Suite } from "./chapters/ch09-suite";
 
 export function ApprocheNarrative() {
   useMoodObserver();
@@ -29,11 +30,12 @@ export function ApprocheNarrative() {
         <Ch01Preambule />
         <Ch02Terrain />
         <Ch03Piliers />
-        <Ch04Methode />
-        <Ch05Preuves />
-        <Ch06Audits />
-        <Ch07Questions />
-        <Ch08Suite />
+        <Ch04Interlude />
+        <Ch05Methode />
+        <Ch06Preuves />
+        <Ch07Audits />
+        <Ch08Questions />
+        <Ch09Suite />
       </main>
     </SmoothScrollProvider>
   );

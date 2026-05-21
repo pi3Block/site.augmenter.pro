@@ -132,12 +132,12 @@ function AuditCard({ offer }: { offer: AuditOffer }) {
   );
 }
 
-export function Ch06Audits() {
+export function Ch07Audits() {
   const ledeRef = useRef<HTMLDivElement>(null);
   useWordSplitter(ledeRef);
 
   return (
-    <Chapter id="ch-06" num="06" title="Les audits" mood="audits" theme="dark">
+    <Chapter id="ch-07" num="07" title="Les audits" mood="audits" theme="dark">
       <span id="prestations" className="absolute -top-20 block" aria-hidden />
       <div data-anim="up">
         <Pill variant="glass">Par où commencer ?</Pill>

@@ -52,12 +52,12 @@ const stats: Array<{ data: TrustStatData; palette: Palette }> = [
   },
 ];
 
-export function Ch05Preuves() {
+export function Ch06Preuves() {
   const ledeRef = useRef<HTMLDivElement>(null);
   useWordSplitter(ledeRef);
 
   return (
-    <Chapter id="ch-05" num="05" title="Les preuves" mood="night" theme="dark">
+    <Chapter id="ch-06" num="06" title="Les preuves" mood="night" theme="dark">
       <div data-anim="up">
         <Pill variant="glass">Chiffres de terrain · 2026</Pill>
       </div>

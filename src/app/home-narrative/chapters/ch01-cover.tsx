@@ -25,11 +25,11 @@ export function H01Cover() {
       </div>
       <p
         data-anim="up"
-        className="max-w-[56ch] text-[clamp(17px,1.5vw,22px)] leading-relaxed text-(--fg-muted)"
+        className="max-w-[58ch] text-[clamp(17px,1.5vw,22px)] leading-relaxed text-(--fg-muted)"
       >
-        Pierre Legrand vous aide à transformer l&apos;IA et le numérique en
-        leviers de croissance concrets. Sans gourou, sans jargon — juste des
-        outils qui marchent et des équipes qui les utilisent vraiment.
+        Nous accompagnons les PME et indépendants à trouver l&apos;équilibre
+        parfait entre performance humaine et numérique. IA, digitalisation,
+        robotique — des solutions sur mesure qui tiennent la route.
       </p>
       <div
         data-anim="up"

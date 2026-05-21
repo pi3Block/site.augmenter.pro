@@ -9,11 +9,10 @@ import { ProgressBar } from "../approche/narrative/progress-bar";
 import { useMoodObserver } from "../approche/narrative/mood-observer";
 import { HOME_CHAPTERS } from "./home-moods";
 import { H01Cover } from "./chapters/ch01-cover";
-import { H02Constat } from "./chapters/ch02-constat";
-import { H03Disciplines } from "./chapters/ch03-disciplines";
-import { H04Preuves } from "./chapters/ch04-preuves";
-import { H05Recit } from "./chapters/ch05-recit";
-import { H06Suite } from "./chapters/ch06-suite";
+import { H02Disciplines } from "./chapters/ch02-disciplines";
+import { H03Preuves } from "./chapters/ch03-preuves";
+import { H04Recit } from "./chapters/ch04-recit";
+import { H05Suite } from "./chapters/ch05-suite";
 
 export function HomeNarrative() {
   useMoodObserver(HOME_CHAPTERS);
@@ -26,11 +25,10 @@ export function HomeNarrative() {
       <ProgressBar chapters={HOME_CHAPTERS} />
       <main className="relative z-10">
         <H01Cover />
-        <H02Constat />
-        <H03Disciplines />
-        <H04Preuves />
-        <H05Recit />
-        <H06Suite />
+        <H02Disciplines />
+        <H03Preuves />
+        <H04Recit />
+        <H05Suite />
       </main>
     </SmoothScrollProvider>
   );

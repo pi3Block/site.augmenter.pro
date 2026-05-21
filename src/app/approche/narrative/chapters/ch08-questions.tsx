@@ -13,12 +13,12 @@ import { Lede } from "../primitives/lede";
 import { useWordSplitter } from "../primitives/word-splitter";
 import { FAQ_ITEMS } from "../data";
 
-export function Ch07Questions() {
+export function Ch08Questions() {
   const ledeRef = useRef<HTMLDivElement>(null);
   useWordSplitter(ledeRef);
 
   return (
-    <Chapter id="ch-07" num="07" title="Les questions" mood="questions" theme="light">
+    <Chapter id="ch-08" num="08" title="Les questions" mood="questions" theme="light">
       <div data-anim="up">
         <Pill>Avant de réserver</Pill>
       </div>

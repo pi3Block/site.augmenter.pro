@@ -100,22 +100,20 @@ function StepCard({ step }: { step: Step }) {
   );
 }
 
-export function Ch04Methode() {
+export function Ch05Methode() {
   const ledeRef = useRef<HTMLDivElement>(null);
   useWordSplitter(ledeRef);
 
   return (
-    <Chapter id="ch-04" num="04" title="La méthode" mood="amber" theme="light">
+    <Chapter id="ch-05" num="05" title="La méthode" mood="amber" theme="light">
       <div data-anim="up">
         <Pill variant="amber">Notre approche · 4 étapes</Pill>
       </div>
       <div ref={ledeRef}>
         <Lede>
-          La performance naît de
+          On commence par <em>écouter</em>.
           <br />
-          l&apos;<em>équilibre</em> entre l&apos;humain,
-          <br />
-          ses outils, ses <u>habitudes</u>.
+          Le reste <u>suit</u>.
         </Lede>
       </div>
       <p
@@ -123,7 +121,8 @@ export function Ch04Methode() {
         className="max-w-[56ch] text-[clamp(17px,1.5vw,22px)] leading-relaxed text-(--fg-muted)"
       >
         On part toujours du même endroit : votre métier, ce qui marche, ce qui
-        coince. Le reste suit dans cet ordre.
+        coince. Quatre étapes pour transformer ce diagnostic en outils qui
+        servent vraiment.
       </p>
       <div
         data-anim="stagger"

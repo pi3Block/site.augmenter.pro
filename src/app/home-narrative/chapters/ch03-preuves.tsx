@@ -116,12 +116,12 @@ function TestimonialXL() {
   );
 }
 
-export function H04Preuves() {
+export function H03Preuves() {
   const ledeRef = useRef<HTMLDivElement>(null);
   useWordSplitter(ledeRef);
 
   return (
-    <Chapter id="h-04" num="04" title="Les preuves" mood="night" theme="dark">
+    <Chapter id="h-03" num="03" title="Les preuves" mood="night" theme="dark">
       <div data-anim="up">
         <Pill variant="glass">Chiffres + voix de terrain · 2026</Pill>
       </div>
