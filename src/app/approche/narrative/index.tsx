@@ -1,14 +1,12 @@
 "use client";
 
-// Orchestrateur narrative — assemble background, chrome fixe, et les 8 chapitres.
-// Le mood observer (RAF qui pilote le store) est implémenté en PR 3.
-
 import { BackgroundCanvas } from "./background-canvas";
 import { SmoothScrollProvider } from "./smooth-scroll-provider";
 import { CustomCursor } from "./custom-cursor";
 import { NavFixed } from "./nav-fixed";
 import { ChapterRail } from "./chapter-rail";
 import { ProgressBar } from "./progress-bar";
+import { useMoodObserver } from "./mood-observer";
 import { Ch01Preambule } from "./chapters/ch01-preambule";
 import { Ch02Terrain } from "./chapters/ch02-terrain";
 import { Ch03Piliers } from "./chapters/ch03-piliers";
@@ -19,6 +17,7 @@ import { Ch07Questions } from "./chapters/ch07-questions";
 import { Ch08Suite } from "./chapters/ch08-suite";
 
 export function ApprocheNarrative() {
+  useMoodObserver();
   return (
     <SmoothScrollProvider>
       <BackgroundCanvas />
