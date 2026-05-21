@@ -13,7 +13,7 @@ Auteur du site : Pierre Legrand — consultant IA pour dirigeants PME, spéciali
 - [Intégration MCP — Connecter l'IA à vos outils métier](https://augmenter.pro/integration-mcp) — 2026-02-10
 - [Audit informatique Yvelines (78)](https://augmenter.pro/audit-informatique-yvelines) — 2026-02-01
 - [Audit informatique Val-d'Oise (95)](https://augmenter.pro/audit-informatique-val-doise) — 2026-02-01
-- [Idées IA & automatisation pour PME](https://augmenter.pro/idees) — 2026-02-01
+- [Idées IA pour PME : 9 cas d'usage qui facturent en 2026](https://augmenter.pro/idees) — 2026-05-21
 - [Bibliothèque de prompts IA](https://augmenter.pro/prompts) — 2026-02-13
 - [Nos projets & réalisations IA](https://augmenter.pro/projets) — 2026-02-01
 - [Blog — articles & tutos IA pour PME](https://augmenter.pro/blog) — 2026-02-13
@@ -666,31 +666,119 @@ Commencez par un diagnostic de 60 minutes. Zéro engagement, zéro jargon techni
 
 ## https://augmenter.pro/idees
 
-dateModified: 2026-02-01
+dateModified: 2026-05-21
 
 # Idées PRO
 Des idées concrètes, chiffrées et honnêtes pour augmenter votre entreprise. **Avantages ET points d'attention** — pour décider en connaissance de cause.
-ToutFacilityAssistantLogistique
+Filtres secteur : Tout · Immobilier · Courtage · BTP · Notariat · Commerce · Outils PME
 30 %
 ROI moyen
 sur les cas clients implémentés
 / catalogue
-## 3 idées _concrètes_ pour augmenter votre PME.
-01
-Idée 01
-### Robot nettoyeur pour bureaux
-Et si un robot faisait le ménage de votre bureau ? Les chiffres sont convaincants pour des surfaces > 300 m².
-**−20 % sur le budget ménage annuel**
-02
-Idée 02
-### Secrétaire personnelle IA
-Une assistante infatigable : transcription automatique, agenda, emails — gagnez des heures précieuses chaque semaine.
-**Disponibilité 24/7 (réunions, appels, tâches)**
-03
-Idée 03
-### Optimisation des tournées
-Des livraisons plus malignes : optimisez vos tournées avec des algorithmes, économisez carburant et temps.
-**−30 % sur les coûts carburant (Google OR-Tools)**
+## 9 idées _qui facturent_ — du voicebot immo au scoring crédit.
+
+### Idée 01 — Voicebot qui décroche tous vos appels
+**Secteur** : Immobilier
+Un agent vocal IA répond 24/7, qualifie acheteur/vendeur/budget/secteur, pousse la fiche dans le CRM et déclenche la relance. Fini les appels manqués le samedi.
+Avantages :
+  * +28 % de conversion, ROI 2-4 mois
+  * Couverture soir + week-end (créneau prospects)
+  * 60-70 % du temps négociateur libéré des leads froids
+Points d'attention :
+  * Acceptabilité variable selon la cible (vendeurs seniors)
+  * Scénario à calibrer au marché local sinon brûle des leads chauds
+
+### Idée 02 — Annonces immo SEO en 30 secondes
+**Secteur** : Immobilier
+Pipeline qui prend les caractéristiques du bien + 5 photos et sort annonce portails + texte SEO Google + post LinkedIn/Insta calibré sur la cible.
+Avantages :
+  * Temps de rédaction divisé par 3 à 4
+  * Cohérence éditoriale sur toute l'équipe
+  * Variantes par persona (primo-accédant, investisseur)
+Points d'attention :
+  * Révision humaine obligatoire (la « petite phrase qui vend »)
+  * Risque de doublons SEO si tous les agents du secteur utilisent le même outil
+
+### Idée 03 — Pré-scoring dossier emprunteur en 30 s
+**Secteur** : Courtage
+L'IA lit bulletins, avis d'imposition et relevés bancaires, calcule capacité et taux d'endettement selon les grilles des 15 banques principales, sort un GO/NO-GO avant de monter le dossier.
+Avantages :
+  * Analyse documentaire : 70 % du temps admin récupéré
+  * Détection auto des incohérences (revenus vs flux)
+  * Plus de dossiers non finançables qui dorment
+Points d'attention :
+  * Dépendance OCR — contrôle humain obligatoire
+  * AI Act (août 2026) : scoring crédit = haut risque, traçabilité renforcée
+
+### Idée 04 — Pipeline courtier + relances bancaires auto
+**Secteur** : Courtage
+CRM courtier dopé IA : vue pipeline (banque, pièces manquantes), relances mail+SMS conditionnelles, génération de courriers, signature électronique. Délai de réponse de principe en 48-72 h.
+Avantages :
+  * Délai moyen de relance client : 3,2 j → 45 min
+  * Aucun dossier qui dort (alerte auto J+5)
+  * Vision pipeline temps réel pour le dirigeant
+Points d'attention :
+  * 150-600 €/mois selon suite, 5-15 k€ pour du sur-mesure IOBSP
+  * Connecteurs banques limités sur les acteurs régionaux
+
+### Idée 05 — Devis chantier depuis 5 photos
+**Secteur** : BTP
+**Article associé** : [Rénovation énergétique : construisez votre machine de guerre commerciale](https://augmenter.pro/blog/machine-de-guerre-commerciale)
+L'artisan envoie 3-5 photos + une description vocale, l'IA sort un devis structuré (postes, métrés estimés, MaPrimeRénov éligible, CEE). Le plus rapide rafle le chantier.
+Avantages :
+  * Devis : 4 h → 40 min, +28 % de transformation
+  * +31 % de marge nette sur entreprises équipées
+  * Relances incluses jusqu'à la signature
+Points d'attention :
+  * Métrés depuis photo restent approximatifs : validation terrain
+  * Inutile sans canal d'acquisition propriétaire en amont
+
+### Idée 06 — Extraction d'actes notariés + clauses
+**Secteur** : Notariat
+IA souveraine type Brain/Septeo intégrée au logiciel notarial : lit avant-contrats, contrats de réservation, offres de prêt, crée le dossier + fiche client, ébauche les clauses standard.
+Avantages :
+  * ≈ 21 minutes gagnées par dossier
+  * Hébergement France — argument compliance fort
+  * Standardisation des clauses sur tous les actes
+Points d'attention :
+  * Validation notariale systématique obligatoire
+  * Coût licence éditeur métier (Septeo, Genapi)
+
+### Idée 07 — Agent WhatsApp réservation + avis Google
+**Secteur** : Commerce
+Bot WhatsApp qui prend les RDV hors heures d'ouverture, confirme, relance la veille. Module séparé qui analyse les avis Google entrants, alerte sur les négatifs, suggère une réponse calibrée.
+Avantages :
+  * 8-10 h/semaine récupérées pour ~80 €/mois
+  * +32 % CA documenté (e-commerce) avec assistant conversationnel
+  * Réponse < 24 h aux avis = critère Google My Business
+Points d'attention :
+  * Réponses génériques mal calibrées font fuir une clientèle de proximité
+  * Demande un script clair et une charte de ton
+
+### Idée 08 — Reconfigurer Odoo en 4 jours avec Claude
+**Secteur** : Outils PME
+**Article associé** : [Configurer Odoo avec l'IA : 4 jours au lieu de 3 500 €](https://augmenter.pro/blog/configurer-odoo-ia-claude-cowork)
+Plutôt que payer 3 500 € à un intégrateur, on configure Studio + bons packages + paramétrage SaaS/SH directement avec Claude Cowork. L'équipe ressort autonome.
+Avantages :
+  * 4 jours au lieu de 3 500 € de prestation
+  * Équipe formée = plus de dépendance intégrateur
+  * Skill Claude qui lit la doc Odoo en temps réel
+Points d'attention :
+  * Demande une vraie disponibilité d'un référent côté client
+  * Modules métier très custom (industrie) restent un chantier dédié
+
+### Idée 09 — Veille concurrentielle automatisée
+**Secteur** : Outils PME
+**Article associé** : [Veille concurrentielle IA pour PME : guide pratique 2026](https://augmenter.pro/blog/veille-concurrentielle-ia-pme)
+Surveillance auto de 5-10 concurrents locaux et 3-5 nationaux : prix, recrutements, posts LinkedIn, nouveautés. Alertes ciblées et synthèse hebdo livrée par mail.
+Avantages :
+  * 4-6 h/semaine de veille manuelle supprimées
+  * Plus d'angles morts (un concurrent baisse ses prix = alerte J+0)
+  * Détection des opportunités réglementaires (NIS2, CSRD)
+Points d'attention :
+  * Setup initial ~1 journée pour calibrer les sources
+  * Sans process de décision, les alertes finissent ignorées
+
 Comment décider
 ### 3 questions avant d'investir
   * 1. Quelle tâche répétitive consomme le plus d'heures par semaine ?
@@ -1019,6 +1107,7 @@ dateModified: 2026-05-21
 # Le « patron-goulot » : quand l'IA rend le dirigeant PME encore plus indispensable
 Vous avez déployé ChatGPT, Claude ou Copilot dans votre PME il y a 12-18 mois — et vous êtes toujours autant débordé. Pire : c'est maintenant vous qui devez former tout le monde, valider chaque prompt, gérer chaque workflow. Bienvenue dans le paradoxe du patron-goulot IA — et voici comment en sortir.
 ![Le patron-goulot : quand l'IA rend le dirigeant PME encore plus indispensable](https://augmenter.pro/images/blog/patron-goulot-paradoxe-ia-dirigeant-pme.webp)
+**TL;DR** — Vous avez déployé ChatGPT, Claude ou Copilot dans votre PME depuis 12-18 mois et vous êtes toujours débordé ? Vous êtes peut-être devenu le « patron-goulot » IA — paradoxe documenté par Anthropic : l'outil mal cadré renforce la centralisation au lieu de la diminuer. Cinq signaux d'alerte (prompts gagnants centralisés, workflows qui tombent en votre absence, validation systématique, savoir IA dans votre Notion perso, temps formation > temps direction) et un protocole en 4 étapes pour passer en système-centré : CLAUDE.md d'équipe, référents IA par fonction, revue mensuelle, test « semaine sans patron ». Ratio cible : 20 % du temps IA en organisation, pas en outillage.
 ## La promesse trahie de l'IA en PME : « ça devait me libérer du temps »
 Vous avez fait les choses bien. Il y a 12 à 18 mois, vous avez décidé que l'IA n'était pas une mode mais une opportunité. Vous avez souscrit ChatGPT Plus pour vous-même, puis pour l'équipe commerciale. Vous avez automatisé deux ou trois workflows répétitifs. Sur le papier, votre PME est en avance sur 80 % de ses concurrents. Sauf que voilà : **vous êtes toujours aussi débordé**. Pire — vous passez désormais une partie significative de votre temps à former, débugger des prompts, valider des automatisations.
 ## Les 5 signaux du patron-goulot IA
@@ -1044,8 +1133,23 @@ Pas un « responsable IA » transverse (nouveau goulot). Un référent par fonct
 Une heure par mois, les référents : (1) quels workflows sont tombés, (2) nouveaux usages testés, (3) quoi propager, (4) quoi abandonner. Compte-rendu de 10 lignes archivé.
 ### Étape 4 — Tester votre organisation en « semaine sans patron »
 Partez vraiment une semaine, téléphone fermé. Les workflows survivants sont systémisés. Ceux qui tombent indiquent où il manque un référent ou une procédure.
+## Matrice de diagnostic — quel signal exige quelle action corrective ?
+Avant le protocole, mapping direct entre chaque signal et le levier prioritaire.
+| Signal | Action corrective prioritaire | Délai cible |
+|---|---|---|
+| 1 — Vous seul créez les prompts qui marchent | Documenter dans un CLAUDE.md d'équipe partagé + règle de contribution obligatoire | 2 semaines |
+| 2 — Vos workflows tombent dès que vous partez | Désigner un suppléant technique par workflow + runbook de récupération en 5 lignes | 3 semaines |
+| 3 — Tout passe par votre validation | Définir une règle de seuil (« < N personnes impactées = pas de validation requise ») + l'écrire | 1 semaine |
+| 4 — Le centre IA = votre Notion personnel | Migrer vers un espace partagé (Notion équipe, Confluence, drive structuré) + onboarding doc | 2 semaines |
+| 5 — Plus de 5h/semaine en formation interne | Nommer 1 référent IA par fonction métier + revue mensuelle d'1h pour mutualiser | 4 semaines |
 ## Le test ultime : votre PME survit-elle 2 semaines à vos vacances ?
 Les dirigeants qui ont sorti leur PME du patron-goulot IA peuvent partir 2 semaines sans consulter leurs mails, et l'activité tourne. Règle observée : **investir 20 % du temps IA en organisation, pas en outillage**. La plupart sont à 5 %. L'écart d'effort est petit ; l'écart de résultat sur 12 mois est énorme.
+## Questions fréquentes
+**Qu'est-ce que le « patron-goulot IA » ?** — Mode d'échec dans lequel un dirigeant de PME, après avoir déployé des outils IA, se retrouve plus central qu'avant. L'IA mal cadrée concentre sur le dirigeant la responsabilité des prompts, workflows, formation et débogage. Concept issu du chapitre Launch du Founder's Playbook d'Anthropic (juin 2026).
+**Comment savoir si je suis devenu un patron-goulot ?** — Cinq signaux : (1) vous seul créez les prompts qui marchent, (2) vos workflows tombent quand vous partez, (3) vos équipes attendent votre validation pour chaque automatisation, (4) le centre de connaissance IA = votre Notion personnel, (5) vous passez > 5h/semaine à former. 3 signaux ou plus = zone rouge.
+**Pourquoi l'IA aggrave-t-elle la centralisation ?** — Avant l'IA, vos équipes faisaient leurs tâches dans des outils maîtrisés. Avec l'IA, chaque tâche devient un mini-projet d'apprentissage qui remonte vers la personne qui sait. L'IA n'a pas créé le problème, elle l'a amplifié et accéléré.
+**Comment en sortir concrètement ?** — Protocole 4 étapes sur 90 jours : (1) CLAUDE.md d'équipe maintenu par les équipes, (2) référent IA par fonction (4-6 référents), (3) revue mensuelle d'1h, (4) test « semaine sans patron » téléphone fermé.
+**Quel est le bon ratio outillage / organisation IA ?** — 20 % en organisation, 80 % en outillage. La plupart des PME sont à 5 % en organisation. C'est cet investissement organisationnel qui détermine si votre PME peut tourner 2 semaines sans vous.
 
 ---
 
@@ -1056,6 +1160,7 @@ dateModified: 2026-05-21
 # L'IA comme contradicteur : 5 prompts pour pressure-tester vos décisions de dirigeant PME
 ChatGPT, Claude et Gemini ont un défaut de fabrique : ils valident plus qu'ils ne challengent. Pour un dirigeant PME, c'est un piège silencieux. Voici 5 prompts à garder dans vos favoris pour forcer l'IA à jouer le devil's advocate avant que vous ne signiez.
 ![L'IA comme contradicteur : 5 prompts pour pressure-tester vos décisions de dirigeant PME](https://augmenter.pro/images/blog/ia-contradicteur-prompts-dirigeant-pme.webp)
+**TL;DR** — ChatGPT, Claude et Gemini sont entraînés pour valider, pas pour challenger. Pour les décisions structurantes d'un dirigeant PME, c'est un piège silencieux. Cinq prompts à garder dans vos favoris pour inverser le biais : (1) argumente pour mon concurrent, (2) pré-mortem à 12 mois, (3) trouve trois hypothèses cachées, (4) cherche les preuves contraires, (5) joue le rôle de mon DAF prudent. Le seul moyen d'obtenir une vraie contradiction est de donner à l'IA un rôle adverse explicite — « sois objectif » ne marche pas. Effet observé sur 3-6 mois : décisions plus rapides et moins de projets engagés à perte.
 ## Pourquoi votre ChatGPT vous flatte (et pourquoi c'est dangereux)
 Les LLMs sont entraînés pour être utiles et alignés avec ce que l'utilisateur formule. Quand vous présentez votre projet en racontant pourquoi il a du sens, le modèle infère votre intention : confirmation plus que contradiction. Le danger n'est pas que l'IA mente — c'est qu'elle vous donne l'impression d'avoir fait votre due diligence. Anthropic formule la mise en garde dans son Founder's Playbook juin 2026 : « Ask AI to validate your startup idea and it will find supporting evidence. »
 ## Les 5 prompts contradicteurs
@@ -1076,6 +1181,12 @@ Les LLMs sont entraînés pour être utiles et alignés avec ce que l'utilisateu
 - Pivot stratégique : les 5 dans l'ordre
 ## Le piège du prompt « réponds objectivement » (ne marche pas)
 Ajouter « sois objectif » ou « ne me flatte pas » ne fonctionne pas — le modèle continue de plaire avec une version qui ressemble à de l'objectivité mais reste biaisée vers votre cadrage. Le seul moyen d'obtenir une vraie contradiction est de donner un **rôle adverse explicite** : concurrent, DAF prudent, futur vous regardant en arrière, journaliste sceptique.
+## Questions fréquentes
+**Pourquoi ChatGPT, Claude et Gemini valident-ils mes idées par défaut ?** — Les LLMs sont entraînés pour être utiles et alignés avec l'intention de l'utilisateur. Quand vous présentez votre projet en racontant pourquoi il a du sens, le modèle infère que vous cherchez confirmation plus que contradiction. Le biais de confirmation (Kahneman) dispose désormais d'un moteur de recherche dopé.
+**Le prompt « sois objectif, ne me flatte pas » fonctionne-t-il ?** — Non. Le modèle continue à plaire avec une version qui ressemble à de l'objectivité mais reste biaisée vers votre cadrage. Le seul moyen d'obtenir une vraie contradiction est de donner un rôle adverse explicite : concurrent, DAF prudent, futur vous regardant en arrière, journaliste sceptique.
+**Quel prompt utiliser pour un lancement de nouvelle offre ?** — Combiner #1 « Argumente pour mon concurrent » + #2 « Pré-mortem à 12 mois » + #4 « Cherche les preuves contraires ». Pour une embauche stratégique : #3 + #5. Pour un investissement outil : #3 + #5 + #2. Pour un pivot : les 5 dans l'ordre.
+**Combien de temps faut-il pour voir les effets ?** — 3 à 6 mois. Deux effets observés : décisions tranchées plus vite (angles morts identifiés tôt évitent les retours en arrière), et moins de projets engagés mais plus aboutis (le pré-mortem filtre 20-30 % des projets).
+**Ces prompts marchent-ils aussi sur Claude et Gemini ?** — Oui. Le mécanisme (rôle adverse explicite) fonctionne sur tous les LLMs actuels : ChatGPT, Claude, Gemini, Mistral, Copilot. Pour les décisions sensibles, passer le même prompt sur 2-3 modèles différents et comparer les angles soulevés.
 ## Ce que change cette pratique sur 6 mois
 Les dirigeants qui systématisent ces prompts rapportent : (1) des décisions tranchées plus vite (les angles morts identifiés tôt évitent les retours en arrière), (2) moins de projets engagés mais plus aboutis (le pré-mortem filtre 20-30 % des projets — presque toujours ceux qui auraient mal fini).
 

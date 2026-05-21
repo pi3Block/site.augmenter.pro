@@ -124,9 +124,9 @@ export function Ch03Piliers() {
       </div>
       <div ref={ledeRef} className="text-white">
         <Lede>
-          L&apos;IA ne sert pas qu&apos;à
+          Quatre axes
           <br />
-          générer des images <em>de chats</em>.
+          dans un seul <em>but</em>.
         </Lede>
       </div>
       <p

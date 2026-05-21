@@ -5,10 +5,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Filter,
   Lightbulb,
   MessageSquare,
   Sparkles,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -346,10 +346,16 @@ export function IdeesView() {
               )
             }
             controls={
-              <Pill tone="dark" size="md">
-                <Filter className="h-3 w-3" />
-                Secteur : {activeSector}
-              </Pill>
+              activeSector !== "Tout" ? (
+                <button
+                  type="button"
+                  onClick={() => setActiveSector("Tout")}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.08] px-3 py-1.5 text-xs font-medium text-white/85 transition-colors hover:border-white/30 hover:bg-white/15 hover:text-white"
+                >
+                  <X className="h-3 w-3" />
+                  Réinitialiser le filtre
+                </button>
+              ) : null
             }
           />
 

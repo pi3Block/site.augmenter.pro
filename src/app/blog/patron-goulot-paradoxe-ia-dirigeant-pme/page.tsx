@@ -8,6 +8,53 @@ export const metadata: Metadata = {
     "Vous avez déployé l'IA partout et vous êtes toujours débordé ? Pire — c'est vous qui formez tout le monde ? 5 signaux du patron-goulot IA et le protocole en 4 étapes pour sortir du piège.",
 };
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Qu'est-ce que le « patron-goulot IA » ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "C'est le mode d'échec dans lequel un dirigeant de PME, après avoir déployé des outils IA (ChatGPT, Claude, Copilot, automatisations n8n/Make), se retrouve plus central qu'avant dans le fonctionnement de l'entreprise. Au lieu de libérer du temps, l'IA mal cadrée concentre sur le dirigeant la responsabilité des prompts, des workflows, de la formation et du débogage. C'est le paradoxe : plus l'outil est puissant, plus la dépendance à celui qui sait s'en servir est forte. Le concept vient du chapitre Launch du Founder's Playbook d'Anthropic (juin 2026).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Comment savoir si je suis devenu un patron-goulot ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Cinq signaux d'alerte : (1) vous êtes le seul à créer les prompts qui marchent vraiment, (2) quand vous partez une semaine vos workflows tombent, (3) vos équipes attendent votre validation pour chaque automatisation, (4) le centre de connaissance IA de la boîte c'est votre Notion personnel, (5) vous passez plus de 5 heures par semaine à former. Si vous cochez 3 signaux ou plus, vous êtes dans la zone rouge et l'urgence n'est pas d'ajouter de l'IA mais de restructurer comment elle est organisée.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Pourquoi l'IA aggrave-t-elle la centralisation au lieu de la résoudre ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Avant l'IA, vos équipes faisaient leurs tâches dans des outils qu'elles maîtrisaient (Excel, Outlook, logiciel métier). Avec l'IA, chaque nouvelle tâche devient un mini-projet d'apprentissage : quel prompt, quel modèle, quelle vérification du résultat. Faute de cadrage, ces mini-projets remontent tous vers la personne qui sait — c'est-à-dire vous. L'IA n'a pas créé le problème de centralisation, elle l'a amplifié et accéléré.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Comment sortir du patron-goulot IA concrètement ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Protocole en 4 étapes sur 90 jours : (1) documenter les prompts gagnants dans un CLAUDE.md d'équipe partagé, maintenu par les équipes pas par vous ; (2) identifier un référent IA par fonction métier (pas un responsable IA transverse qui serait un nouveau goulot) — 4 à 6 référents ; (3) mettre en place une revue mensuelle des workflows IA d'une heure ; (4) tester votre organisation en partant une vraie semaine, téléphone fermé, pour identifier ce qui tombe.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Quel est le bon ratio entre temps passé en outillage IA et temps passé en organisation IA ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Les dirigeants qui réussissent le passage en système-centré investissent environ 20 % de leur temps IA en organisation (documentation, référents, gouvernance, rituels) et 80 % en outillage et usage. La plupart des PME sont à 5 % en organisation et 95 % en outillage. L'écart d'effort est petit mais l'écart de résultat sur 12 mois est énorme : c'est cet investissement organisationnel qui détermine si votre PME peut tourner 2 semaines sans vous, ou pas.",
+      },
+    },
+  ],
+};
+
 export default function Article() {
   return (
     <ArticleLayout
@@ -21,6 +68,28 @@ export default function Article() {
       image="/images/blog/patron-goulot-paradoxe-ia-dirigeant-pme.webp"
       slug="patron-goulot-paradoxe-ia-dirigeant-pme"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
+      <div className="my-6 rounded-lg border border-violet-200 bg-violet-50 p-5 italic dark:border-violet-900/50 dark:bg-violet-950/30">
+        <p className="mb-0 text-sm">
+          <strong className="not-italic">TL;DR —</strong> Vous avez déployé
+          ChatGPT, Claude ou Copilot dans votre PME depuis 12-18 mois et vous
+          êtes toujours débordé ? Vous êtes peut-être devenu le « patron-goulot »
+          IA — paradoxe documenté par Anthropic : l&apos;outil mal cadré
+          renforce la centralisation au lieu de la diminuer. Cinq signaux
+          d&apos;alerte (prompts gagnants centralisés, workflows qui tombent
+          en votre absence, validation systématique, savoir IA dans votre
+          Notion perso, temps formation &gt; temps direction) et un protocole
+          en 4 étapes pour passer en système-centré : CLAUDE.md d&apos;équipe,
+          référents IA par fonction, revue mensuelle, test « semaine sans
+          patron ». Ratio cible : 20 % du temps IA en organisation, pas en
+          outillage.
+        </p>
+      </div>
+
       <h2>La promesse trahie de l&apos;IA en PME : « ça devait me libérer du temps »</h2>
 
       <p>
@@ -177,6 +246,55 @@ export default function Article() {
         est forte. C&apos;est mécanique.
       </p>
 
+      <h2>Matrice de diagnostic — quel signal exige quelle action corrective ?</h2>
+
+      <p>
+        Avant de plonger dans le protocole, voici le mapping direct entre
+        chaque signal et le levier prioritaire à actionner. Si vous cochez 1
+        signal, attaquez la cellule correspondante. Si vous en cochez 3+,
+        c&apos;est le protocole complet (section suivante) qu&apos;il faut
+        dérouler.
+      </p>
+
+      <div className="my-6 overflow-x-auto">
+        <table className="w-full border-collapse text-sm">
+          <thead>
+            <tr className="border-b-2 border-neutral-300 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900">
+              <th className="p-3 text-left font-semibold">Signal</th>
+              <th className="p-3 text-left font-semibold">Action corrective prioritaire</th>
+              <th className="p-3 text-left font-semibold">Délai cible</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b border-neutral-200 dark:border-neutral-800">
+              <td className="p-3 font-medium">1 — Vous seul créez les prompts qui marchent</td>
+              <td className="p-3">Documenter dans un CLAUDE.md d&apos;équipe partagé + règle de contribution obligatoire</td>
+              <td className="p-3">2 semaines</td>
+            </tr>
+            <tr className="border-b border-neutral-200 dark:border-neutral-800">
+              <td className="p-3 font-medium">2 — Vos workflows tombent dès que vous partez</td>
+              <td className="p-3">Désigner un suppléant technique par workflow + runbook de récupération en 5 lignes</td>
+              <td className="p-3">3 semaines</td>
+            </tr>
+            <tr className="border-b border-neutral-200 dark:border-neutral-800">
+              <td className="p-3 font-medium">3 — Tout passe par votre validation</td>
+              <td className="p-3">Définir une règle de seuil (« &lt; N personnes impactées = pas de validation requise ») + l&apos;écrire</td>
+              <td className="p-3">1 semaine</td>
+            </tr>
+            <tr className="border-b border-neutral-200 dark:border-neutral-800">
+              <td className="p-3 font-medium">4 — Le centre IA = votre Notion personnel</td>
+              <td className="p-3">Migrer vers un espace partagé (Notion équipe, Confluence, drive structuré) + onboarding doc</td>
+              <td className="p-3">2 semaines</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-medium">5 — Plus de 5h/semaine en formation interne</td>
+              <td className="p-3">Nommer 1 référent IA par fonction métier + revue mensuelle d&apos;1h pour mutualiser</td>
+              <td className="p-3">4 semaines</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <h2>Le protocole en 4 étapes pour passer en système-centré</h2>
 
       <p>
@@ -291,6 +409,70 @@ export default function Article() {
         organisation, pas en outillage</strong>. La plupart sont à 5 %.
         L&apos;écart d&apos;effort est petit ; l&apos;écart de résultat,
         sur 12 mois, est énorme.
+      </p>
+
+      <h2>Questions fréquentes</h2>
+
+      <h3>Qu&apos;est-ce que le « patron-goulot IA » ?</h3>
+      <p>
+        C&apos;est le mode d&apos;échec dans lequel un dirigeant de PME, après
+        avoir déployé des outils IA (ChatGPT, Claude, Copilot, automatisations
+        n8n/Make), se retrouve <strong>plus central qu&apos;avant</strong>
+        dans le fonctionnement de l&apos;entreprise. Au lieu de libérer du
+        temps, l&apos;IA mal cadrée concentre sur le dirigeant la
+        responsabilité des prompts, des workflows, de la formation et du
+        débogage. C&apos;est le paradoxe : plus l&apos;outil est puissant,
+        plus la dépendance à celui qui sait s&apos;en servir est forte. Le
+        concept vient du chapitre Launch du <em>Founder&apos;s Playbook</em>{" "}
+        d&apos;Anthropic (juin 2026).
+      </p>
+
+      <h3>Comment savoir si je suis devenu un patron-goulot ?</h3>
+      <p>
+        Cinq signaux d&apos;alerte : (1) vous êtes le seul à créer les prompts
+        qui marchent vraiment, (2) quand vous partez une semaine vos
+        workflows tombent, (3) vos équipes attendent votre validation pour
+        chaque automatisation, (4) le centre de connaissance IA de la boîte
+        c&apos;est votre Notion personnel, (5) vous passez plus de 5 heures
+        par semaine à former. Si vous cochez 3 signaux ou plus, vous êtes
+        dans la zone rouge et l&apos;urgence n&apos;est pas d&apos;ajouter de
+        l&apos;IA mais de restructurer comment elle est organisée.
+      </p>
+
+      <h3>Pourquoi l&apos;IA aggrave-t-elle la centralisation au lieu de la résoudre ?</h3>
+      <p>
+        Avant l&apos;IA, vos équipes faisaient leurs tâches dans des outils
+        qu&apos;elles maîtrisaient (Excel, Outlook, logiciel métier). Avec
+        l&apos;IA, chaque nouvelle tâche devient un mini-projet
+        d&apos;apprentissage : quel prompt, quel modèle, quelle vérification
+        du résultat. Faute de cadrage, ces mini-projets remontent tous vers
+        la personne qui sait — c&apos;est-à-dire vous. L&apos;IA n&apos;a pas
+        créé le problème de centralisation, elle l&apos;a{" "}
+        <strong>amplifié et accéléré</strong>.
+      </p>
+
+      <h3>Comment sortir du patron-goulot IA concrètement ?</h3>
+      <p>
+        Protocole en 4 étapes sur 90 jours : (1) documenter les prompts
+        gagnants dans un CLAUDE.md d&apos;équipe partagé, maintenu par les
+        équipes pas par vous ; (2) identifier un référent IA par fonction
+        métier (pas un responsable IA transverse qui serait un nouveau
+        goulot) — 4 à 6 référents ; (3) mettre en place une revue mensuelle
+        des workflows IA d&apos;une heure ; (4) tester votre organisation en
+        partant une vraie semaine, téléphone fermé, pour identifier ce qui
+        tombe.
+      </p>
+
+      <h3>Quel est le bon ratio entre temps passé en outillage IA et temps passé en organisation IA ?</h3>
+      <p>
+        Les dirigeants qui réussissent le passage en système-centré
+        investissent environ <strong>20 % de leur temps IA en organisation</strong>
+        {" "}(documentation, référents, gouvernance, rituels) et 80 % en
+        outillage et usage. La plupart des PME sont à 5 % en organisation et
+        95 % en outillage. L&apos;écart d&apos;effort est petit mais
+        l&apos;écart de résultat sur 12 mois est énorme : c&apos;est cet
+        investissement organisationnel qui détermine si votre PME peut
+        tourner 2 semaines sans vous, ou pas.
       </p>
 
       <h2>Et après ?</h2>

@@ -1,22 +1,70 @@
 # Stratégie Éditoriale & Acquisition de Leads — augmenter.PRO
 
-> ⚠️ **Snapshot historique — partiellement obsolète au 2026-05-21**
+> ⚠️ **Snapshot historique — partiellement obsolète au 2026-05-21 (post-brainstorm)**
 >
 > | Section | État |
 > |---|---|
-> | §1 Positionnement, §3 Clusters, §6 Axes, §7 Banque de stats/PAA, §10 Métriques | ✅ Toujours pertinent |
-> | §2 Données GSC | ⚠️ Snapshot 2026-02-13 — **superseded par** [`docs/seo-audits/2026-05-21-audit.md`](docs/seo-audits/2026-05-21-audit.md) §3 (baseline live) |
-> | §3 Clusters | ⚠️ **Cluster Claude Code / Odoo / Prompt manquant** — c'est désormais le 1er cluster en trafic (cf. audit 2026-05-21 §3.2 / §9.1) ; décision A/B à prendre avant d'éditer §3 |
-> | §4 Matrice, §5 File de production, §11 Journal | ❌ Désynchronisé — 4+ articles publiés depuis le 2026-02-13 ne sont pas reflétés (claude-code-prompt-architecture #1 trafic, configurer-odoo-ia-claude-cowork #2 trafic, etc.). Utiliser `git log src/app/blog/` et lister `src/app/blog/` pour l'état réel |
-> | §8 Protocole crawl | ✅ Pertinent — mais **bibliothèque MCP complète** désormais centralisée dans [`.claude/templates/seo/mcp-calls.md`](.claude/templates/seo/mcp-calls.md) (signatures vérifiées, pièges paramétrage) |
-> | §9 Optimisations techniques | ⚠️ À re-vérifier après refonte bento + audit 2026-05-21 §11 (plan d'action priorisé) |
-> | §12 Prochaine action | ⚠️ Cible "Page sectorielle BTP" toujours valide (page non créée), **mais** audit 2026-05-21 révèle un cluster Claude/Odoo dominant — voir §12 ci-dessous pour le nouvel arbre de décision |
+> | §0 Décisions stratégiques actées (ci-dessous, ⭐ nouveau) | ✅ Source de vérité — lire en premier |
+> | §1 Positionnement, §7 Banque de stats/PAA, §10 Métriques | ✅ Toujours pertinent (positionnement à compléter avec §0) |
+> | §2 Données GSC | ⚠️ Snapshot 2026-02-13 — **superseded par** [`docs/seo-audits/2026-05-21-audit-complet.md`](docs/seo-audits/2026-05-21-audit-complet.md) §3 (baseline 90 j 2026-02-20 → 2026-05-20) |
+> | §3 Clusters | ⚠️ **Cluster Claude Code / Odoo désormais pilier #1** (cf. §0 + audit-complet §9.1). Anciens clusters audit local 78/95 + IA stratégie restent valides en pilier #2 |
+> | §4 Matrice, §5 File de production, §11 Journal | ❌ Désynchronisé — 5+ articles publiés depuis le 2026-02-13. Utiliser `git log src/app/blog/` et lister `src/app/blog/` pour l'état réel |
+> | §6 Axes | ✅ Pertinent (compléter avec le binôme A d'offres décidé brainstorm §0) |
+> | §8 Protocole crawl | ✅ Pertinent — bibliothèque MCP centralisée dans [`.claude/templates/seo/mcp-calls.md`](.claude/templates/seo/mcp-calls.md) |
+> | §9 Optimisations techniques | ⚠️ À re-vérifier — sem. 22 quick wins déjà appliqués (titles/meta + ch01-cover + llms.txt + cleanup gratuit) |
+> | §12 Prochaine action | ❌ Supplantée — la roadmap 12 semaines est dans [`docs/seo-audits/2026-05-21-audit-complet.md`](docs/seo-audits/2026-05-21-audit-complet.md) §14.5 |
 >
-> **Source de vérité opérationnelle** : `git log` + `src/app/blog/` + GSC live + [`docs/seo-audits/`](docs/seo-audits/) (audits datés) + `docs/prevision_contenu.md` (roadmap ad hoc).
-> **Ce document** : matériel de référence (positionnement, clusters de mots-clés, banque de stats/PAA, protocoles éditoriaux). Ne pas confondre avec un dashboard temps réel.
+> **Source de vérité opérationnelle** : `git log` + `src/app/blog/` + GSC live + [`docs/seo-audits/2026-05-21-audit-complet.md`](docs/seo-audits/2026-05-21-audit-complet.md) (audit complet + addendum §14) + [`.claude/templates/seo/project-context.md`](.claude/templates/seo/project-context.md) (contexte commandes SEO).
+> **Ce document** : matériel de référence (positionnement, banque de stats/PAA, protocoles). Ne pas confondre avec un dashboard temps réel.
 >
 > **Dernière mise à jour de fond** : 2026-02-13
-> **Dernière revue de cohérence** : 2026-05-21 (post-audit `/seo-audit` — header + §8 + §11 + §12 mis à jour ; §3, §4, §5 restent intentionnellement à refresh manuel sur décision Pierre)
+> **Dernière revue de cohérence** : 2026-05-21 (post-brainstorm `/seo-audit` — header refondu + §0 ajouté qui acte les décisions stratégiques)
+
+---
+
+## 0. Décisions stratégiques 2026-05-21 — Source de vérité
+
+> Décisions actées en brainstorm post-audit, le 2026-05-21. **Ces décisions priment sur tout ce qui est listé après dans ce document.** Pour le détail complet : [`docs/seo-audits/2026-05-21-audit-complet.md`](docs/seo-audits/2026-05-21-audit-complet.md) §14.
+
+### Persona unique
+**Dirigeant PME tech-curieux** — gérant 10-200 salariés, francophone, qui code peut-être occasionnellement, déjà sur Odoo ou veut migrer, formé scientifique/tech, débordé mais curieux des LLMs. Veut comprendre la techno sans jargon, sans dépendre d'un intégrateur opaque.
+
+### Positionnement 2027
+**Double vecteur** :
+1. **Référence francophone Claude Code & Odoo pour dirigeants PME** (national + Belgique/Suisse francophone) — pilier SEO #1, draine 88 % du trafic actuel
+2. **Base PME locale 78/95** sur l'audit informatique, cybersécurité, formation présentielle — pilier #2
+
+### Voix éditoriale (règle de découplage)
+- **Pages commerciales** (landings, meta, CTAs) : **tutoiement direct**
+- **Récits narratifs** (home `/`, `/approche` narrative, articles de fond) : **vouvoiement** maintenu
+
+### Binôme d'offres Q2-Q3 2026 (lancement décidé)
+- **Atelier Claude Code dirigeant PME** — 650 € HT, 1/2 journée, présentiel 78/95 ou visio. Mise en vente début juillet 2026, sem. 24-25.
+- **Cohorte "IA pour dirigeants PME"** — 990 €/pers HT, 6 semaines, 8-12 personnes/promo, mix visio + 2 présentiels. Promo #1 rentrée septembre 2026, sem. 26-28.
+
+### Offres reportées (Q4 2026 ou T1 2027 selon traction du binôme A)
+- Sprint Odoo + Claude (4 jours, 6 500 €)
+- Formation OPCO 5 jours certifiée Qualiopi (3 500 €)
+- Abonnement veille IA PME (150 €/mois)
+- Lead magnet PDF « Grille financements IA PME 2026 »
+- Calculateur ROI IA interactif
+
+### Roadmap d'activation (12 semaines, mai → août 2026)
+Voir [`docs/seo-audits/2026-05-21-audit-complet.md`](docs/seo-audits/2026-05-21-audit-complet.md) §14.5. Capacité confirmée : 10-12 h/semaine.
+
+### Quick wins déjà appliqués (sem. 22, 2026-05-21)
+- Titles + meta réécrits : home (Référence Claude Code/Odoo), `/audit-informatique-yvelines`, `/audit-informatique-val-doise`, `/strategie-ia-pme`
+- Home narrative ch01-cover + ch03-disciplines alignés sur le nouveau positionnement
+- `llms.txt` + `llms-full.txt` mis à jour
+- 5 occurrences résiduelles du mot « gratuit » nettoyées (1 critique volontaire conservée dans `ch07-audits.tsx`)
+- Addendum §14 dans l'audit complet
+- Logs GEO 3 tests ChatGPT du 2026-05-21 (0/3 capture — chantier GEO entity à ouvrir sem. 27+)
+
+### À faire hors-session
+- **🔴 Aligner LinkedIn Pierre Legrand** : poste "Consultant IA chez augmenter.pro" exact + créer/vérifier LinkedIn Company Page augmenter.pro
+- **🟠 Sem. 23** : Refresh `claude-code-prompt-architecture` (TL;DR, skills section, attribution, FAQ schema)
+- **🟠 Sem. 24-28** : Landings Atelier + Cohorte
+- **🟢 Sem. 27+** : Audit GMB existant + chantier GEO entity (Wikidata, France Num, Bpifrance)
 
 ---
 
