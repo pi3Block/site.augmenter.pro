@@ -22,11 +22,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: {
     default:
-      "augmenter.PRO — Consultant IA & Digital PME | 78/95",
+      "augmenter.PRO · Référence Claude Code & Odoo PME · Audit IT 78/95",
     template: "%s | augmenter.PRO",
   },
   description:
-    "Vous dépendez de prestataires qui parlent un jargon incompréhensible ? Reprenez le contrôle de votre PME grâce à l'IA. Yvelines (78) & Val d'Oise (95).",
+    "Consultant IA pour dirigeants PME : Claude Code, Odoo, automatisation, audit IT. Visio France entière, présentiel 78/95 et sur demande partout en France.",
   keywords: [
     "consultant IA PME",
     "audit informatique PME",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://augmenter.pro",
     siteName: "augmenter.PRO",
-    title: "augmenter.PRO — Consultant IA & Transformation Digitale PME",
+    title: "augmenter.PRO · Référence Claude Code & Odoo PME · Audit IT 78/95",
     description:
-      "Vous dépendez de prestataires qui parlent un jargon incompréhensible ? Reprenez le contrôle de votre PME grâce à l'IA. Yvelines (78) & Val d'Oise (95).",
+      "Consultant IA pour dirigeants PME : Claude Code, Odoo, automatisation, audit IT. Visio France entière, présentiel 78/95 et sur demande partout en France.",
     images: [
       {
         url: "/images/general/og-augmenter-pro.webp",

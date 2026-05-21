@@ -43,9 +43,9 @@ import {
 } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
-  title: "Audit Informatique & Cybersécurité Yvelines (78) : Dès 225 €",
+  title: "Audit IT Yvelines 78 : reprends le contrôle de ton infogérance",
   description:
-    "Votre prestataire IT passe plus de temps à vous facturer qu'à résoudre vos problèmes ? Audit indépendant pour PME du 78. On vous dit ce qu'il ne vous dit pas.",
+    "Ton prestataire te facture plus qu'il ne résout ? Audit IT & cybersécurité PME en Yvelines — 60 min offerts, sans CB, sans engagement.",
 };
 
 const stats = [

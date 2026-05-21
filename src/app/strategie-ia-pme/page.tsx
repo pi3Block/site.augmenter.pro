@@ -30,9 +30,9 @@ import {
 } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
-  title: "Stratégie IA pour PME : Diagnostic & Accompagnement sur Mesure",
+  title: "Stratégie IA PME : feuille de route en 60 min · Visio France + 78/95",
   description:
-    "Vos concurrents utilisent l'IA et vous ne savez pas par où commencer ? On vous construit une feuille de route claire en 60 min. PME Yvelines & Val-d'Oise.",
+    "Tes concurrents avancent sur ChatGPT/Claude et tu tâtonnes ? Feuille de route IA priorisée en 60 min. Financement Bpifrance. Offert.",
 };
 
 const stats = [

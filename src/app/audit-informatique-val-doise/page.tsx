@@ -43,9 +43,9 @@ import {
 } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
-  title: "Audit Informatique & Cybersécurité Val-d'Oise (95) : Dès 225 €",
+  title: "Audit Cybersécurité & IT Val-d'Oise (95) — Diagnostic offert 60 min",
   description:
-    "Vous payez une infogérance que vous ne comprenez pas ? Audit indépendant pour PME du 95. On vous montre où part votre argent — et comment en garder plus.",
+    "Diagnostic IT & cybersécurité offert 60 min pour PME du 95. NIS2, RGPD, optimisation coûts. On te dit ce que ton infogérance te cache.",
 };
 
 const stats = [
