@@ -1,12 +1,16 @@
 "use client";
 
-import { CHAPTERS } from "./moods";
+import { CHAPTERS as APPROCHE_CHAPTERS, type ChapterMeta } from "./moods";
 import { useNarrativeState } from "./store";
 
-export function ProgressBar() {
+interface ProgressBarProps {
+  chapters?: ChapterMeta[];
+}
+
+export function ProgressBar({ chapters = APPROCHE_CHAPTERS }: ProgressBarProps = {}) {
   const activeChapter = useNarrativeState((s) => s.activeChapter);
   const progress = useNarrativeState((s) => s.scrollProgress);
-  const ch = CHAPTERS[activeChapter] ?? CHAPTERS[0];
+  const ch = chapters[activeChapter] ?? chapters[0];
 
   return (
     <div
@@ -27,13 +31,13 @@ export function ProgressBar() {
           style={{ transform: `scaleX(${progress})` }}
         />
         <div className="pointer-events-none absolute -inset-y-[3px] inset-x-0 flex justify-between">
-          {CHAPTERS.map((c) => (
+          {chapters.map((c) => (
             <span key={c.id} className="h-[7px] w-px bg-white/40" />
           ))}
         </div>
       </div>
       <span>
-        {ch.num} / {String(CHAPTERS.length).padStart(2, "0")}
+        {ch.num} / {String(chapters.length).padStart(2, "0")}
       </span>
     </div>
   );

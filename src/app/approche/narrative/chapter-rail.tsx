@@ -1,9 +1,13 @@
 "use client";
 
-import { CHAPTERS } from "./moods";
+import { CHAPTERS as APPROCHE_CHAPTERS, type ChapterMeta } from "./moods";
 import { useNarrativeState } from "./store";
 
-export function ChapterRail() {
+interface ChapterRailProps {
+  chapters?: ChapterMeta[];
+}
+
+export function ChapterRail({ chapters = APPROCHE_CHAPTERS }: ChapterRailProps = {}) {
   const activeChapter = useNarrativeState((s) => s.activeChapter);
 
   const scrollTo = (id: string) => {
@@ -26,7 +30,7 @@ export function ChapterRail() {
       className="pointer-events-none fixed right-8 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-3.5 text-white lg:flex"
       style={{ mixBlendMode: "difference" }}
     >
-      {CHAPTERS.map((ch, i) => {
+      {chapters.map((ch, i) => {
         const active = i === activeChapter;
         return (
           <button

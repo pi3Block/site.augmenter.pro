@@ -2,18 +2,21 @@
 
 import { useEffect } from "react";
 import { narrativeStore } from "./store";
-import { CHAPTERS } from "./moods";
+import { CHAPTERS as APPROCHE_CHAPTERS, type ChapterMeta } from "./moods";
 
 /**
  * RAF loop that determines the active chapter from scroll position and pushes
  * mood / blendFraction / scrollProgress into the store every frame.
+ *
+ * Pass `chapters` to drive the observer with a custom chapter set (e.g. the
+ * 6-chapter home). Defaults to /approche's 8 chapters for backward compat.
  *
  * Formulas from handoff README, section "Mood / palette observer":
  *  - active = section whose top is at or above vh * 0.5
  *  - frac   = clamp((vh*0.5 - rect.top) / rect.height, 0, 1)
  *  - blend  = clamp((frac - 0.6) / 0.4, 0, 1)  — last 40% of section
  */
-export function useMoodObserver() {
+export function useMoodObserver(chapters: ChapterMeta[] = APPROCHE_CHAPTERS) {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -22,7 +25,7 @@ export function useMoodObserver() {
 
     const tick = () => {
       const vh = window.innerHeight;
-      const sections = CHAPTERS.map((ch) =>
+      const sections = chapters.map((ch) =>
         document.getElementById(ch.id),
       ).filter((el): el is HTMLElement => !!el);
 
@@ -39,8 +42,8 @@ export function useMoodObserver() {
         const frac = clamp((vh * 0.5 - rect.top) / rect.height, 0, 1);
         const blend = clamp((frac - 0.6) / 0.4, 0, 1);
 
-        const currentMood = CHAPTERS[activeIdx].mood;
-        const nextMood = CHAPTERS[Math.min(activeIdx + 1, CHAPTERS.length - 1)].mood;
+        const currentMood = chapters[activeIdx].mood;
+        const nextMood = chapters[Math.min(activeIdx + 1, chapters.length - 1)].mood;
 
         if (activeIdx !== lastIdx) {
           narrativeStore.setActiveChapter(activeIdx, currentMood, nextMood);
@@ -68,7 +71,7 @@ export function useMoodObserver() {
 
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
-  }, []);
+  }, [chapters]);
 }
 
 function clamp(v: number, lo: number, hi: number) {
