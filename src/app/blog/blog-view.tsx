@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -15,6 +16,9 @@ import {
   SectionHead,
   Pill,
 } from "@/components/bento/bento-grid";
+
+const FILTERS = ["Tout", "IA", "PME", "Commercial", "Cybersécurité", "Audit 360°"] as const;
+type FilterTag = (typeof FILTERS)[number];
 import {
   ArticleBentoCard,
   type ArticleBentoData,
@@ -31,7 +35,7 @@ const ARTICLES: Article[] = [
     title: "Le patron-goulot : quand l'IA rend le dirigeant encore plus indispensable",
     excerpt:
       "Vous avez déployé ChatGPT/Claude dans votre PME et vous êtes toujours débordé ? Pire, c'est vous qui formez tout le monde ? 5 signaux du patron-goulot et protocole en 4 étapes pour en sortir.",
-    tags: ["Intelligence Artificielle", "PME"],
+    tags: ["IA", "PME"],
     readTime: "10 min",
     image: "/images/blog/patron-goulot-paradoxe-ia-dirigeant-pme.webp",
   },
@@ -40,7 +44,7 @@ const ARTICLES: Article[] = [
     title: "L'IA comme contradicteur : 5 prompts pour challenger vos décisions",
     excerpt:
       "ChatGPT vous donne toujours raison ? 5 prompts copiables pour transformer l'IA en contradicteur honnête et identifier vos angles morts avant chaque décision structurante.",
-    tags: ["Intelligence Artificielle", "PME"],
+    tags: ["IA", "PME"],
     readTime: "9 min",
     image: "/images/blog/ia-contradicteur-prompts-dirigeant-pme.webp",
   },
@@ -49,7 +53,7 @@ const ARTICLES: Article[] = [
     title: "Rapport 2026 : Adoption de l'IA dans le BTP francilien",
     excerpt:
       "Tableau de maturité par sous-secteur (gros œuvre, second œuvre, artisanat, négoce) croisé avec les usages IA réels en 2026. Sources publiques + observations terrain 78/95.",
-    tags: ["Intelligence Artificielle", "PME", "Rapport sectoriel"],
+    tags: ["IA", "PME", "Rapport sectoriel"],
     readTime: "6 min",
     image: "/images/blog/rapport-adoption-ia-btp-francilien-2026.webp",
   },
@@ -58,7 +62,7 @@ const ARTICLES: Article[] = [
     title: "Configurer Odoo avec l'IA : 4 Jours au Lieu de 3 500 €",
     excerpt:
       "Comment nous avons reconfiguré tout Odoo d'un client en 4 jours avec Claude Cowork.",
-    tags: ["Intelligence Artificielle", "PME"],
+    tags: ["IA", "PME"],
     readTime: "12 min",
     image: "/images/blog/configurer-odoo-ia-claude-cowork.webp",
   },
@@ -67,7 +71,7 @@ const ARTICLES: Article[] = [
     title: "Veille Concurrentielle IA pour PME : Guide Pratique 2026",
     excerpt:
       "Comment automatiser votre veille concurrentielle avec l'IA. Méthode en 5 étapes, outils testés et retour d'expérience terrain.",
-    tags: ["Intelligence Artificielle", "PME"],
+    tags: ["IA", "PME"],
     readTime: "8 min",
     image: "/images/blog/veille-concurrentielle-ia-pme.webp",
   },
@@ -132,7 +136,7 @@ const ARTICLES: Article[] = [
   {
     slug: "comparatif-llm-vente-commerciale",
     title: "Comparatif : Forces et Faiblesses des LLM dans la Vente",
-    tags: ["Intelligence Artificielle"],
+    tags: ["IA"],
     readTime: "5 min",
     image: "/images/blog/comparatif-llm-vente-commerciale.webp",
   },
@@ -146,7 +150,14 @@ const ARTICLES: Article[] = [
 ];
 
 export function BlogView() {
-  const [featured, ...rest] = ARTICLES;
+  const [activeFilter, setActiveFilter] = useState<FilterTag>("Tout");
+
+  const filteredArticles = useMemo(() => {
+    if (activeFilter === "Tout") return ARTICLES;
+    return ARTICLES.filter((a) => a.tags.includes(activeFilter));
+  }, [activeFilter]);
+
+  const [featured, ...rest] = filteredArticles;
 
   return (
     <div className="pt-16">
@@ -190,25 +201,30 @@ export function BlogView() {
                 niveau supérieur. <strong className="font-semibold text-foreground">IA, commercial, audit, cybersécurité</strong> —
                 sans jargon, terrain.
               </motion.p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                <Pill tone="solid" size="md">
-                  Tout
-                </Pill>
-                <Pill tone="outline" size="md">
-                  IA
-                </Pill>
-                <Pill tone="outline" size="md">
-                  PME
-                </Pill>
-                <Pill tone="outline" size="md">
-                  Commercial
-                </Pill>
-                <Pill tone="outline" size="md">
-                  Cybersécurité
-                </Pill>
-                <Pill tone="outline" size="md">
-                  Audit 360°
-                </Pill>
+              <div
+                className="mt-5 flex flex-wrap gap-2"
+                role="tablist"
+                aria-label="Filtres par catégorie"
+              >
+                {FILTERS.map((label) => {
+                  const isActive = activeFilter === label;
+                  return (
+                    <button
+                      key={label}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => setActiveFilter(label)}
+                      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+                        isActive
+                          ? "border border-foreground bg-foreground text-background"
+                          : "border border-border bg-background text-muted-foreground hover:border-foreground/40 hover:text-foreground"
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
               </div>
             </BentoCard>
 
@@ -243,16 +259,36 @@ export function BlogView() {
             }
           />
 
+          {!featured && (
+            <div className="mb-8 rounded-2xl border border-dashed border-border/60 bg-background p-8 text-center">
+              <p className="text-sm text-muted-foreground">
+                Aucun article dans la catégorie{" "}
+                <strong className="font-semibold text-foreground">{activeFilter}</strong>{" "}
+                pour le moment.
+              </p>
+              <button
+                type="button"
+                onClick={() => setActiveFilter("Tout")}
+                className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+              >
+                Voir tous les articles
+                <ArrowRight className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          )}
+
           <BentoGrid>
             {/* Article vedette — 6 × 5 */}
-            <BentoCard
-              span={6}
-              rows={5}
-              pad="none"
-              mobileMinH="440px"
-            >
-              <ArticleBentoCard article={featured} featured />
-            </BentoCard>
+            {featured && (
+              <BentoCard
+                span={6}
+                rows={5}
+                pad="none"
+                mobileMinH="440px"
+              >
+                <ArticleBentoCard article={featured} featured />
+              </BentoCard>
+            )}
 
             {/* Carte newsletter — 6 × 2 accent */}
             <BentoCard
