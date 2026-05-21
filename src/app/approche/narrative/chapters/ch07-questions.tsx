@@ -7,7 +7,7 @@ import { Chapter } from "../primitives/chapter";
 export function Ch07Questions() {
   return (
     <Chapter id="ch-07" num="07" title="Les questions" mood="questions" theme="light">
-      <div className="text-[color:var(--fg-muted)]">À venir — PR 7</div>
+      <div className="text-(--fg-muted)">À venir — PR 7</div>
     </Chapter>
   );
 }

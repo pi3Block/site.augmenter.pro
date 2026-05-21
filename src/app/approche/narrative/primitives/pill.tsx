@@ -10,7 +10,7 @@ interface PillProps {
 export function Pill({ children, variant = "default" }: PillProps) {
   const classes = {
     default:
-      "border border-[color:oklch(0.541_0.281_293/0.25)] bg-[color:var(--primary-soft)] text-[color:var(--primary)]",
+      "border border-[color:oklch(0.541_0.281_293/0.25)] bg-(--primary-soft) text-(--primary)",
     amber:
       "border border-[color:oklch(0.769_0.188_70/0.35)] bg-[color:oklch(0.828_0.189_84/0.14)] text-[color:oklch(0.5_0.13_70)]",
     glass:

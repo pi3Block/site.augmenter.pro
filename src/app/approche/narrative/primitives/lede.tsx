@@ -15,7 +15,7 @@ export function Lede({ children, size = "default" }: LedeProps) {
   return (
     <h2
       data-anim="words"
-      className="text-balance font-bold leading-[0.96] tracking-[-0.035em] text-[color:var(--fg)] [&_em]:not-italic [&_em]:bg-[var(--gradient-brand)] [&_em]:bg-clip-text [&_em]:text-transparent [&_u]:no-underline [&_u]:bg-[linear-gradient(transparent_60%,oklch(0.828_0.189_84/0.55)_60%)] [&_u]:bg-no-repeat"
+      className="text-balance font-bold leading-[0.96] tracking-[-0.035em] text-(--fg) [&_em]:not-italic [&_em]:bg-(--gradient-brand) [&_em]:bg-clip-text [&_em]:text-transparent [&_u]:no-underline [&_u]:bg-[linear-gradient(transparent_60%,oklch(0.828_0.189_84/0.55)_60%)] [&_u]:bg-no-repeat"
       style={{ fontSize }}
     >
       {children}

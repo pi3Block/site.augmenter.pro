@@ -16,12 +16,12 @@ export function NavFixed() {
       >
         <span
           aria-hidden
-          className="grid h-[22px] w-[22px] place-items-center rounded-md bg-[color:var(--violet-600)] text-white"
+          className="grid h-[22px] w-[22px] place-items-center rounded-md bg-(--violet-600) text-white"
         >
           <Zap className="h-3 w-3" />
         </span>
         <span>augmenter</span>
-        <span className="text-[color:var(--violet-400)]">.PRO</span>
+        <span className="text-(--violet-400)">.PRO</span>
       </Link>
       <div className="pointer-events-auto hidden gap-5 font-mono text-[11px] uppercase tracking-[0.12em] opacity-85 md:inline-flex">
         <span>
