@@ -20,16 +20,20 @@ Spécifique à cette commande — l'audit SEO doit croiser :
 
 ---
 
+> **Bibliothèque d'appels MCP** : [`.claude/templates/seo/mcp-calls.md`](.claude/templates/seo/mcp-calls.md) — signatures vérifiées (notamment les pièges `dimensions` string CSV pour GSC, `location_name` pour DFS Labs, accès Backlinks gated).
+> **Check-lists d'audit (§F)** : [`.claude/templates/seo/checklist.md`](.claude/templates/seo/checklist.md) §F « Audit complet ».
+
 ## Phase 0 — Préparation & baseline
 
 ### 0.1 Vérification des outils disponibles
 
-Commencer par tester les MCP et noter l'état dans une section « Outils disponibles » du rapport :
+Commencer par tester les MCP (cf. [`mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §0 « Pings de validation ») et noter l'état dans une section « Outils disponibles » du rapport :
 
 | Outil | Test | Si disponible | Si absent |
 |-------|------|---------------|-----------|
 | GSC MCP | `mcp__google-search-console__list_sites` | Phase 2 complète | Recommander installation |
-| DataForSEO MCP | `mcp__dfs-mcp__kw_data_google_ads_locations` (quick ping) | Phases 3/4/5/6 complètes | Fallback web search |
+| DataForSEO MCP | `mcp__dfs-mcp__kw_data_google_ads_locations` (`country_iso_code: "FR"`) | Phases 3/4/5/6 complètes | Fallback web search |
+| DFS Backlinks (sous-souscription) | `mcp__dfs-mcp__backlinks_summary` | Phase 5 complète | **Skip Phase 5** (subscription requise) |
 | crawl4ai MCP | `mcp__crawl4ai__md` sur augmenter.pro | Phase 4 crawl concurrents | Fallback fetch |
 | Playwright MCP | `mcp__plugin_playwright_playwright__browser_navigate` | Tests rendering + CWV visuels | Skip |
 
@@ -86,19 +90,11 @@ Vérifier validité et complétude de chaque schema :
 - [ ] `testimonials.tsx` — AggregateRating + Review (ratingValue, reviewCount, reviewBody authentique)
 - [ ] Tous les articles passent bien le prop `slug` et `dateISO` à ArticleLayout
 
-**Validation externe** : pour 3-5 URLs prioritaires, utiliser `mcp__dfs-mcp__on_page_content_parsing` sur l'URL publique pour récupérer le DOM réel et croiser avec le code source (vérifie que le SSR produit bien ce qui est attendu).
+**Validation externe** : pour 3-5 URLs prioritaires, appel `mcp-calls.md` §7 (`on_page_content_parsing`) sur l'URL publique pour récupérer le DOM réel et croiser avec le code source (vérifie que le SSR produit bien ce qui est attendu).
 
 ### 1.3 Core Web Vitals & performance (Lighthouse via DataForSEO)
 
-**Si DataForSEO disponible :** pour chaque page clé (home, prestations, approche, blog, un article représentatif, contact) :
-
-```
-mcp__dfs-mcp__on_page_lighthouse({
-  url: "https://augmenter.pro/<page>",
-  for_mobile: true,
-  categories: ["performance", "accessibility", "best-practices", "seo"]
-})
-```
+**Si DataForSEO disponible :** pour chaque page clé (home, approche, blog, un article représentatif, contact), appel `mcp-calls.md` §4 (`on_page_lighthouse`, `for_mobile: true`).
 
 Extraire et tabuler :
 - **Performance** score + LCP, FID/INP, CLS, TBT, TTFB
@@ -106,30 +102,19 @@ Extraire et tabuler :
 - **Best Practices** score + issues
 - **SEO** score + issues (meta, viewport, tap targets, hreflang)
 
-**Seuils Core Web Vitals (Good / Needs Improvement / Poor) :**
-- LCP : ≤ 2.5s / ≤ 4.0s / > 4.0s
-- INP : ≤ 200ms / ≤ 500ms / > 500ms
-- CLS : ≤ 0.1 / ≤ 0.25 / > 0.25
+Seuils Core Web Vitals = voir [`mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §4.
 
 Si Lighthouse indisponible, utiliser Playwright MCP pour mesure manuelle via `browser_navigate` + `browser_evaluate` sur `performance.getEntriesByType('navigation')` et `PerformanceObserver` pour LCP/CLS.
 
 ### 1.4 Indexation Google (GSC — `index_inspect`)
 
-**Pour les 10-15 URLs les plus importantes**, utiliser :
-
-```
-mcp__google-search-console__index_inspect({
-  siteUrl: "sc-domain:augmenter.pro",
-  inspectionUrl: "https://augmenter.pro/<path>"
-})
-```
+Pour les 10-15 URLs les plus importantes, appel `mcp-calls.md` §1.7 (`index_inspect`).
 
 Pour chaque URL, extraire :
-- **Indexation** : Indexé / Non indexé / Exclu (+ raison : noindex, canonical, qualité, duplicate, crawl error)
-- **Couverture** : Dernière crawl date, user agent, crawl allowed
-- **Canonical** : canonical déclaré vs canonical retenu par Google (drift = problème)
-- **Mobile usability**
-- **Rich results** détectés (Article, FAQ, Product, etc.)
+- **Indexation** : `coverageState` Indexé / Non indexé / Exclu (+ raison : noindex, canonical, qualité, duplicate, crawl error)
+- **Couverture** : `lastCrawlTime`, `crawledAs` (mobile/desktop), `robotsTxtState`
+- **Canonical** : `googleCanonical` vs `userCanonical` (drift = problème)
+- **Rich results** détectés (`richResultsResult.detectedItems` : Article, FAQ, Review snippets, Product, etc.)
 
 **Seuil d'alerte** : si > 20 % des URLs prioritaires ne sont pas « Submitted and indexed » → investigation urgente.
 
@@ -153,12 +138,9 @@ Pour chaque URL, extraire :
 - [ ] Pas d'URL avec paramètres query indexée accidentellement
 - [ ] Pas de pagination mal gérée (rel=prev/next ou canonical vers page 1)
 
-**Validation sitemap (si GSC dispo)** :
-```
-mcp__google-search-console__list_sitemaps({ siteUrl: "sc-domain:augmenter.pro" })
-mcp__google-search-console__get_sitemap({ siteUrl: "sc-domain:augmenter.pro", feedpath: "https://augmenter.pro/sitemap.xml" })
-```
-Vérifier : statut OK, nombre d'URLs soumises vs indexées, erreurs, warnings.
+**Validation sitemap (si GSC dispo)** : appels `mcp-calls.md` §1.8 (`list_sitemaps`, `get_sitemap`). Vérifier : statut OK, erreurs/warnings (0 attendu), URLs soumises.
+
+> ⚠️ Le compteur `indexed: 0` retourné par `list_sitemaps` est un **bug d'affichage GSC** connu — vérifier l'indexation réelle via `index_inspect` (§1.4), pas via ce compteur.
 
 ### 1.7 Technique (config Next.js + headers)
 
@@ -175,11 +157,7 @@ Vérifier : statut OK, nombre d'URLs soumises vs indexées, erreurs, warnings.
 
 ### 1.8 Technologies détectées (benchmark)
 
-Optionnel — pour comparer plus tard avec concurrents :
-```
-mcp__dfs-mcp__domain_analytics_technologies_domain_technologies({ target: "augmenter.pro" })
-```
-Et idem pour 3-5 concurrents → identifier avantages stack (Next.js vs WordPress legacy par ex.).
+Optionnel — appel `mcp-calls.md` §7 (`domain_analytics_technologies_domain_technologies`) sur augmenter.pro + 3-5 concurrents → identifier avantages stack (Next.js vs WordPress legacy par ex.).
 
 ---
 
@@ -187,33 +165,15 @@ Et idem pour 3-5 concurrents → identifier avantages stack (Next.js vs WordPres
 
 **Toute cette phase suppose GSC MCP disponible.** Sans GSC, noter « Données de performance non disponibles — recommander installation du MCP google-search-console » et passer à la Phase 3.
 
+> **Appels MCP** : voir [`mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §1. **Piège récurrent** : `dimensions` est une string CSV (`"query"`, `"page,query"`) — pas un array JSON.
+
 ### 2.1 Vue d'ensemble (trafic organique)
 
-```
-mcp__google-search-console__search_analytics({
-  siteUrl: "sc-domain:augmenter.pro",
-  startDate: "<J-90>",
-  endDate: "<J-3>",
-  dimensions: ["date"],
-  rowLimit: 1000
-})
-```
-→ Courbe clics/impressions 90 jours. Détecter saisonnalité, baisses brutales, pics.
+Appel : `mcp-calls.md` §1.1. Sortie attendue : **courbe clics/impressions 90 jours**. Détecter saisonnalité, baisses brutales, pics.
 
 ### 2.2 Requêtes qui amènent du trafic
 
-```
-mcp__google-search-console__search_analytics({
-  siteUrl: "sc-domain:augmenter.pro",
-  startDate: "<J-90>",
-  endDate: "<J-3>",
-  dimensions: ["query"],
-  rowLimit: 5000,
-  dataState: "final"
-})
-```
-
-Analyser :
+Appel : `mcp-calls.md` §1.2. Analyser :
 - **Top 20 requêtes** par clics
 - **Top 20 requêtes** par impressions (souvent différent — réservoir caché)
 - **Requêtes brandées** vs non brandées (ratio — sain = 30/70 non brandé/brandé pour un site mature)
@@ -222,25 +182,11 @@ Analyser :
 
 ### 2.3 Pages qui performent
 
-```
-mcp__google-search-console__search_analytics({
-  siteUrl: "sc-domain:augmenter.pro",
-  startDate: "<J-90>",
-  endDate: "<J-3>",
-  dimensions: ["page"],
-  rowLimit: 1000
-})
-```
-
-→ Classement des pages par clics, par impressions, par position moyenne, par CTR.
+Appel : `mcp-calls.md` §1.3. Sortie : classement des pages par clics, par impressions, par position moyenne, par CTR.
 
 ### 2.4 Couples page × requête
 
-```
-dimensions: ["page", "query"], rowLimit: 5000
-```
-
-Cette vue est l'or pur de l'audit : elle révèle **sur quelles requêtes chaque page se positionne réellement** (souvent différent des mots-clés visés).
+Appel : `mcp-calls.md` §1.4. **C'est l'or pur de l'audit** : révèle **sur quelles requêtes chaque page se positionne réellement** (souvent différent des mots-clés visés).
 
 Pour chaque page importante :
 - La requête qui amène le plus de clics = mot-clé « réel » de la page (peut différer du mot-clé « visé »)
@@ -249,29 +195,11 @@ Pour chaque page importante :
 
 ### 2.5 Quick Wins automatiques
 
-```
-mcp__google-search-console__detect_quick_wins({
-  siteUrl: "sc-domain:augmenter.pro",
-  startDate: "<J-90>",
-  endDate: "<J-3>"
-})
-```
+Appel : `mcp-calls.md` §1.6. Détection automatique des requêtes en **position 4-10** avec impressions significatives et CTR sous-optimal. Intégrer directement les résultats au rapport.
 
-Cet outil détecte automatiquement les requêtes en **position 8-20** avec impressions significatives. Intégrer directement les résultats au rapport.
+### 2.6 Analytics enrichies (device, country, search appearance)
 
-### 2.6 Analytics enrichies (device, country, date)
-
-```
-mcp__google-search-console__enhanced_search_analytics({
-  siteUrl: "sc-domain:augmenter.pro",
-  startDate: "<J-90>",
-  endDate: "<J-3>",
-  dimensions: ["device"],
-  rowLimit: 100
-})
-```
-
-Répéter avec dimensions `["country"]`, `["searchAppearance"]` (rich results), `["query", "device"]`.
+Appel : `mcp-calls.md` §1.5. Répéter avec dimensions `device`, `country`, `searchAppearance`, `query,device`.
 
 Analyses clés :
 - **Mobile vs Desktop** : position moyenne, CTR, taux de conversion estimé
@@ -302,198 +230,64 @@ Ce croisement produit les recommandations les plus actionnables :
 
 ## Phase 3 — Recherche de mots-clés & sémantique (DataForSEO)
 
-**Paramètres France/français** systématiques :
-- `location_code: 2250` (France) ou `location_name: "France"`
-- `language_code: "fr"` ou `language_name: "French"`
+> **Appels MCP** : voir [`mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §2 (Labs + KW), §3 (SERP). **Pièges récurrents** :
+> - DFS Labs (`dataforseo_labs_*`) : utiliser **`location_name: "France"` + `language_code: "fr"`** (pas `location_code` qui n'est pas accepté).
+> - DFS KW Data (`kw_data_*`) : `location_code: 2250` OK.
+> - Sur un petit domaine, `ranked_keywords` peut retourner un dataset très partiel — **GSC reste la source primaire** dans ce cas.
 
 ### 3.1 Keywords actuellement positionnés (par DataForSEO)
 
-```
-mcp__dfs-mcp__dataforseo_labs_google_ranked_keywords({
-  target: "augmenter.pro",
-  location_code: 2250,
-  language_code: "fr",
-  limit: 500,
-  order_by: ["keyword_data.keyword_info.search_volume,desc"]
-})
-```
-
-Vue complémentaire à GSC (DFS a souvent plus de requêtes longue traîne que GSC n'affiche pas faute de volume minimum). Extraire :
+Appel : `mcp-calls.md` §2.1. Vue complémentaire à GSC. Extraire :
 - Nombre total de mots-clés positionnés
 - Distribution par tranche de position (1-3, 4-10, 11-20, 21-50, 51-100)
 - Top 50 mots-clés par volume
 - Estimation du trafic organique mensuel
 
-### 3.2 Keyword ideas (expansion)
+### 3.2 Keyword ideas + suggestions + related (expansion)
 
-À partir de 5-10 seed keywords stratégiques (`consultant IA PME`, `audit informatique PME Yvelines`, `automatisation entreprise`, `transformation digitale artisan`, `ChatGPT entreprise`, `IA pour BTP`, `n8n automatisation`, `formation IA dirigeant`) :
+Appels : `mcp-calls.md` §2.3.
 
-```
-mcp__dfs-mcp__dataforseo_labs_google_keyword_ideas({
-  keywords: ["<seed>"],
-  location_code: 2250,
-  language_code: "fr",
-  limit: 200,
-  include_serp_info: true
-})
-```
+À partir de 5-10 seed keywords stratégiques (`consultant IA PME`, `audit informatique PME Yvelines`, `automatisation entreprise`, `transformation digitale artisan`, `ChatGPT entreprise`, `IA pour BTP`, `n8n automatisation`, `formation IA dirigeant` + **`claude code prompt`**, **`odoo ia`** depuis l'audit 2026-05-21), produire un mini-cluster (50-100 suggestions par seed) → consolidé en Phase 8.
 
-Et :
-```
-mcp__dfs-mcp__dataforseo_labs_google_keyword_suggestions({
-  keyword: "<seed>",
-  location_code: 2250,
-  language_code: "fr",
-  limit: 200,
-  include_seed_keyword: false
-})
-```
+### 3.3 Volumes bulk + difficulté + intent + trafic estimé
 
-Pour chaque seed, produire un mini-cluster (50-100 suggestions) → sera consolidé en Phase 8.
+Appels : `mcp-calls.md` §2.4 (4 endpoints à enchaîner sur la liste consolidée 200-500 mots-clés).
 
-### 3.3 Related keywords (graphe sémantique)
+Classement intent : `informational` / `navigational` / `commercial` / `transactional`. Un site de consulting doit cibler majoritairement `commercial` + `informational` orienté conversion.
 
-```
-mcp__dfs-mcp__dataforseo_labs_google_related_keywords({
-  keyword: "<seed>",
-  location_code: 2250,
-  language_code: "fr",
-  depth: 2,
-  limit: 100
-})
-```
+### 3.4 Tendances (Trends)
 
-Utile pour détecter les co-occurrences et construire des pages piliers + pages supports (topical clusters).
-
-### 3.4 Volumes bulk + CPC
-
-Pour la liste consolidée de mots-clés (200-500) :
-
-```
-mcp__dfs-mcp__kw_data_google_ads_search_volume({
-  keywords: [...],
-  location_code: 2250,
-  language_code: "fr"
-})
-```
-
-Puis :
-```
-mcp__dfs-mcp__dataforseo_labs_bulk_keyword_difficulty({
-  keywords: [...],
-  location_code: 2250,
-  language_code: "fr"
-})
-```
-
-Et estimation du trafic possible :
-```
-mcp__dfs-mcp__dataforseo_labs_bulk_traffic_estimation({
-  targets: ["augmenter.pro"],
-  location_code: 2250,
-  language_code: "fr"
-})
-```
-
-### 3.5 Intention de recherche
-
-Pour les 50 mots-clés prioritaires :
-```
-mcp__dfs-mcp__dataforseo_labs_search_intent({
-  keywords: [...],
-  language_code: "fr"
-})
-```
-
-Classement par intent : `informational`, `navigational`, `commercial`, `transactional`. Un site de consulting doit cibler majoritairement `commercial` + `informational` orienté conversion.
-
-### 3.6 Tendances (Trends)
-
-```
-mcp__dfs-mcp__kw_data_google_trends_explore({
-  keywords: ["IA entreprise", "ChatGPT PME", "automatisation"],
-  location_code: 2250,
-  date_from: "<J-365>",
-  date_to: "<J-1>"
-})
-```
+Appel : `mcp-calls.md` §2.6 (`kw_data_google_trends_explore`, complément `kw_data_dfs_trends_explore`).
 
 Identifier :
 - Mots-clés en croissance → prioriser dans le calendrier éditorial
 - Saisonnalité (rentrée, Q4, début d'année)
-- Pics liés à l'actualité (releases OpenAI, réglementation IA, etc.)
+- Pics liés à l'actualité (releases OpenAI/Anthropic, réglementation IA, etc.)
 
-Complément DFS Trends (données proprio DFS) :
-```
-mcp__dfs-mcp__kw_data_dfs_trends_explore(...)
-```
+### 3.5 SERP analysis (top 10 keywords prioritaires)
 
-### 3.7 SERP analysis (top 10 keywords prioritaires)
-
-Pour les 5-10 mots-clés jugés les plus stratégiques :
-
-```
-mcp__dfs-mcp__serp_organic_live_advanced({
-  keyword: "<kw>",
-  location_code: 2250,
-  language_code: "fr",
-  device: "desktop",
-  depth: 20,
-  people_also_ask_click_depth: 2
-})
-```
+Appel : `mcp-calls.md` §3 (`serp_organic_live_advanced`).
 
 Extraire pour chaque SERP :
 - **Top 10 URLs** (domaines, types de contenu : article, page service, comparatif)
 - **Features** : Featured Snippet, People Also Ask, AI Overview, Video, Image pack, Local pack, Knowledge Graph
-- **Longueur moyenne du contenu** top 3 (via content parsing si besoin)
+- **Longueur moyenne du contenu** top 3 (via content parsing si besoin — `mcp-calls.md` §7)
 - **Format dominant** (guide long, page commerciale, liste, tutoriel)
 - **Capture potentielle** : snippet vide, PAA mal répondu, AI Overview citant 5 sources dont aucune n'est augmenter.pro
 
-### 3.8 Content analysis (veille + trendspotting)
+### 3.6 Content analysis (veille + trendspotting)
 
-```
-mcp__dfs-mcp__content_analysis_search({
-  keyword: "audit IA PME",
-  page_type: ["blog", "news"],
-  limit: 50
-})
-```
-
-Et :
-```
-mcp__dfs-mcp__content_analysis_phrase_trends({
-  keyword: "automatisation PME",
-  date_from: "<J-180>"
-})
-```
-
-Identifier les angles éditoriaux qui gagnent en citations/partages.
+Appels : `mcp__dfs-mcp__content_analysis_search` et `mcp__dfs-mcp__content_analysis_phrase_trends`. Identifier les angles éditoriaux qui gagnent en citations/partages.
 
 ---
 
 ## Phase 4 — Analyse concurrentielle (data-driven)
 
+> **Appels MCP** : voir [`mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §2.5 (concurrents + intersection), §7 (technologies), §8 (crawl4ai).
+
 ### 4.1 Identification automatique des concurrents SEO
 
-```
-mcp__dfs-mcp__dataforseo_labs_google_competitors_domain({
-  target: "augmenter.pro",
-  location_code: 2250,
-  language_code: "fr",
-  limit: 30
-})
-```
-
-Et :
-```
-mcp__dfs-mcp__dataforseo_labs_google_serp_competitors({
-  keywords: ["consultant IA PME", "audit IA entreprise", ...],
-  location_code: 2250,
-  language_code: "fr",
-  limit: 50
-})
-```
+Appels : `mcp-calls.md` §2.5 (`competitors_domain` + `serp_competitors`).
 
 Combiner les deux listes et sélectionner 5-8 concurrents pertinents par :
 - **Type** : institutionnel (Bpifrance IA Booster, France Num, CCI), cabinets IA, MSP infogérance locaux (78/95), blogs IA B2B
@@ -502,38 +296,20 @@ Combiner les deux listes et sélectionner 5-8 concurrents pertinents par :
 
 ### 4.2 Domain rank & vue d'ensemble
 
-Pour chaque concurrent :
-```
-mcp__dfs-mcp__dataforseo_labs_google_domain_rank_overview({
-  target: "<concurrent>",
-  location_code: 2250,
-  language_code: "fr"
-})
-```
+Appel : `mcp-calls.md` §2.2 (sur chaque concurrent). Tableau comparatif :
 
-Tableau comparatif :
 | Domaine | Domain Rank | KW organiques | Trafic estimé | KW top 3 | KW top 10 |
 |---------|-------------|---------------|---------------|----------|-----------|
 
 ### 4.3 Content gap (domain intersection)
 
-Pages ou mots-clés sur lesquels les concurrents rankent mais pas augmenter.pro :
-
-```
-mcp__dfs-mcp__dataforseo_labs_google_domain_intersection({
-  targets: ["augmenter.pro", "<concurrent1>", "<concurrent2>"],
-  location_code: 2250,
-  language_code: "fr",
-  intersection_mode: "concurrent_any_ours_none",
-  limit: 500
-})
-```
+Appel : `mcp-calls.md` §2.5 (`domain_intersection` avec `intersection_mode: "concurrent_any_ours_none"`).
 
 Chaque mot-clé retourné est une opportunité de contenu net à produire.
 
 ### 4.4 Crawl concurrentiel (crawl4ai)
 
-Pour chaque concurrent, via `mcp__crawl4ai__md` ou `mcp__crawl4ai__crawl` :
+Pour chaque concurrent, via `mcp-calls.md` §8 (`mcp__crawl4ai__md` ou `crawl`) :
 - Homepage + page services + 2-3 articles représentatifs
 - Extraire : structure Hn, longueur, angle, format, rich snippets, CTAs
 - Analyser : fonctionnalités différenciantes (chat, calculateur ROI, configurateur, études de cas, annuaire), types de preuves (logos clients, chiffres, témoignages)
@@ -542,9 +318,7 @@ Si crawl4ai indispo, fallback sur Playwright MCP (`browser_navigate` + `browser_
 
 ### 4.5 Technologies des concurrents
 
-```
-mcp__dfs-mcp__domain_analytics_technologies_domain_technologies({ target: "<concurrent>" })
-```
+Appel : `mcp-calls.md` §7 (`domain_analytics_technologies_domain_technologies`).
 
 Utile pour identifier : stack legacy (WordPress non optimisé) = opportunité de vitesse ; stack moderne = concurrent à surveiller de près.
 
@@ -558,71 +332,36 @@ Tableau final :
 
 ## Phase 5 — Audit backlinks (DataForSEO)
 
+> ⚠️ **Phase entièrement gatée par la souscription DataForSEO Backlinks** (sans souscription, `40204 Access denied` sur tous les endpoints). Vérifier en Phase 0. Si indispo, écrire « Phase 5 skippée — souscription Backlinks non active » dans le rapport et passer à la Phase 6.
+> **Tous les appels** : [`mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §5.
+
 ### 5.1 Synthèse augmenter.pro
 
-```
-mcp__dfs-mcp__backlinks_summary({ target: "augmenter.pro", include_subdomains: true })
-```
-
-Extraire : total backlinks, referring domains, rank, spam score global, do-follow ratio, anchor diversity.
+Appel : `backlinks_summary`. Extraire : total backlinks, referring domains, rank, spam score global, do-follow ratio, anchor diversity.
 
 ### 5.2 Référents de qualité
 
-```
-mcp__dfs-mcp__backlinks_referring_domains({
-  target: "augmenter.pro",
-  limit: 100,
-  order_by: ["rank,desc"]
-})
-```
-
-Classer par rang — identifier backlinks premium vs low quality.
+Appel : `backlinks_referring_domains` (order by rank desc). Identifier backlinks premium vs low quality.
 
 ### 5.3 Spam score (nettoyage potentiel)
 
-```
-mcp__dfs-mcp__backlinks_bulk_spam_score({ targets: ["augmenter.pro"] })
-```
-
-Si spam score > 30 % → audit détaillé des referring domains, potentiel désaveu.
+Appel : `backlinks_bulk_spam_score`. Si spam score > 30 % → audit détaillé des referring domains, potentiel désaveu.
 
 ### 5.4 Ancres
 
-```
-mcp__dfs-mcp__backlinks_anchors({ target: "augmenter.pro", limit: 100 })
-```
-
-Vérifier : diversité, ancres brandées vs keywords vs génériques, sur-optimisation (> 30 % ancres exact match = risque).
+Appel : `backlinks_anchors`. Vérifier : diversité, ancres brandées vs keywords vs génériques, sur-optimisation (> 30 % ancres exact match = risque).
 
 ### 5.5 Nouveau & perdu (time series)
 
-```
-mcp__dfs-mcp__backlinks_timeseries_new_lost_summary({
-  target: "augmenter.pro",
-  date_from: "<J-180>",
-  date_to: "<J-1>"
-})
-```
-
-Tendance : croissance nette, plateau, ou hémorragie ?
+Appel : `backlinks_timeseries_new_lost_summary` (`date_from: <J-180>`). Tendance : croissance nette, plateau, ou hémorragie ?
 
 ### 5.6 Benchmark concurrents
 
-```
-mcp__dfs-mcp__backlinks_bulk_ranks({ targets: ["augmenter.pro", "<c1>", "<c2>", ...] })
-mcp__dfs-mcp__backlinks_bulk_referring_domains({ targets: [...] })
-mcp__dfs-mcp__backlinks_competitors({ target: "augmenter.pro", limit: 20 })
-```
+Appels : `backlinks_bulk_ranks`, `backlinks_bulk_referring_domains`, `backlinks_competitors` sur `["augmenter.pro", "<c1>", "<c2>", ...]`.
 
 ### 5.7 Domain intersection backlinks (prospects à démarcher)
 
-```
-mcp__dfs-mcp__backlinks_domain_intersection({
-  targets: ["<c1>", "<c2>"],
-  exclude_targets: ["augmenter.pro"],
-  limit: 200
-})
-```
+Appel : `backlinks_domain_intersection` avec `exclude_targets: ["augmenter.pro"]`.
 
 Sites qui linkent 2+ concurrents mais pas augmenter.pro = **cibles prioritaires de digital PR / guest posting**.
 
@@ -630,95 +369,212 @@ Sites qui linkent 2+ concurrents mais pas augmenter.pro = **cibles prioritaires 
 
 ## Phase 6 — Visibilité GEO (moteurs génératifs)
 
-C'est **le chantier de différenciation** pour 2026. L'objectif : être cité par ChatGPT, Perplexity, Google AI Overviews, Claude.
+C'est **le chantier de différenciation** pour 2026. L'objectif explicite : être cité par **ChatGPT (Search)**, **Perplexity (Pages & Pro Search)**, **Google Gemini AI Mode / AI Overviews / SGE**, **Claude (web search)**, **Brave Summarizer**, **Bing Copilot** — quand un dirigeant PME formule une requête correspondant exactement aux prestations augmenter.pro.
 
-### 6.1 Mentions LLM (DataForSEO AI Optimization)
+> **Appels MCP** : voir [`mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §6 (DFS AI Optimization) + §8 (crawl4ai pour scraper concurrents) + Playwright MCP pour les tests directs multi-moteurs.
+>
+> **Logique de cette phase** : (1) on s'assure d'abord que les bots IA peuvent **crawler** le site → (2) on mesure ensuite la visibilité actuelle → (3) on identifie les **citation triggers manquants** → (4) on plante les jalons d'entité (Person, NAP, mentions externes).
 
-```
-mcp__dfs-mcp__ai_opt_llm_ment_search({
-  keyword: "consultant IA PME France",
-  llm: "chatgpt" // puis perplexity, gemini, claude
-})
-```
+### 6.1 Accessibilité des crawlers IA (prérequis bloquant)
 
-Et :
-```
-mcp__dfs-mcp__ai_opt_llm_ment_agg_metrics({
-  target: "augmenter.pro",
-  date_from: "<J-90>"
-})
-```
+**Auditer `public/robots.txt`** pour la présence de directives explicites par bot. `Allow: /` global ne suffit plus en 2026 — plusieurs LLMs requièrent un opt-in nommé.
 
-```
-mcp__dfs-mcp__ai_opt_llm_ment_top_domains({ keyword: "<kw>" })
-mcp__dfs-mcp__ai_opt_llm_ment_top_pages({ target: "augmenter.pro" })
-```
+Bots à autoriser explicitement (ou bloquer si choix éditorial) :
+
+| Bot | Opérateur | Usage | Recommandation augmenter.pro |
+|-----|-----------|-------|------------------------------|
+| `GPTBot` | OpenAI | Entraînement ChatGPT | ✅ Allow |
+| `OAI-SearchBot` | OpenAI | Index ChatGPT Search (temps réel) | ✅ Allow |
+| `ChatGPT-User` | OpenAI | Fetch on-demand (user click) | ✅ Allow |
+| `ClaudeBot` / `Claude-Web` / `anthropic-ai` | Anthropic | Entraînement + fetch Claude | ✅ Allow |
+| `Google-Extended` | Google | Opt-in Gemini training (≠ Googlebot) | ✅ Allow |
+| `PerplexityBot` | Perplexity | Index Perplexity Search | ✅ Allow |
+| `Perplexity-User` | Perplexity | Fetch on-demand | ✅ Allow |
+| `CCBot` | Common Crawl | Source data pour Anthropic/Mistral/etc. | ✅ Allow |
+| `Bytespider` | ByteDance | Doubao / TikTok AI | ⚖️ Décision éditoriale |
+| `Meta-ExternalAgent` / `FacebookBot` | Meta | Llama training | ⚖️ Décision éditoriale |
+
+**Vérifications complémentaires** :
+- [ ] Pas de `Disallow: /` accidentel pour ces bots dans un futur ajout
+- [ ] Header HTTP `X-Robots-Tag` n'inclut pas `noai` / `noimageai` sur les pages indexables
+- [ ] CSP `frame-ancestors` n'empêche pas le rendu (Bing Copilot rend des pages pour extraction)
+- [ ] `robots.txt` accessible en HTTP 200 (vérifier via `mcp__crawl4ai__md`)
+
+**Test crawl bot-by-bot** : `mcp__google-search-console__index_inspect` retourne le `crawledAs` Google ; pour les autres, utiliser `mcp-calls.md` §8 (crawl4ai avec user-agent custom) ou un fetch direct avec header `User-Agent: GPTBot/1.0`.
+
+### 6.2 Mentions LLM actuelles (DataForSEO AI Optimization)
+
+Appels : `mcp-calls.md` §6 (`ai_opt_llm_ment_search`, `ai_opt_llm_ment_agg_metrics`, `ai_opt_llm_ment_top_domains`, `ai_opt_llm_ment_top_pages`).
 
 Mesurer :
-- Nombre de mentions par LLM
+- Nombre de mentions par LLM (ChatGPT, Perplexity, Gemini, Claude)
 - Requêtes qui déclenchent une mention
 - Pages citées
-- Domaines co-cités (concurrents dans le « Graph de citations »)
+- **Domaines co-cités** (concurrents dans le « Graph de citations ») → identifier qui prend notre place
 
-### 6.2 Test direct via ChatGPT scraper
+### 6.3 Tests directs multi-moteurs
 
+Bibliothèque de **15-20 prompts** typiques d'un dirigeant PME cible (à maintenir dans `docs/seo-audits/<date>-data/geo-prompts.md`). Exemples :
+- « Quel consultant IA pour PME en Yvelines ? »
+- « Comment intégrer Odoo avec une IA ? »
+- « Combien coûte un audit informatique pour une PME du BTP ? »
+- « Quel prompt utiliser pour structurer Claude Code ? »
+- « Formation IA pour dirigeant PME en présentiel près de Versailles »
+- « Comment se mettre en conformité NIS2 quand on est une PME ? »
+
+Pour chaque prompt, tester via :
+
+| Moteur | Méthode | Outil |
+|--------|---------|-------|
+| ChatGPT (Search) | API scraper DFS | `mcp__dfs-mcp__ai_optimization_chat_gpt_scraper` |
+| Generic LLM (GPT/Claude/Gemini) | API scraper DFS | `mcp__dfs-mcp__ai_optimization_llm_response` |
+| **Perplexity Pro** | Playwright | `mcp__plugin_playwright_playwright__browser_navigate` → `https://www.perplexity.ai/?q=<prompt>` + `browser_snapshot` |
+| **Google Gemini AI Mode** | Playwright | `https://gemini.google.com/` ou paramètre `?udm=50` sur Google Search |
+| **Google AI Overviews / SGE** | DFS SERP | `mcp-calls.md` §3 → bloc `ai_overview` dans `serp_organic_live_advanced` |
+| **Brave Summarizer** | Playwright | `https://search.brave.com/search?q=<prompt>&summary=1` |
+| **Bing Copilot** | Playwright | `https://www.bing.com/chat` (nécessite login compte Microsoft) |
+| **Claude** (web search) | Playwright | `https://claude.ai/new` (manuel, ou skip si pas d'access API) |
+
+Pour chaque (prompt × moteur), capturer :
+- augmenter.pro cité ? (oui/non + URL exacte si oui)
+- Position dans la liste de sources (1/3, 2/5, etc.)
+- Texte cité verbatim (le fragment précis utilisé)
+- Sources concurrentes citées à notre place
+
+Synthèse en tableau Phase 10 §7.3 du rapport.
+
+#### Test après publication (boucle de validation GEO)
+
+Pour chaque nouveau contenu de type `rapport-sectoriel-local` publié (cf. Phase 8.2), exécuter un protocole de re-test :
+
+| Étape | Délai | Action |
+|-------|-------|--------|
+| T0 | Jour de publication | Logger l'URL + la requête locale cible dans `docs/seo-audits/<date>-data/geo-prompts.md` |
+| T+7 | 5-10 jours après | Re-tester la requête sur ChatGPT Search + Perplexity (méthodes du tableau §6.3 ci-dessus) — logger : cité oui/non, position, fragment |
+| T+30 | 30 jours après | Re-tester sur les 7 moteurs du tableau §6.3 — logger résultat complet |
+| T+90 | 90 jours après | Vérification finale + décision : contenu performant (citations stables) → dupliquer le pattern sur autre secteur ; contenu silencieux → analyser pourquoi (entity, format, distribution, autorité du domaine) |
+
+Format de log à maintenir dans `geo-prompts.md` :
+
+```markdown
+### <Requête locale> — publié le YYYY-MM-DD — URL: /blog/rapport-...
+
+| Date test | Moteur | Cité ? | Position | Fragment cité | Concurrents citants |
+|-----------|--------|--------|----------|---------------|---------------------|
+| T+7 | ChatGPT | non | — | — | site-a.fr, site-b.com |
+| T+7 | Perplexity | oui | 2/4 | « ... » | site-c.fr |
+| T+30 | ... | ... | ... | ... | ... |
 ```
-mcp__dfs-mcp__ai_optimization_chat_gpt_scraper({
-  prompt: "Quel consultant IA pour PME en Yvelines ?",
-  location_code: 2250
-})
-```
 
-Répéter avec 10-15 prompts que pourrait poser un dirigeant PME cible. Vérifier si augmenter.pro est cité, comment, avec quelle URL.
+**Pourquoi** : la visibilité LLM se mesure dans le temps (les index LLM ne crawlent pas en temps réel comme Google) ; un contenu peut n'apparaître qu'après 7-30 jours. Le tracking permet d'identifier ce qui marche vraiment et d'**industrialiser le format gagnant** plutôt que de produire à l'aveugle.
 
-### 6.3 Test via LLM response générique
+### 6.4 AI Overviews & blocs génératifs dans Google SERP
 
-```
-mcp__dfs-mcp__ai_optimization_llm_response({
-  model: "gpt-4",
-  prompt: "<prompt>"
-})
-```
+Dans les résultats `serp_organic_live_advanced` (Phase 3.5), repérer les blocs :
+- `ai_overview` (Google AI Overviews — version stable)
+- `ai_overview_reference` (citations directes dans AIO)
+- `people_also_ask` enrichis (souvent alimentent les AI Overviews)
+- `discussions_and_forums` (Reddit / Quora source des AIO)
 
-### 6.4 AI Overviews dans Google SERP
+Pour chaque SERP analysé :
+- AI Overview présent ? Quelles sources (3-5 URLs) ?
+- augmenter.pro figure-t-il ? Sinon, caractéristiques des URLs citées (longueur, structure Hn, présence FAQ schema, présence date `dateModified`, nom auteur explicite ?)
+- **Hypothèse à valider** : sur 5 prompts BTP/Yvelines, est-ce que les sources citées ont systématiquement (a) un auteur Person schema, (b) une date < 6 mois, (c) une FAQ section ?
 
-Dans les résultats `serp_organic_live_advanced` (Phase 3.7), repérer les blocs `ai_overview` :
-- Est-ce qu'un AI Overview apparaît ?
-- Quelles sources y sont citées (3-5 URLs) ?
-- augmenter.pro figure-t-il ? Sinon, quelles sont les caractéristiques des URLs citées (longueur, structure, schema) ?
+### 6.5 Entity author — Person JSON-LD Pierre Legrand + NAP consistency
 
-### 6.5 Audit `llms.txt`
+**Constat 2026** : Gemini AI Mode et ChatGPT Search citent presque systématiquement le **nom de l'auteur** quand celui-ci a une entité reconnue (Wikidata, LinkedIn vérifié, GitHub actif). Sans entité auteur, les LLMs citent le domaine de manière anonyme — moins de poids E-E-A-T.
+
+**Auditer** :
+- [ ] Existe-t-il une page `/auteur/pierre-legrand` (ou `/a-propos/pierre-legrand`) ? Si non → 🔴 critique
+- [ ] Cette page contient-elle un JSON-LD `Person` avec : `name`, `jobTitle`, `worksFor` (ref Organization), `sameAs: [LinkedIn, GitHub, X, France Num annuaire, Bpifrance directory]`, `knowsAbout: [IA, automatisation, audit IT, ...]`, `alumniOf` si applicable, `description` ≥ 150 mots ?
+- [ ] Chaque `ArticleLayout` injecte-t-il `Article.author` avec une ref `@id` vers la page auteur (et pas juste une string) ?
+- [ ] Le `headshot` de Pierre Legrand est-il consistant sur toutes les pages (mêmes pixels, ou au moins même framing) ?
+
+**NAP (Name / Address / Phone) consistency** — vérifier sur toutes les pages publiques :
+- [ ] Nom exact : `augmenter.PRO` vs `augmenter.pro` vs `Augmenter Pro` → **une seule forme** sur tout le site
+- [ ] Adresse complète (rue + CP + ville) cohérente entre footer, page contact, mentions légales, JSON-LD LocalBusiness
+- [ ] Téléphone (si affiché) au format E.164 dans le JSON-LD
+- [ ] SIRET / numéro de TVA cohérent entre mentions légales et CGV
+- [ ] Heures d'ouverture si applicable (LocalBusiness.openingHoursSpecification)
+
+> ⚠️ Les LLMs vérifient cette cohérence pour valider l'entité — un Pierre Legrand mentionné comme "consultant IA" sur une page et "expert digital" sur une autre = dilution du signal entity.
+
+### 6.6 `llms.txt` + `llms-full.txt`
+
+#### 6.6.1 `public/llms.txt` (résumé indexable)
 
 Vérifier que `public/llms.txt` contient :
 - [ ] Résumé clair (5-10 lignes) : qui, quoi, pour qui, pourquoi
-- [ ] Liste structurée des services avec prix
-- [ ] Liste complète des articles avec titre + URL + résumé en 1 ligne
+- [ ] Liste structurée des services avec prix exacts (0 €, 225 €)
+- [ ] Liste complète des articles avec titre + URL + résumé en 1 ligne + **date de publication ISO 8601**
 - [ ] FAQ principales extraites de `/approche`
-- [ ] Contact + zone géographique (Yvelines, Val d'Oise)
+- [ ] Contact + zone géographique (Yvelines, Val d'Oise, visio France entière)
 - [ ] Pas de hallucinations (services qui n'existent pas, prix faux)
-- [ ] Dates de publication pour chaque article (permet aux LLM de prioriser le récent)
-- [ ] Ressources markdown liées (prompts téléchargeables, etc.)
+- [ ] Lien vers `llms-full.txt` à la fin (cf. ci-dessous)
+- [ ] Ressources markdown liées (prompts téléchargeables, audits publics, etc.)
 
-### 6.6 Citabilité du contenu
+#### 6.6.2 `public/llms-full.txt` (format étendu, optionnel mais recommandé)
 
-Pour chaque article et chaque page service, évaluer :
-- [ ] Phrases factuelles courtes citables (format définition : « X est… »)
-- [ ] Données chiffrées sourcées (les LLM aiment les stats)
-- [ ] Listes numérotées et à puces (hautement citables)
-- [ ] Tableaux comparatifs
-- [ ] FAQ structurée (FAQPage schema + contenu Q/R direct)
-- [ ] Auteur identifié + credentials
-- [ ] Date de mise à jour visible + dans Article schema
+Standard émergent (cf. [llmstxt.org](https://llmstxt.org)) — version étendue contenant le **contenu complet en markdown** de toutes les pages indexables, optimisée pour ingestion LLM en une seule requête.
 
-### 6.7 Tests manuels complémentaires
+- [ ] `public/llms-full.txt` existe ? Si non → 🟠 à créer (génération scriptée depuis le contenu existant)
+- [ ] Format : pour chaque page → titre H1 + URL canonique + dateModified + corps complet en markdown clean (pas de JSX, pas de classes Tailwind)
+- [ ] Taille raisonnable (< 5 MB — au-delà, splitter en `llms-full-blog.txt`, `llms-full-services.txt`)
+- [ ] Référencé dans `llms.txt` et dans `robots.txt` (`Sitemap: https://augmenter.pro/llms-full.txt`)
 
-Si Playwright MCP dispo, automatiser 5-10 requêtes sur :
-- Perplexity.ai
-- ChatGPT (web search activé)
-- Claude.ai
-- Google (regarder AI Overviews)
+### 6.7 Citation triggers — grille spécifique
 
-Capturer screenshots des citations/réponses. Identifier les gaps : sur quels sujets augmenter.pro **devrait** être cité mais ne l'est pas ?
+Pour chaque article et chaque page service, scorer ces 10 « déclencheurs de citation » (les LLMs préfèrent ces patterns pour produire des extraits cités) :
+
+| # | Trigger | Format attendu | Présent ? |
+|---|---------|----------------|-----------|
+| 1 | **Définition courte en intro** (≤ 25 mots) | « X est Y qui Z. » dans le 1er paragraphe | [ ] |
+| 2 | **Tableaux comparatifs** | ≥ 1 `<table>` markdown avec en-têtes clairs | [ ] |
+| 3 | **Données chiffrées sourcées** | Chiffres au format `X %` ou `X €` + source en lien | [ ] |
+| 4 | **Listes numérotées** | Étapes 1, 2, 3 ou « Top N » | [ ] |
+| 5 | **FAQ format Q→A direct** | `<h3>Question ?</h3><p>Réponse en 1-3 phrases.</p>` + FAQPage schema | [ ] |
+| 6 | **Timestamps explicites** | « Au 21 mai 2026, … » ou « Mise à jour mai 2026 » visible | [ ] |
+| 7 | **Attribution claire** | « Selon Pierre Legrand, consultant IA chez augmenter.pro, … » | [ ] |
+| 8 | **Auteur identifié + lien** | Lien vers page auteur en haut/bas, schema `Article.author` | [ ] |
+| 9 | **TL;DR / résumé exécutif** | Encadré 3-5 bullets en haut de l'article | [ ] |
+| 10 | **Citation-friendly URL** | Slug court, descriptif, kebab-case, max 5 mots | [ ] |
+
+**Score cible** : ≥ 7/10 sur les pages stratégiques (services + top 5 articles par trafic GSC).
+
+**Schémas JSON-LD complémentaires à considérer** (en plus de ceux existants) :
+- `HowTo` sur articles méthodologiques (« Comment intégrer Claude Code à votre PME »)
+- `Product` + `aggregateRating` sur chaque offre individuelle (`/approche#prestations` → un Product par palier)
+- `BreadcrumbList` sur toutes les pages profondes (≥ 2 niveaux)
+- `VideoObject` si vidéo embarquée
+- `Course` si la formation est packagée en module
+
+### 6.8 Entity mentions externes (signaux off-site)
+
+Les LLMs valident l'entité « augmenter.pro » via des **mentions externes vérifiables**. Auditer :
+
+| Source | Vérification | Action si absent |
+|--------|--------------|------------------|
+| Wikidata | Pierre Legrand a-t-il une entrée Q-item ? augmenter.pro a-t-il une fiche entreprise ? | 🟠 Créer si signaux suffisants (≥ 3 mentions presse) |
+| LinkedIn | Profil Pierre Legrand → poste « Consultant IA chez augmenter.pro » exact ? Page entreprise augmenter.pro existe ? | 🔴 Aligner si décalage |
+| GitHub | Bio Pierre Legrand → mention augmenter.pro ? | 🟡 Ajouter dans bio |
+| France Num annuaire « Activateur » | augmenter.pro listé ? | 🟠 Demander label (cf. STRATEGIE-EDITORIALE §10) |
+| Bpifrance « IA Booster » directory | augmenter.pro listé ? | 🟠 Demander label |
+| CCI Yvelines / Val d'Oise | Profil entreprise déclaré ? | 🟡 Optionnel |
+| Mentions presse (Le Parisien Yvelines, Les Échos Solutions, etc.) | ≥ 1 citation indexable ? | 🟢 Long terme — digital PR |
+| Annuaires sectoriels (Welcome to the Jungle, Malt Pro, etc.) | Profil consultant ? | 🟡 Optionnel |
+
+Outil de mesure : `mcp__dfs-mcp__backlinks_referring_domains` (Phase 5, si souscription active) → identifier les domaines d'autorité qui linkent augmenter.pro. **Sans souscription Backlinks**, fallback : recherche Google `"augmenter.pro" -site:augmenter.pro` via SERP scraper.
+
+### 6.9 Synthèse Phase 6 dans le rapport
+
+Restituer en §7 du rapport (cf. [`report.md`](.claude/templates/seo/report.md)) :
+- Tableau accessibilité bots (§6.1) — verdict bot par bot
+- Tableau citations actuelles par LLM × prompt (§6.3) — score visibilité
+- Tableau AI Overviews observés (§6.4) — taux de capture vs concurrents
+- Verdict entity author (§6.5) — Person schema présent oui/non, NAP consistency oui/non
+- Score citation triggers moyen sur top 10 pages (§6.7) — ex. 5.3/10
+- Liste des actions Critique / Haute pour rejoindre le top des sources citées (§11 du rapport)
 
 ---
 
@@ -758,6 +614,8 @@ Visualiser sous forme de tableau :
 Ce template couvre : titre SEO, slug, kw principal + secondaires + volumes, intent, pilier, persona cible, douleur adressée, angle différenciant, promesse, preuves, plan H2/H3, CTA, longueur, liens internes, RICE, trafic estimé, trimestre.
 
 **Produire 15 à 20 briefs** classés par RICE décroissant.
+
+**Exigence GEO — minimum 2-3 briefs au format `rapport-sectoriel-local`** (cf. `article-brief.md` §Format). Ce format optimise spécifiquement la citation par les LLMs (ChatGPT Search, Perplexity, Gemini AI Mode) qui privilégient les contenus à structure de rapport / étude / classement plutôt que les pages services classiques. Couvrir au moins un secteur par brief (ex. BTP 78/95, artisans 95, industrie 78, immobilier Yvelines). Trafic search direct attendu modeste — l'objectif est la **visibilité dans les sources citées par les LLMs**, mesurable en Phase 6.3.
 
 Rappel de ton : provocateur, pas SEO corporate.
 - ✅ « ChatGPT dans votre PME : 3 chantiers utiles, 5 pièges qui coûtent cher »
@@ -908,3 +766,7 @@ Toujours créer un commit dédié par lot d'actions avec message explicite, et v
 ### Sauvegarde du rapport
 
 Écrire le rapport complet dans `docs/seo-audits/<YYYY-MM-DD>-audit.md` pour permettre le suivi dans le temps et la comparaison avec les audits précédents. Archiver également les données brutes clés (JSON/CSV des exports GSC et DataForSEO) dans `docs/seo-audits/<YYYY-MM-DD>-data/` si volumineux.
+
+### Check-list finale
+
+Cocher [`.claude/templates/seo/checklist.md`](.claude/templates/seo/checklist.md) §F « Audit complet » avant de clore l'audit.
