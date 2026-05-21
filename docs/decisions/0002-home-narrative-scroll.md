@@ -1,13 +1,21 @@
 ---
 adr: 0002
 title: Refonte de la home en expérience narrative scroll WebGL
-status: proposed
+status: implemented
 date: 2026-05-21
 deciders: Pierre Legrand
 consulted: Claude Code
 informed: —
 follows: 0001-approche-narrative-scroll
 ---
+
+> **Status updates 2026-05-21** :
+> - Implémenté en 7 commits sur `feat/home-narrative-scroll` puis mergé fast-forward dans main.
+> - Le sub paragraph du CH.01 Cover a été remplacé par la phrase signature : « Nous accompagnons les PME et indépendants à trouver l'équilibre parfait entre performance humaine et numérique. IA, digitalisation, robotique — des solutions sur mesure qui tiennent la route. »
+> - **Trim → restore** : le CH.02 Le constat (3 douleurs PME) a été cut puis re-restauré avec lava-lamp cards (CardShell + LiquidBlob, palettes violet/duo/cold). Home stabilisée à 6 chapitres.
+> - Le chapitre final (CH.06) est désormais le composant unifié `<SuiteCockpit />` partagé avec /approche.
+> - La home `/` vit dans le route group `src/app/(home)/` (page + layout qui strip Header/Footer globaux).
+
 
 # ADR 0002 — Refonte de la home en expérience narrative scroll WebGL
 

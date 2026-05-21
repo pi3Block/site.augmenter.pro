@@ -22,6 +22,11 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
     let gsapTicker: ((time: number) => void) | null = null;
     let ScrollTriggerRef: typeof import("gsap/ScrollTrigger").ScrollTrigger | null = null;
 
+    // Force scroll to top on mount — Next.js client-side navigation between
+    // two narrative pages (/ ↔ /approche) doesn't reset window.scrollY, and
+    // Lenis would otherwise pick up the stale position from the previous page.
+    window.scrollTo(0, 0);
+
     (async () => {
       const [{ default: Lenis }, gsapMod, { ScrollTrigger }] = await Promise.all([
         import("lenis"),
@@ -39,6 +44,9 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
         wheelMultiplier: 1.0,
       });
       window.__narrativeLenis = lenis;
+      // Double-safety: tell Lenis itself to be at 0, immediately, in case its
+      // internal scroll state got out of sync with window.scrollY.
+      lenis.scrollTo(0, { immediate: true, force: true });
 
       lenis.on("scroll", () => ScrollTrigger.update());
       gsapTicker = (time: number) => lenis?.raf(time * 1000);

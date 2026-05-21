@@ -22,11 +22,13 @@ Marketing website for **augmenter.pro** — an AI consulting and digital transfo
 ## Commands
 
 ```bash
-npm run dev       # Start dev server (localhost:3000)
+npm run dev       # Start dev server with --webpack (NOT Turbopack — see below)
 npm run build     # Production build (Node.js standalone server)
 npm run start     # Start production server
 npm run lint      # ESLint
 ```
+
+⚠ **Le script `dev` force `--webpack`** (pas Turbopack). Turbopack résout `tailwindcss` depuis le dossier parent `d:\SourceFast\coolify_linux\` au lieu du projet et plante. Le build prod tourne sur webpack aussi (`next build --webpack`). Si tu reviens à `next dev` sans flag, le serveur ne montera plus.
 
 ### Custom Claude Commands
 
@@ -45,8 +47,12 @@ npm run lint      # ESLint
 - **TypeScript 5** (strict mode)
 - **Tailwind CSS 4** with OKLCH color space and CSS variables
 - **shadcn/ui** (new-york style, lucide icons) — config in `components.json`
-- **Framer Motion** for animations (client components only)
+- **Framer Motion** for entry animations (light pages, CTA, footer)
 - **Radix UI** primitives via shadcn
+- **Three.js 0.160** — background WebGL paint shader on narrative pages (`/` and `/approche`)
+- **GSAP 3.15 + ScrollTrigger** — chapter entry timelines + parallax scrub on narrative pages
+- **Lenis 1.3** — smooth scroll momentum-based, narrative pages only
+- **Fonts** : Inter (sans, `--font-geist-sans`) + JetBrains Mono (mono, `--font-geist-mono`), both loaded via `next/font/google` in [src/app/layout.tsx](src/app/layout.tsx)
 
 ## Architecture
 
@@ -54,187 +60,242 @@ npm run lint      # ESLint
 
 ### Routing (App Router)
 
-- `/` — Homepage en 4 sections bento (Hero, ApproachServices, Resources, Convert) qui fusionnent les anciennes 9 sections en un flow 12-colonnes plus dense
-- `/approche` — Approche, prestations & tarifs en bento (Hero, 4 piliers, audits 180°/360°, FAQ). **Canonicale pour l'offre** — absorbe l'ancienne route `/prestations` (redirect 308 via [next.config.ts](next.config.ts), ancre `#prestations`). Split server+client : `page.tsx` (metadata) + `approche-view.tsx` (`"use client"`)
-- `/blog` — Liste d'articles en layout bento. Split server+client : `page.tsx` + `blog-view.tsx`
-- `/blog/<slug>` — Individual articles (each slug has its own directory under `src/app/blog/`)
-- `/contact` — Contact form (server component page.tsx + client component contact-form.tsx)
-- `/idees` — Catalogue d'idées IA/automatisation en bento. Split server+client : `page.tsx` + `idees-view.tsx`
-- `/mentions-legales` — Legal page
+Deux pages principales sont des **expériences scroll narrative** (Three.js shader background + Lenis + GSAP + lava lamps). Les autres pages sont en layout classique avec le Header/Footer globaux.
+
+| Route | Type | Structure |
+|-------|------|-----------|
+| `/` | **Narrative** (6 chapitres) | Route group `src/app/(home)/` qui strip Header/Footer via son propre `layout.tsx`. Server `page.tsx` injecte `CreativeWork` JSON-LD + render `<HomeNarrative />` depuis [src/app/home-narrative/](src/app/home-narrative/) |
+| `/approche` | **Narrative** (9 chapitres) | [src/app/approche/layout.tsx](src/app/approche/layout.tsx) strip Header/Footer. `page.tsx` injecte `FAQPage` + `Service`/`OfferCatalog` JSON-LDs + render `<ApprocheNarrative />` depuis [src/app/approche/narrative/](src/app/approche/narrative/). Absorbe `/prestations` via redirect 308 (ancre `#prestations` à l'intérieur du Ch07 audits). |
+| `/blog` | Bento + Header/Footer globaux | `page.tsx` (metadata) + `blog-view.tsx` (`"use client"` avec data inline) |
+| `/blog/<slug>` | Article via `ArticleLayout` | Each slug has its own directory under [src/app/blog/](src/app/blog/) |
+| `/idees` | Bento + Header/Footer globaux | `page.tsx` + `idees-view.tsx` |
+| `/contact` | Form + Header/Footer | Server `page.tsx` + client `contact-form.tsx` |
+| `/prompts`, `/projets`, `/strategie-ia-pme`, `/integration-mcp`, `/audit-informatique-{yvelines,val-doise}`, `/auteur/pierre-legrand` | Pages classiques | Header/Footer globaux + le CTA widget en bas |
+| `/mentions-legales`, `/cgv`, `/politique-confidentialite` | Legal | Header/Footer globaux |
+
+### Narrative Scroll System
+
+L'infrastructure narrative vit dans [src/app/approche/narrative/](src/app/approche/narrative/) et est réutilisée cross-route par `/` qui importe depuis ce path. Pas de duplication.
+
+```
+src/app/approche/narrative/
+├── background-canvas.tsx       ← Three.js shader (FBM 5 octaves, domain warp,
+│                                  cursor pull, halo, grain). Disposed on unmount.
+├── smooth-scroll-provider.tsx  ← Lenis + GSAP ScrollTrigger pipe.
+├── custom-cursor.tsx           ← Dot + ring, mix-blend: difference (≥620px + fine pointer).
+├── nav-fixed.tsx               ← Brand + 4 menu links + Premier diagnostic CTA.
+├── chapter-rail.tsx            ← 8 boutons verticaux droite, active state.
+├── progress-bar.tsx            ← Fill scaleX live + label dynamique CH.0X.
+├── mood-observer.ts            ← RAF qui détermine le chapitre actif + blend.
+├── store.ts                    ← useSyncExternalStore custom (pas Zustand).
+├── moods.ts                    ← 8 mood palettes + 9 ChapterMeta /approche.
+├── primitives/
+│   ├── chapter.tsx             ← Scaffold .chapter wrapper.
+│   ├── lede.tsx                ← h2 avec data-anim="words" pour GSAP word stagger.
+│   ├── pill.tsx                ← Eyebrow (default / amber / glass).
+│   ├── annot.tsx               ← Kicker + body, grille 200/1fr.
+│   └── word-splitter.tsx       ← Hook qui wrap chaque mot en <span class="word">.
+├── chapters/                   ← 9 chapitres /approche (ch01-preambule → ch09-suite).
+└── shared/
+    └── suite-cockpit.tsx       ← Final chapter UNIFIÉ entre / et /approche.
+                                   Audit 180° card + cockpit 3 cols + brand/social.
+```
+
+Le pendant home :
+
+```
+src/app/home-narrative/
+├── home-moods.ts               ← 6 ChapterMeta (ids "h-01" → "h-06").
+├── index.tsx                   ← Orchestrateur, importe l'infra cross-route.
+└── chapters/                   ← 6 chapitres (ch01-cover → ch06-suite).
+```
+
+**Chapitres** :
+
+| /approche (9) | / (6) |
+|---------------|-------|
+| 01 Préambule (dawn) | 01 Cover (dawn) |
+| 02 Le terrain (reality) | 02 Le constat (reality) — 3 douleurs lava lamp |
+| 03 Les 4 piliers (violet DARK) | 03 Trois disciplines (violet DARK) |
+| 04 L'équilibre — interlude pleine page (dawn) | 04 Les preuves (night DARK) — stats + témoignage XL |
+| 05 La méthode (amber) | 05 Le récit continue (amber) — 3 articles + 3 idées hand-picked |
+| 06 Les preuves (night DARK) | 06 La suite (ember DARK) — SuiteCockpit |
+| 07 Les audits (audits DARK) — `id="prestations"` |   |
+| 08 Les questions (questions light) — FAQ accordion |   |
+| 09 La suite (ember DARK) — SuiteCockpit |   |
+
+**SuiteCockpit** ([src/app/approche/narrative/shared/suite-cockpit.tsx](src/app/approche/narrative/shared/suite-cockpit.tsx)) — composant unifié de fin de page partagé entre / et /approche. Reçoit `chapterId` / `chapterNum` / `totalChapters` en props. Contient : hero engagement + grosse card Audit 180° (lava lamp violet) + 3 CTAs + contact strip + cockpit nav 3 cols (Services & Approche / Ressources / Identité & Légal) + brand row avec social icons.
+
+**Gotcha critique — `<em>` gradient + word splitter** : Tailwind 4 arbitrary selectors `[&_em_.word>span]:` NE compilent PAS en CSS attendu dans ce setup (Next 16 + Tailwind 4 + webpack). Les règles pour le gradient `<em>` et le highlighter `<u>` sont écrites en CSS direct dans [globals.css](src/app/globals.css) sous `h2[data-anim="words"] em` et `h2[data-anim="words"] em .word > span` (cf. handoff README lignes 446-464).
 
 ### Component Organization
 
-- `src/components/sections/` — Page-level section components
-  - **Homepage bento** : `hero.tsx`, `approach-services.tsx`, `resources.tsx`, `convert.tsx`
-  - **Composants partagés** : `cta.tsx` (bas de plusieurs pages internes), `prompt-card.tsx` (/prompts)
-  - **Legacy (à supprimer)** : `approach.tsx`, `ideas.tsx`, `pricing.tsx`, `blog-preview.tsx` — plus utilisés depuis la refonte bento des pages /approche, /idees, /blog. Conservés temporairement pour faciliter le rollback
-- `src/app/{approche,blog,idees}/*-view.tsx` — Implémentations client des pages bento (contiennent toute la UI + les données inline)
-- `src/components/bento/` — Primitives de layout bento réutilisables (`BentoGrid`, `BentoCard`, `SectionHead`, `Pill`, `ArticleBentoCard`, `PullQuoteCard`, `MiniQuoteCard`)
-- `src/components/widgets/` — Widgets animés (SVG morphing blobs) consommés par les cartes bento : `blobs.tsx` (`LiquidBlob`, `MeshAurora`, `CardShell`, `CornerArrow`, `PillTag`), `service-card.tsx`, `idea-card.tsx`, `trust-stat.tsx`, `palettes.ts` (6 palettes OKLCH : violet/amber/duo/cold/warm/mono). Respecte `prefers-reduced-motion`.
-- `src/components/layout/` — Header (fixed navbar + mobile sheet), Footer, ArticleLayout (blog wrapper with Article JSON-LD)
-- `src/components/ui/` — shadcn/ui primitives (accordion, badge, button, card, navigation-menu, separator, sheet)
-- `src/lib/utils.ts` — `cn()` utility (clsx + tailwind-merge)
+- [src/components/sections/](src/components/sections/) — Composants de section partagés
+  - `cta.tsx` (variants `default` / `audit-78` / `audit-95` / `blog` / `auteur`) — utilisé sur les pages services, blog articles, auteur. **Animé** : 2 LiquidBlob + word stagger + magnetic primary button + gradient em.
+  - `prompt-card.tsx` (/prompts)
+  - **Legacy** : `approach.tsx`, `blog-preview.tsx`, `ideas.tsx`, `pricing.tsx` — plus utilisés, conservés temporairement pour rollback. À supprimer dans un cleanup pass.
+- [src/app/blog/blog-view.tsx](src/app/blog/blog-view.tsx) + [src/app/idees/idees-view.tsx](src/app/idees/idees-view.tsx) — pages bento client (data inline)
+- [src/components/bento/](src/components/bento/) — Primitives bento (`BentoGrid`, `BentoCard`, `SectionHead`, `Pill`, `ArticleBentoCard`, `PullQuoteCard`, `MiniQuoteCard`) — **utilisées uniquement sur /blog et /idees** (les pages bento restantes)
+- [src/components/widgets/](src/components/widgets/) — Widgets animés (SVG morphing) :
+  - `blobs.tsx` : `LiquidBlob`, `MeshAurora`, `CardShell`, `CornerArrow`, `PillTag`
+  - `service-card.tsx`, `idea-card.tsx`, `trust-stat.tsx` — wrappers `CardShell + LiquidBlob`
+  - `palettes.ts` : 6 palettes OKLCH (violet / amber / duo / cold / warm / mono)
+  - Respecte `prefers-reduced-motion` via `useMorph` qui fige le seed.
+- [src/components/layout/](src/components/layout/) — Header (fixed navbar + mobile sheet), **Footer mini-cockpit** (dark, 3 cols + social), ArticleLayout (blog wrapper + Article JSON-LD)
+- [src/components/ui/](src/components/ui/) — shadcn/ui primitives
+- [src/lib/utils.ts](src/lib/utils.ts) — `cn()` utility
 
-### Bento Layout System
+### Footer global (mini-cockpit)
 
-La homepage utilise une grille bento 12 colonnes (desktop) / 6 (tablette) / 1 (mobile) avec des rangées de 110px. Chaque `BentoCard` déclare `span` (3-12 cols) et `rows` (1-6 rangées) — le mapping vers Tailwind est explicite (pas de classes dynamiques, pour que JIT les scanne). Quatre variantes visuelles :
-- `light` — carte blanche avec hover lift (défaut)
-- `dark` — fond `#13101d` pour sections sombres
-- `flush` — carte transparente, utilisée pour héberger un widget animé plein-cadre (ServiceCardStat, IdeaCardBigNumber, TrustStatCard)
-- `accent` — gradient violet clair pour CTA secondaires
+Le [Footer](src/components/layout/footer.tsx) est rendu par le root [layout.tsx](src/app/layout.tsx) sur toutes les routes **sauf** `/` et `/approche` (qui le hide via leur layout local). Pattern dark mini-cockpit, même DNA que le `SuiteCockpit` mais sans audit card :
 
-**Convention** : les widgets Bionova (`ServiceCardStat`, `IdeaCardBigNumber`, `TrustStatCard`) ont leur propre `CardShell` interne et s'attendent à être placés dans une `BentoCard variant="flush"` pour éviter un double border + padding.
+- Fond dark `oklch(0.08 0.02 293)` + radiaux ambient violet/ember sur les côtés
+- Layout : brand pitch à gauche / 3 colonnes cockpit à droite (Services & Approche · Ressources · Identité & Légal)
+- Chaque colonne a un dot palette glow (violet / amber / cold) + hover slide-arrow amber
+- Bottom strip : 4 social icons (LinkedIn / X / Mail / WhatsApp) + copyright mono
+- **Aucune ancre** dans les liens — seules les pages réelles sont listées
+
+### CTA widget
+
+Le [CTA](src/components/sections/cta.tsx) est utilisé sur les pages classiques (blog articles, audits, services, auteur). Composant unique avec un prop `variant` :
+
+| Variant | Pages |
+|---------|-------|
+| `default` | /strategie-ia-pme, /integration-mcp (fallback) |
+| `audit-78` | /audit-informatique-yvelines |
+| `audit-95` | /audit-informatique-val-doise |
+| `blog` | tous les articles via ArticleLayout |
+| `auteur` | /auteur/pierre-legrand |
+
+Animations : 2 LiquidBlob accents (violet + duo) en plus du MeshAurora, headline word-stagger Framer Motion, gradient violet→amber sur le fragment `<em>`, Zap badge avec spring scale+rotate, primary CTA magnétique (suit le curseur à ≤110px, max 25% strength), shadow violet sur le primary button.
+
+### Bento Layout System (/blog et /idees uniquement)
+
+Grille bento 12 colonnes (desktop) / 6 (tablette) / 1 (mobile) avec rangées de 110px. Chaque `BentoCard` déclare `span` (3-12) et `rows` (1-6) — mapping vers Tailwind explicite (pas de classes dynamiques). 4 variantes : `light`, `dark`, `flush` (transparent pour widget plein-cadre), `accent`.
+
+⚠ **N'utilise plus pour la home ou /approche** — ces 2 pages sont en narrative scroll (cf. plus haut).
 
 ### Styling
 
-- Color palette: violet primary, amber accent, neutral base — all defined as CSS custom properties in `globals.css`
+- Color palette: violet primary, amber accent, neutral base — OKLCH custom properties dans [globals.css](src/app/globals.css)
+- **Tokens narrative** ajoutés dans `globals.css` : `--fg`, `--fg-muted`, `--primary-soft`, `--border-soft`, `--gradient-brand`, `--gradient-ember`, `--violet-X` (50→900), `--amber-X` (400/500), `--neutral-X`
+- **Theming chapitre** : `[data-narrative-theme="dark"]` et `[data-theme="dark"]` (utilisé via `<section data-theme="dark">`) swappent les variables narrative pour le thème sombre **sans toucher** au `.dark` global du site
 - Custom utilities: `.gradient-text` (violet→amber), `.hero-gradient` (radial background)
-- Dark mode supported via `.dark` class
 
 ### Images
 
-All images are stored in `public/images/` with the following structure:
-
-```
-public/images/
-  blog/          ← illustrations d'articles (thumbnail, hero)
-  services/      ← visuels des prestations
-  team/          ← photos de l'équipe
-  general/       ← images génériques (hero, backgrounds, logos partenaires)
-```
-
-**Conventions obligatoires :**
-
-- **Format** : WebP uniquement (meilleur ratio qualité/poids). Convertir les PNG/JPG avant ajout.
-- **Nommage** : kebab-case, descriptif — ex. `audit-seo-pme.webp`, pas `img1.webp`
-- **Dimensions** : fournir l'image à la taille max d'affichage (pas de 4000px pour un thumbnail 400px)
-- **Poids** : viser < 100 Ko pour les thumbnails, < 300 Ko pour les hero/bannières
-- **Composant** : toujours utiliser `<Image>` de `next/image` (optimisation auto, lazy loading, responsive)
-  ```tsx
-  import Image from "next/image";
-  <Image src="/images/blog/mon-article.webp" alt="Description en français" width={800} height={400} />
-  ```
-- **Alt text** : toujours renseigner un `alt` descriptif en français (SEO + accessibilité)
-- **Priorité** : ajouter `priority` uniquement sur les images above-the-fold (hero, LCP)
-- **Blog** : nommer l'image du même slug que l'article — ex. article `audit-seo-offert` → `blog/audit-seo-offert.webp`
-- **INDEX.md** : chaque sous-dossier d'images doit contenir un fichier `INDEX.md` décrivant textuellement chaque image (type, description visuelle, contexte éditorial, usage suggéré, alt text suggéré). Ce fichier sert de référence pour les LLM et pour maintenir la cohérence des alt texts.
+Voir [public/images/](public/images/) — convention WebP, kebab-case, INDEX.md par sous-dossier. Format obligatoire `<Image>` de `next/image` avec `alt` français descriptif. Détails complets dans la section précédente de ce doc — pas changé.
 
 ## SEO & LLM Optimization
 
 ### Structured Data (JSON-LD)
 
-The site uses Schema.org structured data for SEO and LLM discoverability:
-
 | Schema | Location | Purpose |
 |--------|----------|---------|
-| Organization + LocalBusiness + WebSite | `src/app/layout.tsx` | Global identity, geo-targeting (78/95), contact, social links |
-| Article | `src/components/layout/article-layout.tsx` | Each blog post (author, publisher, tags, URL) |
-| FAQPage | `src/app/approche/page.tsx` | FAQ section → Google "People Also Ask" |
-| Service + OfferCatalog | `src/app/approche/approche-view.tsx` (variable `servicesJsonLd`) | 5 services with pricing (0€ and 225€) — l'ancienne route `/prestations` est redirigée 308 vers `/approche#prestations` via [next.config.ts](next.config.ts) |
-| AggregateRating + Review | `src/app/layout.tsx` (imbriqué dans le nœud `LocalBusiness` du `@graph`) | Star ratings dans les SERP Google — 5 reviews constantes dans le tableau `REVIEWS` en haut du fichier |
+| Organization + LocalBusiness + WebSite | [src/app/layout.tsx](src/app/layout.tsx) (root, toutes pages) | Identité globale, geo-targeting 78/95, contact, social links |
+| AggregateRating + Review[] | [src/app/layout.tsx](src/app/layout.tsx) imbriqué dans `LocalBusiness` du `@graph` | 5 reviews (tableau `REVIEWS` en tête du fichier) → étoiles SERP Google |
+| **CreativeWork** (`WebPage` + nested) | [src/app/(home)/page.tsx](src/app/(home)/page.tsx) | Positionne `/` comme contenu éditorial narrative |
+| FAQPage | [src/app/approche/page.tsx](src/app/approche/page.tsx) (server) | FAQ section → Google "People Also Ask" |
+| Service + OfferCatalog | [src/app/approche/page.tsx](src/app/approche/page.tsx) (server) | 5 services with pricing (0€ et 225€) — `/prestations` redirige 308 vers `/approche#prestations` (ancre dans le Ch07 audits) |
+| Article | [src/components/layout/article-layout.tsx](src/components/layout/article-layout.tsx) | Each blog post (author, publisher, tags, URL) |
+| Person | [src/app/auteur/pierre-legrand/page.tsx](src/app/auteur/pierre-legrand/page.tsx) | Person JSON-LD pour E-E-A-T |
 
 ### LLM/GEO Files
 
-- `public/llms.txt` — Machine-readable site summary for LLM crawlers (Perplexity, ChatGPT, Claude)
-- `public/robots.txt` — Crawler directives + sitemap reference
-- `public/sitemap.xml` — All 12 URLs with priorities and change frequencies
+- [public/llms.txt](public/llms.txt) — résumé site pour crawlers LLM (Perplexity, ChatGPT, Claude)
+- [public/llms-full.txt](public/llms-full.txt) — version étendue (llmstxt.org spec)
+- [public/robots.txt](public/robots.txt) — directives crawlers + sitemap reference + bot AI explicites
+- [public/sitemap.xml](public/sitemap.xml) — toutes les URLs avec priorities et lastmod
+- [public/news-sitemap.xml](public/news-sitemap.xml) — sitemap dédié aux articles blog
 
 ### Google Tag Manager (GTM) — GA4 et événements
 
-- Intégration via `@next/third-parties/google` dans `src/app/layout.tsx`. **GA4 est déployé via GTM** (pas de balise GA directe dans le code).
-- **Variable** : `NEXT_PUBLIC_GTM_ID` (ex. `GTM-XXXXXXX`). Si non définie, GTM n'est pas chargé (pratique en dev local).
-- **Événements** : depuis un composant client, `import { sendGTMEvent } from "@next/third-parties/google"` puis `sendGTMEvent({ event: "nom", ... })`. Les événements sont reçus par GTM puis renvoyés vers GA4 si tu configures les balises/triggers (voir guide ci-dessous).
-- Vérifier l'installation avec l’extension [Tag Assistant](https://tagassistant.google.com/) (Chrome).
-
-#### Déployer GA4 via GTM (mesure du comportement)
-
-1. **GTM** → **Balises** → **Nouvelle** → **Configuration Google Analytics : GA4**.
-2. **ID de mesure** : ton ID GA4 (format `G-XXXXXXXXXX`, trouvable dans GA4 → Admin → Flux de données → Web).
-3. **Déclenchement** : **Toutes les pages** (pour les pages vues).
-4. Nommer la balise (ex. `GA4 - Configuration`) → **Enregistrer**.
-
-#### Configurer les événements dans GA4 (via GTM)
-
-- Le site envoie déjà l’événement `contact_form_submit` au dataLayer (formulaire contact). Pour qu’il remonte dans GA4 :
-  1. **GTM** → **Déclencheurs** → **Nouveau** → **Événement personnalisé** → Nom de l’événement : `contact_form_submit` → Enregistrer.
-  2. **GTM** → **Balises** → **Nouvelle** → **Google Analytics : GA4 – Événement** → Sélectionner la même **Configuration GA4** que ci-dessus → Nom de l’événement : `contact_form_submit` (ou `generate_lead`) → Déclenchement : le déclencheur créé à l’étape 1 → Enregistrer.
-- **Lecture article** : le site envoie `lecture_article` avec `article_slug`, `article_title`, `article_read_time` (composant `ArticleReadEvent` dans `ArticleLayout`). Dans GTM : déclencheur « Événement personnalisé » sur `lecture_article`, puis balise GA4 Événement avec le même nom (ou `article_view`) et paramètres optionnels (article_slug, article_title).
-- Pour d’autres événements (ex. clic « Devis », téléchargement guide) : ajouter `sendGTMEvent({ event: "nom_event", ... })` dans le code au bon endroit, puis créer dans GTM un déclencheur « Événement personnalisé » sur ce nom et une balise GA4 Événement associée.
-- Dans **GA4** → **Rapports** → **Engagement** → **Événements**, tu verras tes événements (et tu pourras marquer `contact_form_submit` ou `generate_lead` comme **conversion** dans Admin → Événements → bascule « Marquer comme conversion »).
+(Section inchangée — voir intégration via `@next/third-parties/google` dans [src/app/layout.tsx](src/app/layout.tsx). Événements : `contact_form_submit`, `lecture_article`.)
 
 ### MCP SEO Tools (optionnels)
 
-Si configurés, ces MCP servers fournissent des données SEO réelles aux commandes `/create-article`, `/create-resource` et `/seo-audit` :
+Si configurés, ces MCP servers fournissent des données SEO réelles aux commandes `/create-article`, `/create-resource`, `/seo-audit` :
 
-| MCP Server | Données | Usage |
-|------------|---------|-------|
-| **DataForSEO** (`dfs-mcp`) | Volumes de recherche, difficulté, SERP, concurrents | Recherche de mots-clés, analyse concurrentielle |
-| **Google Search Console** (`google-search-console`) | Clics, impressions, CTR, positions | Performance réelle des pages, quick wins |
+| MCP Server | Données |
+|------------|---------|
+| **DataForSEO** (`dfs-mcp`) | Volumes de recherche, difficulté, SERP, concurrents |
+| **Google Search Console** (`google-search-console`) | Clics, impressions, CTR, positions |
 
-Les commandes fonctionnent sans ces MCP (fallback sur recherche web), mais les données sont **beaucoup plus fiables** avec.
-
-**Vérifier la disponibilité** : Si un outil MCP échoue ou n'est pas configuré, basculer sur la recherche web comme fallback.
+Les commandes fonctionnent sans (fallback web search), mais les données sont **beaucoup plus fiables** avec.
 
 ### SEO Conventions
 
-- Every page **must** export `metadata: Metadata` with optimized `title` (< 60 chars) and `description` (< 155 chars)
-- Meta titles should include **power words** (Guide, Offert, 2026, Sans Engagement) and **geo-targeting uniquement quand pertinent** (78/95 pour contenus liés à la formation présentielle ; sinon, formulation nationale « PME française », « dirigeant PME »). Le mot « gratuit » est **interdit**.
-- Layout template: `"%s | augmenter.PRO"` — page titles are appended automatically
-- Blog articles pass `slug` prop to `ArticleLayout` for canonical URL in Article schema
-- When MCP SEO tools are available (DataForSEO, GSC), always prefer real data over web search estimates for keyword research and performance analysis
+- Every page **must** export `metadata: Metadata` avec `title` (<60 chars) et `description` (<155 chars) optimisés
+- Power words OK : Guide, Offert, 2026, Sans Engagement. **Mot « gratuit » interdit** — utiliser « offert », « sans engagement », « inclus »
+- Geo-targeting 78/95 uniquement quand pertinent (formation présentielle) ; sinon formulation nationale
+- Layout template: `"%s | augmenter.PRO"`
+- Blog articles : passer `slug` à `ArticleLayout` pour canonical URL dans Article schema
+- Préférer données MCP réelles aux estimations web search
 
 ### Qualité de Contenu & E-E-A-T
 
-augmenter.pro est un site de conseil (décisions financières pour PME) — Google applique un standard E-E-A-T élevé (domaine YMYL). Toute page publiée doit respecter ces principes.
+augmenter.pro est un site de conseil pour PME (domaine YMYL) — Google applique un standard E-E-A-T élevé.
 
-#### Identité éditoriale (Qui, Comment, Pourquoi)
+#### Identité éditoriale
 
-- **Qui** : Pierre Legrand, consultant IA & transformation digitale. Chaque article est publié sous son nom (JSON-LD `author` dans `article-layout.tsx`).
-- **Comment** : Le contenu est rédigé avec l'assistance d'outils IA et révisé par Pierre Legrand. Ne jamais prétendre que le contenu est 100% humain si ce n'est pas le cas.
-- **Pourquoi** : Le contenu existe pour aider les PME à prendre des décisions éclairées, pas pour générer du trafic. Si un sujet ne sert pas l'audience cible (PME française, secteurs BTP/immobilier/industrie/artisans — avec ancrage local 78/95 pour la formation présentielle), ne pas le traiter.
+- **Qui** : Pierre Legrand, consultant IA & transformation digitale. Articles publiés sous son nom (Article JSON-LD `author`).
+- **Comment** : Contenu rédigé avec assistance IA et révisé par Pierre Legrand. Ne jamais prétendre « 100% humain » si ce n'est pas le cas.
+- **Pourquoi** : Aider les PME à décider, pas générer du trafic. Si un sujet ne sert pas l'audience (PME française, BTP/immobilier/industrie/artisans), ne pas traiter.
 
-#### E-E-A-T — Critères obligatoires
+#### E-E-A-T
 
-| Signal | Exigence | Vérification |
-|--------|----------|--------------|
-| **Experience** | ≥ 1 exemple terrain issu de missions réelles ou d'observations directes du secteur local | L'article contient un passage concret (cas client anonymisé, observation 78/95) |
-| **Expertise** | Analyse approfondie, pas de reformulation superficielle des sources existantes | Chaque section apporte un angle, un avis ou une méthodologie originale |
-| **Autorité** | Credentials naturellement intégrées (expérience sectorielle, résultats clients) | Le contexte augmenter.PRO est mentionné sans être forcé |
-| **Fiabilité** | Données chiffrées sourcées, conseils prudents, limites mentionnées | Aucune affirmation sans source ; au moins 1 nuance/limite par article |
+| Signal | Exigence |
+|--------|----------|
+| **Experience** | ≥ 1 exemple terrain réel ou observation directe secteur local |
+| **Expertise** | Analyse approfondie, pas de reformulation superficielle |
+| **Autorité** | Credentials intégrées naturellement |
+| **Fiabilité** | Données sourcées, limites mentionnées |
 
-#### Contenu People-First — Règles
+#### Contenu People-First
 
-1. **Test du lecteur** : Après lecture, le dirigeant PME doit pouvoir **agir concrètement** (checklist, étapes, décision éclairée). Si le contenu ne change rien pour lui → manque de valeur.
-2. **Valeur ajoutée** : Chaque page doit apporter quelque chose **absent des 5 premiers résultats Google** — angle unique, donnée originale, méthodologie propre, ou expérience terrain.
-3. **Pas de contenu SEO-first** : Ne jamais écrire un article JUSTE parce qu'un mot-clé a du volume. Le sujet doit croiser expertise réelle + besoin réel de l'audience.
-4. **Périmètre de compétence** : Rester dans le périmètre IA/digital/audit/transformation pour PME. Ne pas chasser des sujets trending hors expertise.
-5. **Anti-patterns interdits** :
-   - Reformuler le contenu concurrent sans valeur ajoutée
-   - Cibler un nombre de mots arbitraire (la longueur découle du sujet, pas l'inverse)
-   - Ajouter des "mises à jour" cosmétiques pour simuler la fraîcheur
-   - Multiplier les articles sur des variantes mineures d'un même sujet
+1. Test du lecteur : après lecture, le dirigeant PME peut **agir** (checklist, étapes, décision)
+2. Valeur ajoutée absente du top 5 Google : angle unique, donnée originale, méthodo propre, terrain
+3. Pas de SEO-first : sujet = expertise réelle × besoin réel
+4. Périmètre IA / digital / audit / transformation PME
+5. Anti-patterns interdits : reformulation concurrent, longueur arbitraire, fausses MAJ, variantes mineures
 
 ### Adding a New Blog Article
 
 Use `/create-article <sujet>` or follow this manual process:
 
-1. Create `src/app/blog/<slug>/page.tsx` using `ArticleLayout` wrapper
+1. Create [src/app/blog/<slug>/page.tsx](src/app/blog/) using `ArticleLayout` wrapper
 2. Export `metadata: Metadata` with SEO-optimized title & description
-3. Pass `slug="<slug>"` to `ArticleLayout` for JSON-LD canonical URL
-4. Pass `dateISO` (ISO 8601) and `dateModified` props to `ArticleLayout`
-5. Add image `public/images/blog/<slug>.webp` (WebP, 16:9, < 300 Ko) and pass `image="/images/blog/<slug>.webp"` prop
-6. Update `public/images/blog/INDEX.md` with the new image description (type, dimensions, poids, description, contexte, alt text)
-7. Add the article entry to `src/components/sections/blog-preview.tsx` (first position in `articles` array)
-8. Add the URL to `public/sitemap.xml` (with `<lastmod>` in ISO 8601)
-9. Add the article to `public/news-sitemap.xml`
-10. Add the article to `public/llms.txt` in the blog section
-11. Run `npm run build` to verify
+3. Pass `slug="<slug>"` à `ArticleLayout` pour canonical URL JSON-LD
+4. Pass `dateISO` (ISO 8601) et `dateModified` props à `ArticleLayout`
+5. Add image [public/images/blog/<slug>.webp](public/images/blog/) (WebP, 16:9, < 300 Ko) et passer `image="/images/blog/<slug>.webp"` prop
+6. Update [public/images/blog/INDEX.md](public/images/blog/INDEX.md) avec description image (type, dimensions, poids, contexte, alt text)
+7. Add article entry dans [src/app/blog/blog-view.tsx](src/app/blog/blog-view.tsx) tableau `ARTICLES` (en première position pour les plus récents)
+8. Add URL dans [public/sitemap.xml](public/sitemap.xml) avec `<lastmod>` ISO 8601
+9. Add article dans [public/news-sitemap.xml](public/news-sitemap.xml)
+10. Add article dans [public/llms.txt](public/llms.txt) section blog
+11. Si l'article est suffisamment fort, hand-pick dans [src/app/home-narrative/chapters/ch05-recit.tsx](src/app/home-narrative/chapters/ch05-recit.tsx) — la home featuring 3 articles, à curater
+12. Run `npm run build` to verify
 
 ## Key Constraints
 
-- **All page data is inline** — articles, testimonials, pricing, ideas are hardcoded in their respective components
-- **Client components** must use `"use client"` directive (required for framer-motion, interactive forms, mobile menu)
-- **Client components cannot export metadata** — if a page needs `"use client"`, split it: server component page.tsx (metadata) + client component (UI). See `/contact` as example.
-- **Blog articles** use static directory-based routes (not dynamic `[slug]`), each article is a separate `src/app/blog/<slug>/page.tsx`
-- **llms.txt and sitemap.xml must be updated** when adding new pages or articles
-- **JSON-LD structured data** should be added to any new page with indexable content
+- **All page data is inline** — articles, testimonials, pricing, idées hardcodés
+- **Client components** must use `"use client"` (required for framer-motion, gsap, lenis, three.js, interactive forms, mobile menu)
+- **Client components cannot export metadata** — si une page a besoin de `"use client"`, split : server `page.tsx` (metadata + JSON-LDs) + client component (UI). Voir `/contact`, `/(home)/page.tsx`, `/approche/page.tsx` comme exemples.
+- **Blog articles** : routes statiques directory-based (pas dynamiques `[slug]`), chaque article est `src/app/blog/<slug>/page.tsx`
+- **llms.txt, sitemap.xml et news-sitemap.xml doivent être mis à jour** quand on ajoute pages ou articles
+- **JSON-LD structured data** ajouter sur toute page indexable. Sur les narrative pages, le JSON-LD vit dans le server `page.tsx`, le narrative component est rendu client-side en dessous.
+- **Dev server force webpack** (`next dev --webpack`) — voir Commands ci-dessus pour la raison
+- **Ne jamais utiliser des ancres** (`/route#section`) dans le footer ou le NavFixed — seuls les liens pages réels. Si une section n'a pas sa page, soit on consolide sous un parent, soit on la skip.
+
+## Branching Convention
+
+- 1-3 commits ou bug fix → commit direct sur main
+- 4+ commits ou refonte structurelle (routes, layout, infra) → branche `feat/<slug>` ou `fix/<slug>`, merge fast-forward quand validé visuellement
+- Toujours demander confirmation avant `git push` — jamais push autonome
+
+## ADRs et Plans
+
+- [docs/decisions/0001-approche-narrative-scroll.md](docs/decisions/0001-approche-narrative-scroll.md) — décision narrative /approche
+- [docs/decisions/0002-home-narrative-scroll.md](docs/decisions/0002-home-narrative-scroll.md) — décision narrative /
+- [docs/plans/](docs/plans/) — plans d'implémentation détaillés
+- [docs/ClaudeDesign_handoff/](docs/ClaudeDesign_handoff/) — source du design narrative (HTML/CSS/JS prototype)

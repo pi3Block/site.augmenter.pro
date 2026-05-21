@@ -1,12 +1,15 @@
 ---
 adr: 0001
 title: Refonte /approche en expérience narrative scroll WebGL
-status: accepted
+status: implemented
 date: 2026-05-21
 deciders: Pierre Legrand
 consulted: Claude Code, Claude Design (handoff)
 informed: —
 ---
+
+> **Status update 2026-05-21** : implémenté en 9 commits sur `feat/approche-narrative-scroll` puis mergé fast-forward dans main. **Évolution post-merge** : un chapitre interlude pleine page « L'équilibre » (CH.04) a été inséré, portant /approche de 8 à 9 chapitres. Voir [commit 2a73c2d](#) — phrase signature « La performance naît de l'équilibre entre l'humain, ses outils et ses habitudes » mise en écrin. Méthode chapter (CH.05 désormais) a reçu un nouveau lede « On commence par écouter. Le reste suit. » pour éviter la redondance.
+
 
 # ADR 0001 — Refonte /approche en expérience narrative scroll WebGL
 
