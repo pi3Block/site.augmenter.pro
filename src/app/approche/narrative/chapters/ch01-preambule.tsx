@@ -27,7 +27,7 @@ export function Ch01Preambule() {
         data-anim="up"
         className="max-w-[56ch] text-[clamp(17px,1.5vw,22px)] leading-relaxed text-(--fg-muted)"
       >
-        Pierre Legrand accompagne les PME et indépendants à trouver l&apos;équilibre
+        Nous accompagnons les PME et indépendants à trouver l&apos;équilibre
         entre performance humaine et numérique. Formation en présentiel en
         Yvelines et Val d&apos;Oise, conseil et audits en visio partout en
         France — des solutions sur mesure qui tiennent la route.

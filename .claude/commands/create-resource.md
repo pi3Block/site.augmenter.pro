@@ -70,6 +70,7 @@ En fonction de l'analyse, recommande le **type de ressource le plus adapté** :
 | Type | Quand l'utiliser | Route | JSON-LD |
 |------|-----------------|-------|---------|
 | **Article de blog** | Contenu éditorial, guide, tutoriel, actualité | `/blog/<slug>` | Article (auto via ArticleLayout) |
+| **Rapport sectoriel local** | Classement / étude / synthèse sur un secteur ou une zone, **optimisé pour citation par les LLMs** (ChatGPT Search, Perplexity, Gemini) | `/blog/rapport-<secteur>-<zone>-<annee>` | Article (auto) + `Report` manuel |
 | **Page sectorielle** | Cibler un secteur d'activité spécifique | `/secteurs/<slug>` | Service + areaServed |
 | **Page locale SEO** | Cibler une ville ou zone géographique | `/zones/<slug>` | LocalBusiness + areaServed |
 | **Comparatif** | Comparer des outils, solutions, approches | `/comparatifs/<slug>` | Article + ItemList |
@@ -78,6 +79,8 @@ En fonction de l'analyse, recommande le **type de ressource le plus adapté** :
 | **Landing page** | Page d'atterrissage campagne ou offre spécifique | `/<slug>` | Service ou Product |
 | **Prompt IA** | Prompt prêt à l'emploi pour la bibliothèque | Ajout dans `src/data/prompts.ts` + `public/downloads/` | CreativeWork (via CollectionPage /prompts) |
 | **Page légale** | Obligation réglementaire (CGV, confidentialité) | `/<slug>` | Aucun |
+
+> **Quand préférer Rapport sectoriel local à Article de blog classique** : sujet qui se prête à un classement, une étude de maturité, un comparatif d'acteurs ou une synthèse chiffrée sur un secteur/zone donnés. Objectif principal = visibilité dans les **sources citées par les LLMs**, pas trafic search direct. Voir [`/seo-audit`](.claude/commands/seo-audit.md) Phase 6.3 (boucle de validation T+7/T+30/T+90) et [`/create-article`](.claude/commands/create-article.md) Étape 3 (règles structurelles : exec summary ≤ 100 mots, méthodologie, tableau obligatoire, ton neutre).
 
 **Justifie ton choix** en expliquant pourquoi ce format est le meilleur pour :
 - L'intention de recherche détectée
@@ -103,7 +106,7 @@ Propose un brief complet **avant de coder**, au format adapté au type de ressou
 
 | Type de ressource | Template de brief |
 |---|---|
-| Article / comparatif / étude de cas / glossaire | [`.claude/templates/seo/article-brief.md`](.claude/templates/seo/article-brief.md) |
+| Article / rapport sectoriel local / comparatif / étude de cas / glossaire | [`.claude/templates/seo/article-brief.md`](.claude/templates/seo/article-brief.md) (renseigner le champ **Format** en conséquence) |
 | Page sectorielle / page locale / landing / hub | [`.claude/templates/seo/page-spec.md`](.claude/templates/seo/page-spec.md) |
 
 **Champs supplémentaires spécifiques à create-resource** (à ajouter au brief choisi) :

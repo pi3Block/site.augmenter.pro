@@ -11,6 +11,16 @@ import Image from "next/image";
 
 const articles = [
   {
+    slug: "ia-contradicteur-prompts-dirigeant-pme",
+    title:
+      "L'IA comme contradicteur : 5 prompts pour challenger vos décisions",
+    excerpt:
+      "ChatGPT vous donne toujours raison ? 5 prompts copiables pour transformer l'IA en contradicteur honnête et identifier vos angles morts avant chaque décision structurante.",
+    tags: ["Intelligence Artificielle", "PME"],
+    readTime: "9 min",
+    image: "/images/blog/ia-contradicteur-prompts-dirigeant-pme.webp",
+  },
+  {
     slug: "rapport-adoption-ia-btp-francilien-2026",
     title:
       "Rapport 2026 : Adoption de l'IA dans le BTP francilien",
