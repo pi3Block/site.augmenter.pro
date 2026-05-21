@@ -1,5 +1,72 @@
+# robots.txt — augmenter.pro
+# Directives explicites par bot IA (l'Allow: / global ne suffit plus en 2026 :
+# Google-Extended et plusieurs autres crawlers demandent un opt-in nommé).
+
 User-agent: *
 Allow: /
 
+# --- OpenAI ----------------------------------------------------------------
+# GPTBot : entraînement ChatGPT
+User-agent: GPTBot
+Allow: /
+
+# OAI-SearchBot : index ChatGPT Search (temps réel)
+User-agent: OAI-SearchBot
+Allow: /
+
+# ChatGPT-User : fetch on-demand quand un utilisateur clique un lien dans ChatGPT
+User-agent: ChatGPT-User
+Allow: /
+
+# --- Anthropic -------------------------------------------------------------
+# ClaudeBot / Claude-Web / anthropic-ai : entraînement + fetch Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# --- Google ----------------------------------------------------------------
+# Google-Extended : opt-in pour l'entraînement Gemini (distinct de Googlebot
+# qui reste géré implicitement par User-agent: *)
+User-agent: Google-Extended
+Allow: /
+
+# --- Perplexity ------------------------------------------------------------
+# PerplexityBot : index Perplexity Search
+User-agent: PerplexityBot
+Allow: /
+
+# Perplexity-User : fetch on-demand (clic utilisateur)
+User-agent: Perplexity-User
+Allow: /
+
+# --- Common Crawl ----------------------------------------------------------
+# CCBot : source data utilisée par de nombreux LLMs (Anthropic, Mistral, etc.)
+User-agent: CCBot
+Allow: /
+
+# --- Décision éditoriale : bloqués par défaut ------------------------------
+# Bytespider (ByteDance / Doubao / TikTok AI) et les bots Meta (Llama training)
+# sont bloqués par défaut. À arbitrer avec Pierre : si valeur stratégique
+# perçue sur ces écosystèmes, basculer en Allow: /.
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+# --- Sitemaps --------------------------------------------------------------
 Sitemap: https://augmenter.pro/sitemap.xml
 Sitemap: https://augmenter.pro/news-sitemap.xml
+
+# --- LLM ingestion (standard llmstxt.org) ---------------------------------
+# Pas un sitemap au sens strict, mais déclaré ici pour aider les crawlers IA
+# à découvrir la version étendue (markdown complet de toutes les pages).
+Sitemap: https://augmenter.pro/llms-full.txt
