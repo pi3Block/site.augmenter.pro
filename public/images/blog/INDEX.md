@@ -278,3 +278,15 @@
 - **Contexte éditorial** : Image hero du rapport sectoriel local sur l'adoption IA dans le BTP francilien. Illustre la rencontre entre le monde physique du chantier (gauche) et les outils numériques/IA qui transforment progressivement le secteur (droite : devis, planning, automatisation, analyse de données).
 - **Usage suggéré** : Hero d'article "Rapport 2026 : Adoption de l'IA dans le BTP francilien — état des lieux".
 - **Alt text suggéré** : "Chantier BTP avec grues à gauche et tableau de bord IA à droite (graphique, robot, engrenage, devis) — symbolise l'adoption de l'IA dans le secteur du bâtiment francilien"
+
+---
+
+## patron-goulot-paradoxe-ia-dirigeant-pme.webp
+
+- **Type** : Illustration flat design (IA générée via Gemini)
+- **Dimensions** : Paysage 16:9 (1600×900)
+- **Poids** : ~98 Ko
+- **Description** : Au centre, silhouette violette d'un dirigeant en costume, visage tendu, qui porte à bout de bras une pile précaire d'ordinateurs portables, tablettes et smartphones. Tout autour de lui, des flèches noires et ambres convergent vers son corps depuis toutes les directions — symbolisant que toutes les sollicitations IA remontent à lui. Iconographie satellite : bulles de chat avec logos Google AI et Anthropic (A), petites têtes de robots, engrenages violet/ambre. En arrière-plan dégradé violet→ambre : à gauche, silhouettes de grues et immeubles en construction (chantier BTP) ; à droite, tableau de bord avec graphique de barres, tête de robot IA et engrenage circuit. Aux deux extrémités du sol, deux groupes d'employés silhouettés en attente passive, regardant la scène sans agir. Style flat épuré, sans texte. Étincelle Gemini en bas à droite.
+- **Contexte éditorial** : Image hero de l'article sur le paradoxe du patron-goulot IA. Illustre visuellement le concept central : le dirigeant qui pensait que l'IA le libérerait se retrouve en réalité écrasé par toutes les sollicitations et la centralisation, pendant que ses équipes restent en retrait. La composition « tout converge vers le patron » est volontairement chargée et ironique.
+- **Usage suggéré** : Hero d'article "Le patron-goulot : quand l'IA rend le dirigeant PME encore plus indispensable".
+- **Alt text suggéré** : "Dirigeant PME en costume portant une pile d'ordinateurs et de tablettes, écrasé sous des flèches qui convergent de partout — symbolise le paradoxe du patron-goulot quand l'IA centralise au lieu de libérer"

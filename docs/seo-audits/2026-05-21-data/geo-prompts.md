@@ -87,3 +87,40 @@ Lors de la publication d'un nouveau contenu `rapport-sectoriel-local`, ajouter i
 - Le format rapport sectoriel local est-il effectivement plus cité par les LLMs qu'un guide classique sur le même sujet ?
 - La présence d'un tableau + section méthodologie + schema `Report` JSON-LD améliore-t-elle la citation ?
 - Faut-il un volume minimum d'autorité de domaine pour que le format fonctionne, ou suffit-il sur un petit domaine ?
+
+---
+
+## Audit complet — Tests ChatGPT Search 2026-05-21
+
+Exécutés dans le cadre de l'[audit complet 2026-05-21](../2026-05-21-audit-complet.md) §7.3.
+
+### Test 1 — « Quel consultant IA pour PME en Yvelines / Val d'Oise sur ChatGPT, Claude, Odoo ? »
+
+| Date | Moteur | Cité ? | Position | Concurrents/sources cités |
+|------|--------|:---:|:---:|---|
+| 2026-05-21 | ChatGPT Search | **non** | — | Malt, Upwork, LinkedIn (recherche), Meetup Odoo France, Slack Odoo France, requête generique « Agence IA PME Ile-de-France » |
+
+**Constat** : ChatGPT redirige vers les marketplaces (Malt / Upwork) plutôt que de nommer un consultant. Aucune source augmenter.pro alors que c'est exactement l'expertise du site.
+
+### Test 2 — « Combien coûte un audit informatique pour une PME du BTP en région parisienne et que doit-il contenir ? »
+
+| Date | Moteur | Cité ? | Position | Concurrents/sources cités |
+|------|--------|:---:|:---:|---|
+| 2026-05-21 | ChatGPT Search | **non** | — | Aucune source nommée — réponse générique |
+
+**Constat** : ChatGPT produit un tableau de prix 1 500–15 000 € qui **copie quasiment la grille de [`/blog/cout-audit-informatique-yvelines`](https://augmenter.pro/blog/cout-audit-informatique-yvelines)** (3 paliers, mêmes fourchettes, plan en 5 sections quasi-identique) **sans citer la source**.
+
+### Test 3 — « Comment structurer le prompt principal d'un projet Claude Code pour une PME et quels fichiers .md utiliser ? »
+
+| Date | Moteur | Cité ? | Position | Concurrents/sources cités |
+|------|--------|:---:|:---:|---|
+| 2026-05-21 | ChatGPT Search | **non** | — | Aucune source nommée |
+
+**Constat** : ChatGPT propose une structure `PROMPT.md / README.md / ARCHITECTURE.md / TODO.md` proche de l'angle de [`/blog/claude-code-prompt-architecture`](https://augmenter.pro/blog/claude-code-prompt-architecture) (qui rank pos 7 sur Google avec 205 clics / 5 321 imp en 90 j) — mais **invisible côté ChatGPT**.
+
+### Synthèse Mai 2026
+
+- **Taux de capture ChatGPT Search** : **0/3 = 0 %**
+- Hypothèse retenue : faute d'**entité externe** (Wikidata, France Num Activateur, Bpifrance directory, mentions presse), les LLMs ne reconnaissent pas augmenter.pro comme source d'autorité, même quand le contenu est bien positionné sur Google.
+- À tester en runbook mensuel : Perplexity Pro, Gemini AI Mode, Google AI Overview, Brave Summarizer, Bing Copilot, Claude web search (via Playwright MCP).
+- Cf. [`§11 Plan d'action priorisé 🔴`](../2026-05-21-audit-complet.md#11-plan-daction-priorisé) — items 10-12 (LinkedIn alignment) + 14-16 (Wikidata, France Num, Bpifrance).

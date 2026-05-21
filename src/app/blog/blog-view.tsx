@@ -27,6 +27,15 @@ interface Article extends ArticleBentoData {
 
 const ARTICLES: Article[] = [
   {
+    slug: "patron-goulot-paradoxe-ia-dirigeant-pme",
+    title: "Le patron-goulot : quand l'IA rend le dirigeant encore plus indispensable",
+    excerpt:
+      "Vous avez déployé ChatGPT/Claude dans votre PME et vous êtes toujours débordé ? Pire, c'est vous qui formez tout le monde ? 5 signaux du patron-goulot et protocole en 4 étapes pour en sortir.",
+    tags: ["Intelligence Artificielle", "PME"],
+    readTime: "10 min",
+    image: "/images/blog/patron-goulot-paradoxe-ia-dirigeant-pme.webp",
+  },
+  {
     slug: "ia-contradicteur-prompts-dirigeant-pme",
     title: "L'IA comme contradicteur : 5 prompts pour challenger vos décisions",
     excerpt:
