@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { modules, techStack } from "@/data/modules";
+import { ShaderBackdrop } from "@/components/widgets/shader-backdrop";
 
 export const metadata: Metadata = {
   title: "Nos Projets & Réalisations IA",
@@ -28,8 +29,9 @@ const categoryLabels: Record<string, string> = {
 export default function ProjetsPage() {
   return (
     <div className="pt-16">
-      <section className="py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <section className="relative isolate overflow-hidden py-20">
+        <ShaderBackdrop mood="dawn" opacity={0.6} className="-z-10" />
+        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <Badge
               variant="secondary"

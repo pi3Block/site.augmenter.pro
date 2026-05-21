@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTA } from "@/components/sections/cta";
+import { ShaderBackdrop } from "@/components/widgets/shader-backdrop";
 
 export const metadata: Metadata = {
   title: {
@@ -151,8 +152,9 @@ export default function PierreLegrandPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
 
-      <article className="py-16">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <article className="relative isolate overflow-hidden py-16">
+        <ShaderBackdrop mood="dawn" opacity={0.55} className="-z-10" />
+        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6">
           {/* Hero auteur ------------------------------------------------- */}
           <section className="grid gap-10 md:grid-cols-[240px_1fr] md:items-start">
             <div className="flex justify-center md:justify-start">

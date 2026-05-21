@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, Linkedin, Twitter, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import { ShaderBackdrop } from "@/components/widgets/shader-backdrop";
 import { QuoteWizard } from "./quote-wizard";
 
 const contactInfo = [
@@ -36,8 +37,9 @@ const contactInfo = [
 export function ContactForm() {
   return (
     <div className="pt-16">
-      <section className="py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <section className="relative isolate overflow-hidden py-24">
+        <ShaderBackdrop mood="dawn" opacity={0.6} className="-z-10" />
+        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <Badge variant="secondary" className="mb-4">
               Diagnostic initial — 60 min

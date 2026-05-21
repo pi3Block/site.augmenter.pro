@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CTA } from "@/components/sections/cta";
+import { ShaderBackdrop } from "@/components/widgets/shader-backdrop";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -289,8 +290,9 @@ export default function StrategieIaPmePage() {
       />
 
       {/* Hero */}
-      <section className="py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <section className="relative isolate overflow-hidden py-24">
+        <ShaderBackdrop mood="dawn" opacity={0.6} className="-z-10" />
+        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="secondary" className="mb-4">
               Stratégie IA pour PME
