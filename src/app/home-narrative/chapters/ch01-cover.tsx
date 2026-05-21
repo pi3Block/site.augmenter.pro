@@ -20,7 +20,9 @@ export function H01Cover() {
         <Lede>
           Reprenez le <em>contrôle</em>.
           <br />
-          Votre côté PRO avec un cran d&apos;<u>avance</u>.
+          Votre côté PRO
+          <br />
+          avec un cran d&apos;<u>avance</u>.
         </Lede>
       </div>
       <p
