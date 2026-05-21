@@ -14,7 +14,6 @@ import {
 
 const navLinks = [
   { href: "/approche", label: "Approche" },
-  { href: "/approche#prestations", label: "Prestations & Tarifs" },
   { href: "/blog", label: "Blog" },
   { href: "/prompts", label: "Prompts" },
   { href: "/contact", label: "Contact" },

@@ -13,6 +13,14 @@ const contactBlocks = [
   { k: "Téléphone", v: "+33 6 79 11 97 74", href: "tel:+33679119774" },
 ];
 
+// Colophon links — mirrors the home's CH.06 footer for consistency.
+const colophonLinks = [
+  { label: "Mentions légales", href: "/mentions-legales" },
+  { label: "CGV", href: "/cgv" },
+  { label: "Confidentialité", href: "/politique-confidentialite" },
+  { label: "Plan du site", href: "/sitemap.xml" },
+];
+
 export function Ch08Suite() {
   const ledeRef = useRef<HTMLHeadingElement>(null);
   useWordSplitter(ledeRef);
@@ -83,11 +91,25 @@ export function Ch08Suite() {
         })}
       </div>
       <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-10 bottom-6 flex justify-between font-mono text-[10px] uppercase tracking-widest text-white/40"
+        data-anim="up"
+        className="mt-12 flex flex-col gap-4 border-t border-white/15 pt-6 sm:flex-row sm:items-center sm:justify-between"
       >
-        <span>augmenter.PRO · 2026</span>
-        <span>Récit · 8 chapitres · fin</span>
+        <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-widest text-white/55">
+          {colophonLinks.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              data-hover
+              className="transition-opacity hover:text-white/85"
+            >
+              {l.label}
+            </Link>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-x-6 font-mono text-[10px] uppercase tracking-widest text-white/40">
+          <span>augmenter.PRO · 2026</span>
+          <span>Récit · 8 chapitres · fin</span>
+        </div>
       </div>
     </Chapter>
   );
