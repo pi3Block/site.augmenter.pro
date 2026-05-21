@@ -25,7 +25,8 @@ export function Ch08Suite() {
       <h2
         ref={ledeRef}
         data-anim="words"
-        className="max-w-[14ch] font-bold leading-[0.95] tracking-[-0.04em] text-white [&_em]:not-italic [&_em]:bg-(--gradient-ember) [&_em]:bg-clip-text [&_em]:text-transparent [&_em_.word>span]:bg-(--gradient-ember) [&_em_.word>span]:bg-clip-text [&_em_.word>span]:text-transparent"
+        data-gradient="ember"
+        className="max-w-[14ch] font-bold leading-[0.95] tracking-[-0.04em] text-white"
         style={{
           fontSize: "clamp(48px, 9vw, 144px)",
         }}
