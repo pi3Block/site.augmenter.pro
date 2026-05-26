@@ -377,28 +377,39 @@ C'est **le chantier de différenciation** pour 2026. L'objectif explicite : êtr
 
 ### 6.1 Accessibilité des crawlers IA (prérequis bloquant)
 
-**Auditer `public/robots.txt`** pour la présence de directives explicites par bot. `Allow: /` global ne suffit plus en 2026 — plusieurs LLMs requièrent un opt-in nommé.
+**Auditer `public/robots.txt`** pour la présence de directives par bot. ⚠️ Nuance : `User-agent: * / Allow: /` **suffit déjà** à autoriser le crawl de tous les bots respectueux. Les blocs nommés servent à (1) l'opt-in/opt-out granulaire que certains tokens exigent (Google-Extended, Applebot-Extended), (2) documenter la posture bot par bot. **La vraie valeur du fichier est dans les `Disallow` ciblés + la lisibilité décisionnelle, pas dans les `Allow` redondants.** Et surtout : autoriser un bot ≠ être cité — le levier GEO réel est l'entité + les citation triggers (cf. §6.5-6.8), pas ce fichier.
 
-Bots à autoriser explicitement (ou bloquer si choix éditorial) :
+Grille de référence (alignée sur le `robots.txt` réel au 2026-05-22) :
 
-| Bot | Opérateur | Usage | Recommandation augmenter.pro |
-|-----|-----------|-------|------------------------------|
-| `GPTBot` | OpenAI | Entraînement ChatGPT | ✅ Allow |
-| `OAI-SearchBot` | OpenAI | Index ChatGPT Search (temps réel) | ✅ Allow |
-| `ChatGPT-User` | OpenAI | Fetch on-demand (user click) | ✅ Allow |
-| `ClaudeBot` / `Claude-Web` / `anthropic-ai` | Anthropic | Entraînement + fetch Claude | ✅ Allow |
-| `Google-Extended` | Google | Opt-in Gemini training (≠ Googlebot) | ✅ Allow |
-| `PerplexityBot` | Perplexity | Index Perplexity Search | ✅ Allow |
-| `Perplexity-User` | Perplexity | Fetch on-demand | ✅ Allow |
-| `CCBot` | Common Crawl | Source data pour Anthropic/Mistral/etc. | ✅ Allow |
-| `Bytespider` | ByteDance | Doubao / TikTok AI | ⚖️ Décision éditoriale |
-| `Meta-ExternalAgent` / `FacebookBot` | Meta | Llama training | ⚖️ Décision éditoriale |
+| Bot | Opérateur | Usage | Reco | Statut actuel |
+|-----|-----------|-------|------|---------------|
+| `GPTBot` | OpenAI | Entraînement ChatGPT | ✅ Allow | ✅ |
+| `OAI-SearchBot` | OpenAI | Index ChatGPT Search (temps réel) | ✅ Allow | ✅ |
+| `ChatGPT-User` | OpenAI | Fetch on-demand (user click) | ✅ Allow | ✅ |
+| `ClaudeBot` / `Claude-Web` / `anthropic-ai` | Anthropic | Entraînement + fetch Claude | ✅ Allow | ✅ |
+| `Googlebot` | Google | Crawl Search classique (= Gemini AI Mode / AI Overviews) | ✅ Allow (explicité pour lever l'ambiguïté avec Google-Extended) | ✅ |
+| `Google-Extended` | Google | **Opt-OUT** entraînement Gemini/Vertex (absent = déjà autorisé) — ne crawle rien, n'influence pas la citation AI Overviews | ✅ Allow (documentaire) | ✅ |
+| `Google-CloudVertexBot` | Google | Fetch on-demand agents Vertex AI | ✅ Allow | ✅ |
+| `PerplexityBot` | Perplexity | Index Perplexity Search | ✅ Allow | ✅ |
+| `Perplexity-User` | Perplexity | Fetch on-demand | ✅ Allow | ✅ |
+| `Applebot-Extended` | Apple | Opt-in Apple Intelligence / Siri | ✅ Allow | ✅ |
+| `Amazonbot` | Amazon | Alexa / Rufus | ✅ Allow | ✅ |
+| `DuckAssistBot` | DuckDuckGo | DuckDuckGo AI | ✅ Allow | ✅ |
+| `CCBot` | Common Crawl | Corpus open (Anthropic/Mistral/etc.) | ✅ Allow (asymétrie assumée vs Meta/ByteDance) | ✅ |
+| `facebookexternalhit` | Meta | **Previews Open Graph** (FB/Messenger/WhatsApp/IG) — ≠ bot IA | ✅ Allow (assurance previews B2B) | ✅ |
+| `meta-externalfetcher` | Meta | Fetch on-demand Meta AI (= ChatGPT-User côté Meta) | ✅ Allow (acté 2026-05-22 : fetch on-demand favorable citation ≠ training de masse) | ✅ |
+| `Bytespider` | ByteDance | Doubao / TikTok AI (training) | ⚖️ Bloqué (faible ROI GEO FR) | 🚫 Disallow |
+| `meta-externalagent` | Meta | Entraînement Llama (training de masse) | ⚖️ Bloqué (souveraineté ciblée) | 🚫 Disallow |
+
+> ⚠️ Ne PAS confondre `meta-externalagent` (training Llama, bloqué) avec `facebookexternalhit` (previews sociales, autorisé) ni `FacebookBot` (crawl FB générique, pas un bot IA — ne sert à rien de le bloquer pour des raisons IA).
 
 **Vérifications complémentaires** :
-- [ ] Pas de `Disallow: /` accidentel pour ces bots dans un futur ajout
+- [ ] Pas de `Disallow: /` accidentel pour les bots autorisés dans un futur ajout
 - [ ] Header HTTP `X-Robots-Tag` n'inclut pas `noai` / `noimageai` sur les pages indexables
 - [ ] CSP `frame-ancestors` n'empêche pas le rendu (Bing Copilot rend des pages pour extraction)
 - [ ] `robots.txt` accessible en HTTP 200 (vérifier via `mcp__crawl4ai__md`)
+- [ ] ⚠️ **Aucune directive `Sitemap:` ne pointe vers `llms.txt` / `llms-full.txt`** (la directive attend du XML/liste d'URLs — un markdown y génère une erreur Search Console). Les fichiers LLM se découvrent par convention de chemin racine.
+- [ ] La grille ci-dessus reste alignée avec le `robots.txt` réel (re-vérifier à chaque ajout de bot)
 
 **Test crawl bot-by-bot** : `mcp__google-search-console__index_inspect` retourne le `crawledAs` Google ; pour les autres, utiliser `mcp-calls.md` §8 (crawl4ai avec user-agent custom) ou un fetch direct avec header `User-Agent: GPTBot/1.0`.
 

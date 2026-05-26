@@ -1,6 +1,11 @@
 # robots.txt — augmenter.pro
-# Directives explicites par bot IA (l'Allow: / global ne suffit plus en 2026 :
-# Google-Extended et plusieurs autres crawlers demandent un opt-in nommé).
+# Le `User-agent: * / Allow: /` ci-dessous suffit déjà à autoriser le crawl de
+# tous les bots. Les blocs nommés qui suivent servent à deux choses :
+#  1. l'opt-in/opt-out granulaire que certains acteurs exigent par token nommé
+#     (ex. Google-Extended pour l'entraînement Gemini, distinct de Googlebot) ;
+#  2. documenter explicitement notre posture bot par bot (autorisés vs bloqués).
+# Les `Allow: /` redondants avec `*` sont volontaires : ils garantissent que ces
+# bots restent autorisés même si une règle restrictive était un jour ajoutée à `*`.
 
 User-agent: *
 Allow: /
@@ -30,9 +35,20 @@ User-agent: anthropic-ai
 Allow: /
 
 # --- Google ----------------------------------------------------------------
-# Google-Extended : opt-in pour l'entraînement Gemini (distinct de Googlebot
-# qui reste géré implicitement par User-agent: *)
+# Googlebot : crawl de recherche classique (alimente Search + Gemini AI Mode +
+# AI Overviews). Explicité ici pour lever toute ambiguïté : toucher à
+# Google-Extended ne doit JAMAIS être confondu avec un blocage de la Search.
+User-agent: Googlebot
+Allow: /
+
+# Google-Extended : opt-in pour l'entraînement Gemini / Vertex AI. Ne crawle rien
+# et n'influence PAS la présence dans Gemini AI Mode / AI Overviews (qui reposent
+# sur l'index Google classique via Googlebot ci-dessus).
 User-agent: Google-Extended
+Allow: /
+
+# Google-CloudVertexBot : fetch on-demand pour les agents Vertex AI
+User-agent: Google-CloudVertexBot
 Allow: /
 
 # --- Perplexity ------------------------------------------------------------
@@ -44,22 +60,54 @@ Allow: /
 User-agent: Perplexity-User
 Allow: /
 
+# --- Apple -----------------------------------------------------------------
+# Applebot-Extended : opt-in pour Apple Intelligence / Siri
+User-agent: Applebot-Extended
+Allow: /
+
+# --- Amazon ----------------------------------------------------------------
+# Amazonbot : Alexa / Rufus
+User-agent: Amazonbot
+Allow: /
+
+# --- DuckDuckGo ------------------------------------------------------------
+# DuckAssistBot : DuckDuckGo AI
+User-agent: DuckAssistBot
+Allow: /
+
+# --- Réseaux sociaux : previews de partage ---------------------------------
+# facebookexternalhit : génère les aperçus Open Graph lors d'un partage sur
+# Facebook / Messenger / WhatsApp / Instagram. Explicité en Allow par assurance
+# (cabinet B2B qui partage ses articles) — ne PAS le confondre avec les bots
+# d'entraînement IA de Meta bloqués plus bas.
+User-agent: facebookexternalhit
+Allow: /
+
 # --- Common Crawl ----------------------------------------------------------
-# CCBot : source data utilisée par de nombreux LLMs (Anthropic, Mistral, etc.)
+# CCBot : source data utilisée par de nombreux LLMs (Anthropic, Mistral, etc.).
+# Asymétrie assumée : on autorise CCBot (corpus open, présence LLM maximale) tout
+# en bloquant Meta/ByteDance. Logique = souveraineté ciblée sur 2 acteurs précis,
+# pas refus global de l'entraînement. Choix de gouvernance, pas incohérence.
 User-agent: CCBot
 Allow: /
 
+# --- Meta : fetch on-demand (autorisé) -------------------------------------
+# meta-externalfetcher : fetch déclenché quand un utilisateur de Meta AI demande
+# explicitement une info. Sémantiquement identique à ChatGPT-User / Perplexity-User
+# (que l'on autorise). Décision actée 2026-05-22 : AUTORISÉ — le risque souveraineté
+# porte sur l'entraînement de masse (meta-externalagent, bloqué ci-dessous), pas sur
+# une réponse ponctuelle à un utilisateur qui nous interroge. Favorable à la citation.
+User-agent: meta-externalfetcher
+Allow: /
+
 # --- Décision éditoriale : bloqués par défaut ------------------------------
-# Bytespider (ByteDance / Doubao / TikTok AI) et les bots Meta (Llama training)
-# sont bloqués par défaut. À arbitrer avec Pierre : si valeur stratégique
-# perçue sur ces écosystèmes, basculer en Allow: /.
+# Bytespider (ByteDance / Doubao / TikTok AI) et meta-externalagent (entraînement
+# Llama, training de masse) sont bloqués par défaut. À arbitrer avec Pierre : si
+# valeur stratégique perçue sur ces écosystèmes, basculer en Allow: /.
 User-agent: Bytespider
 Disallow: /
 
-User-agent: Meta-ExternalAgent
-Disallow: /
-
-User-agent: FacebookBot
+User-agent: meta-externalagent
 Disallow: /
 
 # --- Sitemaps --------------------------------------------------------------
@@ -67,6 +115,9 @@ Sitemap: https://augmenter.pro/sitemap.xml
 Sitemap: https://augmenter.pro/news-sitemap.xml
 
 # --- LLM ingestion (standard llmstxt.org) ---------------------------------
-# Pas un sitemap au sens strict, mais déclaré ici pour aider les crawlers IA
-# à découvrir la version étendue (markdown complet de toutes les pages).
-Sitemap: https://augmenter.pro/llms-full.txt
+# llms.txt et llms-full.txt sont disponibles à la racine du domaine et découverts
+# par convention de chemin (https://augmenter.pro/llms.txt). Ils ne sont PAS
+# déclarés via la directive Sitemap: (qui attend du XML/liste d'URLs, pas du
+# markdown — un fichier markdown y générerait une erreur dans Search Console).
+#   https://augmenter.pro/llms.txt
+#   https://augmenter.pro/llms-full.txt
