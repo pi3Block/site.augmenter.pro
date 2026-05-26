@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArticleLayout } from "@/components/layout/article-layout";
+import { AtelierCallout } from "@/components/sections/atelier-callout";
 
 export const metadata: Metadata = {
   title: "Configurer Odoo avec l'IA : 4 Jours au Lieu de 3 500 €",
@@ -470,6 +471,8 @@ export default function ConfigurerOdooIAClaude() {
         l&apos;IA pour acc&eacute;l&eacute;rer le travail technique, et l&apos;expertise humaine pour les
         d&eacute;cisions m&eacute;tier. C&apos;est cette combinaison qui permet le gain &times;10.
       </p>
+
+      <AtelierCallout />
 
       {/* ===== H2 : Résultats ===== */}
       <h2>R&eacute;sultats concrets : avant / apr&egrave;s</h2>

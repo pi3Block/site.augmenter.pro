@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/layout/article-layout";
+import { AtelierCallout } from "@/components/sections/atelier-callout";
 
 export const metadata: Metadata = {
   title: "Claude Code : le prompt, CLAUDE.md et les Skills (guide PME 2026)",
@@ -463,6 +464,8 @@ export default function Article() {
           cohérence qui se voit sur 6 mois.
         </p>
       </div>
+
+      <AtelierCallout />
 
       {/* ===== H2 : Anatomie ===== */}
       <h2>Anatomie du prompt : pourquoi ces 7 axes et pas d&apos;autres</h2>
