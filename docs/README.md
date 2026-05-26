@@ -1,5 +1,18 @@
 # Architecture frontend — augmenter.PRO
 
+> 🛑 **DOC PÉRIMÉ (2026-05-26) — ne pas s'y fier pour l'état actuel.**
+> Ce guide décrit une homepage en **layout bento** qui n'existe plus : `/` et
+> `/approche` sont passées en **narrative scroll** (Three.js + GSAP + Lenis), et
+> le bento ne subsiste que sur `/blog` et `/idees`. L'arborescence `sections/`
+> ci-dessous est fausse — `hero.tsx`, `approach-services.tsx`, `resources.tsx`,
+> `convert.tsx`, `approach.tsx`, `ideas.tsx`, `pricing.tsx`, `blog-preview.tsx`
+> ont tous été supprimés. `sections/` ne contient plus que `cta.tsx`,
+> `prompt-card.tsx`, `atelier-callout.tsx`.
+>
+> **Source de vérité à jour** : section « Architecture » de [CLAUDE.md](../CLAUDE.md)
+> (routing, narrative scroll, bento /blog+/idees, composants). Ce fichier est
+> conservé pour l'historique de la refonte bento — candidat à suppression.
+
 Guide de la homepage en **layout bento** et des widgets animés réutilisables.
 
 ## Structure

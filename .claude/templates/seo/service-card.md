@@ -45,7 +45,7 @@ Lors d'une refonte d'offre, vérifier :
 
 - **Mot « gratuit » interdit** — utiliser « offert », « sans engagement », « inclus »
 - **Naming mémorable** — éviter « Audit classique », « Formule Premium » ; préférer des noms qui racontent (« Audit 180° », « IA Booster », « Sprint Découverte »)
-- **Cohérence des prix** entre `pricing.tsx`, `prestations/page.tsx` et tous les CTAs
+- **Cohérence des prix** entre `/approche` (qui absorbe l'ancien `/prestations`), la landing `/atelier-claude-code-dirigeant` et tous les CTAs
 - **JSON-LD Service** systématique avec `areaServed` (78/95), `provider` (Organization), `offers` (prix)
 - **Anti-patterns** : pas de palier à 19 €/mois qui commoditise, pas de palier « Enterprise » sans prix affiché quand le marché cible est PME
 

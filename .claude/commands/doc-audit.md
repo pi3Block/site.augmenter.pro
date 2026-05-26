@@ -80,19 +80,14 @@ Vérifie que `public/sitemap.xml` est synchronisé :
 - [ ] Priorités cohérentes (accueil 1.0, pages principales 0.8-0.9, articles 0.7, légales 0.3)
 - [ ] `<lastmod>` renseigné si possible
 
-### 2.4 blog-view.tsx (vraie source) + blog-preview.tsx (legacy) vs articles réels
+### 2.4 blog-view.tsx vs articles réels
 
-⚠️ Depuis la refonte bento, la **vraie source de vérité** de la page `/blog` est `src/app/blog/blog-view.tsx` (tableau `ARTICLES`). `src/components/sections/blog-preview.tsx` est **legacy** (probablement plus importé).
+La **vraie source de vérité** de la page `/blog` est `src/app/blog/blog-view.tsx` (tableau `ARTICLES`). _(L'ancien `blog-preview.tsx` a été supprimé le 2026-05-26.)_
 
-Vérifie d'abord `src/app/blog/blog-view.tsx` :
 - [ ] Chaque article dans le tableau `ARTICLES` correspond à un dossier `src/app/blog/<slug>/`
 - [ ] Tous les dossiers `src/app/blog/<slug>/` apparaissent dans le tableau (sinon l'article n'est pas visible sur `/blog`)
 - [ ] Les slugs, titres, excerpts, tags, readTime, image correspondent entre la liste et la page article
 - [ ] L'article le plus récent est en première position
-
-Puis pour `src/components/sections/blog-preview.tsx` :
-- [ ] Vérifier s'il est encore importé (`grep -r "blog-preview\|BlogPreview" src/`). Si non importé → signaler dans le rapport de dette pour suppression.
-- [ ] S'il est encore importé : synchronisé avec `blog-view.tsx`
 
 ### 2.5 JSON-LD schemas vs composants
 

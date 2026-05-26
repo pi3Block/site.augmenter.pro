@@ -79,11 +79,11 @@ Critère décisif : **on ne prescrit pas de remède de conversion sans données 
 
 ## Plan d'implémentation
 
-- [ ] **P0** : ajouter événements GA4 `whatsapp_click`, `quote_wizard_complete`, `brief_sent` ; dashboard funnel organique → contact
-- [ ] **P1** : réécrire title/meta de `/audit-informatique-val-doise` + `/blog/cout-audit-informatique-yvelines` (prix visible, intention locale/urgente) ; laisser `/strategie-ia-pme`
-- [ ] **P1bis** : créer landing `/atelier-claude-code-dirigeant` (650 €, programme, pour qui, preuve, CTA) + encart CTA mid-article dans les 2 articles stars + lien header/footer
-- [ ] **P2** : optimiser GBP existant ; aligner titre LinkedIn ; lancer la demande d'accord pour 1 cas client chiffré ; brancher `sameAs` France Num quand validé
-- [ ] Standardiser les CTA : pages commerciales → « Réserver mon diagnostic 60 min » ; articles tech → « Atelier Claude Code dirigeant » (avec tag `?source=`)
+- [x] **P0** (2026-05-26) : events GA4 ajoutés — `whatsapp_click` (5 emplacements avec `location`) + `brief_generated` (ai/fallback). Le wizard était déjà instrumenté (`contact_form_submit` channel, `quote_step_completed`, `quote_email_captured`, `quote_abandon_email_captured`) → funnel complet. _Reste : lire la baseline dans GA4 après 1-2 semaines._
+- [x] **P1** (2026-05-26) : `/audit-informatique-val-doise` title recentré « Audit Informatique » + prix 225 € en description ; `/blog/cout-audit-informatique-yvelines` TL;DR chiffré anti-AI-Overview. `/strategie-ia-pme` **non touchée** (position 25 = rang, pas CTR — conforme à la décision).
+- [x] **P1bis** (2026-05-26) : landing [/atelier-claude-code-dirigeant](../../src/app/atelier-claude-code-dirigeant/page.tsx) (650 €, JSON-LD Service) + encart [AtelierCallout](../../src/components/sections/atelier-callout.tsx) mid-article (2 articles stars) + référencée sitemap/llms/footer. Format : présentiel 78/95 + visio, réservation via /contact.
+- [ ] **P2** (en cours) : France Num soumis ✅, GitHub live ✅ ; reste GBP à optimiser, titre LinkedIn à aligner, cas client à lancer, `sameAs` France Num à brancher quand validé. Cf. [plan entité](../seo-audits/2026-05-22-plan-entite-geo.md).
+- [ ] Standardiser les CTA (tags `?source=`/`?offer=`) : à compléter au fil des prochaines itérations selon ce que la mesure P0 révèle.
 
 ## Validation post-implémentation
 

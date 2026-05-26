@@ -174,7 +174,8 @@ src/app/home-narrative/
 - [src/components/sections/](src/components/sections/) — Composants de section partagés
   - `cta.tsx` (variants `default` / `audit-78` / `audit-95` / `blog` / `auteur`) — utilisé sur les pages services, blog articles, auteur. **Animé** : 2 LiquidBlob + word stagger + magnetic primary button + gradient em.
   - `prompt-card.tsx` (/prompts)
-  - **Legacy** : `approach.tsx`, `blog-preview.tsx`, `ideas.tsx`, `pricing.tsx` — plus utilisés, conservés temporairement pour rollback. À supprimer dans un cleanup pass.
+  - `atelier-callout.tsx` — encart CTA mid-article vers la landing Atelier Claude Code (cf. ADR 0003)
+  - _(Les composants legacy `approach.tsx`, `blog-preview.tsx`, `ideas.tsx`, `pricing.tsx` ont été supprimés le 2026-05-26 — code mort post-refonte bento/narrative.)_
 - [src/app/blog/blog-view.tsx](src/app/blog/blog-view.tsx) + [src/app/idees/idees-view.tsx](src/app/idees/idees-view.tsx) — pages bento client (data inline)
 - [src/components/bento/](src/components/bento/) — Primitives bento (`BentoGrid`, `BentoCard`, `SectionHead`, `Pill`, `ArticleBentoCard`, `PullQuoteCard`, `MiniQuoteCard`) — **utilisées uniquement sur /blog et /idees** (les pages bento restantes)
 - [src/components/widgets/](src/components/widgets/) — Widgets animés :

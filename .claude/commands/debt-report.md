@@ -27,7 +27,7 @@ Lis l'arborescence complète du projet et vérifie :
 
 ### 1.2 Duplication de données (dette majeure connue)
 
-Depuis la refonte bento, la liste articles est **dans `src/app/blog/blog-view.tsx`** (tableau `ARTICLES`). Le fichier `src/components/sections/blog-preview.tsx` est désormais **legacy** — vérifier qu'il n'est plus importé nulle part (`grep -r "blog-preview\|BlogPreview" src/`) et le **supprimer** si confirmé non utilisé. Si encore importé : signaler les imports résiduels.
+Depuis la refonte bento, la liste articles est **dans `src/app/blog/blog-view.tsx`** (tableau `ARTICLES`). _(Les composants legacy `approach.tsx`, `blog-preview.tsx`, `ideas.tsx`, `pricing.tsx` ont été supprimés le 2026-05-26 — confirmés non importés.)_
 
 Duplication restante : les données des articles existent en **deux endroits** :
 
@@ -47,9 +47,9 @@ Duplication restante : les données des articles existent en **deux endroits** :
 ### 1.3 Autres duplications potentielles
 
 Vérifie si d'autres données sont dupliquées :
-- [ ] Pricing : `pricing.tsx` vs `prestations/page.tsx` (JSON-LD Service/OfferCatalog)
+- [ ] Prix : contenu visible `/approche` (absorbe l'ancien `/prestations`) vs JSON-LD Service/OfferCatalog (`approche/page.tsx`)
 - [ ] FAQ : `approche/page.tsx` contenu visible vs JSON-LD FAQPage
-- [ ] Témoignages : `testimonials.tsx` tableau + JSON-LD
+- [ ] Témoignages : tableau `REVIEWS` dans `layout.tsx` + JSON-LD AggregateRating/Review
 - [ ] Informations de contact : `contact-form.tsx`, `footer.tsx`, `llms.txt`, layout.tsx JSON-LD
 
 ### 1.4 Patterns & anti-patterns
@@ -66,11 +66,12 @@ Lis tous les fichiers source dans `src/` et identifie :
 Audite l'utilisation des directives `"use client"` :
 
 **Composants client connus** (nécessitent `"use client"` pour framer-motion ou interactivité) :
-- `hero.tsx`, `services.tsx`, `approach.tsx`, `pricing.tsx`, `ideas.tsx` — animations framer-motion
-- `testimonials.tsx` — animations framer-motion + JSON-LD
-- `blog-preview.tsx`, `cta.tsx`, `trust.tsx` — animations framer-motion
+- `cta.tsx` — animations framer-motion (LiquidBlob, word stagger, magnetic button)
+- `blog-view.tsx`, `idees-view.tsx` — pages bento client (state filtres)
+- narrative (`background-canvas`, `smooth-scroll-provider`, `custom-cursor`, etc.) + `suite-cockpit.tsx` — Three.js / GSAP / Lenis
 - `header.tsx` — mobile menu (Sheet), scroll detection
-- `contact-form.tsx` — formulaire interactif
+- `contact-form.tsx` + `quote-wizard.tsx` — formulaire interactif
+- _(legacy supprimés 2026-05-26 : hero/services/approach/pricing/ideas/testimonials/blog-preview/trust)_
 
 **Vérifier** :
 - [ ] Chaque composant marqué `"use client"` en a réellement besoin ?
@@ -198,7 +199,7 @@ Génère un rapport structuré avec scoring :
 ## Dette moyenne (impact sur la maintenabilité)
 | # | Problème | Fichier(s) | Impact | Effort fix |
 |---|----------|------------|--------|------------|
-| 1 | Duplication articles blog-view ↔ pages (+ blog-preview.tsx legacy à supprimer) | blog-view.tsx + blog/*/page.tsx (+ blog-preview.tsx) | MOYEN | 2h |
+| 1 | Duplication articles blog-view ↔ pages (data inline) | blog-view.tsx + blog/*/page.tsx | MOYEN | 2h |
 | 2 | SVG résiduels Create Next App | public/*.svg (5 fichiers) | FAIBLE | 5min |
 | 3 | ... | ... | ... | ... |
 

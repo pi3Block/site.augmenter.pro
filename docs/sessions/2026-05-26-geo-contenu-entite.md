@@ -42,7 +42,17 @@ green — repo site propre et entièrement poussé (`main` = `origin/main`). Seu
   - [prompts-dirigeant-pme](https://github.com/Pi3r2Dev/prompts-dirigeant-pme) (idem)
   - URL GitHub branchée dans `sameAs` Person + Organization + liens visibles page auteur
 - **France Num Activateur** : demande soumise 2026-05-26, en attente DGE (textes de candidature : présentation 492c, offre de service, compétences perso 490c)
+- Lien GitHub ajouté au **footer global + suite-cockpit** (maillage entité site-wide)
 - Plan d'action entité complet : [docs/seo-audits/2026-05-22-plan-entite-geo.md](../seo-audits/2026-05-22-plan-entite-geo.md)
+
+**Stratégie funnel — ADR 0003 ([docs/decisions/0003-funnel-geo-conversion.md](../decisions/0003-funnel-geo-conversion.md))**
+- ADR actée : mesurer d'abord, persona dirigeant **maintenu** (donnée terrain : prospects dirigeants reçus → réfute « trafic = devs »), snippets ciblés position 1-10
+- **P0 mesure** : events GA4 `whatsapp_click` (5 emplacements avec `location`) + `brief_generated` (ai/fallback). Funnel complet de bout en bout (le wizard était déjà très instrumenté)
+- **P1 snippets** : `/audit-informatique-val-doise` (title recentré « Informatique » + prix 225 €), `/blog/cout-audit-informatique-yvelines` (TL;DR chiffré anti-AI-Overview). `/strategie-ia-pme` laissée (position 25 = rang, pas snippet)
+- **P1bis offre** : landing [/atelier-claude-code-dirigeant](../../src/app/atelier-claude-code-dirigeant/page.tsx) (650 €, JSON-LD Service) + encart [AtelierCallout](../../src/components/sections/atelier-callout.tsx) mid-article dans les 2 articles stars + référencée sitemap/llms/footer
+
+**Cleanup (2e passage 2026-05-26)**
+- Suppression du code mort confirmé (0 import) : `approach.tsx`, `blog-preview.tsx`, `ideas.tsx`, `pricing.tsx` + nettoyage des références docs
 
 ## Git state
 - Branch: `main` (upstream: aucun configuré, mais `main` == `origin/main`, `+0/-0`)
@@ -55,13 +65,14 @@ green — repo site propre et entièrement poussé (`main` = `origin/main`). Seu
 - Source: `next build` (pas de suite de tests unitaires — projet vitrine)
 
 ## Next concrete step
-Le contenu + la technique sont à 9/10 ; **le mur restant est l'ENTITÉ** (0/3 capture ChatGPT, frein = reconnaissance d'autorité). Actions de reprise, par ordre :
-1. **Finir les réglages GitHub manuels** (en cours côté user) : Description (textes 319c/269c), Topics, épingler les 2 repos, remplir README de profil `Pi3r2Dev/Pi3r2Dev`
-2. **Alignement titre LinkedIn** exact = « Consultant IA & Transformation Digitale » (matcher `jobTitle` JSON-LD au mot près — effort quasi nul)
-3. **Quand France Num validé** (mail DGE) : récupérer l'URL de fiche → l'ajouter aux `sameAs` Person + Organization + mention « Activateur France Num » visible sur page auteur
-4. **Re-test T+7 le 2026-05-28** : tester les 3 requêtes de [geo-prompts.md](../seo-audits/2026-05-21-data/geo-prompts.md) sur ChatGPT Search / Perplexity / Gemini AI Mode, logger résultats
-5. **Wikidata** (signal le plus fort) : une fois France Num + GitHub accumulés comme sources, créer le Q-item
-6. **Article #3 en réserve** : « Rapport 4 phases de maturité IA PME » (RICE 75, brief prêt dans [docs/seo-briefs/2026-05-21-claude-playbook-briefs.md](../seo-briefs/2026-05-21-claude-playbook-briefs.md))
+Le contenu, la technique, le funnel (P0/P1/P1bis) et les fondations d'entité sont posés. **La prochaine phase est de la MESURE et des démarches externes — pas de nouvelle production.** Actions de reprise, par ordre :
+1. **Laisser tourner la mesure 1-2 semaines** : le funnel est instrumenté (P0). Consulter GA4 pour la baseline contacts/source (actuellement inconnue) avant toute nouvelle optimisation.
+2. **Re-test T+7 le 2026-05-28** : tester les 3 requêtes de [geo-prompts.md](../seo-audits/2026-05-21-data/geo-prompts.md) sur ChatGPT Search / Perplexity / Gemini AI Mode, logger résultats.
+3. **Finir les réglages GitHub manuels** (côté user) : Description (319c/269c), Topics, épingler les 2 repos, remplir README de profil `Pi3r2Dev/Pi3r2Dev`.
+4. **Alignement titre LinkedIn** exact = « Consultant IA & Transformation Digitale » (matcher `jobTitle` JSON-LD).
+5. **Quand France Num validé** (mail DGE) : ajouter l'URL de fiche aux `sameAs` Person + Organization + mention visible page auteur.
+6. **Wikidata** : une fois France Num + GitHub accumulés comme sources, créer le Q-item.
+7. **Article #3 en réserve** (RICE 75) : seulement si la cadence éditoriale doit être entretenue — pas prioritaire tant que la mesure n'a pas parlé (cf. ADR 0003 : ne pas sur-produire avant de mesurer).
 
 ## Open decisions
 - Aucune bloquante. Arbitrage `meta-externalfetcher` déjà tranché (Allow). Asymétrie CCBot vs Meta/ByteDance assumée et documentée.

@@ -1,13 +1,21 @@
 # Backlog — polissage & nettoyage (post-refonte bento)
 
 **Créé** : 2026-04-22
-**Scope** : tâches cosmétiques 🟢 non-bloquantes issues de la refonte bento. Aucune ne casse la prod ni ne bloque le SEO. À prendre par ordre d'utilité.
+**Scope** : tâches cosmétiques 🟢 non-bloquantes issues de la refonte bento.
+
+> ⚠️ **Doc partiellement périmé (2026-05-26)** : depuis sa création, la home `/`
+> et `/approche` sont passées en **narrative scroll** (plus de widgets bento sur
+> la home). Les tâches **#2 (RAF loops home bento)** et **#3 (double-padding
+> BentoCard sur la home)** sont **caduques** — elles visaient des widgets bento
+> qui ne sont plus sur la home (le bento ne subsiste que sur `/blog` et `/idees`).
+> La tâche **#4** reste valable mais le compte d'articles est désormais 16, pas 12.
 
 ---
 
-## 1. Supprimer les 4 sections legacy non importées
+## 1. Supprimer les 4 sections legacy non importées ✅ FAIT (2026-05-26)
 
-Depuis la refonte bento des pages internes, ces 4 fichiers ne sont plus importés nulle part :
+`approach.tsx`, `ideas.tsx`, `pricing.tsx`, `blog-preview.tsx` ont été supprimés
+(0 import confirmé, build vérifié). Section conservée pour trace. Détail original :
 
 | Fichier | Ancien usage | Remplacé par |
 |---------|--------------|--------------|
