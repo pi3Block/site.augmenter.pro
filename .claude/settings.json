@@ -2,6 +2,12 @@
   "permissions": {
     "allow": [
       "mcp__dfs-mcp__dataforseo_labs_google_keyword_suggestions"
+    ],
+    "additionalDirectories": [
+      "d:\\SourceFast\\coolify_linux\\claude-md-templates-pme\\templates\\site-vitrine-nextjs",
+      "d:\\SourceFast\\coolify_linux\\claude-md-templates-pme\\templates\\automatisation-python",
+      "d:\\SourceFast\\coolify_linux\\claude-md-templates-pme",
+      "d:\\SourceFast\\coolify_linux\\prompts-dirigeant-pme"
     ]
   }
 }

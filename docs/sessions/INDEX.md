@@ -4,6 +4,7 @@ Session handoff and orchestration tracker. Created and maintained by `/flow`.
 
 | Date | Slug | Status | Mode | Next step |
 |------|------|--------|------|-----------|
+| 2026-05-26 | [geo-contenu-entite](2026-05-26-geo-contenu-entite.md) | open | solo | Réglages GitHub + LinkedIn aligné + sameAs France Num quand validé + re-test T+7 (28/05) |
 | 2026-05-21 | [geo-citation-readiness](2026-05-21-geo-citation-readiness.md) | closed | orchestrator | (3 sub-tasks done — commits groupés + push + validations post-déploiement) |
 | 2026-05-21 | [geo-citation-readiness-sub1](2026-05-21-geo-citation-readiness-sub1.md) | closed | solo | (robots.txt AI bots — done) |
 | 2026-05-21 | [geo-citation-readiness-sub2](2026-05-21-geo-citation-readiness-sub2.md) | closed | solo | (page auteur + Person JSON-LD + maillage — done) |

@@ -40,7 +40,8 @@ Par ROI/effort décroissant :
 - [x] **Profil créé : https://github.com/Pi3r2Dev** (HTTP 200 vérifié 2026-05-26)
 - [x] **`sameAs` branché** dans Person ([auteur/pierre-legrand](../../src/app/auteur/pierre-legrand/page.tsx)) ET Organization ([layout.tsx](../../src/app/layout.tsx)) — 2026-05-26
 - [x] **Lien visible** ajouté sur la page auteur (hero + section Partenariats)
-- [ ] Reste à faire : remplir bio + README de profil, publier 1-2 repos (`claude-md-templates-pme`, `prompts-dirigeant-pme`) dérivés des articles Claude Code qui rankent déjà
+- [x] **2 repos publiés et LIVE (2026-05-26)** : [claude-md-templates-pme](https://github.com/Pi3r2Dev/claude-md-templates-pme) + [prompts-dirigeant-pme](https://github.com/Pi3r2Dev/prompts-dirigeant-pme) — contenu dérivé des articles Claude Code, backlinks vers augmenter.pro. Sources locales dans `d:\SourceFast\coolify_linux\<repo>`
+- [ ] **Réglages manuels GitHub restants** (côté user) : Description (textes 319c/269c prêts), Topics, épingler les 2 repos sur le profil, remplir bio + README de profil `Pi3r2Dev/Pi3r2Dev`
 
 ### 🥈 Priorité 2 — France Num Activateur (autorité institutionnelle FR)
 - [x] **Demande soumise le 2026-05-26** (inscription étape 6/6 confirmée, courriel reçu). En attente d'analyse par la DGE / équipe France Num — pas de délai annoncé (« meilleurs délais »).

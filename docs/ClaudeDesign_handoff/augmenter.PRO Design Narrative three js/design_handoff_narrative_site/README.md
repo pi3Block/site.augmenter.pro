@@ -12,7 +12,7 @@ The piece is positioned as an editorial / "manifesto" landing experience — a d
 
 ## About the Design Files
 
-The HTML/CSS/JS in this bundle is a **design reference**, not production code. It demonstrates intended look, motion, and behavior in a single self-contained file. Your job is to **recreate this in the augmenter.pro target codebase** (Next.js 16 / React 19 / Tailwind 4 / shadcn/ui — see `github.com/pi3Block/site.augmenter.pro`) using its existing patterns:
+The HTML/CSS/JS in this bundle is a **design reference**, not production code. It demonstrates intended look, motion, and behavior in a single self-contained file. Your job is to **recreate this in the augmenter.pro target codebase** (Next.js 16 / React 19 / Tailwind 4 / shadcn/ui — see `github.com/Pi3r2Dev/site.augmenter.pro`) using its existing patterns:
 
 - Section components → React Server Components under `src/components/sections/<chapter>.tsx`
 - Animations → Framer Motion (already in use) for the entry timelines; keep GSAP + Lenis + Three.js as **client components** mounted at the layout level for the cross-section effects (background + smooth scroll).
