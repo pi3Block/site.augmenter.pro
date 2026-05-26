@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { sendGTMEvent } from "@next/third-parties/google";
 import {
   ArrowRight,
   Lightbulb,
@@ -523,6 +524,7 @@ export function IdeesView() {
                     href="https://wa.me/33679119774"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => sendGTMEvent({ event: "whatsapp_click", location: "idees" })}
                   >
                     WhatsApp
                   </a>

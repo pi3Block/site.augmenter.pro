@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, Linkedin, Twitter, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { ShaderBackdrop } from "@/components/widgets/shader-backdrop";
 import { QuoteWizard } from "./quote-wizard";
 
@@ -80,6 +81,11 @@ export function ContactForm() {
                             : undefined
                         }
                         className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                        onClick={
+                          info.label === "WhatsApp"
+                            ? () => sendGTMEvent({ event: "whatsapp_click", location: "contact-page" })
+                            : undefined
+                        }
                       >
                         {info.value}
                       </a>

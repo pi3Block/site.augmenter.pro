@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Zap, Linkedin, Twitter, Github, Mail, Phone } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 // Mini-cockpit footer — same DNA as src/app/approche/narrative/shared/suite-cockpit.tsx
 // but compact (no audit card, no engagement hero) for use across all pages
@@ -183,6 +184,11 @@ export function Footer() {
                   rel="noopener noreferrer"
                   aria-label={s.label}
                   className={common}
+                  onClick={
+                    s.label === "WhatsApp"
+                      ? () => sendGTMEvent({ event: "whatsapp_click", location: "footer" })
+                      : undefined
+                  }
                 >
                   <Icon className="h-4 w-4" />
                 </a>

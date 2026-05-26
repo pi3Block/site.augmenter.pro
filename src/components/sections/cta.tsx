@@ -6,6 +6,7 @@ import { ArrowRight, Phone, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { LiquidBlob, MeshAurora } from "@/components/widgets/blobs";
 
 export type CTAVariant = "default" | "audit-78" | "audit-95" | "blog" | "auteur";
@@ -268,6 +269,7 @@ export function CTA({ variant = "default" }: CTAProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-hover
+                  onClick={() => sendGTMEvent({ event: "whatsapp_click", location: "cta-widget" })}
                 >
                   <Phone className="h-4 w-4" />
                   Discuter sur WhatsApp

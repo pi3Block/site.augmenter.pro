@@ -93,6 +93,20 @@ export default function Article() {
         , ce guide vous aidera à budgéter la suite.
       </p>
 
+      <div className="my-6 rounded-lg border border-violet-200 bg-violet-50 p-5 italic dark:border-violet-900/50 dark:bg-violet-950/30">
+        <p className="mb-0 text-sm">
+          <strong className="not-italic">TL;DR —</strong> En 2026, un audit
+          informatique pour une PME en Yvelines coûte : <strong>diagnostic
+          flash 1 500 à 6 000 € HT</strong>, <strong>audit standard 4 000 à
+          15 000 € HT</strong>, <strong>audit complet (technique + gouvernance
+          + conformité) 7 000 à 20 000 € HT</strong>. Le prix dépend du
+          périmètre, de la taille du parc et du prestataire (freelance
+          ~600-800 €/jour, cabinet ~800-1 200 €/jour). En alternative,
+          augmenter.PRO propose un Audit 180° offert (60 min) puis un Audit
+          360° à 225 € HT, sans engagement.
+        </p>
+      </div>
+
       <h2>Pourquoi les prix varient autant : les 5 facteurs clés</h2>
 
       <p>

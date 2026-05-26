@@ -423,8 +423,10 @@ export function QuoteWizard() {
       if (!res.ok) throw new Error();
       const { brief: generated } = await res.json();
       setBrief(generated);
+      sendGTMEvent({ event: "brief_generated", source: "ai", services: selectedServices.join(",") });
     } catch {
       setBrief(buildClientFallbackBrief(selectedServices, context.sector, context.teamSize));
+      sendGTMEvent({ event: "brief_generated", source: "fallback", services: selectedServices.join(",") });
     } finally {
       setBriefLoading(false);
     }

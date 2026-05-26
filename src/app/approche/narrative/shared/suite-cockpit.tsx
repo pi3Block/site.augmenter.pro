@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { sendGTMEvent } from "@next/third-parties/google";
 import {
   ArrowRight,
   Check,
@@ -324,6 +325,11 @@ export function SuiteCockpit({
                 aria-label={s.label}
                 data-hover
                 className="grid h-9 w-9 place-items-center rounded-md border border-white/15 text-white/70 transition-colors hover:border-white/40 hover:text-white"
+                onClick={
+                  s.label === "WhatsApp"
+                    ? () => sendGTMEvent({ event: "whatsapp_click", location: "suite-cockpit" })
+                    : undefined
+                }
               >
                 <Icon className="h-4 w-4" />
               </a>
