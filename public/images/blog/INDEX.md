@@ -5,6 +5,18 @@
 
 ---
 
+## agent-ia-dirigeant-pme.webp
+
+- **Type** : Illustration flat design (IA générée via Gemini)
+- **Dimensions** : Paysage 16:9 — 1200×670
+- **Poids** : ~23 Ko
+- **Description** : Robot IA jaune/ambre au centre, en posture d'« agent » autonome, orchestrant 4 outils métier disposés autour de lui (CRM avec fiches contacts en haut à gauche, messagerie/email en haut à droite, document/devis en bas à gauche, agenda/calendrier en bas à droite) reliés par des flux violets fléchés qui partent du robot vers les outils (symbolise « l'agent agit » vs « le chatbot répond »). Engrenages dorés autour du robot, fond dégradé diagonal violet vers ambre, style flat design cohérent avec `configurer-odoo-ia-claude-cowork.webp`.
+- **Contexte éditorial** : Image hero de l'article « Agent IA pour dirigeant de PME : c'est quoi, comment en créer un » — illustre un agent qui exécute une tâche de bout en bout en pilotant les outils de l'entreprise.
+- **Usage suggéré** : Hero de l'article `/blog/agent-ia-dirigeant-pme`.
+- **Alt text suggéré** : "Illustration flat design d'un agent IA orchestrant plusieurs outils métier (CRM, messagerie, devis, agenda) reliés par des flux fléchés, symbolisant un agent qui agit de bout en bout"
+
+---
+
 ## configurer-odoo-ia-claude-cowork.webp
 
 - **Type** : Illustration flat design (IA générée via Gemini)

@@ -3,25 +3,66 @@ import Link from "next/link";
 import { ArticleLayout } from "@/components/layout/article-layout";
 
 export const metadata: Metadata = {
-  title: "Claude Code : Le prompt indispensable avant de commencer",
+  title: "Claude Code : le prompt, CLAUDE.md et les Skills (guide PME 2026)",
   description:
-    "Envoyez ce prompt AVANT tout projet Claude Code. Fichiers .md, architecture et bonnes pratiques. La différence entre un POC et un vrai produit.",
+    "Envoyez ce prompt AVANT tout projet Claude Code. CLAUDE.md, ARCHITECTURE.md, Skills et bonnes pratiques. La différence entre un POC et un vrai produit.",
   alternates: {
     canonical:
       "https://augmenter.pro/blog/claude-code-prompt-architecture",
   },
 };
 
+const faqItems = [
+  {
+    question: "C'est quoi le fichier CLAUDE.md ?",
+    answer:
+      "CLAUDE.md est le fichier que Claude Code lit automatiquement à l'ouverture d'un projet. On y place les instructions permanentes : stack technique, conventions de code, commandes utiles, et un renvoi vers ARCHITECTURE.md pour le détail. C'est la mémoire de projet qui survit entre les sessions — sans elle, Claude repart de zéro à chaque ouverture.",
+  },
+  {
+    question: "Les Skills de Claude Code, c'est quoi ?",
+    answer:
+      "Les Skills sont des compétences réutilisables qu'on définit une fois — un fichier markdown décrivant une tâche récurrente (générer un devis, configurer un module Odoo, auditer un bout de code) — et que Claude Code charge à la demande. Pour un dirigeant de PME, c'est le moyen d'industrialiser les tâches qu'il répète chaque semaine sans réexpliquer le contexte à chaque fois.",
+  },
+  {
+    question: "Faut-il savoir coder pour utiliser Claude Code ?",
+    answer:
+      "Non pour piloter, oui pour vérifier. Un dirigeant tech-curieux peut cadrer un projet avec un CLAUDE.md et le prompt système de cet article sans écrire une ligne de code. Mais pour valider ce que Claude produit avant la mise en production (sécurité, données clients), un œil technique reste nécessaire — c'est précisément le rôle d'un accompagnement.",
+  },
+  {
+    question: "ARCHITECTURE.md ou CLAUDE.md : lequel utiliser ?",
+    answer:
+      "Les deux : ils ne jouent pas le même rôle. CLAUDE.md contient les instructions que Claude Code lit en premier (court, opérationnel). ARCHITECTURE.md décrit en détail la structure technique du projet (la source de vérité). CLAUDE.md pointe vers ARCHITECTURE.md, et le prompt système force Claude à le relire avant chaque génération de code.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
 export default function Article() {
   return (
-    <ArticleLayout
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <ArticleLayout
       title="Utiliser Claude Code sans envoyer d'abord ce prompt est une perte de temps"
       excerpt="Travailler avec des fichiers .md ! Faites la différence entre un projet amateur/POC et la création de quelque chose de valeur !"
       tags={["Claude Code", "Développement", "IA"]}
-      readTime="6 min"
+      readTime="8 min"
       date="9 février 2026"
       dateISO="2026-02-09"
-      dateModified="2026-04-21"
+      dateModified="2026-05-26"
       image="/images/blog/claude-code-prompt-architecture.webp"
       slug="claude-code-prompt-architecture"
     >
@@ -81,6 +122,27 @@ export default function Article() {
         <Link href="/approche">augmenter.PRO</Link> sur tous les projets
         Claude Code qui partent vers la production.
       </p>
+
+      {/* ===== Encadré dirigeant ===== */}
+      <div className="rounded-lg border border-amber-500/25 bg-amber-500/5 p-6 my-8">
+        <h2 className="mt-0 text-lg font-bold">
+          Pourquoi un dirigeant de PME devrait s&apos;en soucier
+        </h2>
+        <p className="mb-0">
+          Vous n&apos;avez peut-être pas l&apos;intention d&apos;écrire du code
+          vous-même. Mais si votre PME confie un projet à un prestataire qui
+          utilise Claude Code &mdash; ou si vous testez l&apos;outil en interne
+          &mdash; la présence (ou l&apos;absence) de ce cadrage décide si vous
+          obtenez un livrable que vous pourrez faire évoluer, ou un{" "}
+          <em>POC jetable</em> qui vous enferme chez un prestataire.{" "}
+          <strong>
+            Selon Pierre Legrand, consultant IA chez augmenter.PRO
+          </strong>
+          , c&apos;est la première question à poser à quiconque code avec
+          l&apos;IA pour votre compte : &laquo;&nbsp;où est le fichier qui
+          cadre le projet ?&nbsp;&raquo;.
+        </p>
+      </div>
 
       {/* ===== H2 : Problème ===== */}
       <h2>Pourquoi la plupart des projets Claude Code virent au POC jetable</h2>
@@ -208,6 +270,17 @@ export default function Article() {
         Un squelette minimal tient en 1 page (voir exemple plus bas).
         Claude Code peut même vous aider à le rédiger en partant de vos
         notes.
+      </p>
+      <p>
+        <strong>Point important (convention 2026)</strong> : Claude Code lit
+        automatiquement un fichier <code>CLAUDE.md</code> à la racine,
+        s&apos;il existe. C&apos;est le point d&apos;entrée natif &mdash;
+        placez-y vos instructions permanentes (stack, conventions, commandes)
+        et un renvoi explicite vers <code>ARCHITECTURE.md</code> pour le
+        détail structurel. En pratique : <code>CLAUDE.md</code> = les règles
+        courtes relues à chaque session, <code>ARCHITECTURE.md</code> = la
+        source de vérité détaillée. Le prompt système ci-dessous force Claude
+        à relire l&apos;architecture avant chaque génération de code.
       </p>
 
       <h3>Étape 2 &mdash; Ouvrir une session Claude Code fraîche</h3>
@@ -526,6 +599,50 @@ export default function Article() {
         développeur sans réécrire la moitié.
       </p>
 
+      {/* ===== H2 : Skills & subagents ===== */}
+      <h2>Skills &amp; subagents : industrialiser vos tâches récurrentes</h2>
+
+      <p>
+        Le prompt système cadre <em>un</em> projet. Mais dès qu&apos;on
+        utilise Claude Code régulièrement, on répète les mêmes tâches :
+        générer un devis, configurer un module Odoo, auditer un composant,
+        rédiger un compte-rendu. C&apos;est exactement ce que les{" "}
+        <strong>Skills</strong> de Claude Code permettent
+        d&apos;industrialiser.
+      </p>
+
+      <h3>Ce qu&apos;est un Skill</h3>
+      <p>
+        Un Skill est un fichier markdown qui décrit une compétence
+        réutilisable : son objectif, ses étapes, ses contraintes. Claude Code
+        le charge à la demande quand la tâche se présente, sans que vous ayez
+        à réexpliquer le contexte. Concrètement, vous écrivez une fois{" "}
+        <em>&laquo;&nbsp;voici comment on génère un devis chez
+        nous&nbsp;&raquo;</em>, et l&apos;agent applique cette méthode à
+        chaque fois &mdash; avec les mêmes mentions légales, le même format,
+        les mêmes règles de remise.
+      </p>
+
+      <h3>Subagents : déléguer une sous-tâche</h3>
+      <p>
+        Les <strong>subagents</strong> vont plus loin : ce sont des
+        assistants spécialisés (un pour les tests, un pour la revue de
+        sécurité, un pour la doc) que l&apos;agent principal mobilise pour une
+        sous-tâche, sans polluer le contexte de la session principale. Pour
+        une PME, l&apos;intérêt est concret : un subagent
+        &laquo;&nbsp;relecture sécurité&nbsp;&raquo; qui passe
+        systématiquement sur le code avant livraison, c&apos;est une couche de
+        contrôle qui ne dépend plus de votre seule vigilance.
+      </p>
+      <p>
+        La logique reste la même qu&apos;avec <code>ARCHITECTURE.md</code> :{" "}
+        <strong>
+          vous écrivez le cadre une fois, l&apos;IA l&apos;applique mille fois
+        </strong>
+        . C&apos;est le passage du &laquo;&nbsp;bricolage par
+        prompt&nbsp;&raquo; à un véritable poste de travail augmenté.
+      </p>
+
       {/* ===== H2 : Pour aller plus loin ===== */}
       <h2>Aller plus loin : la bibliothèque de prompts augmenter.PRO</h2>
 
@@ -565,6 +682,25 @@ export default function Article() {
         <Link href="/approche#prestations">prestations d&apos;accompagnement</Link>{" "}
         IA &amp; transformation digitale.
       </p>
+
+      {/* ===== CTA douce ===== */}
+      <p>
+        Vous testez Claude Code dans votre PME et vous voulez un regard
+        extérieur avant de partir en production ? Notre{" "}
+        <Link href="/contact">Audit 180° (60 min, offert)</Link> sert
+        exactement à ça : on regarde votre cadrage, vos risques et les quick
+        wins à activer en premier.
+      </p>
+
+      {/* ===== FAQ ===== */}
+      <h2>FAQ &mdash; Claude Code, CLAUDE.md et Skills</h2>
+      {faqItems.map((item) => (
+        <div key={item.question}>
+          <h3>{item.question}</h3>
+          <p>{item.answer}</p>
+        </div>
+      ))}
     </ArticleLayout>
+    </>
   );
 }

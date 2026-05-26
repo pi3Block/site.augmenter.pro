@@ -119,9 +119,9 @@ export function H03Disciplines() {
       </div>
       <div ref={ledeRef} className="text-white">
         <Lede>
-          L&apos;IA ne sert pas qu&apos;à
+          Trois disciplines
           <br />
-          générer des images <em>de chats</em>.
+          dans un seul <em>but</em>.
         </Lede>
       </div>
       <p

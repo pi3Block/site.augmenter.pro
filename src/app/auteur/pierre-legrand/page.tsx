@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   Briefcase,
+  Github,
   GraduationCap,
   Linkedin,
   MapPin,
@@ -75,6 +76,7 @@ const personJsonLd = {
   sameAs: [
     "https://www.linkedin.com/in/legrand-pierre/",
     "https://x.com/Pi3r2Dev",
+    "https://github.com/Pi3r2Dev",
     "https://pierrelegrand.fr",
   ],
   contactPoint: {
@@ -213,6 +215,16 @@ export default function PierreLegrandPage() {
                   X (Twitter)
                 </a>
                 <a
+                  href="https://github.com/Pi3r2Dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-md border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                  aria-label="Profil GitHub de Pierre Legrand"
+                >
+                  <Github className="h-4 w-4" />
+                  GitHub
+                </a>
+                <a
                   href="https://pierrelegrand.fr"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -348,6 +360,21 @@ export default function PierreLegrandPage() {
                   <p className="mt-1 text-sm text-muted-foreground">
                     Veille IA, Claude Code, MCP Protocol et fil dev en temps
                     réel.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="https://github.com/Pi3r2Dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 rounded-xl border border-border bg-card p-5 transition-colors hover:bg-accent"
+              >
+                <Github className="mt-0.5 h-5 w-5 text-primary" />
+                <div>
+                  <p className="font-semibold">GitHub</p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Templates CLAUDE.md, prompts dirigeants et ressources
+                    Claude Code en accès ouvert.
                   </p>
                 </div>
               </a>

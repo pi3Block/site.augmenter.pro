@@ -124,8 +124,9 @@ const jsonLd = {
         "Consultant IA et transformation digitale pour PME en Yvelines (78) et Val d'Oise (95).",
       founder: {
         "@type": "Person",
+        "@id": "https://augmenter.pro/auteur/pierre-legrand#person",
         name: "Pierre Legrand",
-        url: "https://pierrelegrand.fr",
+        url: "https://augmenter.pro/auteur/pierre-legrand",
       },
       contactPoint: {
         "@type": "ContactPoint",
@@ -137,6 +138,7 @@ const jsonLd = {
       sameAs: [
         "https://www.linkedin.com/in/legrand-pierre/",
         "https://x.com/Pi3r2Dev",
+        "https://github.com/Pi3r2Dev",
       ],
     },
     {

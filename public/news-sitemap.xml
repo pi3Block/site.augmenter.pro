@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://augmenter.pro/blog/agent-ia-dirigeant-pme</loc>
+    <news:news>
+      <news:publication>
+        <news:name>augmenter.PRO</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-26</news:publication_date>
+      <news:title>Agent IA pour dirigeant de PME : c'est quoi, et comment en créer un</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://augmenter.pro/blog/patron-goulot-paradoxe-ia-dirigeant-pme</loc>
     <news:news>
       <news:publication>

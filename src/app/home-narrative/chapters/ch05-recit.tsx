@@ -23,12 +23,12 @@ interface FeatureItem {
 const ARTICLES: FeatureItem[] = [
   {
     kind: "article",
-    tag: "Diagnostic",
-    title: "5 signes qu'il est temps de moderniser votre informatique",
+    tag: "Agent IA",
+    title: "Agent IA pour dirigeant de PME : c'est quoi, comment en créer un",
     excerpt:
-      "Ralentissements, support en bout de course, équipes qui contournent l'outil — les signaux d'une dette technique qu'on ne peut plus repousser.",
-    href: "/blog/5-signes-moderniser-informatique-pme",
-    palette: "amber",
+      "Le chatbot répond, l'agent agit. Définition sans jargon, 3 exemples concrets (BTP, immobilier, services) et la méthode en 4 étapes pour créer votre premier agent métier.",
+    href: "/blog/agent-ia-dirigeant-pme",
+    palette: "violet",
     seed: 41,
   },
   {
@@ -43,12 +43,12 @@ const ARTICLES: FeatureItem[] = [
   },
   {
     kind: "article",
-    tag: "Tarifs",
-    title: "Combien coûte un audit informatique en Yvelines (78) ?",
+    tag: "Diagnostic",
+    title: "5 signes qu'il est temps de moderniser votre informatique",
     excerpt:
-      "Les fourchettes de prix pratiquées localement, ce qui doit être inclus, et les rouges flags qui doivent vous alerter à la lecture d'un devis.",
-    href: "/blog/cout-audit-informatique-yvelines",
-    palette: "warm",
+      "Ralentissements, support en bout de course, équipes qui contournent l'outil — les signaux d'une dette technique qu'on ne peut plus repousser.",
+    href: "/blog/5-signes-moderniser-informatique-pme",
+    palette: "amber",
     seed: 53,
   },
 ];

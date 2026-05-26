@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__dfs-mcp__dataforseo_labs_google_keyword_suggestions"
+    ]
+  }
+}

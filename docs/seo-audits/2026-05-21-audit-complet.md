@@ -1191,4 +1191,33 @@ Capacité confirmée : **10-12 h/semaine** dédiées à ces chantiers (mode inve
 
 ---
 
-*Addendum produit par le workflow `/seo-audit` continuation le 2026-05-21 (brainstorm post-audit). Acté par Pierre Legrand.*
+### 14.9 Recentrage topical map — données DFS réelles (2026-05-21)
+
+> Le `keyword_ideas` de l'audit initial (§4.2, §9) était pollué (seeds génériques élargies vers le loisir). Une **re-run propre** via `keyword_suggestions` sur 6 seeds ciblés a produit une topical map fiable : [`2026-05-21-data/topical-map-dfs.md`](2026-05-21-data/topical-map-dfs.md). **Cette map prime sur les volumes inférés des §4.2 et §9.2.**
+
+**3 révélations qui modifient la stratégie de contenu** :
+
+1. **Le Pilier 2 (audit IT local) décline structurellement** : `audit informatique` −84 % yearly, `audit informatique pme` −92 %, `audit réseau` −85 %. → **Geler les nouveaux contenus audit local** (sauf NIS2 réglementaire). Les 2 pages + 2 articles existants suffisent. Confirme rétroactivement le pivot vers le Pilier 1.
+
+2. **Les méga-volumes "claude code" (74k) et "odoo" (90k) sont anglophones** (location FR ≠ langue FR) — non actionnables en SEO éditorial français. La valeur est dans la longue traîne FR.
+
+3. **Nouveau gap béant : cluster "Agent IA"** (`qu'est-ce qu'un agent ia` + `comment créer un agent ia` + `agent ia c'est quoi`) = ~1 700/mo, KD 1-5, +177 à +1157 % yearly, **zéro couverture**, nourrit l'Atelier 650 €. Non identifié dans l'audit initial.
+
+**Shortlist Q3 2026 recentrée (volumes réels — remplace §9.2 pour la priorisation)** :
+
+| Rang | Sujet | Vol réel FR | Sert |
+|---|---|---:|---|
+| 1 | Pilier « Agent IA pour dirigeant PME » (page + PAA) | ~1 700 | Atelier |
+| 2 | Formation IA dirigeant/entreprise (page offre) | ~3 400 | Cohorte + Atelier |
+| 3 | Claude Code Skills & CLI (poste dirigeant augmenté) | ~2 000 | Atelier |
+| 4 | Installer/démarrer Claude Code (guide PME) | ~3 800 | Atelier (top-of-funnel) |
+| 5 | Claude Code vs Cursor/Codex (comparatif décideur) | ~1 500 | Atelier |
+| 6 | « Odoo c'est quoi » + facture électronique 2026 | ~2 900 | Audit 360°/Cohorte |
+| 7 | Odoo + IA CRM/compta (consolidation existant) | ~2 500 | Audit 360° |
+| 8 | NIS2/réglementaire — pas d'expansion audit généraliste | — | maintien |
+
+**⚠️ Alerte cannibalisation** : MCP est sur-couvert (3 articles pour ~9k cluster majoritairement navigational). Ne pas ajouter de 4e contenu MCP ; surveiller la cannibalisation entre les 2 articles MCP-CRM/ERP.
+
+---
+
+*Addendum produit par le workflow `/seo-audit` continuation le 2026-05-21 (brainstorm post-audit + re-run keyword research propre). Acté par Pierre Legrand.*

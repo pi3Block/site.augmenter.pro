@@ -32,6 +32,15 @@ interface Article extends ArticleBentoData {
 
 const ARTICLES: Article[] = [
   {
+    slug: "agent-ia-dirigeant-pme",
+    title: "Agent IA pour dirigeant de PME : c'est quoi, et comment en créer un",
+    excerpt:
+      "Tout le monde vend des « agents IA », personne ne dit ce que c'est vraiment. Définition sans jargon, 3 exemples concrets (BTP, immobilier, services) et la méthode en 4 étapes pour créer le vôtre.",
+    tags: ["IA", "PME"],
+    readTime: "9 min",
+    image: "/images/blog/agent-ia-dirigeant-pme.webp",
+  },
+  {
     slug: "patron-goulot-paradoxe-ia-dirigeant-pme",
     title: "Le patron-goulot : quand l'IA rend le dirigeant encore plus indispensable",
     excerpt:
