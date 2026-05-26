@@ -8,6 +8,7 @@ import {
   Target,
   Linkedin,
   Twitter,
+  Github,
   Mail,
   Phone,
   Zap,
@@ -87,6 +88,7 @@ const socialLinks = [
     icon: Linkedin,
   },
   { href: "https://x.com/Pi3r2Dev", label: "Twitter / X", icon: Twitter },
+  { href: "https://github.com/Pi3r2Dev", label: "GitHub", icon: Github },
   { href: "mailto:vite@augmenter.pro", label: "Email", icon: Mail },
   {
     href: "https://wa.me/33679119774",

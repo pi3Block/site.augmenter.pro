@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Zap, Linkedin, Twitter, Mail, Phone } from "lucide-react";
+import { Zap, Linkedin, Twitter, Github, Mail, Phone } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -64,6 +64,7 @@ const SOCIALS: SocialLink[] = [
     external: true,
   },
   { href: "https://x.com/Pi3r2Dev", label: "Twitter / X", icon: Twitter, external: true },
+  { href: "https://github.com/Pi3r2Dev", label: "GitHub", icon: Github, external: true },
   { href: "mailto:vite@augmenter.pro", label: "Email", icon: Mail, external: false },
   { href: "https://wa.me/33679119774", label: "WhatsApp", icon: Phone, external: true },
 ];

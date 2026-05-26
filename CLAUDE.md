@@ -340,5 +340,6 @@ Use `/create-article <sujet>` or follow this manual process:
 
 - [docs/decisions/0001-approche-narrative-scroll.md](docs/decisions/0001-approche-narrative-scroll.md) — décision narrative /approche
 - [docs/decisions/0002-home-narrative-scroll.md](docs/decisions/0002-home-narrative-scroll.md) — décision narrative /
+- [docs/decisions/0003-funnel-geo-conversion.md](docs/decisions/0003-funnel-geo-conversion.md) — stratégie funnel GEO : mesurer d'abord, monétiser le cluster tech sur le persona dirigeant confirmé
 - [docs/plans/](docs/plans/) — plans d'implémentation détaillés
 - [docs/ClaudeDesign_handoff/](docs/ClaudeDesign_handoff/) — source du design narrative (HTML/CSS/JS prototype)
