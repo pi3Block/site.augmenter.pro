@@ -1,7 +1,7 @@
 # augmenter.pro — Full Content for LLM Ingestion
 
 > Version étendue de llms.txt (cf. [llmstxt.org](https://llmstxt.org/)). Contenu markdown complet des pages indexables de augmenter.pro, optimisé pour ingestion par les LLMs (ChatGPT, Claude, Perplexity, Gemini, etc.) en une seule requête.
-> Dernière génération : 2026-05-21
+> Dernière génération : 2026-05-28
 
 Auteur du site : Pierre Legrand — consultant IA pour dirigeants PME, spécialisé Claude Code, Odoo, automatisation et audit informatique. Visio partout en France (et Belgique/Suisse francophone), présentiel Yvelines (78) et Val d'Oise (95), déplacements sur demande pour les projets nationaux de grande ampleur.
 
@@ -9,6 +9,7 @@ Auteur du site : Pierre Legrand — consultant IA pour dirigeants PME, spéciali
 
 - [Accueil — Votre PME, augmentée par l'IA](https://augmenter.pro/) — 2026-02-13
 - [Stratégie IA pour PME — Diagnostic & Accompagnement](https://augmenter.pro/strategie-ia-pme) — 2026-02-01
+- [Audit IA pour PME — diagnostic & feuille de route chiffrée](https://augmenter.pro/audit-ia-pme) — 2026-05-28
 - [Approche, prestations & tarifs](https://augmenter.pro/approche) — 2026-04-22
 - [Intégration MCP — Connecter l'IA à vos outils métier](https://augmenter.pro/integration-mcp) — 2026-02-10
 - [Audit informatique Yvelines (78)](https://augmenter.pro/audit-informatique-yvelines) — 2026-02-01
@@ -227,6 +228,118 @@ Les réponses aux questions que se posent les dirigeants de PME avant de se lanc
 ### L’IA est-elle compatible avec le RGPD pour les PME françaises ?
 ### Qu’est-ce que le programme Osez l’IA de Bpifrance ?
 ### Intervenez-vous uniquement en Yvelines et Val-d’Oise ?
+## Quel est votre prochain niveau ?
+Commencez par un diagnostic de 60 minutes. Zéro engagement, zéro jargon technique — juste des solutions concrètes.
+[Réserver mon diagnostic](https://augmenter.pro/contact)[Discuter sur WhatsApp](https://wa.me/33679119774)
+
+---
+
+## https://augmenter.pro/audit-ia-pme
+
+dateModified: 2026-05-28
+
+# Audit IA pour PME : par où commencer, sans te faire piéger
+Tu sais que l'IA peut t'aider, mais entre le bruit ambiant et les agences qui veulent te vendre un projet à 20 000 €, tu ne sais plus quoi faire. Notre audit IA part de **ton métier** : on identifie les cas d'usage qui comptent vraiment, chiffrés et priorisés. Diagnostic **180° offert**, en visio partout en France.
+[Diagnostic 180° — 60 min offertes](https://augmenter.pro/contact)[Voir nos prestations](https://augmenter.pro/approche#prestations)
+## L'audit IA : un réflexe de dirigeant, pas un gadget
+Les recherches « audit IA » ont explosé chez les dirigeants français. La raison est simple : seules les PME qui **cadrent avant d'investir** tirent un vrai retour de l'intelligence artificielle.
++255 %
+de recherches « audit IA » en 1 an
+Le sujet explose chez les dirigeants (Google, FR)
+165 %
+ROI médian d'un projet IA bien ciblé
+Retour en 6 à 7 mois en moyenne
+60 %
+des PME freinées par les compétences
+Premier frein cité par les dirigeants
+80 %
+de prise en charge possible
+Via le programme Osez l'IA (Bpifrance)
+Sources : Google Trends FR, Baromètre France Num 2025, Bpifrance Le Lab. [Comprendre ce qu'un agent IA peut faire pour toi](https://augmenter.pro/blog/agent-ia-dirigeant-pme).
+## Ce que couvre notre audit IA
+Un diagnostic à 360° de ton potentiel IA — des processus terrain à la conformité, sans angle mort.
+### Maturité IA de l'entreprise
+Où en sont réellement tes équipes et tes outils ? Un état des lieux honnête, sans flatter ni dramatiser.
+### Cartographie des processus
+On suit tes flux de travail réels pour repérer où le temps se perd, où les tâches se répètent.
+### Cas d'usage prioritaires
+Les 20 % de cas d'usage IA qui génèrent 80 % des gains, classés par ROI et facilité de déploiement.
+### Données & conformité
+Qualité, accessibilité et gouvernance de tes données. RGPD et AI Act intégrés dès le diagnostic.
+### Stack & outils IA existants
+ChatGPT, Claude, Copilot, no-code… On audite ce qui tourne déjà et ce qui se chevauche inutilement.
+### Shadow AI & risques
+L'IA utilisée en douce par tes équipes, hors cadre. On la révèle et on la sécurise.
+### Souveraineté & sécurité
+Où partent tes données ? Hébergement européen, solutions souveraines quand c'est pertinent.
+### Éligibilité au financement
+On vérifie si ton projet rentre dans Osez l'IA (Bpifrance) — jusqu'à 80 % pris en charge.
+## Ces blocages te parlent ?
+Tu n'es pas en retard. Tu manques juste d'un cadre clair. Un audit IA fait passer ta PME de l'hésitation à la décision.
+### Tu ne sais pas par où commencer
+Tout le monde te parle d'IA, mais personne ne te dit quoi faire concrètement dans TA boîte. Résultat : tu attends, et tes concurrents avancent.
+### L'IA tourne déjà en douce, sans cadre
+Tes équipes collent déjà des données dans ChatGPT sans que tu le saches. Sans audit, tu subis un risque RGPD au lieu de le piloter.
+### Tu as peur qu'on te vende un projet inutile
+Les agences IA promettent monts et merveilles puis facturent des projets à 20 000 € au ROI invisible. Un audit indépendant te protège de ça.
+### Budget gaspillé sur les mauvais chantiers
+Sans priorisation, tu investis dans des cas d'usage à faible impact. L'audit identifie les quick wins avant de dépenser un euro.
+Notre [approche 360°](https://augmenter.pro/approche) adresse ces blocages à la racine : technique, processus et humain.
+## Notre audit IA en 4 étapes
+Du diagnostic offert à la feuille de route exécutable — une méthode cadrée, sans jargon et sans projet imposé.
+ÉTAPE 01
+### Diagnostic 180° — 60 min, offert
+Un premier échange en visio (partout en France) pour comprendre ton activité, tes irritants et tes objectifs. Sans CB, sans engagement.
+ÉTAPE 02
+### Audit IA 360° — cartographie & maturité
+Une demi-journée pour cartographier tes processus, évaluer ta maturité IA et la qualité de tes données. En visio ou en présentiel (78/95).
+ÉTAPE 03
+### Rapport & feuille de route chiffrée
+Un livrable clair et actionnable : cas d'usage priorisés par ROI, outils recommandés, budget et calendrier sur 6 mois. Prêt à exécuter.
+ÉTAPE 04
+### Accompagnement au déploiement
+On ne te laisse pas seul avec un rapport. Mise en œuvre, formation des équipes et ajustements pour transformer le plan en résultats.
+[Lancer mon diagnostic 180°](https://augmenter.pro/contact)
+## Un audit IA adapté à ton secteur
+Chaque métier a ses propres cas d'usage IA. On part de tes enjeux terrain, avec des exemples concrets de PME — locales et partout en France.
+### BTP & Rénovation
+Devis générés à la chaîne, planning chantier optimisé, comptes-rendus automatisés et prospection internalisée.
+PME BTP à Versailles (78) : devis générés 3× plus vite
+### Immobilier
+Estimation assistée, rédaction d'annonces, scoring acquéreur et suivi client automatisé de bout en bout.
+Agence à Cergy (95) : 50 % de temps gagné sur les estimations
+### Industrie & Artisanat
+Maintenance prédictive, gestion de stock intelligente, optimisation des tournées et contrôle qualité.
+Artisan à Pontoise (95) : ruptures de stock réduites de 40 %
+### Services & Conseil
+Assistants IA pour la veille, la rédaction, l'analyse documentaire et l'automatisation administrative.
+Cabinet à Saint-Germain (78) : productivité +35 %
+Découvre comment [l'IA facture déjà dans 9 cas d'usage concrets](https://augmenter.pro/idees) par secteur.
+## Fais financer ton projet IA
+Le programme **Osez l'IA** (Bpifrance / France 2030) finance jusqu'à **80 % du coût** d'accompagnement IA pour les PME. On t'aide à en bénéficier dès l'audit.
+### Osez l'IA (ex-IA Booster France 2030)
+  * PME de 10 à 2 000 salariés, CA > 250 K€
+  * Budget total : 200 millions d'euros
+  * Diagnostic + accompagnement pris en charge à 50-80 %
+  * Tous secteurs d'activité éligibles
+
+### Notre rôle dans ton dossier
+  * Évaluation de ton éligibilité
+  * Préparation du diagnostic préalable
+  * Accompagnement à la constitution du dossier
+  * Suivi post-financement et déploiement
+
+[Vérifier mon éligibilité](https://augmenter.pro/contact)
+Une fois les cas d'usage validés, découvre notre [accompagnement stratégie IA](https://augmenter.pro/strategie-ia-pme) pour passer de l'audit au déploiement.
+## Questions fréquentes sur l'audit IA en PME
+Les réponses aux questions que se posent les dirigeants avant de se lancer.
+### C'est quoi, concrètement, un audit IA pour une PME ?
+### Combien coûte un audit IA pour une PME ?
+### Combien de temps prend un audit IA ?
+### Faut-il déjà avoir des compétences IA en interne ?
+### Et la conformité RGPD et l'AI Act dans tout ça ?
+### Vous n'intervenez qu'en Yvelines et Val-d'Oise ?
+Plutôt un besoin d'audit du parc informatique ? [Découvre notre audit informatique (78)](https://augmenter.pro/audit-informatique-yvelines).
 ## Quel est votre prochain niveau ?
 Commencez par un diagnostic de 60 minutes. Zéro engagement, zéro jargon technique — juste des solutions concrètes.
 [Réserver mon diagnostic](https://augmenter.pro/contact)[Discuter sur WhatsApp](https://wa.me/33679119774)
