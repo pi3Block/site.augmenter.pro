@@ -325,9 +325,12 @@ export default function Article() {
           risque ? Notre{" "}
           <Link href="/contact">Audit 180° (60 min, offert)</Link> sert
           exactement à ça : on regarde vos tâches répétitives, vos outils en
-          place, et on repère le premier agent qui a du sens chez vous. En
-          visio partout en France, en présentiel dans les Yvelines (78) et le
-          Val d&apos;Oise (95).
+          place, et on repère le premier agent qui a du sens chez vous. Pour
+          cartographier <em>tous</em> vos cas d&apos;usage priorisés par ROI,
+          c&apos;est l&apos;objet de notre{" "}
+          <Link href="/audit-ia-pme">audit IA pour PME</Link>. En visio partout
+          en France, en présentiel dans les Yvelines (78) et le Val d&apos;Oise
+          (95).
         </p>
         <p>
           Pour aller plus loin, lisez aussi notre méthode pour{" "}
