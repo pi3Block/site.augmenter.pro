@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Terminal, ArrowRight } from "lucide-react";
 
 /**
- * Encart CTA mid-article vers la landing Atelier Claude Code dirigeant.
+ * Encart CTA mid-article vers la landing Ateliers Claude Cowork & Claude Code.
  * À insérer dans le corps des articles du cluster Claude Code / Odoo
  * pour transformer le trafic tech en contact dirigeant (cf. ADR 0003).
  */
@@ -15,18 +15,17 @@ export function AtelierCallout() {
         </div>
         <div>
           <p className="text-base font-semibold not-italic">
-            Dirigeant de PME ? On configure Claude Code avec vous en une demi-journée.
+            Dirigeant de PME ? On vous forme à Claude Cowork et Claude Code en une demi-journée.
           </p>
           <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-            Vous repartez avec Claude Code installé sur votre projet, votre
-            CLAUDE.md opérationnel et 2-3 workflows qui tournent. 650 € HT,
-            présentiel 78/95 ou visio.
+            Du no-code (Claude Cowork) à votre projet en terminal (Claude Code),
+            sur vos cas réels. À partir de 450 € HT, présentiel 78/95 ou visio.
           </p>
           <Link
             href="/atelier-claude-code-dirigeant"
             className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-violet-700 hover:underline dark:text-violet-300"
           >
-            Voir l&apos;atelier
+            Voir les ateliers
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

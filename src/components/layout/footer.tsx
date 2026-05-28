@@ -22,7 +22,7 @@ const COLUMNS: FooterColumn[] = [
     accent: "oklch(0.702 0.183 293)",
     items: [
       { label: "Notre approche", href: "/approche" },
-      { label: "Atelier Claude Code dirigeant", href: "/atelier-claude-code-dirigeant" },
+      { label: "Atelier Claude Cowork & Code", href: "/atelier-claude-code-dirigeant" },
       { label: "Audit informatique Yvelines (78)", href: "/audit-informatique-yvelines" },
       { label: "Audit informatique Val d'Oise (95)", href: "/audit-informatique-val-doise" },
       { label: "Intégration MCP", href: "/integration-mcp" },

@@ -19,7 +19,7 @@ Secteurs servis : BTP, immobilier, industrie, artisanat, commerce, services. PME
 
 - **Audit 180° (Offert)** : Échange de 60 min pour identifier vos besoins en IA et digitalisation. Sans engagement.
 - **Audit 360° IA Stratégique (225 €)** : Diagnostic complet de 3h couvrant infrastructure, workflows et équipes. Livrable : plan d'action chiffré et priorisé.
-- **Atelier Claude Code dirigeant (650 € HT)** : Atelier d'une demi-journée en tête-à-tête. Le dirigeant repart avec Claude Code installé sur son projet, un fichier CLAUDE.md opérationnel et 2-3 workflows en production. Présentiel Yvelines (78) / Val d'Oise (95) ou visio. Page : https://augmenter.pro/atelier-claude-code-dirigeant
+- **Ateliers Claude Cowork & Claude Code dirigeant (à partir de 450 € HT)** : Deux ateliers d'une demi-journée en tête-à-tête, selon le niveau du dirigeant. Palier 1 — Claude Cowork (450 € HT), entrée no-code : prise en main de l'application desktop, connexion des fichiers et outils, 2-3 skills et workflows métier sans code. Palier 2 — Claude Code (650 € HT), avancé : installation sur le projet réel, CLAUDE.md opérationnel et 2-3 workflows en production. Progression recommandée : Cowork puis Code quand le projet le justifie. Présentiel Yvelines (78) / Val d'Oise (95) ou visio. Page : https://augmenter.pro/atelier-claude-code-dirigeant
 - **Développement sur mesure** : Applications web/mobile, chatbots IA, automatisation de workflows, intégrations CRM.
 - **Formation & Accompagnement** : Ateliers IA pour dirigeants, formation outils collaboratifs, conduite du changement.
 - **Conseil Stratégique** : Benchmark concurrentiel, choix technologiques, roadmap transformation digitale.
