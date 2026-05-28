@@ -109,7 +109,7 @@ La fenêtre pour dominer cette intersection est MAINTENANT — avant que les act
 
 **Fréquence** : Mensuelle (1ère semaine du mois)
 
-**Requêtes de crawl** (utiliser crawl4ai self-hosted) :
+**Requêtes de crawl** (utiliser Firecrawl self-hosted VPS — cf. [CLAUDE.md](CLAUDE.md) § Web Crawling) :
 ```
 # Blogs concurrents à crawler pour détecter nouveau contenu
 - https://www.ipaconseils.fr/blog/          → NIS2, compliance, Yvelines
@@ -563,7 +563,7 @@ ORDRE DE PRIORITÉ :
 
 3. Fallback (si MCP indisponible) :
    - Recherche web : "{mot-clé} volume recherche france 2026"
-   - crawl4ai self-hosted (`https://crawl4ai.augmenter.pro`) : scraper les 5 premiers résultats Google pour le mot-clé cible. Firecrawl interdit (cf. [CLAUDE.md](CLAUDE.md))
+   - Firecrawl self-hosted VPS (`https://firecrawl-test.augmenter.pro` ou WireGuard `http://10.10.0.1:3002`) : scraper les 5 premiers résultats Google pour le mot-clé cible via `POST /v2/scrape`. crawl4ai caduc (cf. [CLAUDE.md](CLAUDE.md))
 ```
 
 ### 8.2 Analyse concurrentielle (par contenu)

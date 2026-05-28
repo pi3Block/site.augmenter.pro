@@ -15,7 +15,9 @@ green — livrable complet, prêt à committer.
 ## Done in this session
 
 ### 1. Génération de `public/llms-full.txt`
-- Récupération du contenu rendu de **23 pages indexables** via crawl4ai self-hosted (`POST https://crawl4ai.augmenter.pro/md` avec `f=raw`) en parallèle :
+> **Note 2026-05-28** : le crawler opérationnel est désormais **Firecrawl VPS IONOS** (remplace crawl4ai). Voir [ADR 0004](../decisions/0004-firecrawl-ionos-migration.md).
+
+- Récupération du contenu rendu de **23 pages indexables** via Firecrawl self-hosted (`POST https://firecrawl-test.augmenter.pro/v2/scrape` avec `formats: ["markdown"]`) en parallèle :
   - 11 pages principales : `/`, `/strategie-ia-pme`, `/approche`, `/integration-mcp`, `/audit-informatique-yvelines`, `/audit-informatique-val-doise`, `/idees`, `/prompts`, `/projets`, `/blog`, `/contact`
   - 12 articles de blog (tous ceux listés dans le sitemap)
 - Pages **exclues volontairement** : `/mentions-legales`, `/politique-confidentialite`, `/cgv` (peu de valeur d'ingestion LLM, faible probabilité de citation, conforme à l'arbitrage proposé dans la brief).
@@ -87,7 +89,7 @@ Aucun.
 
 Cette sub-task est `closed`. Reprise pertinente uniquement si :
 - (a) Une étude post-déploiement révèle des problèmes de citation (LLM ne pioche pas dans `llms-full.txt`) → enrichir le contenu pour pages stratégiques avec plus de signaux de citation (cf. checklist §G.5 « Citation triggers »).
-- (b) De nouveaux articles sont publiés → relancer la génération du fichier via crawl4ai + cleanup ; pipeline reproductible (commande dans cette doc §1).
+- (b) De nouveaux articles sont publiés → relancer la génération du fichier via Firecrawl + cleanup ; pipeline reproductible (commande dans cette doc §1).
 - (c) La taille dépasse 5 MB après 50+ pages → splitter en `llms-full-services.txt` (pages services) + `llms-full-blog.txt` (articles) + index dans `llms-full.txt`.
 
 Pour la sub-session parent : `/flow resume` → reprendra l'orchestration en marquant cette sub-task `completed`.

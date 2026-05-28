@@ -36,13 +36,13 @@ green — diagnostic et instrumentation côté commandes/templates **complètes*
 
 ### Bloc 4 — Mise à jour STRATEGIE-EDITORIALE.md
 - Header daté 2026-05-21 avec mention du **cluster Claude Code manquant** dans §3 et lien vers le nouvel audit.
-- `firecrawl` retiré (2 occurrences en §1.3 et §8.1) — remplacé par crawl4ai self-hosted (cf. CLAUDE.md qui interdit firecrawl).
+- `firecrawl` retiré en 2026-05-21 (SaaS) puis **réintroduit en self-host VPS IONOS** le 2026-05-27 (remplace crawl4ai Coolify) — cf. [ADR 0004](../decisions/0004-firecrawl-ionos-migration.md).
 - §11 Journal complété : 4 entrées (2026-03-29 Odoo Claude Cowork, 2026-04-21 Claude Code prompt, 2026-04-22 refonte bento, 2026-05-21 audit + templates).
 - §12 réécrit en **arbre de décision A/B/C** (capitaliser Claude Code / rester sur stratégie 78/95 / hybride avec mesure 90j) avec checkboxes pour la décision de Pierre.
 
 ### Bloc 5 — Enrichissement GEO Phase 6 du `/seo-audit`
 - Phase 6 restructurée : 7 → 9 sous-sections.
-- 🆕 **§6.1 Accessibilité crawlers IA** : tableau des 10 bots (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Google-Extended, PerplexityBot, Perplexity-User, CCBot, Bytespider, Meta-ExternalAgent) avec recommandations allow/disallow ; vérifs `X-Robots-Tag: noai`, CSP `frame-ancestors`, test crawl bot-by-bot via crawl4ai avec User-Agent custom.
+- 🆕 **§6.1 Accessibilité crawlers IA** : tableau des 10 bots (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Google-Extended, PerplexityBot, Perplexity-User, CCBot, Bytespider, Meta-ExternalAgent) avec recommandations allow/disallow ; vérifs `X-Robots-Tag: noai`, CSP `frame-ancestors`, test crawl bot-by-bot via Firecrawl avec User-Agent custom (cf. `mcp-calls.md` §6.3).
 - 🆕 **§6.3 Tests directs multi-moteurs** : étendu de ChatGPT seul à 7 moteurs (ChatGPT, Perplexity Pro, Gemini AI Mode, AI Overviews, Brave Summarizer, Bing Copilot, Claude). Bibliothèque de 15-20 prompts à maintenir dans `docs/seo-audits/<date>-data/geo-prompts.md`.
 - 🆕 **§6.5 Entity author + NAP consistency** : audit page auteur Pierre Legrand + Person JSON-LD complet (sameAs, knowsAbout, alumniOf) + cohérence Name/Address/Phone cross-pages.
 - 🆕 **§6.6 `llms-full.txt`** : format étendu en complément de `llms.txt` (markdown complet, < 5 MB, référencé dans `robots.txt`).

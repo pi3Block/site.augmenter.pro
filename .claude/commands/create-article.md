@@ -64,7 +64,7 @@ Avant d'écrire quoi que ce soit :
    - Extraire : titres, URLs, structures des pages, featured snippets, PAA
 
    **Fallback** :
-   - Scrape les 3-5 premiers résultats Google via recherche web / crawl4ai
+   - Scrape les 3-5 premiers résultats Google via recherche web / Firecrawl (`mcp__firecrawl__firecrawl_scrape` ou REST `/v2/scrape`)
 
    Dans tous les cas, analyser :
    - Structure des articles concurrents (H2, H3)

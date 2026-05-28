@@ -11,7 +11,7 @@ Recueil d'appels MCP types pour DataForSEO + Google Search Console, avec **signa
 ```text
 mcp__google-search-console__list_sites             → confirme propriété sc-domain:augmenter.pro
 mcp__dfs-mcp__kw_data_google_ads_locations         (country_iso_code: "FR")   → confirme accès DFS + récupère location_code 2250
-mcp__crawl4ai__md                                  (url: "https://augmenter.pro")   → confirme crawl4ai self-hosted
+mcp__firecrawl__firecrawl_scrape                  (url: "https://augmenter.pro", formats: ["markdown"])   → confirme Firecrawl self-hosted VPS
 mcp__plugin_playwright_playwright__browser_navigate  (url: "about:blank")   → confirme Playwright
 ```
 
@@ -328,16 +328,18 @@ URLs cibles par moteur :
 
 ### 6.3 Test crawlabilité bot-by-bot (robots.txt + User-Agent)
 
-Pour vérifier qu'un bot IA spécifique peut crawler une URL, simuler son User-Agent via `crawl4ai` :
+Pour vérifier qu'un bot IA spécifique peut crawler une URL, simuler son User-Agent via Firecrawl :
 
 ```text
-# Via API REST crawl4ai self-hosted
-curl -X POST https://crawl4ai.augmenter.pro/md \
+# Via API REST Firecrawl self-hosted (VPS IONOS)
+curl -X POST "${FIRECRAWL_API_URL:-https://firecrawl-test.augmenter.pro}/v2/scrape" \
   -H "Content-Type: application/json" \
   -d '{
     "url": "https://augmenter.pro/blog/<slug>",
-    "user_agent": "GPTBot/1.0 (+https://openai.com/gptbot)",
-    "f": "raw"
+    "formats": ["markdown"],
+    "headers": {
+      "User-Agent": "GPTBot/1.0 (+https://openai.com/gptbot)"
+    }
   }'
 ```
 
@@ -368,22 +370,34 @@ mcp__dfs-mcp__domain_analytics_technologies_domain_technologies
 
 ---
 
-## 8. Crawl4ai (self-hosted)
+## 8. Firecrawl (self-hosted VPS IONOS)
+
+> **URLs** : prod Coolify → `http://10.10.0.1:3002` (WireGuard) · dev Cursor → `https://firecrawl-test.augmenter.pro` (Caddy + basic-auth) · cf. [CLAUDE.md](../../../CLAUDE.md) § Web Crawling
 
 ```text
-mcp__crawl4ai__md
-  url: "https://<site>"                       # markdown brut d'une URL
+mcp__firecrawl__firecrawl_scrape
+  url: "https://<site>"
+  formats: ["markdown"]                       # markdown brut d'une URL
 
-mcp__crawl4ai__crawl
-  urls: ["https://<site>/page1", "..."]       # crawl batch
+mcp__firecrawl__firecrawl_crawl
+  url: "https://<site>"                       # crawl récursif (job async)
+
+mcp__firecrawl__firecrawl_batch_scrape
+  urls: ["https://<site>/page1", "..."]      # scrape batch
 ```
 
 Endpoint REST de fallback si le MCP est indisponible :
 
 ```bash
-curl -X POST https://crawl4ai.augmenter.pro/md -H "Content-Type: application/json" \
-  -d '{"url": "https://<site>", "f": "raw"}'
+# URL unique → markdown
+curl -X POST "${FIRECRAWL_API_URL:-https://firecrawl-test.augmenter.pro}/v2/scrape" \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://<site>", "formats": ["markdown"]}'
 ```
+
+Réponse attendue : `{"success": true, "data": {"markdown": "...", "metadata": {...}}}`
+
+⚠️ **crawl4ai.augmenter.pro est caduc** — ne plus l'utiliser (remplacé par Firecrawl VPS, cf. [docs/decisions/0004-firecrawl-ionos-migration.md](../../../docs/decisions/0004-firecrawl-ionos-migration.md)).
 
 ---
 

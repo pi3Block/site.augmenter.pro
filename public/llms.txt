@@ -130,6 +130,10 @@ R: Technique (software & hardware), processus (vente & opérations), formation h
 - X/Twitter : https://x.com/Pi3r2Dev
 - Site : https://augmenter.pro
 
+## Audit IA pour PME
+
+- [Audit IA pour PME : diagnostic & feuille de route chiffrée](https://augmenter.pro/audit-ia-pme) — Landing page nationale dédiée à l'audit IA pour PME françaises. Évaluation de la maturité IA, cartographie des processus, identification des cas d'usage prioritaires par ROI, audit des données (RGPD/AI Act), shadow AI, souveraineté. Diagnostic 180° offert (60 min visio) + Audit IA 360° à 225 € avec feuille de route sur 6 mois. Méthodologie en 4 étapes, cas d'usage par secteur (BTP, immobilier, industrie, services), financement Osez l'IA Bpifrance, FAQ. Visio partout en France, présentiel 78/95.
+
 ## Stratégie IA pour PME
 
 - [Stratégie IA pour PME : Diagnostic & Accompagnement](https://augmenter.pro/strategie-ia-pme) — Landing page complète sur notre accompagnement stratégique IA pour PME. Diagnostic offert, méthodologie en 4 étapes, cas d'usage par secteur (BTP, immobilier, industrie, services), financement Osez l'IA Bpifrance, FAQ.
@@ -160,6 +164,7 @@ Tous les articles du blog sont rédigés par Pierre Legrand, avec assistance d'o
 
 - https://augmenter.pro — Accueil
 - https://augmenter.pro/auteur/pierre-legrand — Pierre Legrand, consultant IA & transformation digitale (bio, expertise, missions)
+- https://augmenter.pro/audit-ia-pme — Audit IA pour PME (diagnostic 180° offert, cas d'usage prioritaires, feuille de route chiffrée) — national
 - https://augmenter.pro/strategie-ia-pme — Stratégie IA pour PME (diagnostic, accompagnement, financement)
 - https://augmenter.pro/approche — Approche, Prestations & Tarifs (méthode 360°, audits 180°/360°)
 - https://augmenter.pro/idees — Idées IA pour PME : 9 cas d'usage qui facturent (immobilier, courtage, BTP, notariat, commerce, outils PME) — avantages, points d'attention, ROI mesurable

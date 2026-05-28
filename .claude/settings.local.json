@@ -1,13 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "mcp__crawl4ai__md",
-      "mcp__crawl4ai__html",
-      "mcp__crawl4ai__screenshot",
-      "mcp__crawl4ai__pdf",
-      "mcp__crawl4ai__crawl",
-      "mcp__crawl4ai__execute_js",
-      "mcp__crawl4ai__ask",
+      "mcp__firecrawl__firecrawl_scrape",
+      "mcp__firecrawl__firecrawl_crawl",
+      "mcp__firecrawl__firecrawl_batch_scrape",
+      "mcp__firecrawl__firecrawl_map",
       "Bash(wc:*)",
       "Bash(npm install:*)",
       "Bash(curl:*)",
@@ -49,7 +46,7 @@
       "Bash(ls:*)",
       "Bash(git push:*)",
       "Bash(gh api:*)",
-      "WebFetch(domain:crawl4ai.augmenter.pro)",
+      "WebFetch(domain:firecrawl-test.augmenter.pro)",
       "mcp__plugin_context7_context7__resolve-library-id",
       "mcp__plugin_context7_context7__query-docs",
       "WebFetch(domain:community.groq.com)",
@@ -150,9 +147,12 @@
     ]
   },
   "mcpServers": {
-    "crawl4ai": {
-      "transport": "sse",
-      "url": "https://crawl4ai.augmenter.pro/mcp/sse"
+    "firecrawl": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_URL": "https://firecrawl-test.augmenter.pro"
+      }
     },
     "dfs-mcp": {
       "command": "cmd",

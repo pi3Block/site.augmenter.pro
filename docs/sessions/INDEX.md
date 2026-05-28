@@ -4,6 +4,7 @@ Session handoff and orchestration tracker. Created and maintained by `/flow`.
 
 | Date | Slug | Status | Mode | Next step |
 |------|------|--------|------|-----------|
+| 2026-05-28 | [firecrawl-ionos-migration](../decisions/0004-firecrawl-ionos-migration.md) | closed | solo | Cutover prod ouquequoi + app.augmenter.pro · retrait crawl4ai Coolify |
 | 2026-05-26 | [geo-contenu-entite](2026-05-26-geo-contenu-entite.md) | open | solo | MESURE (lire baseline GA4 funnel) + re-test T+7 (28/05) + démarches entité (LinkedIn, France Num validation, Wikidata) |
 | 2026-05-21 | [geo-citation-readiness](2026-05-21-geo-citation-readiness.md) | closed | orchestrator | (3 sub-tasks done — commits groupés + push + validations post-déploiement) |
 | 2026-05-21 | [geo-citation-readiness-sub1](2026-05-21-geo-citation-readiness-sub1.md) | closed | solo | (robots.txt AI bots — done) |

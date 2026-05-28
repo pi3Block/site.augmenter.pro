@@ -58,7 +58,7 @@ Avant toute chose :
 
 3. **Concurrence** :
    - **DataForSEO** (si disponible) : `serp_google_organic_live` pour le top 10 SERP réel
-   - **Fallback** : scrape les 3-5 premiers résultats Google via crawl4ai
+   - **Fallback** : scrape les 3-5 premiers résultats Google via Firecrawl (`mcp-calls.md` §8)
    - Analyser : structure, angles, points manquants
 
 4. **Maillage** : lire les pages existantes pour les liens internes pertinents (dont `/prompts` si un prompt associé existe dans `src/data/prompts.ts` — utiliser `<PromptCard slug="...">` pour l'intégration visuelle)

@@ -12,12 +12,23 @@ Marketing website for **augmenter.pro** — an AI consulting and digital transfo
 
 ## Web Crawling
 
-**Priorité : crawl4ai self-hosted** (`https://crawl4ai.augmenter.pro`)
-- Endpoint principal : `POST /md` avec `{"url": "...", "f": "raw"}`
-- Endpoint complet : `POST /crawl` avec `{"urls": ["..."]}`
-- Ne PAS utiliser firecrawl — préférer toujours crawl4ai self-hosted
-- Si le MCP crawl4ai est connecté, utiliser les outils MCP (`mcp__crawl4ai__md`, etc.)
-- Sinon, appeler l'API REST directement via curl
+**Priorité : Firecrawl self-hosted sur VPS IONOS** (remplace crawl4ai Coolify depuis 2026-05-27)
+
+| Contexte | URL de base | Accès |
+|----------|-------------|-------|
+| **Prod Coolify** (ouquequoi, app.augmenter.pro) | `http://10.10.0.1:3002` | Tunnel WireGuard `10.10.0.0/24` (VPS `.1` ↔ Coolify `.2`) |
+| **Dev local Cursor** (MCP + curl) | `https://firecrawl-test.augmenter.pro` | Caddy + basic-auth sur le VPS (cf. infra) ; sinon WireGuard vers `10.10.0.1:3002` |
+
+- **Endpoint principal** : `POST /v2/scrape` avec `{"url": "...", "formats": ["markdown"]}` → `{success, data: {markdown, html, metadata}}`
+- **Endpoint batch** : `POST /v1/crawl` (jobs asynchrones) — préférer `/v2/scrape` pour une URL unique
+- **Pas d'API key** en self-host (`USE_DB_AUTHENTICATION=false`)
+- **Ne PAS utiliser** `crawl4ai.augmenter.pro` (caduc, hog CPU sur Coolify — retrait prévu après cutover)
+- **Ne PAS utiliser** le SaaS Firecrawl cloud (19 $/mois) — self-host VPS uniquement
+- Si le MCP Firecrawl est connecté, utiliser `mcp__firecrawl__firecrawl_scrape` (URL unique) ou `mcp__firecrawl__firecrawl_crawl` (batch)
+- Sinon, appeler l'API REST via curl (cf. [`.claude/templates/seo/mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §8)
+- Fallback si Firecrawl indispo : Playwright MCP (`browser_navigate` + `browser_snapshot`)
+
+**Infra détaillée** : [`../unified-infrastructure/docs/VPS_IONOS.md`](../unified-infrastructure/docs/VPS_IONOS.md) · stack [`../unified-infrastructure/vps-ionos-firecrawl/`](../unified-infrastructure/vps-ionos-firecrawl/) · ADR [`docs/decisions/0004-firecrawl-ionos-migration.md`](docs/decisions/0004-firecrawl-ionos-migration.md)
 
 ## Commands
 

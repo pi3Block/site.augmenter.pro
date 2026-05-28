@@ -231,7 +231,7 @@ export default function VeilleConcurrentielleIAPME() {
         </li>
         <li>
           <strong>Budget 200+ €/mois</strong> : Solution sur mesure avec agents
-          IA (CrewAI + Crawl4AI) déployée en interne. C&apos;est l&apos;approche
+          IA (CrewAI + Firecrawl) déployée en interne. C&apos;est l&apos;approche
           que nous utilisons chez augmenter.PRO pour nos clients qui ont des
           besoins avancés — contactez-nous pour un{" "}
           <Link

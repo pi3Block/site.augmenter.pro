@@ -743,12 +743,12 @@ export default function AuditInformatiqueValDoisePage() {
           </div>
           <div className="mt-8 text-center">
             <p className="text-sm text-muted-foreground">
-              Vous cherchez aussi à intégrer l&apos;IA dans votre PME ?{" "}
+              Vous cherchez aussi à exploiter l&apos;IA dans votre PME ?{" "}
               <Link
-                href="/strategie-ia-pme"
+                href="/audit-ia-pme"
                 className="text-primary underline-offset-4 hover:underline"
               >
-                Découvrez notre accompagnement stratégie IA
+                Découvrez notre audit IA pour PME
               </Link>
               .
             </p>

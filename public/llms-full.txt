@@ -938,7 +938,7 @@ Ollama VisionQdrant
 J
 ## Veille Concurrentielle & Market Intelligence
 Surveillance automatique de vos concurrents par IA multi-agents : détection de changements, alertes et rapports.
-CrewAICrawl4AI
+CrewAIFirecrawl
 ## Stack technique
 Technologies open source utilisées dans nos projets.
 ### Frontend
@@ -1971,7 +1971,7 @@ La veille ne sert à rien si elle ne déclenche pas d'action. Pour chaque alerte
 Voici les outils que nous avons testés et recommandons selon le profil de votre PME :
   * **Budget 0 €** : Google Alerts + suivi manuel LinkedIn. Limité mais mieux que rien.
   * **Budget 50-100 €/mois** : Visualping (monitoring pages web) + Feedly Pro (curation actualités). Bon rapport fonctionnalité/prix.
-  * **Budget 200+ €/mois** : Solution sur mesure avec agents IA (CrewAI + Crawl4AI) déployée en interne. C'est l'approche que nous utilisons chez augmenter.PRO pour nos clients qui ont des besoins avancés — contactez-nous pour un [diagnostic initial](https://augmenter.pro/contact).
+  * **Budget 200+ €/mois** : Solution sur mesure avec agents IA (CrewAI + Firecrawl) déployée en interne. C'est l'approche que nous utilisons chez augmenter.PRO pour nos clients qui ont des besoins avancés — contactez-nous pour un [diagnostic initial](https://augmenter.pro/contact).
 
 ## Retour d'expérience : ce que la veille IA révèle (et ses limites)
 En accompagnant des PME du bâtiment et du conseil en Yvelines, nous avons observé des résultats concrets :

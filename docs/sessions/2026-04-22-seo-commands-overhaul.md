@@ -17,7 +17,7 @@ green — refonte fonctionnellement complète, un premier audit a été produit 
 
 ## Done in this session
 
-- **Enrichissement massif de `/seo-audit`** : 10 phases (vs 6 avant), intégration complète GSC MCP (7 outils incluant `detect_quick_wins`, `index_inspect`, `enhanced_search_analytics`), DataForSEO (~25 outils incluant `on_page_lighthouse`, AI optimization `ai_opt_llm_ment_*`, backlinks), crawl4ai, Playwright.
+- **Enrichissement massif de `/seo-audit`** : 10 phases (vs 6 avant), intégration complète GSC MCP (7 outils incluant `detect_quick_wins`, `index_inspect`, `enhanced_search_analytics`), DataForSEO (~25 outils incluant `on_page_lighthouse`, AI optimization `ai_opt_llm_ment_*`, backlinks), Firecrawl (ex-crawl4ai), Playwright.
 - **Ajout d'une Phase 9 dédiée aux livrables concrets** : copy A/B/C, cartes services réécrites, propositions d'enrichissement d'offre chiffrées, dérives cross-pages, backlog consolidé.
 - **Split en 7 templates réutilisables** dans [.claude/templates/seo/](../../.claude/templates/seo/) :
   - `project-context.md` (87 l) — positionnement, stack, audience, modalités géo, contraintes

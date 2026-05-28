@@ -354,7 +354,7 @@ export const modules: Module[] = [
     ],
     techs: [
       { name: "CrewAI", description: "Framework multi-agents IA" },
-      { name: "Crawl4AI", description: "Web scraping self-hosted" },
+      { name: "Firecrawl", description: "Web scraping self-hosted (VPS IONOS)" },
     ],
     keywords: [
       "veille concurrentielle automatique",

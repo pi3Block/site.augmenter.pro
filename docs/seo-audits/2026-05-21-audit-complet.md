@@ -2,6 +2,8 @@
 
 > Audit **exhaustif** (Phases 0-10 du `/seo-audit`) couvrant on-page, GSC, DFS, concurrence, GEO/LLM, E-E-A-T, stratégie éditoriale et cohérence de l'offre. Données réelles collectées 2026-05-21.
 >
+> **Note 2026-05-28** : crawler opérationnel = **Firecrawl VPS IONOS** (remplace crawl4ai). Les mentions crawl4ai ci-dessous reflètent l'état au moment de l'audit.
+>
 > **Période GSC** : 2026-02-20 → 2026-05-20 (90 j)
 > **Site analysé** : `sc-domain:augmenter.pro`
 > **Complète** l'audit de validation [`2026-05-21-audit.md`](2026-05-21-audit.md) (workflow check ciblé) avec les phases CWV, GEO multi-moteurs, briefs éditoriaux et fiches services.

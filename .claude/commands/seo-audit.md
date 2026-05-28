@@ -34,7 +34,7 @@ Commencer par tester les MCP (cf. [`mcp-calls.md`](.claude/templates/seo/mcp-cal
 | GSC MCP | `mcp__google-search-console__list_sites` | Phase 2 complète | Recommander installation |
 | DataForSEO MCP | `mcp__dfs-mcp__kw_data_google_ads_locations` (`country_iso_code: "FR"`) | Phases 3/4/5/6 complètes | Fallback web search |
 | DFS Backlinks (sous-souscription) | `mcp__dfs-mcp__backlinks_summary` | Phase 5 complète | **Skip Phase 5** (subscription requise) |
-| crawl4ai MCP | `mcp__crawl4ai__md` sur augmenter.pro | Phase 4 crawl concurrents | Fallback fetch |
+| Firecrawl MCP | `mcp__firecrawl__firecrawl_scrape` sur augmenter.pro | Phase 4 crawl concurrents | Fallback fetch / Playwright |
 | Playwright MCP | `mcp__plugin_playwright_playwright__browser_navigate` | Tests rendering + CWV visuels | Skip |
 
 ### 0.2 Baseline instantanée (si GSC MCP dispo)
@@ -283,7 +283,7 @@ Appels : `mcp__dfs-mcp__content_analysis_search` et `mcp__dfs-mcp__content_analy
 
 ## Phase 4 — Analyse concurrentielle (data-driven)
 
-> **Appels MCP** : voir [`mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §2.5 (concurrents + intersection), §7 (technologies), §8 (crawl4ai).
+> **Appels MCP** : voir [`mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §2.5 (concurrents + intersection), §7 (technologies), §8 (Firecrawl).
 
 ### 4.1 Identification automatique des concurrents SEO
 
@@ -307,14 +307,14 @@ Appel : `mcp-calls.md` §2.5 (`domain_intersection` avec `intersection_mode: "co
 
 Chaque mot-clé retourné est une opportunité de contenu net à produire.
 
-### 4.4 Crawl concurrentiel (crawl4ai)
+### 4.4 Crawl concurrentiel (Firecrawl)
 
-Pour chaque concurrent, via `mcp-calls.md` §8 (`mcp__crawl4ai__md` ou `crawl`) :
+Pour chaque concurrent, via `mcp-calls.md` §8 (`mcp__firecrawl__firecrawl_scrape` ou `firecrawl_crawl`) :
 - Homepage + page services + 2-3 articles représentatifs
 - Extraire : structure Hn, longueur, angle, format, rich snippets, CTAs
 - Analyser : fonctionnalités différenciantes (chat, calculateur ROI, configurateur, études de cas, annuaire), types de preuves (logos clients, chiffres, témoignages)
 
-Si crawl4ai indispo, fallback sur Playwright MCP (`browser_navigate` + `browser_snapshot`).
+Si Firecrawl indispo, fallback sur Playwright MCP (`browser_navigate` + `browser_snapshot`).
 
 ### 4.5 Technologies des concurrents
 
@@ -371,7 +371,7 @@ Sites qui linkent 2+ concurrents mais pas augmenter.pro = **cibles prioritaires 
 
 C'est **le chantier de différenciation** pour 2026. L'objectif explicite : être cité par **ChatGPT (Search)**, **Perplexity (Pages & Pro Search)**, **Google Gemini AI Mode / AI Overviews / SGE**, **Claude (web search)**, **Brave Summarizer**, **Bing Copilot** — quand un dirigeant PME formule une requête correspondant exactement aux prestations augmenter.pro.
 
-> **Appels MCP** : voir [`mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §6 (DFS AI Optimization) + §8 (crawl4ai pour scraper concurrents) + Playwright MCP pour les tests directs multi-moteurs.
+> **Appels MCP** : voir [`mcp-calls.md`](.claude/templates/seo/mcp-calls.md) §6 (DFS AI Optimization) + §8 (Firecrawl pour scraper concurrents) + Playwright MCP pour les tests directs multi-moteurs.
 >
 > **Logique de cette phase** : (1) on s'assure d'abord que les bots IA peuvent **crawler** le site → (2) on mesure ensuite la visibilité actuelle → (3) on identifie les **citation triggers manquants** → (4) on plante les jalons d'entité (Person, NAP, mentions externes).
 
@@ -407,11 +407,11 @@ Grille de référence (alignée sur le `robots.txt` réel au 2026-05-22) :
 - [ ] Pas de `Disallow: /` accidentel pour les bots autorisés dans un futur ajout
 - [ ] Header HTTP `X-Robots-Tag` n'inclut pas `noai` / `noimageai` sur les pages indexables
 - [ ] CSP `frame-ancestors` n'empêche pas le rendu (Bing Copilot rend des pages pour extraction)
-- [ ] `robots.txt` accessible en HTTP 200 (vérifier via `mcp__crawl4ai__md`)
+- [ ] `robots.txt` accessible en HTTP 200 (vérifier via `mcp__firecrawl__firecrawl_scrape`)
 - [ ] ⚠️ **Aucune directive `Sitemap:` ne pointe vers `llms.txt` / `llms-full.txt`** (la directive attend du XML/liste d'URLs — un markdown y génère une erreur Search Console). Les fichiers LLM se découvrent par convention de chemin racine.
 - [ ] La grille ci-dessus reste alignée avec le `robots.txt` réel (re-vérifier à chaque ajout de bot)
 
-**Test crawl bot-by-bot** : `mcp__google-search-console__index_inspect` retourne le `crawledAs` Google ; pour les autres, utiliser `mcp-calls.md` §8 (crawl4ai avec user-agent custom) ou un fetch direct avec header `User-Agent: GPTBot/1.0`.
+**Test crawl bot-by-bot** : `mcp__google-search-console__index_inspect` retourne le `crawledAs` Google ; pour les autres, utiliser `mcp-calls.md` §8 (Firecrawl avec header `User-Agent` custom) ou un fetch direct avec header `User-Agent: GPTBot/1.0`.
 
 ### 6.2 Mentions LLM actuelles (DataForSEO AI Optimization)
 

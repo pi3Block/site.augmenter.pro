@@ -37,7 +37,7 @@ Le rapport est **autonome** (un lecteur qui n'a pas assisté à l'audit doit pou
 |-------|------|-------|
 | GSC MCP | ✅/❌ | ... |
 | DataForSEO MCP | ✅/❌ | ... |
-| crawl4ai | ✅/❌ | ... |
+| Firecrawl MCP | ✅/❌ | ... |
 | Playwright | ✅/❌ | ... |
 
 ## 2. Audit technique

@@ -1,0 +1,6 @@
+---
+alwaysApply: true
+---
+
+Utilise Firecrawl self-hosted (VPS IONOS) pour crawler le web — cf. CLAUDE.md § Web Crawling.
+Ne pas utiliser crawl4ai.augmenter.pro (caduc).

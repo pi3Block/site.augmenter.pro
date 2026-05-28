@@ -84,7 +84,7 @@ Règle : ces points sont **prioritaires sur le SEO on-page**. En cas de conflit,
 
 ## ✅ F. Audit complet (`/seo-audit`)
 
-- [ ] Phase 0 — Vérifier MCPs (GSC, DataForSEO, crawl4ai, Playwright). Voir [`mcp-calls.md`](mcp-calls.md) pour les pings de validation
+- [ ] Phase 0 — Vérifier MCPs (GSC, DataForSEO, Firecrawl, Playwright). Voir [`mcp-calls.md`](mcp-calls.md) pour les pings de validation
 - [ ] Phase 0 — Sauver la baseline GSC (clics, impressions, position, CTR) — sert de référence pour audits futurs
 - [ ] Phase 6 — Cocher la check-list §G ci-dessous (GEO / LLM citation)
 - [ ] Phase 7 — Appliquer [`eeat-grid.md`](eeat-grid.md) à chaque page indexable
